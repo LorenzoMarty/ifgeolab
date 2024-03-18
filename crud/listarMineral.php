@@ -73,7 +73,7 @@
 
                             <div class="card-image">
                                 <img src="../img/mineral/<?= $img; ?>" class="minha-imagem materialboxed ">
-                                <span class="card-title center meu-span green-text text-lighten-3">
+                                <span class="card-title center meu-span white-text text-lighten-3">
                                     <?php echo $nome ?>
                                 </span>
                             </div>
@@ -88,6 +88,12 @@
                     </div>
 
                 <?php } ?>
+                <div class="col s12 l4 m8">
+                    <div class="card hoverable">
+                        <div class="card-action center green darken-4">
+                            <a class="center waves-effect waves-light btn green accent-4" href="cadMineral.php">Cadastrar</a>
+                        </div>
+                    </div>
                 <br>
                 <br>
                 <br>
