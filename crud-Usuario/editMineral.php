@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="../dist/plugins/upload/trumbowyg.upload.min.js">
     <link rel="stylesheet" href="../dist/plugins/emoji/trumbowyg.emoji.min.js">
     <link rel="shortcut icon" type="image/jpg" href="../img/icons8-rocha-48.png" />
-    <title>Editar Mineral</title>
+    <title>If GeoLab</title>
     <style>
         nav.nav-center ul {
             text-align: center;
@@ -76,7 +76,7 @@
     }
     if (isset ($_GET['idmineral'])) {
         $id = $_GET['idmineral'];
-        $sql = "SELECT * FROM mineral WHERE idmineral=$id";
+        $sql = "SELECT * FROM sugerirmineral WHERE idmineral=$id";
         $resultado = mysqli_query($conexao, $sql);
         $dados = mysqli_fetch_assoc($resultado);
         $descricao = $dados['descricao'];
