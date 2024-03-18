@@ -40,9 +40,9 @@ if (isset($_POST['editar'])) {
         }
     } else {
         $hash = password_hash($senhaE, PASSWORD_DEFAULT);
-        if (isset ($_COOKIE['acesso']) && $_COOKIE['acesso']['permissao'] == 1) {
+        if (isset($_COOKIE['acesso']) && $_COOKIE['acesso']['permissao'] == 1) {
             $novo_nome = "usuario.png";
-        } elseif (isset ($_COOKIE['acesso']) && $_COOKIE['acesso']['permissao'] == 2) {
+        } elseif (isset($_COOKIE['acesso']) && $_COOKIE['acesso']['permissao'] == 2) {
             $novo_nome = "adm.png";
         }
         if ($hash) {

@@ -71,7 +71,9 @@
                                 </span>
                             </div>
                             <div class="card-action green darken-4">
-                            <a class="center waves-effect waves-light btn green accent-4" href="../relatorio.php?idrocha=<?php echo $idrocha; ?>"><img src="../img/pdf-icon.png"></a>
+                                <a class="center waves-effect waves-light btn green accent-4"
+                                    href="../relatorio.php?idrocha=<?php echo $idrocha; ?>"><img
+                                        src="../img/pdf-icon.png"></a>
                                 <?php if (isset ($_COOKIE['acesso']) && $_COOKIE['acesso']['permissao'] == 2) {
                                     echo "<a class='center waves-effect waves-light btn red' href='processaRocha.php?deletar=" . $idrocha . "'>Excluir</a> ";
                                     echo "<a class='center waves-effect waves-light btn green' href='editRocha.php?idrocha=" . $idrocha . "'>Editar</a>";
@@ -81,6 +83,20 @@
                     </div>
 
                 <?php } ?>
+                <div class="col s12 l4 m8">
+                        <div class="card hoverable">
+
+                            <div class="card-image">
+                                <img src="../img/rochas/rocha.png" class="minha-imagem materialboxed ">
+                                <span class="card-title center meu-span green-text text-lighten-3">
+                                    Novas Rochas
+                                </span>
+                            </div>
+                            <div class="card-action green darken-4">
+                                <a class="center waves-effect waves-light btn green accent-4" href="cadRocha.php">Cadastrar </a>
+                            </div>
+                        </div>
+                    </div>
                 <br>
                 <br>
                 <br>
