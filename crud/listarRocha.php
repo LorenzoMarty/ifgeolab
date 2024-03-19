@@ -56,7 +56,7 @@
                 while ($dados = mysqli_fetch_array($resultado)) {
                     $idrocha = $dados["idrocha"];
                     $nome = $dados['nome'];
-                    $cat = $dados['cat'];
+                    $cat = $dados['idcat'];
                     $descricao = $dados['descricao'];
                     $img = $dados['img'];
 

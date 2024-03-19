@@ -45,12 +45,12 @@
             <div class="row">
                 <?php
                 require_once 'conecta.php';
-                $sql = "SELECT * FROM mineral WHERE cat=2";
+                $sql = "SELECT * FROM mineral WHERE idcat=2";
                 $conexao = conectar();
                 $resultado = mysqli_query($conexao, $sql);
                 while ($dados = mysqli_fetch_array($resultado)) {
                     $nome = $dados['nome'];
-                    $cat = $dados['cat'];
+                    $cat = $dados['idcat'];
                     $descricao = $dados['descricao'];
                     $img = $dados['img'];
 

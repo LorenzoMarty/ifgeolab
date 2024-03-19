@@ -45,12 +45,12 @@
             <div class="row">
                 <?php
                 require_once 'conecta.php';
-                $sql = "SELECT * FROM rocha WHERE cat=2";
+                $sql = "SELECT * FROM rocha WHERE idcat=2";
                 $conexao = conectar();
                 $resultado = mysqli_query($conexao, $sql);
                 while ($dados = mysqli_fetch_array($resultado)) {
                     $nome = $dados['nome'];
-                    $cat = $dados['cat'];
+                    $cat = $dados['idcat'];
                     $descricao = $dados['descricao'];
                     $img = $dados['img'];
 
@@ -63,7 +63,7 @@
                                 <span class="card-title center meu-span green-text text-lighten-3"><?php echo $nome     ?></span>
                             </div>
                             <div class="card-action green darken-4">
-                                <a class="green-text text-lighten-3" href="saibamais.php?idrocha=<?php echo $dados['idrocha']  ?>">Saiba mais</a>
+                                <a class="green-text text-lighten-3" href="saibaRocha.php?idrocha=<?php echo $dados['idrocha']  ?>">Saiba mais</a>
                             </div>
                         </div>
                     </div>

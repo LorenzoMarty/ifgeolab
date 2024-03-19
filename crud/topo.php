@@ -58,7 +58,7 @@
   <header>
     <div class="row">
       <div class="col s12 center-align" style="margin-top: 0.2%;">
-        <a href="index.php">
+        <a href="../index.php">
           <img class="responsive-img" src="../img/geolab-branco.png" alt="Logo do site" height="200" width="200">
         </a>
       </div>
