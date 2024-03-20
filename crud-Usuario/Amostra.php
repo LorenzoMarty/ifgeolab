@@ -43,7 +43,7 @@ if (isset($_COOKIE['acesso'])){
                             <img src="../img/mineral.png">
                         </div>
                         <div class="card-action green">
-                            <a href="listarMineral.php" class="white-text"><h5>Minerais</h5></a>
+                            <a href="cadMineralU.php" class="white-text"><h5>Minerais</h5></a>
                         </div>
                     </div>
                 </div>
