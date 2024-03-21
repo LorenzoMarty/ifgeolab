@@ -97,7 +97,7 @@
             <?php } ?>
           </select>
         </div>
-
+        <input type="hidden" name="sugestao" value="0">
       </div>
       <div class="row">
         <div class="input-field col s12">

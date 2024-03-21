@@ -76,14 +76,14 @@
   <div class="container">
     <h4>Cadastrar Rocha</h4>
     <hr>
-    <form enctype="multipart/form-data" method="post" action="sugerirRocha.php" class="col  s12 m6">
+    <form enctype="multipart/form-data" method="post" action="processaRocha.php" class="col  s12 m6">
 
       <div class="row">
         <div class="input-field col s6">
           <input id="nome" name="nome" type="text" class="validate">
           <label for="nome">Nome</label>
         </div>
-        
+        <input type="hidden" name="sugestao" value="1">
         <div class="input-field col s6">
           <select name="cat" class="validate">
             <?php

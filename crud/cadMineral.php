@@ -83,7 +83,7 @@
           <input id="nome" name="nome" type="text" class="validate">
           <label for="nome">Nome</label>
         </div>
-        
+        <input type="hidden" name="sugestao" value="0">
         <div class="input-field col s6">
           <select name="cat" class="validate">
             <?php

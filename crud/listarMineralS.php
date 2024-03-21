@@ -66,7 +66,7 @@
                             <th scope="col">Id Mineral</th>
                             <th scope="col">Nome</th>
                             <th scope="col">Id Categoria</th>
-                            <th scope="col">Texto</th>
+                            <th scope="col">Imagem</th>
                             <th scope="col">Opções</th>
                         </tr>
                     </thead>
@@ -81,8 +81,8 @@
                         echo "<td>" . $dados['nome'] . " </td>";
                         echo "<td>" . $dados['idcat'] . " </td>";
                         echo "<td> <img src=../img/mineral/" . $dados['img'] . " width='50px' height='auto'></td>";
-                        echo "<td><a href='editarMineral.php?idmineral=" . $dados['idmineral'] . "'>" . "Editar" . "</a>";
-                        echo "<a href='processaMineral.php?deletar=" . $dados['idmineral'] . "'>" . "Excluir" . "</a></td>";
+                        echo "<td><a href='editMineralS.php?idmineral=" . $dados['idmineral'] . "'>" . "Editar" . "</a>";
+                        echo " <a href='processaMineral.php?deletar=" . $dados['idmineral'] . "'>" . "Excluir" . "</a></td>";
                         echo '</tr>';
                     } ?>
                     </table>
