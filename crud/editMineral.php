@@ -113,7 +113,7 @@
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <textarea id="trumbowyg-editor" class="materialize-textarea" name="desc" value="<?php echo $descricao; ?></textarea>
+                    <textarea id="trumbowyg-editor" class="materialize-textarea" name="desc" value="<?php echo $descricao; ?>"></textarea>
                 </div>
             </div>
             <div class="row">

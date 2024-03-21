@@ -94,6 +94,7 @@
                             <a class="center waves-effect waves-light btn green accent-4" href="cadMineral.php">Cadastrar</a>
                         </div>
                     </div>
+                </div>
                 <br>
                 <br>
                 <br>

@@ -24,7 +24,7 @@ if (isset($_COOKIE['acesso'])){
 ?>
     <main>
         <div class="container">
-            <h1>Sugerir amostra</h1>
+            <h1>Sugestões</h1>
             <hr>
             <div class="row">
                 <div class="col s6">
@@ -33,7 +33,7 @@ if (isset($_COOKIE['acesso'])){
                             <img src="../img/rocha.png">
                         </div>
                         <div class="card-action green">
-                            <a href="cadRochaU.php" class="white-text"><h5>Rochas</h5></a>
+                            <a href="listarRochaS.php" class="white-text"><h5>Rochas</h5></a>
                         </div>
                     </div>
                 </div>
@@ -43,7 +43,7 @@ if (isset($_COOKIE['acesso'])){
                             <img src="../img/mineral.png">
                         </div>
                         <div class="card-action green">
-                            <a href="cadMineralU.php" class="white-text"><h5>Minerais</h5></a>
+                            <a href="listarMineralS.php" class="white-text"><h5>Minerais</h5></a>
                         </div>
                     </div>
                 </div>

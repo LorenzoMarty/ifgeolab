@@ -75,8 +75,8 @@
           <li><a class="white-text" href="../index.php">Início</a></li>
         </ul>
         <ul class="right hide-on-med-and-down" style="margin-right: 20px;">
-          <li><a class="white-text" href="login.php">Login</a></li>
-          <li><a class="white-text" href="crud/cadUsuario.php">Cadastre-se</a></li>
+          <li><a class="white-text" href="../login.php">Login</a></li>
+          <li><a class="white-text" href="../crud/cadUsuario.php">Cadastre-se</a></li>
         </ul>
 
 

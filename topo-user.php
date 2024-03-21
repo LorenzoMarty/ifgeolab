@@ -100,7 +100,7 @@ if (mysqli_num_rows($resultado) > 0) {
           <li><a class="white-text" href="index.php">Início</a></li>
         </ul>
         <ul class="right hide-on-med-and-down">
-        <li><a class="white-text" href="crud-usuario/Amostra.php">Amostra</a></li>
+        <li><a class="white-text" href="crud-usuario/Amostra.php">Sugestões</a></li>
           <li style="margin-right: 10px;"><a class="white-text" href="crud/editUser.php?idusuario=" .<?php echo $_COOKIE['acesso']['id']; ?>><?php echo $dados['nome']; ?></a></li>
           <li style="margin-right: 10px;"><img src="img/usuarios/<?= $img; ?>" class="perfil materialboxed "></li>
         </ul>
