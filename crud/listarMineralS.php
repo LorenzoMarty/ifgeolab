@@ -81,7 +81,7 @@
                         echo "<td>" . $dados['nome'] . " </td>";
                         echo "<td>" . $dados['idcat'] . " </td>";
                         echo "<td> <img src=../img/mineral/" . $dados['img'] . " width='50px' height='auto'></td>";
-                        echo "<td><a href='editMineralS.php?idmineral=" . $dados['idmineral'] . "'>" . "Editar" . "</a>";
+                        echo "<td><a href='editMineral.php?idmineral=" . $dados['idmineral'] . "&sugestao=1'>" . "Editar" . "</a>";
                         echo " <a href='processaMineral.php?deletar=" . $dados['idmineral'] . "'>" . "Excluir" . "</a></td>";
                         echo '</tr>';
                     } ?>
