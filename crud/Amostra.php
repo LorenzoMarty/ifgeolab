@@ -14,14 +14,9 @@
 <?php
 
 if (isset($_COOKIE['acesso'])){
- if($_COOKIE['acesso']['permissao'] == 1) {
-    include "topo-user.php";
-} elseif ($_COOKIE['acesso']['permissao'] == 2) {
+ if ($_COOKIE['acesso']['permissao'] == 2) {
     include "topo-adm.php";
-}} else {
-    include "topo.php";
-}
-?>
+    ?>
     <main>
         <div class="container">
             <h1>Tipo de amostra</h1>
@@ -59,3 +54,4 @@ if (isset($_COOKIE['acesso'])){
 </body>
 
 </html>
+<?php }else{ header('Location: ../index.php');} }else{ header('Location: ../index.php');}?>
