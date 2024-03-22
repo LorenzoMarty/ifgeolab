@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
     <link rel="shortcut icon" type="image/jpg" href="../img/icons8-rocha-48.png" />
-    <title>Perfil</title>
+    <title>If GeoLab</title>
     <style>
         .minha-imagem {
             height: 300px;

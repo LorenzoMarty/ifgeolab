@@ -22,7 +22,7 @@ if (mysqli_num_rows($resultado) > 0) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" type="image/jpg" href="../img/icons8-rocha-48.png" />
   <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
-  <title>Editar</title>
+  <title>If GeoLab</title>
   <style>
     .minha-imagem {
       height: 220px;
@@ -116,7 +116,7 @@ if (mysqli_num_rows($resultado) > 0) {
 
         <div class="input-field col s12">
           <div class="row">
-            <label> Isira uma foto de perfil:</label><br><br>
+            <label> Insira uma foto de perfil:</label><br><br>
             <div class="col s3">
               <img src="../img/usuarios/<?= $img; ?>" class="minha-imagem materialboxed ">Foto atual</img>
             </div>

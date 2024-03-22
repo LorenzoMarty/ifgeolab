@@ -18,6 +18,9 @@
             background-color: rgba(0, 0, 0, 0.3);
             width: 100%;
         }
+        .btn{
+            font-size: 10px;
+        }
     </style>
 </head>
 
@@ -50,7 +53,7 @@
             <div class="row">
                 <?php
                 require_once '../conecta.php';
-                $sql = "SELECT * FROM rocha";
+                $sql = "SELECT * FROM rocha WHERE sugestao=0";
                 $conexao = conectar();
                 $resultado = mysqli_query($conexao, $sql);
                 while ($dados = mysqli_fetch_array($resultado)) {
@@ -71,12 +74,12 @@
                                 </span>
                             </div>
                             <div class="card-action green darken-4">
-                                <a class="center waves-effect waves-light btn green accent-4"
+                                <a class="center waves-effect waves-light btn-small green accent-4"
                                     href="../relatorio.php?idrocha=<?php echo $idrocha; ?>"><img
                                         src="../img/pdf-icon.png"></a>
                                 <?php if (isset ($_COOKIE['acesso']) && $_COOKIE['acesso']['permissao'] == 2) {
-                                    echo "<a class='center waves-effect waves-light btn red' href='processaRocha.php?deletar=" . $idrocha . "'>Excluir</a> ";
-                                    echo "<a class='center waves-effect waves-light btn green' href='editRocha.php?idrocha=" . $idrocha . "'>Editar</a>";
+                                    echo "<a class='center waves-effect waves-light btn-small red' href='processaRocha.php?deletar=" . $idrocha . "'>Excluir</a> ";
+                                    echo "<a class='center waves-effect waves-light btn-small green' href='editRocha.php?idrocha=" . $idrocha . "'>Editar</a>";
                                 } ?>
                             </div>
                         </div>
@@ -86,7 +89,7 @@
                 <div class="col s12 l4 m8">
                     <div class="card hoverable">
                         <div class="card-action center green darken-4">
-                            <a class="center waves-effect waves-light btn green accent-4" href="cadRocha.php">Cadastrar</a>
+                            <a class="center waves-effect waves-light btn-small green accent-4" href="cadRocha.php">Cadastrar</a>
                         </div>
                     </div>
                 </div>

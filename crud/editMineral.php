@@ -15,8 +15,14 @@
     <link rel="stylesheet" href="../dist/plugins/upload/trumbowyg.upload.min.js">
     <link rel="stylesheet" href="../dist/plugins/emoji/trumbowyg.emoji.min.js">
     <link rel="shortcut icon" type="image/jpg" href="../img/icons8-rocha-48.png" />
-    <title>Editar Mineral</title>
+    <title>If GeoLab</title>
     <style>
+        .minha-imagem {
+            height: 220px;
+            width: 220px;
+            object-fit: cover;
+        }
+
         nav.nav-center ul {
             text-align: center;
         }
@@ -115,12 +121,17 @@
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <textarea id="trumbowyg-editor" class="materialize-textarea" name="desc" value="<?php echo $descricao; ?>"></textarea>
+                    <textarea id="trumbowyg-editor" class="materialize-textarea" name="desc"
+                        value="<?php echo $descricao; ?>"></textarea>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field">
                     <label>Imagem:</label><br><br>
+                    <div class="col s3">
+                        <img src="../img/mineral/<?= $dados['img']; ?>" class="minha-imagem materialboxed ">Foto
+                        atual</img>
+                    </div>
                     <input type="file" name="arquivo" value="<?php echo $dados['img']; ?>" /> <br>
                 </div>
                 <div class="input-field col s12">

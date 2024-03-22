@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="../dist/plugins/upload/trumbowyg.upload.min.js">
   <link rel="stylesheet" href="../dist/plugins/emoji/trumbowyg.emoji.min.js">
   <link rel="shortcut icon" type="image/jpg" href="../img/icons8-rocha-48.png" />
-  <title>Cadastrar Mineral</title>
+  <title>If GeoLab</title>
   <style>
     nav.nav-center ul {
       text-align: center;

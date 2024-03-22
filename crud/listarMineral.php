@@ -78,10 +78,10 @@
                                 </span>
                             </div>
                             <div class="card-action green darken-4">
-                            <a class="center waves-effect waves-light btn green accent-4" href="../relatorio.php?idmineral=<?php echo $idmineral; ?>"><img src="../img/pdf-icon.png"></a>
+                            <a class="center waves-effect waves-light btn-small green accent-4" href="../relatorio.php?idmineral=<?php echo $idmineral; ?>"><img src="../img/pdf-icon.png"></a>
                             <?php if (isset($_COOKIE['acesso']) && $_COOKIE['acesso']['permissao'] == 2) {
-                        echo "<a class='center waves-effect waves-light btn red' href='processaMineral.php?deletar=" . $idmineral . "'>Excluir</a> ";
-                        echo "<a class='center waves-effect waves-light btn green' href='editMineral.php?idmineral=" . $idmineral . "&sugestao=0'>Editar</a>";
+                        echo "<a class='center waves-effect waves-light btn-small red' href='processaMineral.php?deletar=" . $idmineral . "'>Excluir</a> ";
+                        echo "<a class='center waves-effect waves-light btn-small green' href='editMineral.php?idmineral=" . $idmineral . "&sugestao=0'>Editar</a>";
                     } ?>
                             </div>
                         </div>
@@ -91,7 +91,7 @@
                 <div class="col s12 l4 m8">
                     <div class="card hoverable">
                         <div class="card-action center green darken-4">
-                            <a class="center waves-effect waves-light btn green accent-4" href="cadMineral.php">Cadastrar</a>
+                            <a class="center waves-effect waves-light btn-small green accent-4" href="cadMineral.php">Cadastrar</a>
                         </div>
                     </div>
                 </div>

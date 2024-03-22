@@ -40,12 +40,12 @@
         <div class="container">
             <div class="row">
                 <div class="col s12">
-                    <h3 class="left">Minerais</h3><br>
+                    <h3 class="left">Rochas</h3><br>
                 </div>
 
                 <div class="col s12">
                     <hr>
-                    <p>rocha é um corpo natural sólido e cristalino formado em resultado da interação de processos
+                    <p>Rocha é um corpo natural sólido e cristalino formado em resultado da interação de processos
                         físico-químicos em ambientes geológicos. Cada rocha é classificado e denominado não apenas com
                         base na sua composição química, mas também na estrutura cristalina dos materiais que o compõem.
                     </p>
@@ -80,7 +80,7 @@
                         echo "<td> " . $dados['idrocha'] . " </td>";
                         echo "<td>" . $dados['nome'] . " </td>";
                         echo "<td>" . $dados['idcat'] . " </td>";
-                        echo "<td> <img src=../img/rocha/" . $dados['img'] . " width='50px' height='auto'></td>";
+                        echo "<td> <img src=../img/rochas/" . $dados['img'] . " width='50px' height='auto'></td>";
                         echo "<td><a href='editRocha.php?idrocha=" . $dados['idrocha'] . "&sugestao=0'>" . "Editar" . "</a>";
                         echo " <a href='processaRocha.php?idrocha=" . $dados['idrocha'] . "&sugestao=0'>" . "Cadastrar" . "</a></td>";
                         echo '</tr>';
