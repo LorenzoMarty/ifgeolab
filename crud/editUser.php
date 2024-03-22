@@ -66,7 +66,7 @@
                 </div>
                 <div class="col s6">
                     <div class="right hide-on-med-and-down" style="margin-top: 50px;">
-                    <a class="waves-effect waves-light btn green accent-4" href="formEdit.php?editar='<? $idusuario ?>'"> Editar</a>
+                    <a class="waves-effect waves-light btn green accent-4" href="formEdit.php?editar=<?= $idusuario ?>"> Editar</a>
                     <a class="waves-effect waves-light btn red lighten-5 red-text" href="../sair.php">Sair</a>
                     <a class="waves-effect waves-light btn red" href="processaUsuario.php?deletar=<?= $user; ?>">Excluir</a>
                     </div>

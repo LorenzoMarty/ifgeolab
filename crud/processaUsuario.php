@@ -70,10 +70,10 @@ if (isset($_POST['editar'])) {
         setcookie("acesso[permissao]", '', time() - 7200);
         setcookie("acesso[id]", '', time() - 7200);
         echo "<script>alert('Conta deletada com sucesso!');
-        location.href='../index.php'</script>";
+        location.href='editUser.php'</script>";
     } else {
         echo "<script>alert('Não foi possível deletar a conta!');
-        location.href='editUser.php'</script>";
+        location.href='../index.php'</script>";
     }
 } else {
     $nome = $_POST['nome'];
