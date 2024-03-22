@@ -77,7 +77,7 @@
             <div class="row">
                 <div class="col s6">
                     <div class="card-image">
-                        <img src="../img/usuarios/<?= $img; ?>" class="minha-imagem materialboxed ">
+                        <img src="../img/usuarios/<?= $img; ?>" class="minha-imagem materialboxed circle">
                     </div>
                 </div>
                 <div class="col s6">

@@ -57,7 +57,7 @@
             <div class="row">
                 <?php
                 require_once '../conecta.php';
-                $sql = "SELECT * FROM mineral";
+                $sql = "SELECT * FROM mineral WHERE sugestao=0";
                 $conexao = conectar();
                 $resultado = mysqli_query($conexao, $sql);
                 while ($dados = mysqli_fetch_array($resultado)) {
@@ -81,7 +81,7 @@
                             <a class="center waves-effect waves-light btn green accent-4" href="../relatorio.php?idmineral=<?php echo $idmineral; ?>"><img src="../img/pdf-icon.png"></a>
                             <?php if (isset($_COOKIE['acesso']) && $_COOKIE['acesso']['permissao'] == 2) {
                         echo "<a class='center waves-effect waves-light btn red' href='processaMineral.php?deletar=" . $idmineral . "'>Excluir</a> ";
-                        echo "<a class='center waves-effect waves-light btn green' href='editMineral.php?idmineral=" . $idmineral . "'>Editar</a>";
+                        echo "<a class='center waves-effect waves-light btn green' href='editMineral.php?idmineral=" . $idmineral . "&sugestao=0'>Editar</a>";
                     } ?>
                             </div>
                         </div>

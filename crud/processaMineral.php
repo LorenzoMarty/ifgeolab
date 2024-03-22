@@ -10,8 +10,9 @@ if (isset ($_POST['editar'])) {
     
     $id = $_POST['idmineral'];
     $nome = $_POST['nome'];
-    $cat = $_POST['cat'];
+    $cat = $_POST['idcat'];
     $descricao = $_POST['desc'];
+    $suges = $_POST['sugestao'];
     
     if (isset ($_FILES['arquivo'])) {
 
@@ -27,7 +28,7 @@ if (isset ($_POST['editar'])) {
         //faz o upload, movendo o arquivo para a pasta especificada
         move_uploaded_file($_FILES['arquivo']['tmp_name'], $diretorio . $novo_nome);
         
-        $sql = "UPDATE mineral SET nome='$nome', cat = '$cat', descricao = '$descricao', img='$novo_nome' WHERE idmineral=$id";
+        $sql = "UPDATE mineral SET nome='$nome', idcat = '$cat', descricao = '$descricao', img='$novo_nome', sugestao='$suges' WHERE idmineral=$id";
         if (mysqli_query($conexao, $sql)) {
             echo "<script>alert('Amostra atualizada com sucesso!');
             location.href='../index.php'</script>";
@@ -50,8 +51,9 @@ if (isset ($_POST['editar'])) {
     }
 } else {
     $nome = $_POST['nome'];
-    $cat = $_POST['cat'];
+    $cat = $_POST['idcat'];
     $desc = $_POST['desc'];
+    $suges = $_POST['sugestao'];
 
     if (isset ($_FILES['arquivo'])) {
 
@@ -68,14 +70,14 @@ if (isset ($_POST['editar'])) {
         move_uploaded_file($_FILES['arquivo']['tmp_name'], $diretorio . $novo_nome);
 
         //cadastra no banco
-        $sql = "INSERT INTO mineral (nome, cat, descricao, img) VALUES ('$nome', '$cat', '$desc', '$novo_nome')";
+        $sql = "INSERT INTO mineral (nome, idcat, descricao, img, sugestao) VALUES ('$nome', '$cat', '$desc', '$novo_nome', '$suges')";
 
         if (mysqli_query($conexao, $sql)) {
             echo "<script>alert('Cadastro realizado com sucesso!');
-        location.href='index.php'</script>";
+        location.href='../index.php'</script>";
         } else {
             echo "<script>alert('Não foi possível realizar o cadastro!');
-        location.href='index.php'</script>";
+        location.href='../index.php'</script>";
         }
     }
 }

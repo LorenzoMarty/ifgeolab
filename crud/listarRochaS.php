@@ -45,8 +45,8 @@
 
                 <div class="col s12">
                     <hr>
-                    <p>Mineral é um corpo natural sólido e cristalino formado em resultado da interação de processos
-                        físico-químicos em ambientes geológicos. Cada mineral é classificado e denominado não apenas com
+                    <p>rocha é um corpo natural sólido e cristalino formado em resultado da interação de processos
+                        físico-químicos em ambientes geológicos. Cada rocha é classificado e denominado não apenas com
                         base na sua composição química, mas também na estrutura cristalina dos materiais que o compõem.
                     </p>
                     <hr>
@@ -57,13 +57,13 @@
             <div class="row">
                 <?php
                 require_once '../conecta.php';
-                $sql = "SELECT * FROM mineral WHERE sugestao=1";
+                $sql = "SELECT * FROM rocha WHERE sugestao=1";
                 $conexao = conectar();
                 $resultado = mysqli_query($conexao, $sql); ?>
                 <table class="highlight">
                     <thead>
                         <tr>
-                            <th scope="col">Id Mineral</th>
+                            <th scope="col">Id Rocha</th>
                             <th scope="col">Nome</th>
                             <th scope="col">Id Categoria</th>
                             <th scope="col">Imagem</th>
@@ -71,18 +71,18 @@
                         </tr>
                     </thead>
                     <?php while ($dados = mysqli_fetch_array($resultado)) {
-                        $idmineral = $dados["idmineral"];
+                        $idrocha = $dados["idrocha"];
                         $nome = $dados['nome'];
                         $cat = $dados['idcat'];
                         $descricao = $dados['descricao'];
                         $img = $dados['img'];
                         
-                        echo "<td> " . $dados['idmineral'] . " </td>";
+                        echo "<td> " . $dados['idrocha'] . " </td>";
                         echo "<td>" . $dados['nome'] . " </td>";
                         echo "<td>" . $dados['idcat'] . " </td>";
-                        echo "<td> <img src=../img/mineral/" . $dados['img'] . " width='50px' height='auto'></td>";
-                        echo "<td><a href='editMineral.php?idmineral=" . $dados['idmineral'] . "&sugestao=0'>" . "Editar" . "</a>";
-                        echo " <a href='processaMineral.php?idmineral=" . $dados['idmineral'] . "&sugestao=0'>" . "Cadastrar" . "</a></td>";
+                        echo "<td> <img src=../img/rocha/" . $dados['img'] . " width='50px' height='auto'></td>";
+                        echo "<td><a href='editRocha.php?idrocha=" . $dados['idrocha'] . "&sugestao=0'>" . "Editar" . "</a>";
+                        echo " <a href='processaRocha.php?idrocha=" . $dados['idrocha'] . "&sugestao=0'>" . "Cadastrar" . "</a></td>";
                         echo '</tr>';
                     } ?>
                     </table>

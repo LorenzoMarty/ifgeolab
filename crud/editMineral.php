@@ -81,6 +81,7 @@
         $dados = mysqli_fetch_assoc($resultado);
         $descricao = $dados['descricao'];
         $nome = $dados['nome'];
+        $suges = $_GET['sugestao'];
     }
     ?>
     <div class="container">
@@ -92,6 +93,7 @@
                 <div class="input-field col s6">
                     <input id="nome" name="nome" type="text" value="<?php echo $nome; ?>" class="validate">
                     <input type="hidden" name="idmineral" value="<?php echo $id; ?>">
+                    <input type="hidden" name="sugestao" value="<?php echo $suges; ?>">
                     <label for="nome">Nome</label>
                 </div>
                 <div class="input-field col s6">

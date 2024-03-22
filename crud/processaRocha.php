@@ -12,6 +12,7 @@ if (isset ($_POST['editar'])) {
     $nome = $_POST['nome'];
     $cat = $_POST['cat'];
     $descricao = $_POST['desc'];
+    $suges = $_POST['sugestao'];
 
     if (isset ($_FILES['arquivo'])) {
 
@@ -27,7 +28,7 @@ if (isset ($_POST['editar'])) {
         //faz o upload, movendo o arquivo para a pasta especificada
         move_uploaded_file($_FILES['arquivo']['tmp_name'], $diretorio . $novo_nome);
 
-        $sql = "UPDATE rocha SET nome='$nome', cat = '$cat', descricao = '$descricao', img='$novo_nome' WHERE idrocha=$id";
+        $sql = "UPDATE rocha SET nome='$nome', idcat = '$cat', descricao = '$descricao', img='$novo_nome', sugestao='$suges' WHERE idrocha=$id";
         if (mysqli_query($conexao, $sql)) {
             echo "<script>alert('Amostra atualizada com sucesso!');
         location.href='../index.php'</script>";
@@ -48,6 +49,11 @@ if (isset ($_POST['editar'])) {
         location.href='../index.php'</script>";
     }
 } else {
+    $nome = $_POST['nome'];
+    $cat = $_POST['cat'];
+    $descricao = $_POST['desc'];
+    $suges = $_POST['sugestao'];
+
     if (isset ($_FILES['arquivo'])) {
 
         //pega a extensao do arquivo
@@ -63,7 +69,7 @@ if (isset ($_POST['editar'])) {
         move_uploaded_file($_FILES['arquivo']['tmp_name'], $diretorio . $novo_nome);
 
         //cadastra no banco
-        $sql = "INSERT INTO rocha (nome, cat, descricao, img) VALUES ('$nome', '$cat', '$desc', '$novo_nome')";
+        $sql = "INSERT INTO rocha (nome, idcat, descricao, img, sugestao) VALUES ('$nome', '$cat', '$desc', '$novo_nome', '$suges')";
 
         if (mysqli_query($conexao, $sql)) {
             echo "<script>alert('Cadastro realizado com sucesso!');

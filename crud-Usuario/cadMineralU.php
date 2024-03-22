@@ -76,7 +76,7 @@
   <div class="container">
     <h4>Cadastrar Mineral</h4>
     <hr>
-    <form enctype="multipart/form-data" method="post" action="processaMineral.php" class="col  s12 m6">
+    <form enctype="multipart/form-data" method="post" action="../crud/processaMineral.php" class="col  s12 m6">
 
       <div class="row">
         <div class="input-field col s6">

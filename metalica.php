@@ -63,7 +63,7 @@
                                 <span class="card-title center meu-span green-text text-lighten-3"><?php echo $nome     ?></span>
                             </div>
                             <div class="card-action green darken-4">
-                                <a class="green-text text-lighten-3" href="saibamais.php?idmineral=<?php echo $dados['idmineral']  ?>">Saiba mais</a>
+                                <a class="green-text text-lighten-3" href="saibamineral.php?idmineral=<?php echo $dados['idmineral']  ?>">Saiba mais</a>
                             </div>
                         </div>
                     </div>

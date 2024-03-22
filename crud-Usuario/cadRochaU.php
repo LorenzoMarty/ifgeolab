@@ -76,7 +76,7 @@
   <div class="container">
     <h4>Cadastrar Rocha</h4>
     <hr>
-    <form enctype="multipart/form-data" method="post" action="processaRocha.php" class="col  s12 m6">
+    <form enctype="multipart/form-data" method="post" action="../crud/processaRocha.php" class="col  s12 m6">
 
       <div class="row">
         <div class="input-field col s6">

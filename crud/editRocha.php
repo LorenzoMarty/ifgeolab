@@ -81,18 +81,19 @@
         $dados = mysqli_fetch_assoc($resultado);
         $descricao = $dados['descricao'];
         $nome = $dados['nome'];
+        $suges = $_GET['sugestao'];
     }
     ?>
     <div class="container">
         <h4>Editar Rocha</h4>
         <hr>
-        <form enctype="multipart/form-data" method="post" action="processaRocha.php"
-            class="col  s12 m6">
+        <form enctype="multipart/form-data" method="post" action="processaRocha.php" class="col  s12 m6">
 
             <div class="row">
                 <div class="input-field col s6">
                     <input id="nome" name="nome" type="text" value="<?php echo $nome; ?>" class="validate">
                     <input type="hidden" name="idrocha" value="<?php echo $id; ?>">
+                    <input type="hidden" name="sugestao" value="<?php echo $suges; ?>">
                     <label for="nome">Nome</label>
                 </div>
                 <div class="input-field col s6">
@@ -114,8 +115,7 @@
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <textarea id="trumbowyg-editor" name="desc" value="<?php echo $descricao; ?>"
-                        class="materialize-textarea"></textarea>
+                    <textarea id="trumbowyg-editor" name="desc" value="<?php echo $descricao; ?>" class="materialize-textarea"></textarea>
                 </div>
             </div>
             <div class="row">

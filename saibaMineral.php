@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/jpg" href="img/icons8-rocha-48.png" />
+    <link rel="shortcut icon" type="image/jpg" href="img/icons8-mineral-48.png" />
     <link href="../materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
     <title>IF GeoLab</title>
     <style>
@@ -46,25 +46,25 @@
 
         include_once('conecta.php');
         $conexao = conectar();
-        $idrocha = $_GET['idrocha'];
+        $idmineral = $_GET['idmineral'];
 
-        $sql = "SELECT * FROM rocha WHERE idrocha =" . $idrocha;
+        $sql = "SELECT * FROM mineral WHERE idmineral =" . $idmineral;
         $resultado = mysqli_query($conexao, $sql);
 
         if (mysqli_num_rows($resultado) > 0) {
             $dados = mysqli_fetch_assoc($resultado);
             $img = $dados['img'];
-            $catJ = $dados['cat'];
-            $idrock = $dados['idrocha'];
+            $catJ = $dados['idcat'];
+            $idrock = $dados['idmineral'];
         }
 
-        $j = "SELECT * FROM catrocha WHERE idcat='$catJ'";
+        $j = "SELECT * FROM catmineral WHERE idcat='$catJ'";
         $res = mysqli_query($conexao, $j);
         while ($d = mysqli_fetch_assoc($res)) {
             $idcat = $d['idcat'];
             $name = $d['nome'];
         }
-        if ($dados['cat'] == $idcat) {
+        if ($dados['idcat'] == $idcat) {
             $cat = $name;
             $nome = $name;
         } else {
@@ -78,11 +78,11 @@
             <div class="row">
                 <div class="col s6">
                     <div class="card-image">
-                        <img src="img/rochas/<?= $img; ?>" class="minha-imagem materialboxed ">
+                        <img src="img/mineral/<?= $img; ?>" class="minha-imagem materialboxed ">
                     </div>
                 </div>
                 <div class="col s6">
-                    <a class="center waves-effect waves-light btn green accent-4" href="relatorio.php?idrocha=<?php echo $idrocha; ?>"><img src="img/pdf-icon.png">Gerar PDF</a>
+                    <a class="center waves-effect waves-light btn green accent-4" href="relatorio.php?idmineral=<?php echo $idmineral; ?>"><img src="img/pdf-icon.png">Gerar PDF</a>
                 </div>
                 <div class="col s6">
                     <h5><b>Categoria: </b><br><br><?php echo $cat; ?></h5><br>
