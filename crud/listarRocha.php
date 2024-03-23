@@ -79,7 +79,7 @@
                                         src="../img/pdf-icon.png"></a>
                                 <?php if (isset ($_COOKIE['acesso']) && $_COOKIE['acesso']['permissao'] == 2) {
                                     echo "<a class='center waves-effect waves-light btn-small red' href='processaRocha.php?deletar=" . $idrocha . "'>Excluir</a> ";
-                                    echo "<a class='center waves-effect waves-light btn-small green' href='editRocha.php?idrocha=" . $idrocha . "'>Editar</a>";
+                                    echo "<a class='center waves-effect waves-light btn-small green' href='editRocha.php?idrocha=" . $idrocha . "&sugestao=0'>Editar</a>";
                                 } ?>
                             </div>
                         </div>

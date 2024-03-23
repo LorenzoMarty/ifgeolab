@@ -103,7 +103,7 @@
                     <label for="nome">Nome</label>
                 </div>
                 <div class="input-field col s6">
-                    <select name="cat" class="validate">
+                    <select name="idcat" class="validate">
                         <?php
                         require_once "../conecta.php";
                         $conexao = conectar();
@@ -121,8 +121,7 @@
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <textarea id="trumbowyg-editor" class="materialize-textarea" name="desc"
-                        value="<?php echo $descricao; ?>"></textarea>
+                    <textarea id="trumbowyg-editor" name="desc" value="<?php echo $dados['descricao']; ?>" class="materialize-textarea"></textarea>
                 </div>
             </div>
             <div class="row">

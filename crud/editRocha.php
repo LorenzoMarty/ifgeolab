@@ -102,7 +102,7 @@
                     <label for="nome">Nome</label>
                 </div>
                 <div class="input-field col s6">
-                    <select name="cat" class="validate">
+                    <select name="idcat" class="validate">
                         <?php
                         require_once "../conecta.php";
                         $conexao = conectar();

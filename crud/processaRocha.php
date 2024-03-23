@@ -10,7 +10,7 @@ if (isset ($_POST['editar'])) {
 
     $id = $_POST['idrocha'];
     $nome = $_POST['nome'];
-    $cat = $_POST['cat'];
+    $cat = $_POST['idcat'];
     $descricao = $_POST['desc'];
     $suges = $_POST['sugestao'];
 

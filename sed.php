@@ -45,7 +45,7 @@
             <div class="row">
                 <?php
                 require_once 'conecta.php';
-                $sql = "SELECT * FROM rocha WHERE idcat='3'";
+                $sql = "SELECT * FROM rocha WHERE idcat=3";
                 $conexao = conectar();
                 $resultado = mysqli_query($conexao, $sql);
                 while ($dados = mysqli_fetch_array($resultado)) {
