@@ -77,7 +77,6 @@
 
         <div class="container">
             <div class="row">
-                <hr>
                     <div class="wrapp">
                         <div class="card">
                             <div class="card__item">

@@ -81,8 +81,9 @@
                         echo "<td>" . $dados['nome'] . " </td>";
                         echo "<td>" . $dados['idcat'] . " </td>";
                         echo "<td> <img src=../img/mineral/" . $dados['img'] . " width='50px' height='auto'></td>";
-                        echo "<td><a href='editMineral.php?idmineral=" . $dados['idmineral'] . "&sugestao=0'>" . "Editar" . "</a>";
-                        echo " <a href='processaMineral.php?idmineral=" . $dados['idmineral'] . "&sugestao=0'>" . "Cadastrar" . "</a></td>";
+                        echo "<td><a class='center waves-effect waves-light btn-small blue' href='editMineral.php?idmineral=" . $dados['idmineral'] . "&sugestao=0'>" . "Editar" . "</a>";
+                        echo " <a class='center waves-effect waves-light btn-small green' href='processaMineral.php?idmineral=" . $dados['idmineral'] . "&sugestao=0'>" . "Cadastrar" . "</a>";
+                        echo " <a class='center waves-effect waves-light btn-small red' href='processaMineral.php?deletar=" . $dados['idmineral'] . "'>" . "Excluir" . "</a></td>";
                         echo '</tr>';
                     } ?>
                     </table>
