@@ -101,7 +101,7 @@ if (mysqli_num_rows($resultado) > 0) {
         </ul>
         <ul class="right hide-on-med-and-down">
         <li><a class="white-text" href="Amostra.php">Sugestões</a></li>
-          <li style="margin-right: 10px;"><a class="white-text" href="editUser.php"><?php echo $dados['nome']; ?></a></li>
+          <li style="margin-right: 10px;"><a class="white-text" href="../crud/editUser.php"><?php echo $dados['nome']; ?></a></li>
           <li style="margin-right: 10px;"><img src="../img/usuarios/<?= $img; ?>" class="perfil materialboxed "></li>
         </ul>
 

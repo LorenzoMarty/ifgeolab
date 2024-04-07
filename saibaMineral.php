@@ -57,6 +57,8 @@
             $img = $dados['img'];
             $catJ = $dados['idcat'];
             $idrock = $dados['idmineral'];
+            $obj = $dados['3d'];
+            $nome = $dados['nome'];
         }
 
         $j = "SELECT * FROM catmineral WHERE idcat='$catJ'";
@@ -67,7 +69,6 @@
         }
         if ($dados['idcat'] == $idcat) {
             $cat = $name;
-            $nome = $name;
         } else {
             echo "Erro ao buscar a categoria no banco de dados!";
         }
@@ -77,25 +78,24 @@
 
         <div class="container">
             <div class="row">
-                <hr>
                     <div class="wrapp">
                         <div class="card">
                             <div class="card__item">
                                 <model-viewer class="card__model" loading="eager"
                                     style="background-color: rgb(255,255,255);" shadow-intensity="1"
-                                    src="obj/obj1/gold.glb" alt="3d img2" camera-orbit="45deg 55deg" autoplay
-                                    auto-rotate camera-controls ar ios-src="obj/obj1/scene.gltf"></model-viewer>
+                                    src="obj/<?php echo $obj; ?>" camera-orbit="45deg 55deg" autoplay
+                                    auto-rotate camera-controls ar ios-src="obj/<?php echo $obj; ?>"></model-viewer>
                                 <span class="card__txt">
-                                    Ouro<span>Metálico</span>
+                                    <?php echo $nome; ?>
                                 </span>
                             </div>
                             
-                                <a class="center waves-effect waves-light btn green accent-4" href="relatorioMineral.php?idmineral=<?php echo $idmineral; ?>">
-                                    <img src="img/pdf-icon.png">Gerar PDF</a>
-                                <h5><b>Categoria: </b><br><br>
-                                    <?php echo $cat; ?>
-                                </h5><br>
+                            <a class="center waves-effect waves-light btn green accent-4" href="relatorioMineral.php?idmineral=<?php echo $idmineral; ?>">
+                                <img class="pdf" src="img/pdf-icon.png">Gerar PDF</a>
                         </div>
+                            <h5><b>Categoria: </b><br><br>
+                            <?php echo $cat; ?>
+                        </h5><br>
                     </div>
                 
             </div>

@@ -38,6 +38,8 @@
         <div class="container">
             <h1>Laboratório</h1>
             <hr>
+            <span>Conheça Rochas e Minerais e seus tipos</span>
+            <hr>
             <div class="row">
                 <div class="col s6">
                     <div class="card small green">

@@ -107,7 +107,7 @@
       <div class="row">
         <div class="input-field">
           <label>Imagem:</label><br><br>
-          <input type="file" name="arquivo" /> <br>
+          <input type="file" name="arquivo" required/> <br>
         </div>
         <div class="input-field col s12">
           <button class="waves-effect waves-light btn green" type="submit" name="cadastrar">Cadastrar</button>

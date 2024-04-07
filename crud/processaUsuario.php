@@ -18,7 +18,7 @@ if (isset($_POST['editar'])) {
 
         $extensao = strtolower(substr($_FILES['arquivo']['name'], -4));
 
-        $novo_nome = "user-" . $id . $extensao;
+        $novo_nome = "$nome-" . $id . $extensao;
 
         $diretorio = "../img/usuarios/";
 
@@ -86,7 +86,7 @@ if (isset($_POST['editar'])) {
 
         $extensao = strtolower(substr($_FILES['arquivo']['name'], -4));
 
-        $novo_nome = "user-" . $id . $extensao;
+        $novo_nome = "$nome-" . $id . $extensao;
 
         $diretorio = "../img/usuarios/";
 

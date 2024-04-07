@@ -58,7 +58,7 @@ if (isset($_COOKIE['acesso'])){
 
                         <div class="input-field col s12">
                             <label>Imagem:</label><br><br>
-                            <input type="file" name="arquivo" /><br><br>
+                            <input type="file" name="arquivo"/><br><br>
                             <button class="waves-effect waves-light btn green" type="submit" name="cadastrar">Cadastrar</button>
                         </div>
 

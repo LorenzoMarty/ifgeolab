@@ -20,7 +20,7 @@ if (isset ($_POST['editar'])) {
         $extensao = strtolower(substr($_FILES['arquivo']['name'], -4));
 
         //define o nome do arquivo
-        $novo_nome = "rocha_" . ($x + 1) . $extensao;
+        $novo_nome = "$nome" . $extensao;
 
         //define a pasta para onde enviaremos o arquivo
         $diretorio = "../img/rochas/";
@@ -34,7 +34,7 @@ if (isset ($_POST['editar'])) {
         location.href='../index.php'</script>";
         } else {
             echo "<script>alert('Não foi possível atualizar a amostra!');
-            location.href='listarMineral.php'</script>";
+            location.href='listarRocha.php'</script>";
         }
     }header('Location: ../index.php');
 } elseif (isset ($_GET['deletar'])) {
@@ -60,7 +60,7 @@ if (isset ($_POST['editar'])) {
         $extensao = strtolower(substr($_FILES['arquivo']['name'], -4));
 
         //define o nome do arquivo
-        $novo_nome = "rocha_" . ($x + 1) . $extensao;
+        $novo_nome = "$nome" . $extensao;
 
         //define a pasta para onde enviaremos o arquivo
         $diretorio = "../img/rochas/";

@@ -26,6 +26,8 @@ if (isset($_COOKIE['acesso'])){
         <div class="container">
             <h1>Sugerir amostra</h1>
             <hr>
+            <span>Cadastre sugestões de Rochas e Minerais</span>
+            <hr>
             <div class="row">
                 <div class="col s6">
                     <div class="card small green">

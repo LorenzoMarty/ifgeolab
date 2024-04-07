@@ -81,8 +81,9 @@
                         echo "<td>" . $dados['nome'] . " </td>";
                         echo "<td>" . $dados['idcat'] . " </td>";
                         echo "<td> <img src=../img/rochas/" . $dados['img'] . " width='50px' height='auto'></td>";
-                        echo "<td><a href='editRocha.php?idrocha=" . $dados['idrocha'] . "&sugestao=0'>" . "Editar" . "</a>";
-                        echo " <a href='processaRocha.php?idrocha=" . $dados['idrocha'] . "&sugestao=0'>" . "Cadastrar" . "</a></td>";
+                        echo "<td><a class='center waves-effect waves-light btn-small blue' href='editRocha.php?idrocha=" . $dados['idrocha'] . "&sugestao=0'>" . "Editar" . "</a>";
+                        echo " <a class='center waves-effect waves-light btn-small green' href='processaRocha.php?idrocha=" . $dados['idrocha'] . "&sugestao=0'>" . "Cadastrar" . "</a>";
+                        echo " <a class='center waves-effect waves-light btn-small red' href='processaRocha.php?deletar=" . $dados['idrocha'] . "'>" . "Excluir" . "</a></td>";
                         echo '</tr>';
                     } ?>
                     </table>
