@@ -21,7 +21,7 @@ $opts = array(
   $context = stream_context_create($opts);
   
   // Open the file using the HTTP headers set above
-  $html = file_get_contents('http://localhost/ifgeolab/pdfR.php?idrocha='.$idrocha, false, $context);
+  $html = file_get_contents('http://localhost/ifgeolab/ifgeolab/pdfR.php?idrocha='.$idrocha, false, $context);
 
 use Dompdf\Dompdf;
 use Dompdf\Options;
