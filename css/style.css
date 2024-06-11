@@ -1,0 +1,50 @@
+nav.nav-center ul{
+  text-align: center;
+}
+.li a:hover {    
+  background-color:#eee;
+  color:black;
+} 
+.li a.active {
+  color:#000;
+} 
+.li a{
+  color:#fff;
+  border-right: solid 1px grey;
+}
+nav.nav-center ul li{
+  display: inline;
+  float: none;
+}  
+nav.nav-center ul li a{
+  display: inline-block;
+}
+header{
+  background-image: url(../img/fundo-topo.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.nav_color {
+  background-color: #03300b;
+}
+.perfil {
+  margin-top: 5px;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.col .row {
+  margin-left: -0.75rem;
+  margin-right: -0.75rem;
+  width: 100%;
+  text-align: center;
+}
+.ifftopo{
+  width: 175px;
+  height: 94px;
+  flex-shrink: 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
