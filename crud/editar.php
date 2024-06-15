@@ -1,5 +1,5 @@
 <?php
-include_once('../conecta.php');
+require_once('../conecta.php');
 $conexao = conectar();
 
 if (isset($_POST['editarMineral'])) {
@@ -66,7 +66,7 @@ if (isset($_POST['editarMineral'])) {
     }
 } elseif (isset($_POST['editarUsuario'])) {
 
-    $id = $_SESSION['acesso']['id'];
+    $id = $_POST['idusuario'];
     $nome = $_POST['nome'];
     $email = $_POST['email'];
     $senhaE = $_POST['senha'];
@@ -78,17 +78,12 @@ if (isset($_POST['editarMineral'])) {
 
         $extensao = strtolower(substr($_FILES['arquivo']['name'], -4));
 
-        $novo_nome = "$nome-" . $id . $extensao;
+        $novo_nome = "$nome-" . $id ."." . $extensao;
 
         $diretorio = "../img/usuarios/";
 
         move_uploaded_file($_FILES['arquivo']['tmp_name'], $diretorio . $novo_nome);
-    } else {
-        if (isset($_SESSION['acesso']) && $_SESSION['acesso']['permissao'] == 1) {
-            $novo_nome = "usuario.png";
-        } elseif (isset($_SESSION['acesso']) && $_SESSION['acesso']['permissao'] == 2) {
-            $novo_nome = "adm.png";
-        }
+   
         $diretorio = "../img/usuarios/";
 
         move_uploaded_file($_FILES['arquivo']['tmp_name'], $diretorio . $novo_nome);

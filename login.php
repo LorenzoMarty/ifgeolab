@@ -2,7 +2,7 @@
 session_start();
 if (isset($_POST['login'])) {
 
-    include_once('conecta.php');
+    require_once('conecta.php');
     $conexao = conectar();
 
     $email = $_POST['email'];

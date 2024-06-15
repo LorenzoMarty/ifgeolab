@@ -12,7 +12,7 @@ use PHPMailer\PHPMailer\Exception;
 
 if (isset($_POST['login'])) {
 
-    include_once('conecta.php');
+    require_once('conecta.php');
 
     $usuario = $_POST['usuario'];
 

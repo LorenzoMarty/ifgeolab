@@ -1,5 +1,5 @@
 <?php
-include_once('conecta.php');
+require_once('conecta.php');
 $conexao = conectar();
 require './dompdf/vendor/autoload.php';
 

@@ -91,7 +91,7 @@
         <br><br>
         <?php
 
-        include_once('conecta.php');
+        require_once('conecta.php');
         $conexao = conectar();
         $idmineral = $_GET['idmineral'];
 

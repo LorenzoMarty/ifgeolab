@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once('../conecta.php');
+require_once('../conecta.php');
 $conexao = conectar();
 
 $sql = "SELECT * FROM usuario WHERE idusuario =" . $_SESSION['id'];
@@ -94,7 +94,7 @@ if (mysqli_num_rows($resultado) > 0) {
     <hr>
     <div class="row">
       <form action="editar.php" method="POST" enctype="multipart/form-data">
-
+  <input type="hidden" name="idusuario" value="<?= $_SESSION['id'] ?>">
         <div class="input-field col s12">
           <label> Nome </label><br>
           <input type="text" name="nome" required="required" value="<?php echo $dados['nome']; ?>" />
