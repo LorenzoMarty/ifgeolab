@@ -20,7 +20,7 @@
 </style>
 <?php
 
-include_once('../conecta.php');
+require_once('../conecta.php');
 $conexao = conectar();
 $idusuario = $_SESSION['id'];
 
@@ -38,34 +38,32 @@ if (mysqli_num_rows($resultado) > 0) {
 
 <body>
 
-  <header>
-
+<header>
     <div class="row">
-      <div class="col s12 center-align" style="margin-top: 0.2%;">
+      <div class="col s12 center" style="margin-top: 0.2%;">
         <a href="../index.php">
-          <img class="responsive-img" src="../img/geolab-branco.png" alt="Logo do site" height="200" width="200">
+          <img src="../img/geolab-branco.png" alt="Logo do site" height="100" width="auto">
         </a>
       </div>
     </div>
+  </header>
 
-    <div class="container">
-    </div>
-    </div>
     <nav class="nav_color">
       <div class="nav-wrapper">
-        <a href="#" data-target="telefone-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <!-- Lado direito -->
         <ul class="left hide-on-med-and-down">
           <li><a class="white-text" href="../index.php">Início</a></li>
         </ul>
+        <!-- Lado esquerdo -->
         <ul class="right hide-on-med-and-down">
+        <li><a class="white-text" href="../rank.php">Colaboradores</a></li>
         <li><a class="white-text" href="../crud-usuario/Amostra.php">Amostra</a></li>
         <li style="margin-right: 10px;"><a href="../crud/editUser.php?idusuario=" .<?php $_SESSION['id']; ?>><?php echo $dados['nome']; ?></a></li>
           <li style="margin-right: 10px;"><img src="../img/usuarios/<?= $img; ?>" class="perfil materialboxed "></li>
         </ul>
-
-
       </div>
     </nav>
+
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       var elems = document.querySelectorAll('.materialboxed');
