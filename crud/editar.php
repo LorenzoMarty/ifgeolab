@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once('../conecta.php');
 $conexao = conectar();
 
@@ -78,12 +79,12 @@ if (isset($_POST['editarMineral'])) {
 
         $extensao = strtolower(substr($_FILES['arquivo']['name'], -4));
 
-        $novo_nome = "$nome-" . $id ."." . $extensao;
+        $novo_nome = "$nome-" . $id . "." . $extensao;
 
         $diretorio = "../img/usuarios/";
 
         move_uploaded_file($_FILES['arquivo']['tmp_name'], $diretorio . $novo_nome);
-   
+
         $diretorio = "../img/usuarios/";
 
         move_uploaded_file($_FILES['arquivo']['tmp_name'], $diretorio . $novo_nome);
@@ -122,18 +123,14 @@ if (isset($_POST['editarMineral'])) {
 
     $sql = "UPDATE rocha SET sugestao='$suges' WHERE idrocha=$id";
     if (mysqli_query($conexao, $sql)) {
-        $_SESSION['confirm'] += "<script>
-        Swal.fire({
-            title: 'Parabéns!'',
-            text: 'Amostra cadastrada!',
-            icon: 'success'
-        });
-    </script>";
-    header("Location: ../index.php");
+        $_SESSION['confirm'] = [
+            "title" => 'Parabéns!',
+            'text' => 'Amostra cadastrada!',
+            'icon' => 'success'
+        ];
+        header("Location: ../index.php");
     } else {
         echo "<script>alert('Não foi possível atualizar a amostra!');
             location.href='listarRochaS.php'</script>";
     }
 }
-?>
-<script src="../js/sweetalert.js"></script>

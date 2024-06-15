@@ -57,7 +57,10 @@ if (mysqli_num_rows($resultado) > 0) {
       <!-- Lado esquerdo -->
       <ul class="right hide-on-med-and-down">
         <li><a href="rank.php">Colaboradores</a></li>
-        <li><a href="crud/listarUsuario.php">Usuários</a></li>
+        <?php if($_SESSION['permissao'] == 3){
+        echo '<li><a href="listarUsuario.php">Usuários</a></li>';
+        }
+        ?>
         <li><a href="crud/Sugestao.php">Amostra</a></li>
         <li><a href="crud/Amostra.php">Cadastrar</a></li>
         <li style="margin-right: 10px;"><a href="crud/editUser.php?idusuario=" .<?php $_SESSION['id']; ?>><?php echo $dados['nome']; ?></a></li>

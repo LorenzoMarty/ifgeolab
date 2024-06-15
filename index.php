@@ -1,7 +1,10 @@
-<?php session_start(); ?>
-<?php if($_SESSION['confirm'] == null){}else{
-    echo $_SESSION['confirm'];
+<?php session_start();
+$msg = "";
+if (isset($_SESSION['confirm'])) {
+    $msg = $_SESSION['confirm'];
+    unset($_SESSION['confirm']);
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,10 +37,10 @@
             include "topo-user.php";
         } elseif ($_SESSION['permissao'] == 2) {
             include "topo-adm.php";
-        }elseif ($_SESSION['permissao'] != "1" and "2"){
+        } elseif ($_SESSION['permissao'] != "1" and "2") {
             include "topo.php";
         }
-    }else{
+    } else {
         include "topo.php";
     }
     ?>
@@ -79,5 +82,15 @@
     include "footer.php";
     ?>
 </body>
+<script src="js/sweetalert.js"></script>
+<script>
+    <?php if($msg != ""){ ?>
+    window.addEventListener("load", (event) => {
+        Swal.fire(
+            <?= json_encode($msg) ?>
+        )
+    })
+    <?php } ?>
+</script>
 
 </html>

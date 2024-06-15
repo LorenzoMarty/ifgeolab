@@ -19,6 +19,7 @@ if (isset($_POST['login'])) {
             $_SESSION['email'] = $email;
             $_SESSION['permissao'] = $dados['tipo'];
             $_SESSION['id'] = $dados['idusuario'];
+            $_SESSION['confirm'] = "";
             header("location:index.php");
         }
     } else {
