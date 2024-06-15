@@ -1,4 +1,8 @@
 <?php session_start(); ?>
+<?php if($_SESSION['confirm'] == null){}else{
+    echo $_SESSION['confirm'];
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 

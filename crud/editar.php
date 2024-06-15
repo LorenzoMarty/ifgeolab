@@ -127,17 +127,14 @@ if (isset($_POST['editarMineral'])) {
 
     $sql = "UPDATE rocha SET sugestao='$suges' WHERE idrocha=$id";
     if (mysqli_query($conexao, $sql)) {
-        echo "<script>
+        $_SESSION['confirm'] += "<script>
         Swal.fire({
             title: 'Parabéns!'',
             text: 'Amostra cadastrada!',
             icon: 'success'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                location.href = '../index.php';
-            }
         });
     </script>";
+    header("Location: ../index.php");
     } else {
         echo "<script>alert('Não foi possível atualizar a amostra!');
             location.href='listarRochaS.php'</script>";
