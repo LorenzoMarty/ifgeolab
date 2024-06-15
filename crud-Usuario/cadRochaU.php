@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 
@@ -62,15 +63,15 @@
 
 <body>
   <?php
-  require_once '../conecta.php';
-  $conexao = conectar();
 
-  if (isset($_SESSION['acesso']) && $_SESSION['acesso']['permissao'] == 1) {
-    include "topo-user.php";
-  } elseif (isset($_SESSION['acesso']) && $_SESSION['acesso']['permissao'] == 2) {
-    include "topo-adm.php";
+  if (isset($_SESSION['permissao'])) {
+    if ($_SESSION['permissao'] == 1) {
+      include "topo-user.php";
+    } elseif ($_SESSION['permissao'] == 2) {
+      header('Location: ../index.php');
+    }
   } else {
-    include "topo.php";
+    header('Location: ../index.php');
   }
   ?>
   <div class="container">
@@ -92,7 +93,7 @@
             $sql = "SELECT * FROM catrocha";
             $resultado = mysqli_query($conexao, $sql);
             while ($dados = mysqli_fetch_assoc($resultado)) {
-            ?>
+              ?>
               <option value="<?php echo $dados['idcat']; ?>"><?php echo $dados['nome']; ?></option>
             <?php } ?>
           </select>
@@ -107,7 +108,7 @@
       <div class="row">
         <div class="input-field">
           <label>Imagem:</label><br><br>
-          <input type="file" name="arquivo" required/> <br>
+          <input type="file" name="arquivo" required /> <br>
         </div>
         <div class="input-field col s12">
           <button class="waves-effect waves-light btn green" type="submit" name="cadastrar">Cadastrar</button>
@@ -134,7 +135,7 @@
   <script src="../dist/plugins/insertaudio/trumbowyg.insertaudio.min.js"></script>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       var elems = document.querySelectorAll('select');
       var instances = M.FormSelect.init(elems);
     });
@@ -172,7 +173,7 @@
 
     });
   </script>
-  
+
 </body>
 
 </html>

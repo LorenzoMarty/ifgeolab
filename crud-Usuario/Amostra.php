@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -6,17 +7,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type="image/jpg" href="../img/icons8-rocha-48.png" />
-    <link href="../materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
     <title>IF GeoLab</title>
 </head>
 
 <body>
     <?php
 
-    if (isset($_SESSION['acesso'])) {
-        if ($_SESSION['acesso']['permissao'] == 1) {
+    if (isset($_SESSION['permissao'])) {
+        if ($_SESSION['permissao'] == 1) {
             include "topo-user.php";
-        } elseif ($_SESSION['acesso']['permissao'] == 2) {
+        } elseif ($_SESSION['permissao'] == 2) {
             include "topo-adm.php";
         }
     } else {
