@@ -97,27 +97,27 @@ if (mysqli_num_rows($resultado) > 0) {
   <input type="hidden" name="idusuario" value="<?= $_SESSION['id'] ?>">
         <div class="input-field col s12">
           <label> Nome </label><br>
-          <input type="text" name="nome" required="required" value="<?php echo $dados['nome']; ?>" />
+          <input type="text" name="nome" required value="<?php echo $dados['nome']; ?>" />
         </div>
         <div class="input-field col s12">
           <label> Email </label><br>
-          <input type="text" name="email" required="required" value="<?php echo $dados['email']; ?>" />
+          <input type="text" name="email" required value="<?php echo $dados['email']; ?>" />
         </div>
         <div class="input-field col s12">
           <label> senha </label><br>
-          <input type="password" name="senha" required="required" value="<?php echo $_SESSION['senha']; ?>" />
+          <input type="password" name="senha" required value="<?php echo $_SESSION['senha']; ?>" />
         </div>
         <div class="input-field col s12">
           <label> Telefone </label><br>
-          <input type="text" name="tel" required="required" value="<?php echo $dados['telefone']; ?>" />
+          <input type="text" name="tel" required value="<?php echo $dados['telefone']; ?>" />
         </div>
         <div class="input-field col s12">
           <label> Matrícula: </label><br>
-          <input type="text" name="matricula" required="required" value="<?php echo $dados['matricula']; ?>" />
+          <input type="text" name="matricula" required value="<?php echo $dados['matricula']; ?>" />
         </div>
         <div class="input-field col s12">
           <label> Instituição: </label><br>
-          <input type="text" name="inst" required="required" value="<?php echo $dados['instituto']; ?>" />
+          <input type="text" name="inst" required value="<?php echo $dados['instituto']; ?>" />
         </div>
 
         <div class="input-field col s12">
@@ -125,13 +125,14 @@ if (mysqli_num_rows($resultado) > 0) {
             <div class="col s3">
               <label> Insira uma foto de perfil:</label><br><br>
               <img src="../img/usuarios/<?= $img; ?>" class="minha-imagem materialboxed ">Foto atual</img><br><br>
+              <input type="hidden" name="img" value="<?php echo $dados['img'] ?>">
               <input class="form-control" type="file" name="arquivo" />
             </div>
           </div>
         </div>
 
         <div class="input-field col s12">
-          <button class="btn btn-primary green" type="submit" name="editarUsuario" value="<?php echo $dados['img'] ?>"> Editar </button>
+          <button class="btn btn-primary green" type="submit" name="editarUsuario"> Editar </button>
         </div>
 
       </form>

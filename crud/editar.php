@@ -27,8 +27,12 @@ if (isset($_POST['editarMineral'])) {
 
         $sql = "UPDATE mineral SET nome='$nome', idcat = '$cat', descricao = '$descricao', img='$novo_nome', sugestao='$suges', 3d='$obj' WHERE idmineral=$id";
         if (mysqli_query($conexao, $sql)) {
-            echo "<script>alert('Amostra atualizada com sucesso!');
-            location.href='../index.php'</script>";
+            $_SESSION['confirm'] = [
+                "title" => 'Parabéns!',
+                'text' => 'Amostra atualizada com sucesso!',
+                'icon' => 'success'
+            ];
+            header("Location: ../index.php");
         } else {
             echo "<script>alert('Não foi possível atualizar a amostra!');
             location.href='listarMineral.php'</script>";
@@ -58,8 +62,12 @@ if (isset($_POST['editarMineral'])) {
 
         $sql = "UPDATE rocha SET nome='$nome', idcat = '$cat', descricao = '$descricao', img='$novo_nome', sugestao='$suges', 3d='$obj' WHERE idrocha=$id";
         if (mysqli_query($conexao, $sql)) {
-            echo "<script>alert('Amostra atualizada com sucesso!');
-        location.href='../index.php'</script>";
+            $_SESSION['confirm'] = [
+                "title" => 'Parabéns!',
+                'text' => 'Amostra atualizada com sucesso!',
+                'icon' => 'success'
+            ];
+            header("Location: ../index.php");
         } else {
             echo "<script>alert('Não foi possível atualizar a amostra!');
             location.href='listarRocha.php'</script>";
@@ -74,16 +82,13 @@ if (isset($_POST['editarMineral'])) {
     $telefone = $_POST['tel'];
     $matricula = $_POST['matricula'];
     $inst = $_POST['inst'];
-
+    $novo_nome = $_POST['img'];
+    
     if (isset($_FILES['arquivo'])) {
 
         $extensao = strtolower(substr($_FILES['arquivo']['name'], -4));
 
         $novo_nome = "$nome-" . $id . "." . $extensao;
-
-        $diretorio = "../img/usuarios/";
-
-        move_uploaded_file($_FILES['arquivo']['tmp_name'], $diretorio . $novo_nome);
 
         $diretorio = "../img/usuarios/";
 
@@ -94,8 +99,12 @@ if (isset($_POST['editarMineral'])) {
         $sql = "UPDATE usuario SET nome='$nome', email = '$email', senha = '$hash', telefone='$telefone', img = '$novo_nome', matricula = '$matricula', instituto = '$inst' WHERE idusuario=$id";
 
         if (mysqli_query($conexao, $sql)) {
-            echo "<script>alert('Cadastro atualizado com sucesso!');
-            location.href='../index.php'</script>";
+            $_SESSION['confirm'] = [
+                "title" => 'Parabéns!',
+                'text' => 'Usuário atualizado com sucesso!',
+                'icon' => 'success'
+            ];
+            header("Location: ../index.php");
         } else {
             echo "<script>alert('Não foi possível atualizar o cadastro!');
             </script>";
@@ -110,8 +119,12 @@ if (isset($_POST['editarMineral'])) {
 
     $sql = "UPDATE mineral SET sugestao='$suges' WHERE idmineral=$id";
     if (mysqli_query($conexao, $sql)) {
-        echo "<script>alert('Amostra atualizada com sucesso!');
-            location.href='../index.php'</script>";
+        $_SESSION['confirm'] = [
+            "title" => 'Parabéns!',
+            'text' => 'Amostra aceita!',
+            'icon' => 'success'
+        ];
+        header("Location: ../index.php");
     } else {
         echo "<script>alert('Não foi possível atualizar a amostra!');
             location.href='listarMineralS.php'</script>";
@@ -125,7 +138,7 @@ if (isset($_POST['editarMineral'])) {
     if (mysqli_query($conexao, $sql)) {
         $_SESSION['confirm'] = [
             "title" => 'Parabéns!',
-            'text' => 'Amostra cadastrada!',
+            'text' => 'Amostra aceita!',
             'icon' => 'success'
         ];
         header("Location: ../index.php");
