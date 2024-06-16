@@ -41,8 +41,12 @@ if (isset($_POST['cadastrarMineral'])) {
         $sql = "INSERT INTO mineral(nome, idcat, descricao, img, sugestao, idusuario) VALUES ('$nome', '$cat', '$desc', '$novo_nome', '$suges', '$idusuario')";
     }
     if (mysqli_query($conexao, $sql)) {
-        echo "<script>alert('Cadastro realizado com sucesso!');
-        location.href='../index.php'</script>";
+        $_SESSION['confirm'] = [
+            "title" => 'Parabéns!',
+            'text' => 'Mineral cadastrado com sucesso!',
+            'icon' => 'success'
+        ];
+        header("Location: ../index.php");
     } else {
         echo "<script>alert('Não foi possível realizar o cadastro!');
         location.href='../index.php'</script>";
@@ -87,8 +91,12 @@ if (isset($_POST['cadastrarMineral'])) {
         $sql = "INSERT INTO rocha(nome, idcat, descricao, img, sugestao, idusuario) VALUES ('$nome', '$cat', '$descricao', '$novo_nome', '$suges', '$idusuario')";
     }
     if (mysqli_query($conexao, $sql)) {
-        echo "<script>alert('Cadastro realizado com sucesso!');
-        location.href='listarRocha.php'</script>";
+        $_SESSION['confirm'] = [
+            "title" => 'Parabéns!',
+            'text' => 'Rocha cadastrada com sucesso!',
+            'icon' => 'success'
+        ];
+        header("Location: ../index.php");
     } else {
         echo "<script>alert('Não foi possível realizar o cadastro!');
         location.href='../index.php'</script>";
@@ -122,8 +130,12 @@ if (isset($_POST['cadastrarMineral'])) {
         $sql = "INSERT INTO usuario(nome, email, senha, telefone, img, matricula, instituto) VALUES ('$nome','$email', '$hash', '$telefone', '$novo_nome', '$matricula', '$inst')";
 
         if (mysqli_query($conexao, $sql)) {
-            echo "<script>alert('Cadastro realizado com sucesso!');
-        location.href='../login.php'</script>";
+            $_SESSION['confirm'] = [
+                "title" => 'Parabéns!',
+                'text' => 'Cadastrado realizado com sucesso!',
+                'icon' => 'success'
+            ];
+            header("Location: ../login.php");
         } else {
             echo "<script>alert('Não foi possível realizar o cadastro!');
         location.href='cadUsuario.php'</script>";

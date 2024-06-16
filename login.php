@@ -1,5 +1,10 @@
 <?php
 session_start();
+$msg = "";
+if (isset($_SESSION['confirm'])) {
+    $msg = $_SESSION['confirm'];
+    unset($_SESSION['confirm']);
+}
 if (isset($_POST['login'])) {
 
     require_once('conecta.php');
@@ -78,5 +83,14 @@ if (isset($_POST['login'])) {
     include "footer.php";
     ?>
 </body>
-
+<script src="js/sweetalert.js"></script>
+<script>
+    <?php if($msg != ""){ ?>
+    window.addEventListener("load", (event) => {
+        Swal.fire(
+            <?= json_encode($msg) ?>
+        )
+    })
+    <?php } ?>
+</script>
 </html>
