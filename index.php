@@ -4,7 +4,11 @@ if (isset($_SESSION['confirm'])) {
     $msg = $_SESSION['confirm'];
     unset($_SESSION['confirm']);
 }
-
+$login = "";
+if(isset($_SESSION['login'])){
+    $login = $_SESSION['login'];
+    unset($_SESSION['login']);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,12 +41,10 @@ if (isset($_SESSION['confirm'])) {
             include "topo-user.php";
         } elseif ($_SESSION['permissao'] == 2) {
             include "topo-adm.php";
-        } elseif ($_SESSION['permissao'] != "1" and "2") {
-            include "topo.php";
-        }
     } else {
         include "topo.php";
     }
+}
     ?>
     <main>
         <div class="container">
@@ -91,6 +93,13 @@ if (isset($_SESSION['confirm'])) {
         )
     })
     <?php } ?>
+    <?php if($login != ""){ ?>
+        window.addEventListener("load", (event) => {
+        Swal.fire(
+            <?= json_encode($login) ?>
+        )
+    })
+        <?php } ?>
 </script>
 
 </html>

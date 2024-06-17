@@ -1,10 +1,4 @@
 <?php
-session_start();
-$msg = "";
-if (isset($_SESSION['confirm'])) {
-    $msg = $_SESSION['confirm'];
-    unset($_SESSION['confirm']);
-}
 if (isset($_POST['login'])) {
 
     require_once('conecta.php');
@@ -24,6 +18,14 @@ if (isset($_POST['login'])) {
             $_SESSION['email'] = $email;
             $_SESSION['permissao'] = $dados['tipo'];
             $_SESSION['id'] = $dados['idusuario'];
+            $img = $dados['img'];
+            $_SESSION['login'] = [
+                "title" => 'Parabéns!',
+                'text' => 'Cadastrado realizado com sucesso!',
+                'imageUrl' => 'img/usuarios/$img',
+                'imageWidth' => 400,
+                'imageHeight' => 200,
+            ];
             header("location:index.php");
         }
     } else {
