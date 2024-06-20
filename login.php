@@ -1,4 +1,5 @@
 <?php
+session_start();
 if (isset($_POST['login'])) {
 
     require_once('conecta.php');
@@ -18,15 +19,15 @@ if (isset($_POST['login'])) {
             $_SESSION['email'] = $email;
             $_SESSION['permissao'] = $dados['tipo'];
             $_SESSION['id'] = $dados['idusuario'];
-            $img = $dados['img'];
+            $_SESSION['img'] = $dados['img'];
             $_SESSION['login'] = [
                 "title" => 'Parabéns!',
                 'text' => 'Cadastrado realizado com sucesso!',
-                'imageUrl' => 'img/usuarios/$img',
+                'imageUrl' => 'img/usuarios/<?= $img; ?>',
                 'imageWidth' => 400,
                 'imageHeight' => 200,
             ];
-            header("location:index.php");
+            header("Location: index.php");
         }
     } else {
         echo "alert('Usuário e/ou senha incorreto(s)')";

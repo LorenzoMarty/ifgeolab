@@ -6,6 +6,7 @@ if (isset($_SESSION['confirm'])) {
 }
 $login = "";
 if(isset($_SESSION['login'])){
+    $img = $_SESSION['img'];
     $login = $_SESSION['login'];
     unset($_SESSION['login']);
 }
@@ -18,6 +19,7 @@ if(isset($_SESSION['login'])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type="image/jpg" href="img/icons8-rocha-48.png" />
+    <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
     <title>IF GeoLab</title>
     <style>
         .minha-imagem {
@@ -44,6 +46,8 @@ if(isset($_SESSION['login'])){
     } else {
         include "topo.php";
     }
+}else{
+    include "topo.php";
 }
     ?>
     <main>
@@ -93,6 +97,7 @@ if(isset($_SESSION['login'])){
         )
     })
     <?php } ?>
+    
     <?php if($login != ""){ ?>
         window.addEventListener("load", (event) => {
         Swal.fire(
