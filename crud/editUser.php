@@ -40,7 +40,7 @@
 
         if (isset($_SESSION['permissao'])) {
             if ($_SESSION['permissao'] == 1) {
-                header('Location: ../index.php');
+                include "topo-user.php";
             } elseif ($_SESSION['permissao'] == 2) {
                 include "topo-adm.php";
             }
