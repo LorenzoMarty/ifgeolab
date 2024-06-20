@@ -74,7 +74,7 @@ foreach ($quantidades as $nome => $total) {
 
 $grafico = implode(", ", $graficoOrdenado);
 ?>
-
+<title>IF GeoLab</title>
 <body>
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <script type="text/javascript">

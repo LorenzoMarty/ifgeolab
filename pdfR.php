@@ -49,7 +49,7 @@
                 margin-left: 100px;
                 margin-bottom: 10px;
                 margin-right: 100px;
-                max-width: 340px;
+                max-width: 280px;
                 align-items: center;
             }
 
@@ -102,7 +102,7 @@
     <div class="row">
         <div class="col s2"><img class="img1" src="img/if_logo.png"></div><br>
         <div class="title col s7">
-            <h6><b>Instituto Federal de Educação, Ciência e Tecnologia Farroupilha Campus Avançado Uruguaiana</b></h6>
+            <h6><b>Instituto Federal de Educação, Ciência e Tecnologia Farroupilha Campus Uruguaiana</b></h6>
             <h5><b>MOSTRUÁRIO DIGITAL DE GEOGRAFIA IFGEOLAB</b></h5>
         </div>
         <div class="col s3"><img class="img2" src="img/geolab-verde.png"></div>
@@ -110,21 +110,12 @@
     <div class="container">
         <hr>
         <div class="row">
-            <div class="text col s6">
-                <p>
-                <h3><u><?php echo $nome; ?></u></h3>
-                </p>
-            </div>
-            <div class="col s6">
-                <h5><b><u>Categoria:</u> </b><br><br><?php echo $cat; ?></h5><br>
-            </div>
+            <h3><?php echo $nome; ?></h3>
+            <h5 class="right"><b>Categoria: </b><?php echo $cat; ?></h5><br>
+            <img src="img/mineral/<?= $img; ?>" class="img3">
         </div>
-        <div class="row">
-            <div class="col s6">
-                <img src="img/rochas/<?= $img; ?>" class="img3">
-            </div>
-        </div>
-        <hr>
+    </div>
+    <hr>
 
 
         <div class="text col s12">

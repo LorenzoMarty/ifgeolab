@@ -3,9 +3,9 @@ require_once('conecta.php');
 $conexao = conectar();
 require './dompdf/vendor/autoload.php';
 
-$idusuario = $_GET['idmineral'] ?? null;
+$idmineral = $_GET['idmineral'] ?? null;
 
-if (!$idusuario) {
+if (!$idmineral) {
     die("ID da mineral não fornecido.");
 }
 
@@ -21,7 +21,7 @@ $opts = array(
   $context = stream_context_create($opts);
   
   // Open the file using the HTTP headers set above
-  $html = file_get_contents('http://localhost/ifgeolab/ifgeolab/pdfM.php?idmineral='.$idusuario, false, $context);
+  $html = file_get_contents('http://localhost/ifgeolab/ifgeolab/pdfM.php?idmineral='.$idmineral, false, $context);
 
 use Dompdf\Dompdf;
 use Dompdf\Options;

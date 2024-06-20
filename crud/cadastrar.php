@@ -114,7 +114,7 @@ if (isset($_POST['cadastrarMineral'])) {
 
         $extensao = strtolower(substr($_FILES['arquivo']['name'], -4));
 
-        $novo_nome = "$nome-" . $extensao;
+        $novo_nome = "$nome" . $extensao;
 
         $diretorio = "../img/usuarios/";
 

@@ -43,13 +43,11 @@
                 margin-right: 0px;
                 max-width: 140px;
             }
+
             .img3 {
-                margin-top: 30px;
-                margin-left: 100px;
-                margin-bottom: 10px;
-                margin-right: 100px;
-                max-width: 340px;
-                align-items: center;
+
+                max-width: 280px;
+                text-align: center;
             }
 
             .text {
@@ -57,6 +55,7 @@
                 margin-right: 10px;
                 font-size: large;
             }
+
             .title {
                 font-size: large;
                 text-align: center;
@@ -68,7 +67,7 @@
         </style>
     </head>
     <?php
-    require_once('conecta.php');
+    require_once ('conecta.php');
     $conexao = conectar();
     $idusuario = $_GET['idmineral'];
 
@@ -96,46 +95,37 @@
     ?>
 
 <body>
-    
-        <div class="row">
-            <div class="col s2"><img class="img1" src="img/if_logo.png"></div><br>
-            <div class="title col s7">
-                <h6><b>Instituto Federal de Educação, Ciência e Tecnologia Farroupilha Campus Avançado Uruguaiana</b></h6>
-                <h5><b>MOSTRUÁRIO DIGITAL DE GEOGRAFIA IFGEOLAB</b></h5>
-            </div>
-            <div class="col s3"><img class="img2" src="img/geolab-verde.png"></div>
+
+    <div class="row">
+        <div class="col s2"><img class="img1" src="img/if_logo.png"></div><br>
+        <div class="title col s7">
+            <h6><b>Instituto Federal de Educação, Ciência e Tecnologia Farroupilha Campus Uruguaiana</b></h6>
+            <h5><b>MOSTRUÁRIO DIGITAL DE GEOGRAFIA IFGEOLAB</b></h5>
         </div>
-    <div class="container">    
+        <div class="col s3"><img class="img2" src="img/geolab-verde.png"></div>
+    </div>
+    <div class="container">
         <hr>
         <div class="row">
-            <div class="text col s6">
-                <p>
-                <h3><u><?php echo $nome; ?></u></h3>
-                </p>
-            </div>
-            <div class="col s6">
-                <h5><b><u>Categoria:</u> </b><br><br><?php echo $cat; ?></h5><br>
-            </div>
+            <h3><?php echo $nome; ?></h3>
+            <h5 class="right"><b>Categoria: </b><?php echo $cat; ?></h5><br>
+            <img src="img/mineral/<?= $img; ?>" class="img3">
         </div>
-        <div class="row">
-            <div class="col s6">
-                <img src="img/mineral/<?= $img; ?>" class="img3">
-            </div>
-        </div>
-        <hr>
+    </div>
+    <hr>
 
 
-        <div class="text col s12">
+    <div class="text col s12">
 
-            <p>
-                <?php
+        <p>
+            <?php
 
-                echo $descricao;
+            echo $descricao;
 
-                ?>
-            </p>
+            ?>
+        </p>
 
-        </div>
+    </div>
     </div>
 </body>
 

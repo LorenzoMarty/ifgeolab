@@ -56,7 +56,7 @@
             width: 100%;
             height: auto;
             padding: 5px 0;
-            margin-right: 5px;
+            margin-right: 0;
         }
 
         .swiper-slide img {
@@ -132,10 +132,13 @@
                                 <?php echo $nome; ?>
                             </span>
                         </div>
-                        <a class="center waves-effect waves-light btn green accent-4" href="relatorioMineral.php?idmineral=<?php echo $idusuario; ?>">
+                        <a class="center waves-effect waves-light btn green accent-4" href="relatorioMineral.php?idmineral=<?php echo $idmineral; ?>">
                             <img class="pdf" src="img/pdf-icon.png">Gerar PDF</a>
                     </div>
                 </div>
+                <h5><b>Categoria:</b>
+                    <?php echo $cat; ?>
+                </h5>
                 <div thumbsSlider="" class="mySwiper">
                     <div class="swiper-wrapper">
                     <?php while ($img = mysqli_fetch_assoc($galeria)) { ?>
@@ -143,9 +146,6 @@
                         <?php } ?>
                     </div>
                 </div>
-                <h5><b>Categoria:</b>
-                    <?php echo $cat; ?>
-                </h5>
             </div>
         </div>
 

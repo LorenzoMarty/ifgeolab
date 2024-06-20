@@ -19,12 +19,12 @@ if (isset($_POST['login'])) {
             $_SESSION['email'] = $email;
             $_SESSION['permissao'] = $dados['tipo'];
             $_SESSION['id'] = $dados['idusuario'];
-            $_SESSION['img'] = $dados['img'];
+            $img = $dados['img'];
             $_SESSION['login'] = [
-                "title" => 'Parabéns!',
-                'text' => 'Cadastrado realizado com sucesso!',
-                'imageUrl' => 'img/usuarios/<?= $img; ?>',
-                'imageWidth' => 400,
+                "title" => 'Bem-vindo!',
+                'text' => ''.$_SESSION['usuario'],
+                'imageUrl' => 'img/usuarios/'.$img,
+                'imageWidth' => 200,
                 'imageHeight' => 200,
             ];
             header("Location: index.php");

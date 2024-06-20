@@ -6,7 +6,6 @@ if (isset($_SESSION['confirm'])) {
 }
 $login = "";
 if(isset($_SESSION['login'])){
-    $img = $_SESSION['img'];
     $login = $_SESSION['login'];
     unset($_SESSION['login']);
 }
