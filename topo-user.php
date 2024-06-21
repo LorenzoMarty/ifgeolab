@@ -10,6 +10,15 @@
   <link rel="stylesheet" href="css/materialize.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
+<style>
+  .sticky-nav {
+    position: -webkit-sticky;
+    /* Safari */
+    position: sticky;
+    top: 0;
+    z-index: 5;
+  }
+</style>
 <?php
 
 require_once('conecta.php');
@@ -48,6 +57,7 @@ if (mysqli_num_rows($resultado) > 0) {
         </ul>
         <!-- Lado esquerdo -->
         <ul class="right hide-on-med-and-down">
+        <button id="toggleDarkMode" class="toggle-button">Alternar Modo</button>
         <li><a class="white-text" href="rank.php">Colaboradores</a></li>
         <li><a class="white-text" href="crud-usuario/Amostra.php">Amostra</a></li>
           <li style="margin-right: 10px;"><a class="white-text" href="crud/editUser.php"><?php echo $dados['nome']; ?></a></li>

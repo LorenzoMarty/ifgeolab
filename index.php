@@ -18,12 +18,11 @@ if(isset($_SESSION['login'])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type="image/jpg" href="img/icons8-rocha-48.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
     <title>IF GeoLab</title>
     <style>
-        body{
-            background-color: #212529;
-        }
         .minha-imagem {
             height: 220px;
             width: 600px;
@@ -33,12 +32,6 @@ if(isset($_SESSION['login'])){
         .meu-span {
             background-color: rgba(0, 0, 0, 0.3);
             width: 100%;
-        }
-        h1,span{
-            color: white;
-        }
-        .card,.card-image img{
-            border-radius: 50%;
         }
     </style>
 </head>
@@ -95,6 +88,7 @@ if(isset($_SESSION['login'])){
     include "footer.php";
     ?>
 </body>
+<script src="js/dark-light.js"></script>
 <script src="js/sweetalert.js"></script>
 <script>
     <?php if($msg != ""){ ?>

@@ -5,10 +5,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="shortcut icon" type="image/jpg" href="../img/icons8-rocha-48.png" />
     <link href="../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
     <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous" type="text/javascript"></script>
     <script src="../js/jquery.mask.min.js" type="text/javascript"></script>
+    <script src="../js/dark-light.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
             // Aplica a máscara para o campo de telefone

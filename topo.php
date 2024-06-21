@@ -10,7 +10,15 @@
   <link rel="stylesheet" href="css/materialize.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
-
+<style>
+  .sticky-nav {
+    position: -webkit-sticky;
+    /* Safari */
+    position: sticky;
+    top: 0;
+    z-index: 5;
+  }
+</style>
 <body>
 
   <header>

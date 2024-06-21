@@ -47,6 +47,7 @@ if (mysqli_num_rows($resultado) > 0) {
       </ul>
       <!-- Lado esquerdo -->
       <ul class="right hide-on-med-and-down">
+      <button id="toggleDarkMode" class="toggle-button">Alternar Modo</button>
         <li><a href="../rank.php">Colaboradores</a></li>
         <?php if($_SESSION['permissao'] == 3){
         echo '<li><a href="listarUsuario.php">Usuários</a></li>';

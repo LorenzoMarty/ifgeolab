@@ -58,6 +58,7 @@ if (mysqli_num_rows($resultado) > 0) {
           <li><a class="white-text" href="../index.php">Início</a></li>
         </ul>
         <ul class="right hide-on-med-and-down">
+        <button id="toggleDarkMode" class="toggle-button">Alternar Modo</button>
         <li><a class="white-text" href="../rank">Colaboradores</a></li>
         <li><a class="white-text" href="../crud-usuario/Amostra.php">Amostra</a></li>
         <li style="margin-right: 10px;"><a href="editUser.php?idusuario=" .<?php $_SESSION['id']; ?>><?php echo $dados['nome']; ?></a></li>

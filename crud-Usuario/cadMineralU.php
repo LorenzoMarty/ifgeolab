@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="../dist/plugins/upload/trumbowyg.upload.min.js">
   <link rel="stylesheet" href="../dist/plugins/emoji/trumbowyg.emoji.min.js">
   <link rel="shortcut icon" type="image/jpg" href="../img/icons8-rocha-48.png" />
+  <script src="../js/dark-light.js"></script>
   <title>Cadastrar Mineral</title>
   <style>
     nav.nav-center ul {

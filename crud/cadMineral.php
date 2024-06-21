@@ -5,6 +5,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="sweetalert2.min.js"></script>
@@ -16,6 +17,7 @@
   <link rel="stylesheet" href="../dist/plugins/upload/trumbowyg.upload.min.js">
   <link rel="stylesheet" href="../dist/plugins/emoji/trumbowyg.emoji.min.js">
   <link rel="shortcut icon" type="image/jpg" href="../img/icons8-rocha-48.png" />
+  <script src="../js/dark-light.js"></script>
   <title>IF GeoLab</title>
   <style>
     nav.nav-center ul {

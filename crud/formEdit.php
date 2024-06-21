@@ -19,8 +19,10 @@ if (mysqli_num_rows($resultado) > 0) {
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="shortcut icon" type="image/jpg" href="../img/icons8-rocha-48.png" />
   <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+  <script src="../js/dark-light.js"></script>
   <title>IF GeoLab</title>
   <style>
     .minha-imagem {
@@ -104,7 +106,7 @@ if (mysqli_num_rows($resultado) > 0) {
           <input type="text" name="email" required value="<?php echo $dados['email']; ?>" />
         </div>
         <div class="input-field col s12">
-          <label> senha </label><br>
+          <label> Senha </label><br>
           <input type="password" name="senha" required value="<?php echo $_SESSION['senha']; ?>" />
         </div>
         <div class="input-field col s12">
@@ -124,7 +126,7 @@ if (mysqli_num_rows($resultado) > 0) {
           <div class="row">
             <div class="col s3">
               <label> Insira uma foto de perfil:</label><br><br>
-              <img src="../img/usuarios/<?= $img; ?>" class="minha-imagem materialboxed ">Foto atual</img><br><br>
+              <img src="../img/usuarios/<?= $img; ?>" class="minha-imagem materialboxed "><h6>Foto atual</h6></img><br><br>
               <input type="hidden" name="img" value="<?php echo $dados['img'] ?>">
               <input class="form-control" type="file" name="arquivo" />
             </div>

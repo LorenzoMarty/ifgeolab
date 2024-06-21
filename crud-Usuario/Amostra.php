@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type="image/jpg" href="../img/icons8-rocha-48.png" />
+    <script src="../js/dark-light.js"></script>
     <title>IF GeoLab</title>
 </head>
 
