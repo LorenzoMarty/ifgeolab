@@ -21,6 +21,9 @@ if(isset($_SESSION['login'])){
     <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
     <title>IF GeoLab</title>
     <style>
+        body{
+            background-color: #212529;
+        }
         .minha-imagem {
             height: 220px;
             width: 600px;
@@ -30,6 +33,12 @@ if(isset($_SESSION['login'])){
         .meu-span {
             background-color: rgba(0, 0, 0, 0.3);
             width: 100%;
+        }
+        h1,span{
+            color: white;
+        }
+        .card,.card-image img{
+            border-radius: 50%;
         }
     </style>
 </head>

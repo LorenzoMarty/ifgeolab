@@ -69,9 +69,9 @@
     <?php
     require_once ('conecta.php');
     $conexao = conectar();
-    $idusuario = $_GET['idmineral'];
+    $idmineral = $_GET['idmineral'];
 
-    $sql = "SELECT * FROM mineral WHERE idmineral =" . $idusuario;
+    $sql = "SELECT * FROM mineral WHERE idmineral =" . $idmineral;
     $resultado = mysqli_query($conexao, $sql);
 
     $dados = mysqli_fetch_assoc($resultado);
