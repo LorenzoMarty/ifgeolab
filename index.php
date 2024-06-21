@@ -58,40 +58,39 @@ if(isset($_SESSION['login'])){
     include "topo.php";
 }
     ?>
-    <main>
-        <div class="container">
-            <h1>Laboratório</h1>
-            <hr>
-            <span>Conheça Rochas e Minerais e seus tipos</span>
-            <hr>
-            <div class="row">
-                <div class="col s6">
-                    <a href="rocha.php">
-                        <div class="card green">
-                            <div class="card hoverable">
-                                <div class="card-image">
-                                    <img src="img/rocha.png">
+        <main>
+            <div class="container">
+                <h1>Laboratório</h1>
+                <hr>
+                <span>Conheça Rochas e Minerais e seus tipos</span>
+                <hr>
+                <div class="row">
+                    <div class="col s6">
+                        <a href="rocha.php">
+                            <div class="card green">
+                                <div class="card hoverable">
+                                    <div class="card-image">
+                                        <img src="img/rocha.png">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col s6">
-                    <a href="mineral.php">
-                        <div class="card green">
-                            <div class="card hoverable">
-                                <div class="card-image">
-                                    <img src="img/mineral.png">
+                        </a>
+                    </div>
+                    <div class="col s6">
+                        <a href="mineral.php">
+                            <div class="card green">
+                                <div class="card hoverable">
+                                    <div class="card-image">
+                                        <img src="img/mineral.png">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </a>
+                        </a>
+                    </div>
                 </div>
-            </div>
 
-            <hr>
-        </div>
-    </main>
+            </div>
+        </main>
     <?php
     include "footer.php";
     ?>
