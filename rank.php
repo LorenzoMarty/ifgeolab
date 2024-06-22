@@ -103,7 +103,13 @@ $grafico = implode(", ", $graficoOrdenado);
         hAxis: { format: 'decimal' },
         height: 400,
         width: 1000,
-      };
+        backgroundColor: 'transparent',  // Remove o fundo do gráfico
+  chartArea: {
+    backgroundColor: 'transparent' // Remove o fundo da área do gráfico
+  },
+  bar: { groupWidth: '70%' }, // Ajuste a largura das barras, se necessário
+  legend: { position: 'none' }, // Remova a legenda, se não for necessária
+};
 
       var chart = new google.charts.Bar(document.getElementById('barchart_material'));
 

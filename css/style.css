@@ -49,8 +49,8 @@ header{
   background-repeat: no-repeat;
 }
 body.dark{
-  background-color: #212529;
-  color: white;
+  background-color: #2e2e2e;
+  color: #e0e0e0;
 }
 body.light{
   background-color: #fff;
