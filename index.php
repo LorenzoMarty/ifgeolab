@@ -55,7 +55,7 @@ if(isset($_SESSION['login'])){
             <div class="container">
                 <h1>Laboratório</h1>
                 <hr>
-                <span>Conheça Rochas e Minerais e seus tipos</span>
+                <span><b>Conheça Rochas e Minerais e seus tipos</b></span>
                 <hr>
                 <div class="row">
                     <div class="col s6">

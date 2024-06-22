@@ -30,7 +30,7 @@
         <div class="container">
             <h1>Cadastro</h1>
             <hr>
-            <span>Cadastre Rochas ou Minerais</span>
+            <span><b>Cadastre Rochas ou Minerais</b></span>
             <hr>
             <div class="row">
                 <div class="col s6">

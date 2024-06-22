@@ -29,7 +29,7 @@
         <div class="container">
             <h1>Amostras cadastradas</h1>
             <hr>
-            <span>Valide amostras cadastradas por usuários</span>
+            <span><b>Valide amostras cadastradas por usuários</b></span>
             <hr>
             <div class="row">
                 <div class="col s6">
