@@ -1,43 +1,46 @@
-nav li {
-  color: #ffffff;
-  font-size: 1.1em;
-  padding: 10px 15px;
+nav.nav-center ul {
+  text-align: center;
 }
 
-nav li:hover {
+nav a:hover {
   color: #d1d1d1;
   text-decoration: underline;
 }
-nav.nav-center ul{
-  text-align: center;
+
+.li a:hover {
+  background-color: #eee;
+  color: black;
 }
-.li a:hover {    
-  background-color:#eee;
-  color:black;
-} 
+
 .li a.active {
-  color:#000;
-} 
-.li a{
-  color:#fff;
+  color: #000;
+}
+
+.li a {
+  color: #fff;
   border-right: solid 1px grey;
 }
-nav.nav-center ul li{
+
+nav.nav-center ul li {
   display: inline;
   float: none;
-}  
-nav.nav-center ul li a{
+}
+
+nav.nav-center ul li a {
   display: inline-block;
 }
-header{
+
+header {
   background-image: url(../img/fundo-topo.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
 }
+
 .nav_color {
   background-color: #03300b;
 }
+
 .perfil {
   margin-top: 5px;
   height: 50px;
@@ -45,37 +48,48 @@ header{
   border-radius: 50%;
   object-fit: cover;
 }
+
 .col .row {
   margin-left: -0.75rem;
   margin-right: -0.75rem;
   width: 100%;
   text-align: center;
 }
-.ifftopo{
+
+.ifftopo {
   width: 175px;
   height: 94px;
   flex-shrink: 0;
   background-size: cover;
   background-repeat: no-repeat;
 }
-body.dark{
+
+body.dark {
   background-color: #2e2e2e;
   color: #e0e0e0;
 }
-body.light{
+
+body.light {
   background-color: #fff;
 }
+
 .toggle-button {
   position: relative;
-  width: 100px;  /* Largura ajustada para acomodar o texto */
-  height: 40px; /* Altura ajustada */
-  background-color: #f9f9f9; /* Cor de fundo claro */
-  border-radius: 20px; /* Bordas arredondadas */
-  border: 2px solid #888; /* Borda cinza */
+  width: 100px;
+  /* Largura ajustada para acomodar o texto */
+  height: 40px;
+  /* Altura ajustada */
+  background-color: #f9f9f9;
+  /* Cor de fundo claro */
+  border-radius: 20px;
+  /* Bordas arredondadas */
+  border: 2px solid #888;
+  /* Borda cinza */
   cursor: pointer;
   outline: none;
   transition: background-color 0.3s, border-color 0.3s;
-  padding-left: 20px; /* Espaçamento à direita para o texto */
+  padding-left: 20px;
+  /* Espaçamento à direita para o texto */
   align-items: center;
   justify-content: center;
   color: black;
@@ -84,16 +98,23 @@ body.light{
 }
 
 .toggle-button::before {
-  content: '\f185'; /* Ícone de sol (modo diurno) */
+  content: '\f185';
+  /* Ícone de sol (modo diurno) */
   font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
   position: absolute;
   top: 2px;
   left: 2px;
-  width: 30px; /* Tamanho ajustado */
-  height: 30px; /* Tamanho ajustado */
-  background-color: #fff; /* Cor de fundo do círculo */
-  border-radius: 50%; /* Bordas arredondadas para o círculo */
-  box-shadow: 0 0 5px rgba(0,0,0,0.2); /* Sombra para dar um efeito 3D */
+  width: 30px;
+  /* Tamanho ajustado */
+  height: 30px;
+  /* Tamanho ajustado */
+  background-color: #fff;
+  /* Cor de fundo do círculo */
+  border-radius: 50%;
+  /* Bordas arredondadas para o círculo */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  /* Sombra para dar um efeito 3D */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -101,17 +122,47 @@ body.light{
 }
 
 body.dark .toggle-button {
-  background-color: #222222; /* Cor de fundo escuro */
-  border-color: #0f0f0f; /* Borda mais escura */
+  background-color: #222222;
+  /* Cor de fundo escuro */
+  border-color: #0f0f0f;
+  /* Borda mais escura */
   color: white;
-  padding-right: 50px; /* Espaçamento à direita para o texto */
+  padding-right: 50px;
+  /* Espaçamento à direita para o texto */
 }
 
 body.dark .toggle-button::before {
-  transform: translateX(80px); /* Move o círculo para a direita no modo escuro */
-  background-color: #fff; /* Cor do círculo no modo escuro */
-  color: black; /* Cor do ícone no modo escuro */
-  content: '\f186'; /* Ícone de lua (modo noturno) */
+  transform: translateX(80px);
+  /* Move o círculo para a direita no modo escuro */
+  background-color: #fff;
+  /* Cor do círculo no modo escuro */
+  color: black;
+  /* Cor do ícone no modo escuro */
+  content: '\f186';
+  /* Ícone de lua (modo noturno) */
   left: -17px
 }
 
+h2 {
+  font-size: 3.56rem;
+  line-height: 110%;
+  margin: 2.3733333333rem 0 1.424rem 0;
+  position: relative;
+  z-index: 2;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  /* Optional: Add shadow to text for better visibility */
+}
+h2.light{
+  color: #111111de;
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7);
+}
+h2.dark{
+  color:#e0e0e0;
+}
+.minha-imagem.light{
+  background-color: #2e2e2e;
+}
+.minha-imagem.dark{
+  background-color: #ffff;
+}

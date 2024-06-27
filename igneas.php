@@ -7,9 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <script src="js/dark-light.js"></script>
     <link rel="shortcut icon" type="image/jpg" href="img/icons8-rocha-48.png" />
-    <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <script src="js/dark-light.js"></script>
+    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
     <title>IF GeoLab</title>
     <style>
         .minha-imagem {
@@ -27,7 +27,11 @@
 
 <body>
     <?php
-
+$breadcrumbs = [
+    'Rochas' => '> <a href="rocha.php">Rochas</a>', 
+    'Ígneas' => '<a href="igneas.php">Ígneas</a>'
+];
+$breadcrumb = implode('>', $breadcrumbs);
     if (isset($_SESSION['permissao'])) {
         if ($_SESSION['permissao'] == 1) {
             include "topo-user.php";
@@ -66,7 +70,7 @@
                     <div class="col s12 l4 m8">
                         <div class="card hoverable">
 
-                            <div class="card-image">
+                            <div class="card-image transparent">
                                 <img src="img/rochas/<?= $img; ?>" class="minha-imagem materialboxed ">
                                 <span class="card-title center meu-span green-text text-lighten-3"><?php echo $nome     ?></span>
                             </div>

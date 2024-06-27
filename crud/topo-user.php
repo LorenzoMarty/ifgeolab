@@ -17,6 +17,16 @@
     top: 0;
     z-index: 1;
   }
+
+  .breadcrumb-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .breadcrumb-container li {
+    display: inline;
+  }
+</style>
 </style>
 <?php
 
@@ -55,13 +65,14 @@ if (mysqli_num_rows($resultado) > 0) {
       <div class="nav-wrapper">
         <a href="#" data-target="telefone-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <ul class="left hide-on-med-and-down">
+          <li><button id="toggleDarkMode" class="toggle-button">Alternar Modo</button></li>
           <li><a class="white-text" href="../index.php">Início</a></li>
+          <li class="breadcrumb-container"><?= $breadcrumb ?></li>
         </ul>
         <ul class="right hide-on-med-and-down">
-        <button id="toggleDarkMode" class="toggle-button">Alternar Modo</button>
-        <li><a class="white-text" href="../rank">Colaboradores</a></li>
-        <li><a class="white-text" href="../crud-usuario/Amostra.php">Amostra</a></li>
-        <li style="margin-right: 10px;"><a href="editUser.php?idusuario=" .<?php $_SESSION['id']; ?>><?php echo $dados['nome']; ?></a></li>
+          <li><a class="white-text" href="../rank">Colaboradores</a></li>
+          <li><a class="white-text" href="../crud-usuario/Amostra.php">Amostra</a></li>
+          <li style="margin-right: 10px;"><a href="editUser.php?idusuario=" .<?php $_SESSION['id']; ?>><?php echo $dados['nome']; ?></a></li>
           <li style="margin-right: 10px;"><img src="../img/usuarios/<?= $img; ?>" class="perfil materialboxed "></li>
         </ul>
 
@@ -77,7 +88,7 @@ if (mysqli_num_rows($resultado) > 0) {
       <li><a class="white-text" href="../index.php">Início</a></li>
       <hr>
       <ul style="margin-left: 33px;">
-      <li><a class="white-text" href="Amostra.php">Amostra</a></li>
+        <li><a class="white-text" href="Amostra.php">Amostra</a></li>
         <li style="margin-right: 10px;"><?php echo $dados['nome']; ?></li>
         <li style="margin-right: 10px;"><img src="../img/usuarios/<?= $img; ?>" class="perfil materialboxed "></li>
       </ul>
@@ -102,9 +113,9 @@ if (mysqli_num_rows($resultado) > 0) {
     });
   </script>
   <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
 
-      $(window).scroll(function () {
+      $(window).scroll(function() {
 
         if ($(window).scrollTop() > 150) {
 

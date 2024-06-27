@@ -28,6 +28,12 @@
 <body>
     <?php
 
+    $breadcrumbs = [
+        'Rochas' => '> <a href="rocha.php">Rochas</a>',
+        'Sedimentares' => '<a href="sed.php">Sedimentares</a>'
+    ];
+
+    $breadcrumb = implode('>', $breadcrumbs);
     if (isset($_SESSION['permissao'])) {
         if ($_SESSION['permissao'] == 1) {
             include "topo-user.php";

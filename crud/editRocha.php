@@ -71,6 +71,12 @@
 
 <body>
     <?php
+    $breadcrumbs = [
+        'Amostra' => '> <a href="amostra.php">Cadastrar</a>',
+        'Rochas' => '<a href="listarRocha.php">Rochas</a>'
+    ];
+    $breadcrumb = implode('>', $breadcrumbs);
+
     require_once '../conecta.php';
     $conexao = conectar();
 

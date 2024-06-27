@@ -9,7 +9,9 @@
       flex: 1;
     }
     #fot {
-      background: #03300b; 
+      background: #03300b;
+      text-align: center;
+      color: #ffff;
     }
     footer {
       padding: 30px;
@@ -30,11 +32,9 @@
   </style>
 </head>
 <body>
-  <main>
-    <div id="barchart_material"></div>
-  </main>
   
   <footer id="fot">
+    Instituto Federal Farroupilha - Campus Uruguaiana
   </footer>
 
   <script>

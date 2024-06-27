@@ -38,7 +38,7 @@
 <body>
     <main>
         <?php
-
+    $breadcrumb = "";
         if (isset($_SESSION['permissao'])) {
             if ($_SESSION['permissao'] == 1) {
                 include "topo-user.php";

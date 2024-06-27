@@ -18,6 +18,16 @@
     top: 0;
     z-index: 5;
   }
+
+  .breadcrumb-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .breadcrumb-container li {
+    display: inline;
+  }
+</style>
 </style>
 <?php
 
@@ -39,7 +49,7 @@ if (mysqli_num_rows($resultado) > 0) {
 
 <body>
 
-<header>
+  <header>
     <div class="row">
       <div class="col s12 center" style="margin-top: 0.2%;">
         <a href="index.php">
@@ -49,45 +59,46 @@ if (mysqli_num_rows($resultado) > 0) {
     </div>
   </header>
 
-    <nav class="nav_color" role="navigation">
-      <div class="nav-wrapper">
-        <!-- Lado direito -->
-        <ul class="left hide-on-med-and-down">
-          <li><a class="white-text" href="index.php">Início</a></li>
-        </ul>
-        <!-- Lado esquerdo -->
-        <ul class="right hide-on-med-and-down">
-        <button id="toggleDarkMode" class="toggle-button">Alternar Modo</button>
+  <nav class="nav_color" role="navigation">
+    <div class="nav-wrapper">
+      <!-- Lado direito -->
+      <ul class="left hide-on-med-and-down">
+        <li><button id="toggleDarkMode" class="toggle-button">Alternar Modo</button></li>
+        <li><a class="white-text" href="index.php">Início</a></li>
+        <li class="breadcrumb-container"><?= $breadcrumb ?></li>
+      </ul>
+      <!-- Lado esquerdo -->
+      <ul class="right hide-on-med-and-down">
         <li><a class="white-text" href="rank.php">Colaboradores</a></li>
         <li><a class="white-text" href="crud-usuario/Amostra.php">Amostra</a></li>
-          <li style="margin-right: 10px;"><a class="white-text" href="crud/editUser.php"><?php echo $dados['nome']; ?></a></li>
-          <li style="margin-right: 10px;"><img src="img/usuarios/<?= $img; ?>" class="perfil materialboxed "></li>
-        </ul>
-
-
-      </div>
-    </nav>
-    <!-- topbar para tela pequena  !-->
-    <ul class="sidenav white-text #212121 grey darken-4 " style="width: 350px;" id="telefone-nav">
-      <li><a class="sidenav-close white-text" href="#!"><i class="material-icons white-text">clear</i>Menu lateral</a></li>
-      <li>
-        <div class="divider"></div>
-      </li>
-      <li><a class="white-text" href="cadAnimal.php">Metamórficas</a></li>
-      <li><a class="white-text" href="badges.html">Ígneas</a></li>
-      <li><a class="white-text" href="collapsible.html">Sedimentares</a></li>
-      <hr>
-      <ul style="margin-left: 33px;">
-        <li style="margin-right: 10px;"><?php echo $dados['nome']; ?></li>
+        <li style="margin-right: 10px;"><a class="white-text" href="crud/editUser.php"><?php echo $dados['nome']; ?></a></li>
         <li style="margin-right: 10px;"><img src="img/usuarios/<?= $img; ?>" class="perfil materialboxed "></li>
       </ul>
-      <hr>
-      <div class="row">
-        <div class="center-align ">
-          <img class="responsive-img" src="img/geolab-branco.png" alt="Logo do Jornal UPGD-IFFar">
-        </div>
-      </div>
+
+
+    </div>
+  </nav>
+  <!-- topbar para tela pequena  !-->
+  <ul class="sidenav white-text #212121 grey darken-4 " style="width: 350px;" id="telefone-nav">
+    <li><a class="sidenav-close white-text" href="#!"><i class="material-icons white-text">clear</i>Menu lateral</a></li>
+    <li>
+      <div class="divider"></div>
+    </li>
+    <li><a class="white-text" href="cadAnimal.php">Metamórficas</a></li>
+    <li><a class="white-text" href="badges.html">Ígneas</a></li>
+    <li><a class="white-text" href="collapsible.html">Sedimentares</a></li>
+    <hr>
+    <ul style="margin-left: 33px;">
+      <li style="margin-right: 10px;"><?php echo $dados['nome']; ?></li>
+      <li style="margin-right: 10px;"><img src="img/usuarios/<?= $img; ?>" class="perfil materialboxed "></li>
     </ul>
+    <hr>
+    <div class="row">
+      <div class="center-align ">
+        <img class="responsive-img" src="img/geolab-branco.png" alt="Logo do Jornal UPGD-IFFar">
+      </div>
+    </div>
+  </ul>
   </header>
   <script>
     document.addEventListener('DOMContentLoaded', function() {

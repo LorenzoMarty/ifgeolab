@@ -18,7 +18,13 @@
     top: 0;
     z-index: 5;
   }
-  
+  .breadcrumb-container {
+            display: flex;
+            align-items: center;
+        }
+        .breadcrumb-container li {
+            display: inline;
+        }
 </style>
 <?php
 
@@ -33,8 +39,6 @@ if (mysqli_num_rows($resultado) > 0) {
   $dados = mysqli_fetch_assoc($resultado);
   $img = $dados['img'];
 }
-
-
 ?>
 
 <body>
@@ -53,11 +57,12 @@ if (mysqli_num_rows($resultado) > 0) {
     <div class="nav-wrapper">
       <!-- Lado direito -->
       <ul class="left hide-on-med-and-down">
+        <li><button id="toggleDarkMode" class="toggle-button">Alternar Modo</button></li>
         <li><a href="index.php">Início</a></li>
+        <li class="breadcrumb-container"><?= $breadcrumb ?></li>
       </ul>
       <!-- Lado esquerdo -->
       <ul class="right hide-on-med-and-down">
-      <button id="toggleDarkMode" class="toggle-button">Alternar Modo</button>
         <li><a href="rank.php">Colaboradores</a></li>
         <?php if($_SESSION['permissao'] == 3){
         echo '<li><a href="listarUsuario.php">Usuários</a></li>';
@@ -98,6 +103,7 @@ if (mysqli_num_rows($resultado) > 0) {
   </ul>
 
   <script>
+    
     document.addEventListener('DOMContentLoaded', function () {
       var elems = document.querySelectorAll('.materialboxed');
       var instances = M.Materialbox.init(elems, options);

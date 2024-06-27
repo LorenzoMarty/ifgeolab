@@ -26,6 +26,11 @@
 
 <body>
     <?php
+    $breadcrumbs = [
+        'Amostra' => '> <a href="sugestao.php">Amostra</a>',
+        'Minerais' => '<a href="listarMineralS.php">Minerais</a>'
+    ];
+    $breadcrumb = implode('>', $breadcrumbs);
 
     if (isset($_SESSION['permissao'])) {
         if ($_SESSION['permissao'] == 1) {
@@ -40,10 +45,10 @@
     <main>
 
         </div>
-        <div class="container">
+        <div class="container center">
             <div class="row">
                 <div class="col s12">
-                    <h3 class="left">Minerais</h3><br>
+                    <h3>Minerais</h3><br>
                 </div>
 
                 <div class="col s12">

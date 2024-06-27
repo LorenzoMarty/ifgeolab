@@ -11,13 +11,16 @@
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
 <?php
-
+$breadcrumbs = [
+  'Colaboradores' => '> <a href="rank.php">Colaboradores</a>'
+];
+$breadcrumb = implode('>', $breadcrumbs);
 if (isset($_SESSION['permissao'])) {
   if ($_SESSION['permissao'] == 1) {
     include "topo-user.php";
   } elseif ($_SESSION['permissao'] == 2) {
     include "topo-adm.php";
-  } elseif ($_SESSION['permissao'] != "1" and "2") {
+  } elseif ($_SESSION['permissao'] != "1" && $_SESSION['permissao'] != "2") {
     include "topo.php";
   }
 } else {
@@ -78,7 +81,6 @@ $grafico = implode(", ", $graficoOrdenado);
 <title>IF GeoLab</title>
 <body>
 <script src="js/dark-light.js"></script>
-  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <script type="text/javascript">
     google.charts.load('current', {
       'packages': ['bar']
@@ -100,16 +102,25 @@ $grafico = implode(", ", $graficoOrdenado);
         },
         colors: ['#6eaa5e', '#3b5534', '#03300b'],
         bars: 'vertical',
-        hAxis: { format: 'decimal' },
+        hAxis: {
+          textStyle: { color: '#808080' }, // Define a cor do texto do eixo horizontal como preto
+          titleTextStyle: { color: '#588157' }, // Define a cor do título do eixo horizontal como preto
+          gridlines: { color: '#707070' } // Define a cor das linhas de marcação do eixo X como preto
+        },
+        vAxis: {
+          textStyle: { color: '#707070' }, // Define a cor do texto do eixo vertical como preto
+          titleTextStyle: { color: '#808080' }, // Define a cor do título do eixo vertical como preto
+          gridlines: { color: '#909090' } // Define a cor das linhas de marcação do eixo Y como preto
+        },
         height: 400,
         width: 1000,
-        backgroundColor: 'transparent',  // Remove o fundo do gráfico
-  chartArea: {
-    backgroundColor: 'transparent' // Remove o fundo da área do gráfico
-  },
-  bar: { groupWidth: '70%' }, // Ajuste a largura das barras, se necessário
-  legend: { position: 'none' }, // Remova a legenda, se não for necessária
-};
+        backgroundColor: 'transparent',
+        chartArea: {
+          backgroundColor: 'transparent'
+        },
+        bar: { groupWidth: '70%' },
+        legend: { position: 'top' } // Define a posição da legenda como 'top'
+      };
 
       var chart = new google.charts.Bar(document.getElementById('barchart_material'));
 

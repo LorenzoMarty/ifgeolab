@@ -14,6 +14,10 @@
 <script src="../js/dark-light.js"></script>
 <body>
     <?php
+    $breadcrumbs = [
+        'Sugestao' => '> <a href="sugestao.php">Sugestão</a>'
+    ];
+    $breadcrumb = implode('>', $breadcrumbs);
 
     if (isset($_SESSION['permissao'])) {
         if ($_SESSION['permissao'] == 1) {
@@ -26,11 +30,11 @@
     }
     ?>
     <main>
-        <div class="container">
-            <h1>Amostras cadastradas</h1>
-            <hr>
-            <span><b>Valide amostras cadastradas por usuários</b></span>
-            <hr>
+        <div class="container center">
+            <h1>Sugestões</h1>
+            
+            <span>Sugestões de amostras cadastradas por usuários</span>
+            <br><br>
             <div class="row">
                 <div class="col s6">
                     <a href="listarRochaS.php" class="white-text">
@@ -52,7 +56,7 @@
             </div>
             </a>
 
-            <hr>
+           
         </div>
     </main>
     <br><br><br><br>

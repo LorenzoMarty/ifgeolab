@@ -6,18 +6,50 @@
 	--cubicbz: cubic-bezier(.9, 0, .1, 1);
 	--fz-big: 60px;
 }
+
 .wrapp {
 	position: relative;
 	display: flex;
 	width: 100%;
-	height: 85vh;
+	height: 65vh;
 	padding: 0 50px;
 	z-index: 1;
 	justify-content: center;
 }
-.wrapp .pdf{
+
+.pdf {
 	float: left;
 }
+
+.gerarpdf {
+	position: absolute;
+	top: 91%;
+	right: 18%;
+	text-decoration: none;
+	color: #fff;
+	text-align: center;
+	letter-spacing: .5px;
+	-webkit-transition: background-color .2s ease-out;
+	transition: background-color .2s ease-out;
+	cursor: pointer;
+	font-size: 14px;
+    outline: 0;
+	border: none;
+    border-radius: 2px;
+    display: inline-block;
+    height: 36px;
+    line-height: 36px;
+    padding: 0 16px;
+    text-transform: uppercase;
+    vertical-align: middle;
+    -webkit-tap-highlight-color: transparent;
+	background-color: #00ff55;
+}
+
+.gerarpdf:hover {
+	background-color: #178b3e;
+}
+
 .card__item {
 	box-sizing: border-box;
 	font-family: 'Syne', sans-serif;
@@ -26,12 +58,13 @@
 	padding: 0;
 	font-feature-settings: 'pnum' on, 'lnum' on;
 }
+
 .card {
 	position: relative;
 	display: flex;
 	justify-content: space-between;
 	width: 60%;
-	height: 500px;
+	height: 400px;
 }
 
 .card__item {

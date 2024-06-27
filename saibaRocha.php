@@ -7,8 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <script src="js/dark-light.js"></script>
     <link rel="shortcut icon" type="image/jpg" href="img/icons8-rocha-48.png" />
+    <script src="js/dark-light.js"></script>
     <link href="../materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
     <link rel="stylesheet" href="css/3d.css">
     <title>IF GeoLab</title>
@@ -37,6 +37,48 @@
 <body>
     <?php
 
+    require_once('conecta.php');
+    $conexao = conectar();
+    $idrocha = $_GET['idrocha'];
+
+    $sql = "SELECT * FROM rocha WHERE idrocha =" . $idrocha;
+    $resultado = mysqli_query($conexao, $sql);
+
+    if (mysqli_num_rows($resultado) > 0) {
+        $dados = mysqli_fetch_assoc($resultado);
+        $img = $dados['img'];
+        $catJ = $dados['idcat'];
+        $idrock = $dados['idrocha'];
+        $obj = $dados['3d'];
+        $nome = $dados['nome'];
+        $descricao = $dados['descricao'];
+    }
+
+    $j = "SELECT * FROM catrocha WHERE idcat='$catJ'";
+    $res = mysqli_query($conexao, $j);
+    while ($d = mysqli_fetch_assoc($res)) {
+        $idcat = $d['idcat'];
+        $name = $d['nome'];
+    }
+    if ($dados['idcat'] == $idcat) {
+        $cat = $name;
+    } else {
+        echo "Erro ao buscar a categoria no banco de dados!";
+    }
+
+    $breadcrumbs = [
+        'Rochas' => '<a href="rocha.php">Rochas</a>',
+    ];
+
+    if ($idcat == "1") {
+        $breadcrumbs['Ígneas'] = '<a href="igneas.php">Ígneas</a>';
+    } elseif ($idcat == "2") {
+        $breadcrumbs['Metamórficas'] = '<a href="met.php">Metamórficas</a>';
+    } elseif ($idcat == "3") {
+        $breadcrumbs['Sedimentares'] = '<a href="sed.php">Sedimentares</a>';
+    }
+
+    $breadcrumb = implode(' > ', $breadcrumbs);
     if (isset($_SESSION['permissao'])) {
         if ($_SESSION['permissao'] == 1) {
             include "topo-user.php";
@@ -53,33 +95,7 @@
         <br><br>
         <?php
 
-        require_once('conecta.php');
-        $conexao = conectar();
-        $idrocha = $_GET['idrocha'];
 
-        $sql = "SELECT * FROM rocha WHERE idrocha =" . $idrocha;
-        $resultado = mysqli_query($conexao, $sql);
-
-        if (mysqli_num_rows($resultado) > 0) {
-            $dados = mysqli_fetch_assoc($resultado);
-            $img = $dados['img'];
-            $catJ = $dados['idcat'];
-            $idrock = $dados['idrocha'];
-            $obj = $dados['3d'];
-            $nome = $dados['nome'];
-        }
-
-        $j = "SELECT * FROM catrocha WHERE idcat='$catJ'";
-        $res = mysqli_query($conexao, $j);
-        while ($d = mysqli_fetch_assoc($res)) {
-            $idcat = $d['idcat'];
-            $name = $d['nome'];
-        }
-        if ($dados['idcat'] == $idcat) {
-            $cat = $name;
-        } else {
-            echo "Erro ao buscar a categoria no banco de dados!";
-        }
 
 
         ?>
@@ -101,7 +117,7 @@
                                 <img class="pdf" src="img/pdf-icon.png">Gerar PDF</a>
                         </div>
                         <h5><b>Categoria: </b><br><br>
-                            <?php echo $cat; ?>
+                            <?= $cat; ?>
                         </h5><br>
                     </div>
 
@@ -112,8 +128,9 @@
 
         <div class="container">
             <div class="col s12 m6 l4">
+                <hr>
                 <h5>
-                    <?php echo $dados['descricao']; ?>
+                    <?= $descricao ?>
                 </h5>
             </div>
             <hr>

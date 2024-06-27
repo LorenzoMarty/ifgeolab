@@ -30,6 +30,11 @@
 
 <body>
     <?php
+    $breadcrumbs = [
+        'Amostra' => '> <a href="amostra.php">Cadastrar</a>',
+        'Rochas' => '<a href="listarRocha.php">Rochas</a>'
+    ];
+    $breadcrumb = implode('>', $breadcrumbs);
 
     if (isset($_SESSION['permissao'])) {
         if ($_SESSION['permissao'] == 1) {
@@ -43,9 +48,9 @@
     ?>
 
     <main>
-        <div class="container">
+        <div class="container center">
             <div class="row col s12">
-                <h3 class="left">Rochas</h3>
+                <h3>Rochas</h3>
             </div>
             <hr>
             <p>Rocha é um agregado sólido que ocorre naturalmente e é constituído por um ou mais minerais ou

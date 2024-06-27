@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="shortcut icon" type="image/jpg" href="../img/icons8-mineral-48.png" />
+    <link rel="shortcut icon" type="image/jpg" href="../img/icons8-rocha-48.png" />
     <link href="../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
     <script src="../js/dark-light.js"></script>
     <title>IF GeoLab</title>
@@ -26,6 +26,11 @@
 
 <body>
     <?php
+    $breadcrumbs = [
+        'Amostra' => '> <a href="amostra.php">Cadastrar</a>',
+        'Mineral' => '<a href="listarMineral.php">Minerais</a>'
+    ];
+    $breadcrumb = implode('>', $breadcrumbs);
 
     if (isset($_SESSION['permissao'])) {
         if ($_SESSION['permissao'] == 1) {
@@ -40,10 +45,10 @@
     <main>
 
         </div>
-        <div class="container">
+        <div class="container center">
             <div class="row">
                 <div class="col s12">
-                    <h3 class="left">Minerais</h3><br>
+                    <h3>Minerais</h3><br>
                 </div>
 
                 <div class="col s12">
@@ -98,31 +103,31 @@
                 <br>
                 <br>
                 <br>
-                </div>
-                </main>
-                <?php
-                include "footer.php";
-                ?>
-                <script src="../js/sweetalert.js"></script>
-                <script>
-                    document.querySelectorAll('[id^="btnExcluir-"]').forEach(button => {
-                        button.addEventListener('click', function() {
-                            const idmineral = this.getAttribute('data-idmineral');
-                            Swal.fire({
-                                title: "Tem certeza que deseja excluir a conta?",
-                                icon: "warning",
-                                showCancelButton: true,
-                                confirmButtonColor: "#3085d6",
-                                cancelButtonColor: "#d33",
-                                confirmButtonText: "Sim"
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    location.href = "excluir.php?deletarMineral=" + idmineral;
-                                }
-                            });
-                        });
-                    });
-                </script>
+            </div>
+    </main>
+    <?php
+    include "footer.php";
+    ?>
+    <script src="../js/sweetalert.js"></script>
+    <script>
+        document.querySelectorAll('[id^="btnExcluir-"]').forEach(button => {
+            button.addEventListener('click', function() {
+                const idmineral = this.getAttribute('data-idmineral');
+                Swal.fire({
+                    title: "Tem certeza que deseja excluir a conta?",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Sim"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        location.href = "excluir.php?deletarMineral=" + idmineral;
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>

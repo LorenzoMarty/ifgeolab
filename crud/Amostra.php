@@ -15,7 +15,10 @@
 
 <body>
     <?php
-
+    $breadcrumbs = [
+        'Amostra' => '> <a href="amostra.php">Cadastrar</a>'
+    ];
+    $breadcrumb = implode('>', $breadcrumbs);
     if (isset($_SESSION['permissao'])) {
         if ($_SESSION['permissao'] == 1) {
             header('Location: ../index.php');
@@ -27,11 +30,11 @@
     }
     ?>
     <main>
-        <div class="container">
-            <h1>Cadastro</h1>
-            <hr>
-            <span><b>Cadastre Rochas ou Minerais</b></span>
-            <hr>
+        <div class="container center">
+            <h1>Cadastrar Amostras</h1>
+            
+            <span>Cadastre Rochas ou Minerais</span>
+            <br><br>
             <div class="row">
                 <div class="col s6">
                     <a href="listarRocha.php" class="white-text">
@@ -57,7 +60,7 @@
                 </a>
             </div>
 
-            <hr>
+            
         </div>
     </main>
     <br><br><br><br>
