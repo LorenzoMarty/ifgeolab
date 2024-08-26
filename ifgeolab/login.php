@@ -22,80 +22,78 @@ if (isset($_POST['login'])) {
             $img = $dados['img'];
             $_SESSION['login'] = [
                 "title" => 'Bem-vindo!',
-                'text' => ''.$_SESSION['usuario'],
-                'imageUrl' => 'img/usuarios/'.$img,
+                'text' => '' . $_SESSION['usuario'],
+                'imageUrl' => 'img/usuarios/' . $img,
                 'imageWidth' => 200,
                 'imageHeight' => 200,
+                'background' => '#3A5A40',
+                'color' => '#ffffff'
             ];
             header("Location: index.php");
+        } else {
+            echo "<script>alert('Senha incorreta.');</script>";
         }
     } else {
-        echo "alert('Usuário e/ou senha incorreto(s)')";
+        echo "<script>alert('Usuário não encontrado.');</script>";
     }
 }
+include "include.php";
 ?>
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/jpg" href="img/icons8-rocha-48.png" />
-    <?php include "include.php"; ?>
-    <title>Login</title>
-    <style>
-        .center {
-            align-items: center;
-        }
-    </style>
-</head>
+<link rel="stylesheet" href="css/login.css">
 
 <body>
-    <?php
-    include "topo.php";
-    ?>
-    <main>
-
-        <body>
-            <div class="container">
-                <div class="col s6 center">
-                    <h1> Login </h1>
-                    <hr>
-
-                    <form method="post">
-                        <div class="input-field col s6">
-                            <label> Email </label>
-                            <input type="text" name="email" />
-                        </div>
-                        <div class="input-field col s6">
-                            <label> Senha </label>
-                            <input type="password" name="senha" />
-                        </div>
+    <div class="container">
+        <div class="login-section">
+            <h1>Login</h1>
+            <hr class="divider">
+            <form method="post">
+                <div class="form-group">
+                    <div class="input-field">
+                        <label for="email">Email</label> <i class="fas fa-envelope"></i>
+                        <input type="text" name="email" id="email" />
+                    </div>
                 </div>
-                <div class="input-field col s6">
-                    <button class="waves-effect waves-light btn green darken-4" type="submit" name="login"> Logar </button>
+                <div class="form-group">
+                    <div class="input-field">
+                        <label for="senha">Senha</label> <i class="fas fa-lock"></i>
+                        <input type="password" name="senha" id="senha" />
+                    </div>
                 </div>
-                </form>
-                <div class="center">
-                    <p>Não tem uma conta?<a href="crud/cadUsuario.php">Cadastre-se!</a></p>
+                <div class="form-group">
+                    <button type="submit" name="login">Entrar</button>
                 </div>
+            </form>
+            <div class="center">
+                <a href="crud/cadUsuario.php">Cadastre-se já</a>
             </div>
-    </main>
-    <br><br><br><br><br><br><br><br><br><br><br><br>
-    <?php
-    include "footer.php";
-    ?>
+        </div>
+        <div class="image-section"></div>
+    </div>
+    <script src="js/sweetalert.js"></script>
+    <script>
+        <?php if ($msg != "") { ?>
+            window.addEventListener("load", (event) => {
+                Swal.fire(
+                    <?= json_encode($msg) ?>
+                )
+            })
+        <?php } ?>
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const inputs = document.querySelectorAll('.form-group input');
+            inputs.forEach(input => {
+                input.addEventListener('focus', function () {
+                    this.parentElement.querySelector('label').classList.add('active');
+                });
+                input.addEventListener('blur', function () {
+                    if (this.value === '') {
+                        this.parentElement.querySelector('label').classList.remove('active');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
-<script src="js/sweetalert.js"></script>
-<script>
-    <?php if($msg != ""){ ?>
-    window.addEventListener("load", (event) => {
-        Swal.fire(
-            <?= json_encode($msg) ?>
-        )
-    })
-    <?php } ?>
-</script>
+
 </html>

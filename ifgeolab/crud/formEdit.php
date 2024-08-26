@@ -10,14 +10,8 @@ if (mysqli_num_rows($resultado) > 0) {
   $dados = mysqli_fetch_assoc($resultado);
   $img = $dados['img'];
 }
+include "include.php"; ?>
 
-?>
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <?php include "include.php"; ?>
-  <title>IF GeoLab</title>
   <style>
     .minha-imagem {
       height: 220px;
@@ -51,7 +45,6 @@ if (mysqli_num_rows($resultado) > 0) {
       position: absolute;
     }
   </style>
-</head>
 
 <body>
   <?php

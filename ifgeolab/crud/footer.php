@@ -9,12 +9,12 @@
       flex: 1;
     }
     #fot {
-      background: #03300b;
+      background: #3A5A40;
       text-align: center;
       color: #ffff;
     }
     footer {
-      padding: 30px;
+      padding: 10px;
       width: 100%;
       position: relative;
     }

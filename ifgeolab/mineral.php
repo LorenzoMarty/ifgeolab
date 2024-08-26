@@ -1,44 +1,6 @@
-<?php session_start(); ?>
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <?php include "include.php"; ?>
-    <title>IF GeoLab</title>
-    <style>
-        .column {
-            text-align: center;
-            position: relative;
-            margin-top: 20px;
-        }
-
-        .column:hover .image {
-            transform: translateY(-100px);
-        }
-
-        .image{
-            top: 50%;
-            left: 20%;
-        }
-        h2.dark,h2.light {
-            font-size: 2.56rem;
-            line-height: 110%;
-            margin: 2.3733333333rem 0 1.424rem 0;
-            position: relative;
-            z-index: 2;
-            margin-bottom: 10px;
-        }
-        h2.light {
-            color: #111111de;
-            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7);
-        }
-
-        h2.dark {
-            color: #e0e0e0;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-        }
-    </style>
-</head>
+<?php session_start();
+include "include.php"; ?>
+<link rel="stylesheet" href="css/rocha-mineral.css">
 
 <body>
     <?php
@@ -59,32 +21,37 @@
     }
     ?>
     <main>
-        <div class="container center">
-            <div class="row col s12">
-                <h3 class="center">Tipos de minerais</h3><br>
+        <div class="container">
+            <div class="vertical-line"></div>
+
+            <div class="section-content">
+                <div class="section">
+                    <h4 class="left-align">Tipos de minerais</h4>
+                    <h6 class="left-align">Minerais são partes de rochas, de formação natural.<br>
+                        Os minerais são classificados em dois tipos baseados na sua formação:</h6>
+                    <hr class="divider">
+                </div>
+                <div class="row">
+                    <div class="col s5 offset-s2">
+                        <div class="image-container">
+                            <a href="metalica.php" class="white-text">
+                                <img src="img/metalicas.png" alt="Minerais Metálicos" class="image-with-caption">
+                                <div class="caption">METÁLICOS</div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col s5">
+                        <div class="image-container">
+                            <a href="n-metalica.php" class="white-text">
+                                <img src="img/nao-metalicas.png" alt="Minerais Metálicos" class="image-with-caption">
+                                <div class="caption">NÃO METÁLICOS</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <hr>
-            <p>Mineral é um corpo natural sólido e cristalino formado em resultado da interação de processos
-                físico-químicos em ambientes geológicos. Cada mineral é classificado e denominado não apenas com
-                base na sua composição química, mas também na estrutura cristalina dos materiais que o compõem. </p>
-            <hr>
-            <div class="row">
-                <div class="col s12 m6">
-                    <div class="column">
-                        <a href="metalica.php" class="white-text">
-                            <img src="img/mineral2.png" alt="Minerais Metálicos" class="image">
-                            <h2>METÁLICOS</h2>
-                        </a>
-                    </div>
-                </div>
-                <div class="col s12 m6">
-                    <div class="column">
-                        <a href="n-metalica.php" class="white-text">
-                            <img src="img/n-mineral2.png" alt="Minerais Metálicos" class="image">
-                            <h2>NÃO-METÁLICOS</h2>
-                        </a>
-                    </div>
-                </div>
+            <div class="section">
+                <hr class="divider second">
             </div>
         </div>
     </main>

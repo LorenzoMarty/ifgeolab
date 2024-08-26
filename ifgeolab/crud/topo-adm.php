@@ -2,8 +2,14 @@
   .sticky-nav {
     position: -webkit-sticky;
     position: sticky;
-    top: -1px;
-    z-index: 5;
+    top: 0;
+    z-index: 6;
+    /* Maior para ficar acima do nav 2 */
+  }
+
+  .nav-wrapper {
+    display: flex;
+    justify-content: space-between;
   }
 
   .breadcrumb-container {
@@ -13,6 +19,10 @@
 
   .breadcrumb-container li {
     display: inline;
+  }
+
+  .nav_color2 {
+    top: 64px;
   }
 </style>
 <?php
@@ -28,40 +38,40 @@ if (mysqli_num_rows($resultado) > 0) {
   $dados = mysqli_fetch_assoc($resultado);
   $img = $dados['img'];
 }
-
-
 ?>
-<header>
-  <div class="row">
-    <div class="col s12 center">
-      <a href="../index.php">
-        <img src="../img/geolab-branco.png" alt="Logo do site" height="100" width="auto">
-      </a>
-    </div>
-  </div>
-</header>
 
-<nav class="nav_color">
+<nav class="nav_color sticky-nav">
   <div class="nav-wrapper">
     <!-- Lado direito -->
-    <ul class="leFt hide-on-med-and-down">
-      <li><button id="toggleDarkMode" class="toggle-button">Alternar Modo</button></li>
-      <li><a href="../index.php">Início</a></li>
+    <ul class="left hide-on-med-and-down">
+      <li><img src="../img/geolab-branco.png" alt="Logo do site" height="60" width="auto"></li>
       <li class="breadcrumb-container"><?= $breadcrumb ?></li>
     </ul>
     <!-- Lado esquerdo -->
     <ul class="right hide-on-med-and-down">
-      <li><a href="../rank.php">Colaboradores</a></li>
-      <?php if ($_SESSION['permissao'] == 3) : ?>
+      <li><a href="../index.php">Início</a></li>
+      <!-- <li><a href="rank.php">Colaboradores</a></li> -->
+      <?php if ($_SESSION['permissao'] == 3): ?>
         <li><a href="listarUsuario.php">Usuários</a></li>
       <?php endif; ?>
       <li>
-        <a class="dropdown-trigger" href="#!" data-target="dropdown1">Cadastrar<i class="material-icons right">arrow_drop_down</i></a>
+        <a class="dropdown-trigger" href="#!" data-target="dropdown1">Cadastrar<i
+            class="material-icons right">arrow_drop_down</i></a>
       </li>
-      <li style="margin-right: 10px;"><a href="editUser.php?idusuario=<?= $_SESSION['id']; ?>"><?= $dados['nome']; ?></a></li>
-      <li style="margin-right: 10px;"><img src="../img/usuarios/<?= $img; ?>" class="perfil materialboxed"></li>
+      <li><a href="editUser.php?idusuario=<?= $_SESSION['id']; ?>" class="perfil-container"><?= $dados['nome']; ?>
+          <img src="../img/usuarios/<?= $img; ?>"></a></li>
     </ul>
   </div>
+</nav>
+
+<nav class="nav_color2 sticky-nav">
+  <ul class="left hide-on-med-and-down">
+    <li><a href="../rank.php">Colaboradores</a></li>
+  </ul>
+
+  <ul class="right hide-on-med-and-down">
+    <li><button id="toggleDarkMode" class="toggle-button">Alternar Modo</button></li>
+  </ul>
 </nav>
 
 <ul id="dropdown1" class="dropdown-content">
@@ -71,27 +81,22 @@ if (mysqli_num_rows($resultado) > 0) {
 </ul>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('DOMContentLoaded', function () {
     var elems = document.querySelectorAll('.dropdown-trigger');
     var instances = M.Dropdown.init(elems, {
       click: true
     });
   });
 </script>
+
 <script>
-  $(document).ready(function() {
-
-    $(window).scroll(function() {
-
-      if ($(window).scrollTop() > 150) {
-
+  $(document).ready(function () {
+    $(window).scroll(function () {
+      if ($(window).scrollTop() > 0) {
         $('nav').addClass('sticky-nav');
-
       } else {
-
         $('nav').removeClass('sticky-nav');
       }
-
     });
   });
 </script>

@@ -1,19 +1,15 @@
-<?php session_start(); ?>
-<!DOCTYPE html>
-<html>
+<?php session_start();
+include "include.php";
+include "quilljs.php" ?>
 
-<head>
-    <?php include "include.php";
-    include "quilljs.php" ?>
-    <title>IF GeoLab</title>
-    <style>
-        .minha-imagem {
-            height: 220px;
-            width: 220px;
-            object-fit: cover;
-        }
-    </style>
-</head>
+<style>
+    .minha-imagem {
+        height: 220px;
+        width: 220px;
+        object-fit: cover;
+    }
+</style>
+
 
 <body>
     <?php
@@ -71,7 +67,7 @@
                         $y = "SELECT * FROM catrocha";
                         $res = mysqli_query($conexao, $y);
                         while ($dad = mysqli_fetch_assoc($res)) {
-                        ?>
+                            ?>
                             <option value="<?= $dad['idcat']; ?>">
                                 <?= $dad['nome']; ?>
                             </option>
@@ -108,7 +104,7 @@
     include 'footer.php';
     ?>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             var elems = document.querySelectorAll('.select-dropdown');
             var instances = M.FormSelect.init(elems);
         });

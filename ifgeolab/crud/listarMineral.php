@@ -4,15 +4,8 @@ if (isset($_SESSION['excluir'])) {
     $msg = $_SESSION['excluir'];
     unset($_SESSION['excluir']);
 }
-?>
-<!DOCTYPE html>
-<html lang="en">
+include "include.php"; ?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <?php include "include.php"; ?>
-    <title>IF GeoLab</title>
     <style>
         .minha-imagem {
             height: 220px;

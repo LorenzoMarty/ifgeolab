@@ -1,14 +1,7 @@
-<?php session_start(); ?>
-<!DOCTYPE html>
-<html>
-
-<head>
-  <link rel="stylesheet" href="../css/image.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <?php include "include.php"; ?>
-  <?php include "quilljs.php"; ?>
-  <title>IF GeoLab</title>
-</head>
+<?php session_start(); 
+include "include.php"; 
+include "quilljs.php"; ?>
+<link rel="stylesheet" href="../css/image.css">
 
 <body>
   <?php

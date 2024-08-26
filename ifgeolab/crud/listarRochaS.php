@@ -4,32 +4,19 @@ if (isset($_SESSION['excluir'])) {
     $msg = $_SESSION['excluir'];
     unset($_SESSION['excluir']);
 }
-?>
-<!DOCTYPE html>
-<html lang="en">
+include "include.php"; ?>
+<style>
+    .minha-imagem {
+        height: 220px;
+        width: 600px;
+        object-fit: cover;
+    }
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="shortcut icon" type="image/jpg" href="../img/icons8-rocha-48.png" />
-    <link href="../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
-    <script src="../js/dark-light.js"></script>
-    <?php include "include.php"; ?>
-    <title>IF GeoLab</title>
-    <style>
-        .minha-imagem {
-            height: 220px;
-            width: 600px;
-            object-fit: cover;
-        }
-
-        .meu-span {
-            background-color: rgba(0, 0, 0, 0.3);
-            width: 100%;
-        }
-    </style>
-</head>
+    .meu-span {
+        background-color: rgba(0, 0, 0, 0.3);
+        width: 100%;
+    }
+</style>
 
 <body>
     <?php
@@ -122,7 +109,7 @@ if (isset($_SESSION['excluir'])) {
     </script>
     <script>
         document.querySelectorAll('[id^="btnExcluir-"]').forEach(button => {
-            button.addEventListener('click', function() {
+            button.addEventListener('click', function () {
                 const idrocha = this.getAttribute('data-idrocha');
                 Swal.fire({
                     title: "Tem certeza que deseja excluir a rocha?",

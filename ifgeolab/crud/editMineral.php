@@ -1,19 +1,15 @@
-<?php session_start(); ?>
-<!DOCTYPE html>
-<html>
+<?php session_start();
+include "quilljs.php";
+include "include.php"; ?>
 
-<head>
-    <?php include "quilljs.php";
-    include "include.php"; ?>
-    <title>IF GeoLab</title>
-    <style>
-        .minha-imagem {
-            height: 220px;
-            width: 220px;
-            object-fit: cover;
-        }
-    </style>
-</head>
+<style>
+    .minha-imagem {
+        height: 220px;
+        width: 220px;
+        object-fit: cover;
+    }
+</style>
+
 
 <body>
     <?php
@@ -70,7 +66,7 @@
                         $y = "SELECT * FROM catmineral";
                         $res = mysqli_query($conexao, $y);
                         while ($dad = mysqli_fetch_assoc($res)) {
-                        ?>
+                            ?>
                             <option value="<?= $dad['idcat']; ?>">
                                 <?= $dad['nome']; ?>
                             </option>
@@ -99,7 +95,8 @@
                     </div>
                 </div>
                 <div class="input-field col s12">
-                    <button class="waves-effect waves-light btn green" type="submit" name="editarMineral">Editar</button>
+                    <button class="waves-effect waves-light btn green" type="submit"
+                        name="editarMineral">Editar</button>
                 </div>
             </div>
         </form>
@@ -109,7 +106,7 @@
     include 'footer.php';
     ?>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             var elems = document.querySelectorAll('.select-dropdown');
             var instances = M.FormSelect.init(elems);
         });

@@ -1,21 +1,18 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+<?php include "include.php"; ?>
 
-<head>
-    <?php include "include.php"; ?>
-    <link rel="stylesheet" href="../css/image.css">
-    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet' />
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous" type="text/javascript"></script>
-    <script src="../js/jquery.mask.min.js" type="text/javascript"></script>
-    <script type="text/javascript">
-        rel = 'stylesheet' >
-            $(document).ready(function() {
-                // Aplica a máscara para o campo de telefone
-                $("#telefone").mask("(00)0-0000-0000");
-            })
-    </script>
-    <title>IF GeoLab</title>
-</head>
+<link rel="stylesheet" href="../css/image.css">
+<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet' />
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"
+    integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"
+    type="text/javascript"></script>
+<script src="../js/jquery.mask.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    rel = 'stylesheet' >
+        $(document).ready(function () {
+            // Aplica a máscara para o campo de telefone
+            $("#telefone").mask("(00)0-0000-0000");
+        })
+</script>
 
 <body>
     <?php
@@ -26,8 +23,6 @@
         } elseif ($_SESSION['permissao'] == 2) {
             header('Location: ../index.php');
         }
-    } else {
-        include "topo.php";
     }
     ?>
     <main>
@@ -45,7 +40,8 @@
 
                         <div class="input-field">
                             <label>Email</label>
-                            <input class="white-text" type="email" name="email" placeholder="usuário@email.com" required />
+                            <input class="white-text" type="email" name="email" placeholder="usuário@email.com"
+                                required />
                         </div>
 
                         <div class="input-field">
@@ -74,7 +70,8 @@
                             <input name="arquivo" type="file" id="Capa" style="display: none;">
                         </div>
                         <div class="input-field col s12">
-                            <button class="waves-effect waves-light btn green" type="submit" name="cadastrarUsuario">Cadastrar</button>
+                            <button class="waves-effect waves-light btn green" type="submit"
+                                name="cadastrarUsuario">Cadastrar</button>
                         </div>
                 </div>
             </div>

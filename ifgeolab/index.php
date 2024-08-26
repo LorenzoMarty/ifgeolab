@@ -10,9 +10,7 @@ if (isset($_SESSION['login'])) {
     unset($_SESSION['login']);
 }
 unset($_SESSION['questoes'])
-?>
-
-<head>
+    ?>
     <?php
 
     include "include.php";
@@ -29,82 +27,58 @@ unset($_SESSION['questoes'])
         include "topo.php";
     }
     ?>
-    <!DOCTYPE html>
-    <html lang="pt-br">
-
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>IF GeoLab</title>
-    </head>
-    <style>
-        .column {
-            text-align: center;
-            position: relative;
-            margin-top: 20px;
-        }
-
-        .column:hover .image {
-            transform: translateY(-100px);
-        }
-
-        .column:hover .image1 {
-            transform: translateY(-100px);
-        }
-
-        .image {
-            top: 50%;
-            left: 20%;
-        }
-
-        .image1 {
-            top: -50%;
-            left: 20%;
-        }
-
-        .color {
-            color: black;
-        }
-    </style>
-
+    <link rel="stylesheet" href="css/index.css">
 <body>
     <main>
-        <div class="container center">
-            <h1>Laboratório</h1>
-            <h5>O que você deseja conhecer?</h5>
-            <div class="row">
-                <div class="col s12 m6">
-                    <div class="column">
-                        <a href="rocha.php">
-                            <img src="img/rochas1.png" alt="Rochas" class="image">
-                            <h2>Rochas</h2>
-                        </a>
-                    </div>
+        <div class="container">
+            <!-- Linha vertical à esquerda -->
+            <div class="vertical-line"></div>
+
+            <!-- Conteúdo da seção -->
+            <div class="section-content">
+                <div class="section">
+                    <h4 class="left-align">Laboratório</h4>
+                    <h6 class="left-align">O que deseja acessar?</h6>
+                    <hr class="divider">
                 </div>
-                <div class="col s12 m6">
-                    <div class="column">
-                        <a href="mineral.php">
-                            <img src="img/mineral1.png" alt="Minerais" class="image1">
-                            <h2>Minerais</h2>
-                        </a>
+
+                <!-- Linha com Rochas, Minerais, Questionários e Sugestões -->
+                <div class="row">
+                    <div class="col center-align">
+                        <div class="image-container">
+                            <a href="rocha.php">
+                                <img src="img/rochas.png" alt="Rochas" class="image-with-caption grayscale">
+                                <div class="caption">Rochas</div>
+                            </a>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <br><br><br><br>
-            <hr>
-            <h2>Questionário</h2>
-            <div class="questionario">
-                <div class="col s12 m7">
-                    <div class="column">
-                        <div class="card">
-                            <div class="card-image">
-                                <img src="img/questionario.png" alt="Questionário">
+                    <div class="col center-align">
+                        <div class="image-container">
+                            <a href="mineral.php">
+                                <img src="img/mineral.png" alt="Minerais" class="image-with-caption grayscale">
+                                <div class="caption">Minerais</div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col center-align">
+                        <!-- Questionários e Sugestões na mesma coluna -->
+                        <div style="display: flex; flex-direction: column; align-items: center;">
+                            <div class="image-container" style="margin-bottom: 0.75rem;">
+                                <a href="questionario.php">
+                                    <img src="img/questionarios.png" alt="Questionários" class="image-with-caption">
+                                    <div class="caption">Questionários</div>
+                                </a>
                             </div>
-                            <div class="card-content color">
-                                <p>Questionário com questões de Enem sobre o conteúdo de Rochas e Minerais</p>
-                            </div>
-                            <div class="card-action">
-                                <a href="questionario.php">Teste seus conhecimentos</a>
+                            <div class="image-container">
+                                <?php if($_SESSION['permissao'] == 1){
+                                echo '<a href="crud-usuario/amostra.php">';
+                                }elseif($_SESSION['permissao'] == 2){
+                                    echo '<a href="crud/sugestao.php">';
+                                }
+                                    ?>
+                                    <img src="img/sugestoes.png" alt="Sugestões" class="image-with-caption">
+                                    <div class="caption">Sugestões</div>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -112,7 +86,9 @@ unset($_SESSION['questoes'])
             </div>
         </div>
     </main>
+    
     <?php include "footer.php"; ?>
+    
     <script src="js/sweetalert.js"></script>
     <script>
         <?php if ($msg != "") { ?>

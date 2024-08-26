@@ -1,11 +1,6 @@
-<?php session_start(); ?>
-<!DOCTYPE html>
-<html lang="pt-br">
-
-<head>
-    <?php include "include.php"; ?>
-    <title>IF GeoLab</title>
-</head>
+<?php session_start(); 
+include "include.php"; ?>
+    
 
 <body>
     <?php

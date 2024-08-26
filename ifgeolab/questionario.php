@@ -54,10 +54,6 @@ if (isset($_SESSION['permissao'])) {
     include "topo.php";
 }
 ?>
-
-<head>
-    
-    <title>IF GeoLab</title>
     <style>
         .correct {
             background-color: #c8e6c9;
@@ -70,8 +66,6 @@ if (isset($_SESSION['permissao'])) {
             color: black;
         }
     </style>
-</head>
-
 <body>
     <main class="container">
         <form action="" method="post">

@@ -1,12 +1,6 @@
-<?php session_start(); ?>
-<!DOCTYPE html>
-<html lang="pt-br">
-
-<head>
-    <link rel="stylesheet" href="css/3d.css">
+<?php session_start();
+include "include.php"; ?>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <?php include "include.php"; ?>
-    <title>IF GeoLab</title>
     <style>
         .minha-imagem {
             height: 400px;
@@ -66,7 +60,6 @@
             margin-right: 5px;
         }
     </style>
-</head>
 
 <body>
     <?php

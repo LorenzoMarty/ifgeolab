@@ -2,14 +2,10 @@ nav.nav-center ul {
   text-align: center;
 }
 
-nav a:hover {
+nav ul a:hover {
   color: #d1d1d1;
   text-decoration: underline;
-}
-
-.li a:hover {
-  background-color: #eee;
-  color: black;
+  background-color: rgba(0, 0, 0, 0);
 }
 
 .li a.active {
@@ -30,15 +26,14 @@ nav.nav-center ul li a {
   display: inline-block;
 }
 
-header {
-  background-image: url(../img/fundo-topo.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
+.nav_color {
+  background-color: #3A5A40;
 }
 
-.nav_color {
-  background-color: #03300b;
+.nav_color2 {
+  background-color: #588157;
+  height: 32px;
+  line-height: 28px
 }
 
 .perfil {
@@ -47,6 +42,29 @@ header {
   width: 50px;
   border-radius: 50%;
   object-fit: cover;
+}
+
+.perfil-container {
+  display: flex;
+  align-items: center;
+  border-radius: 50px;
+  background-color: #588157;
+  height: 70%;
+  margin-top: 10px;
+}
+
+.perfil-container img {
+  margin-left: 10px;
+  height: 40px;
+  width: 40px;
+  border: 1px solid #25412B;
+  border-radius: 100%;
+}
+
+.perfil-container a {
+  color: #fff;
+  /* Cor do texto */
+  text-decoration: none;
 }
 
 .col .row {
@@ -77,75 +95,79 @@ body.light {
   background-color: #fff;
 }
 
-.toggle-button {
+body.light .toggle-button {
   position: relative;
-  width: 100px;
-  /* Largura ajustada para acomodar o texto */
-  height: 40px;
-  /* Altura ajustada */
-  background-color: #f9f9f9;
-  /* Cor de fundo claro */
+  width: 80px;
+  height: 22px;
+  background-color: #3A5A40;
   border-radius: 20px;
-  /* Bordas arredondadas */
-  border: 2px solid #888;
-  /* Borda cinza */
+  border: none;
   cursor: pointer;
   outline: none;
   transition: background-color 0.3s, border-color 0.3s;
   padding-left: 15px;
-  /* Espaçamento à direita para o texto */
   align-items: center;
   justify-content: center;
-  color: black;
+  color: white;
   font-size: 14px;
   font-weight: bold;
   margin: 5px;
+  font-family: 'Merriweather', serif;
 }
 
 .toggle-button::before {
   content: '\f185';
-  /* Ícone de sol (modo diurno) */
   font-family: 'Font Awesome 5 Free';
   font-weight: 900;
   position: absolute;
   top: 2px;
-  left: 2px;
-  width: 30px;
-  /* Tamanho ajustado */
-  height: 30px;
-  /* Tamanho ajustado */
+  left: 4px;
+  width: 19px;
+  height: 19px;
   background-color: #fff;
-  /* Cor de fundo do círculo */
   border-radius: 50%;
-  /* Bordas arredondadas para o círculo */
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-  /* Sombra para dar um efeito 3D */
   display: flex;
   align-items: center;
   justify-content: center;
   transition: transform 0.3s, background-color 0.3s, color 0.3s;
+  color: #000;
 }
 
-body.dark .toggle-button {
+body.dark .toggle-button::before {
   background-color: #222222;
   /* Cor de fundo escuro */
   border-color: #0f0f0f;
   /* Borda mais escura */
   color: white;
-  padding-right: 50px;
-  /* Espaçamento à direita para o texto */
-}
-
-body.dark .toggle-button::before {
-  transform: translateX(80px);
+  content: '\f186';
+  /* Ícone de lua (modo noturno) */
+  transform: translateX(55px);
   /* Move o círculo para a direita no modo escuro */
   background-color: #fff;
   /* Cor do círculo no modo escuro */
   color: black;
   /* Cor do ícone no modo escuro */
-  content: '\f186';
-  /* Ícone de lua (modo noturno) */
-  left: -17px
+}
+
+body.dark .toggle-button {
+  position: relative;
+  width: 80px;
+  height: 22px;
+  background-color: #3A5A40;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.3s, border-color 0.3s;
+  padding-right: 20px;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  margin: 5px;
+  font-family: 'Merriweather', serif;
 }
 
 h2 {
@@ -200,7 +222,9 @@ h2.dark {
   width: 400px;
   margin: 0 auto;
 }
-.image,.image1 {
+
+.image,
+.image1 {
   width: 250px;
   transition: transform 0.3s;
   position: absolute;

@@ -1,12 +1,6 @@
-<?php session_start(); ?>
-<!DOCTYPE html>
-<html>
-
-<head>
-    <?php include "quilljs.php"; ?>
-    <?php include "include.php"; ?>
-    <title>IF GeoLab</title>
-</head>
+<?php session_start(); 
+include "quilljs.php";
+include "include.php"; ?>
 
 <body>
     <?php

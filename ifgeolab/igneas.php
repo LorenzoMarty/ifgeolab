@@ -1,10 +1,4 @@
-<?php session_start(); ?>
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <?php include "include.php"; ?>
-    <title>IF GeoLab</title>
+<?php session_start(); include "include.php"; ?>
     <style>
         .minha-imagem {
             height: 220px;
@@ -17,7 +11,6 @@
             width: 100%;
         }
     </style>
-</head>
 
 <body>
     <?php

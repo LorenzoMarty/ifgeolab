@@ -1,20 +1,12 @@
-<?php session_start(); ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-  <script src="js/dark-light.js"></script>
-  <?php include "include.php"; ?>
-</head>
-<style>
-  body {
-    font-family: 'Merriweather', serif;
-  }
-</style>
-<?php
+<?php 
+session_start();
+
+include "include.php";
+
 $breadcrumbs = [
   'Colaboradores' => '> <a href="rank.php">Colaboradores</a>'
 ];
+
 $breadcrumb = implode('>', $breadcrumbs);
 if (isset($_SESSION['permissao'])) {
   if ($_SESSION['permissao'] == 1) {
@@ -79,7 +71,7 @@ foreach ($quantidades as $nome => $total) {
 
 $grafico = implode(", ", $graficoOrdenado);
 ?>
-<title>IF GeoLab</title>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 <body>
   <script src="js/dark-light.js"></script>
@@ -175,4 +167,5 @@ $grafico = implode(", ", $graficoOrdenado);
   <div id="barchart_material"></div>
 </body>
 <?php include "footer.php"; ?>
+
 </html>
