@@ -1,10 +1,15 @@
 <style>
   .sticky-nav {
     position: -webkit-sticky;
-    /* Safari */
     position: sticky;
     top: 0;
-    z-index: 5;
+    z-index: 6;
+    /* Maior para ficar acima do nav 2 */
+  }
+
+  .nav-wrapper {
+    display: flex;
+    justify-content: space-between;
   }
 
   .breadcrumb-container {
@@ -14,6 +19,13 @@
 
   .breadcrumb-container li {
     display: inline;
+  }
+
+  .nav_color2 {
+    top: 64px;
+  }
+  .logolink{
+    padding: 0 !important;
   }
 </style>
 <?php
@@ -29,55 +41,42 @@ if (mysqli_num_rows($resultado) > 0) {
   $dados = mysqli_fetch_assoc($resultado);
   $img = $dados['img'];
 }
-
-
-
 ?>
 
-<body>
+<nav class="nav_color sticky-nav">
+  <div class="nav-wrapper">
+    <!-- Lado direito -->
+    <ul class="left hide-on-med-and-down">
+      <li><a href="index.php" class="logolink"><img src="img/geolab-branco.png" alt="Logo do site" height="60" width="auto"></a></li>
+      <li class="breadcrumb-container"><?= $breadcrumb ?></li>
+    </ul>
+    <!-- Lado esquerdo -->
+    <ul class="right hide-on-med-and-down">
+      <li><a href="index.php">Início</a></li>
+      <li><a href="crud/editUser.php?idusuario=<?= $_SESSION['id']; ?>" class="perfil-container"><?= $dados['nome']; ?>
+          <img src="img/usuarios/<?= $img; ?>"></a></li>
+    </ul>
+  </div>
+</nav>
 
-  <header>
-    <div class="row">
-      <div class="col s12 center">
-        <a href="index.php">
-          <img src="img/geolab-branco.png" alt="Logo do site" height="100" width="auto">
-        </a>
-      </div>
-    </div>
-  </header>
+<nav class="nav_color2 sticky-nav">
+  <ul class="left hide-on-med-and-down">
+    <li><a href="rank.php">Colaboradores</a></li>
+  </ul>
 
-  <nav class="nav_color">
-    <div class="nav-wrapper">
-      <!-- Lado direito -->
-      <ul class="left hide-on-med-and-down">
-        <li><button id="toggleDarkMode" class="toggle-button">Alternar Modo</button></li>
-        <li><a class="white-text" href="index.php">Início</a></li>
-        <li class="breadcrumb-container"><?= $breadcrumb ?></li>
-      </ul>
-      <!-- Lado esquerdo -->
-      <ul class="right hide-on-med-and-down">
-        <li><a class="white-text" href="rank.php">Colaboradores</a></li>
-        <li><a class="white-text" href="crud-usuario/Amostra.php">Sugestão</a></li>
-        <li style="margin-right: 10px;"><a class="white-text" href="crud/editUser.php"><?php echo $dados['nome']; ?></a></li>
-        <li style="margin-right: 10px;"><img src="img/usuarios/<?= $img; ?>" class="perfil materialboxed "></li>
-      </ul>
-    </div>
-  </nav>
-  
-  <script>
-    $(document).ready(function() {
+  <ul class="right hide-on-med-and-down">
+    <li><button id="toggleDarkMode" class="toggle-button">Alternar Modo</button></li>
+  </ul>
+</nav>
 
-      $(window).scroll(function() {
-
-        if ($(window).scrollTop() > 150) {
-
-          $('nav').addClass('sticky-nav');
-
-        } else {
-
-          $('nav').removeClass('sticky-nav');
-        }
-
-      });
+<script>
+  $(document).ready(function () {
+    $(window).scroll(function () {
+      if ($(window).scrollTop() > 0) {
+        $('nav').addClass('sticky-nav');
+      } else {
+        $('nav').removeClass('sticky-nav');
+      }
     });
-  </script>
+  });
+</script>

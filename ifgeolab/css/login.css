@@ -48,7 +48,8 @@ body {
 }
 
 .form-group input[type="text"],
-.form-group input[type="password"] {
+.form-group input[type="password"],
+.form-group input[type="email"] {
     width: 100%;
     max-width: 500px;
     margin: 0 auto;
@@ -66,24 +67,7 @@ body {
     /* Remove o estilo padrão do input */
     appearance: none;
     /* Remove o estilo padrão do input */
-}
-
-.form-group input[type="text"]::-webkit-input-placeholder,
-.form-group input[type="password"]::-webkit-input-placeholder {
     color: #DAEAFF;
-    /* Cor do placeholder */
-}
-
-.form-group input[type="text"]:-ms-input-placeholder,
-.form-group input[type="password"]:-ms-input-placeholder {
-    color: #DAEAFF;
-    /* Cor do placeholder */
-}
-
-.form-group input[type="text"]::-moz-placeholder,
-.form-group input[type="password"]::-moz-placeholder {
-    color: #DAEAFF;
-    /* Cor do placeholder */
 }
 
 .form-group label {

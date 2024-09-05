@@ -4,7 +4,6 @@
     position: sticky;
     top: 0;
     z-index: 6;
-    /* Maior para ficar acima do nav 2 */
   }
 
   .nav-wrapper {
@@ -23,6 +22,9 @@
 
   .nav_color2 {
     top: 64px;
+  }
+  .logolink{
+    padding: 0 !important;
   }
 </style>
 <?php
@@ -44,13 +46,12 @@ if (mysqli_num_rows($resultado) > 0) {
   <div class="nav-wrapper">
     <!-- Lado direito -->
     <ul class="left hide-on-med-and-down">
-      <li><img src="img/geolab-branco.png" alt="Logo do site" height="60" width="auto"></li>
+      <li><a href="index.php" class="logolink"><img src="img/geolab-branco.png" alt="Logo do site" height="60" width="auto"></a></li>
       <li class="breadcrumb-container"><?= $breadcrumb ?></li>
     </ul>
     <!-- Lado esquerdo -->
     <ul class="right hide-on-med-and-down">
       <li><a href="index.php">Início</a></li>
-      <!-- <li><a href="rank.php">Colaboradores</a></li> -->
       <?php if ($_SESSION['permissao'] == 3): ?>
         <li><a href="listarUsuario.php">Usuários</a></li>
       <?php endif; ?>

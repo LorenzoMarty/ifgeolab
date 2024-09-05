@@ -20,11 +20,9 @@ unset($_SESSION['questoes'])
             include "topo-user.php";
         } elseif ($_SESSION['permissao'] == 2) {
             include "topo-adm.php";
-        } else {
-            include "topo.php";
         }
     } else {
-        include "topo.php";
+        header('Location: login.php');
     }
     ?>
     <link rel="stylesheet" href="css/index.css">
@@ -70,11 +68,12 @@ unset($_SESSION['questoes'])
                                 </a>
                             </div>
                             <div class="image-container">
-                                <?php if($_SESSION['permissao'] == 1){
+                                <?php if(isset($_SESSION['permissao'])){
+                                    if($_SESSION['permissao'] == 1){
                                 echo '<a href="crud-usuario/amostra.php">';
                                 }elseif($_SESSION['permissao'] == 2){
                                     echo '<a href="crud/sugestao.php">';
-                                }
+                                } }
                                     ?>
                                     <img src="img/sugestoes.png" alt="Sugestões" class="image-with-caption">
                                     <div class="caption">Sugestões</div>

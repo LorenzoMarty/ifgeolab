@@ -79,11 +79,10 @@ if (isset($_POST['editarMineral'])) {
     $nome = $_POST['nome'];
     $email = $_POST['email'];
     $senhaE = $_POST['senha'];
-    $telefone = $_POST['tel'];
     $matricula = $_POST['matricula'];
     $inst = $_POST['inst'];
     $novo_nome = $_POST['img'];
-    
+
     if (isset($_FILES['arquivo'])) {
 
         $extensao = strtolower(substr($_FILES['arquivo']['name'], -4));
@@ -96,7 +95,7 @@ if (isset($_POST['editarMineral'])) {
     }
     $hash = password_hash($senhaE, PASSWORD_DEFAULT);
     if ($hash) {
-        $sql = "UPDATE usuario SET nome='$nome', email = '$email', senha = '$hash', telefone='$telefone', img = '$novo_nome', matricula = '$matricula', instituto = '$inst' WHERE idusuario=$id";
+        $sql = "UPDATE usuario SET nome='$nome', email = '$email', senha = '$hash', img = '$novo_nome', matricula = '$matricula', instituto = '$inst' WHERE idusuario=$id";
 
         if (mysqli_query($conexao, $sql)) {
             $_SESSION['confirm'] = [

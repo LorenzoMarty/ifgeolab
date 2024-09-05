@@ -41,7 +41,13 @@ if (isset($_POST['refazer'])) {
     exit();
 }
 include "include.php";
-$breadcrumb = "";
+
+$breadcrumbs = [
+    'questionários' => '> <a href="questionario.php">Questionários</a>'
+];
+
+$breadcrumb = implode('>', $breadcrumbs);
+
 if (isset($_SESSION['permissao'])) {
     if ($_SESSION['permissao'] == 1) {
         include "topo-user.php";
@@ -54,18 +60,20 @@ if (isset($_SESSION['permissao'])) {
     include "topo.php";
 }
 ?>
-    <style>
-        .correct {
-            background-color: #c8e6c9;
-        }
+<style>
+    .correct {
+        background-color: #c8e6c9;
+    }
 
-        .incorrect {
-            background-color: #ffcdd2;
-        }
-        .color{
-            color: black;
-        }
-    </style>
+    .incorrect {
+        background-color: #ffcdd2;
+    }
+
+    .color {
+        color: black;
+    }
+</style>
+
 <body>
     <main class="container">
         <form action="" method="post">

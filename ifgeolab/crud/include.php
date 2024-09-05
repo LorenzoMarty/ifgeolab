@@ -8,7 +8,7 @@
 <script src="../js/materialize.js"></script>
 <script src="../js/dark-light.js"></script>
 <!DOCTYPE html>
-    <html lang="pt-br">
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>IF GeoLab</title>
+<html lang="pt-br">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IF GeoLab</title>

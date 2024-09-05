@@ -42,7 +42,7 @@
       <div class="row">
         <div class="input-field col s6">
           <label for="nome">Nome</label>
-          <input id="nome" name="nome" type="text" class="validate white-text">
+          <input id="nome" name="nome" type="text" class="validate">
         </div>
         <input type="hidden" name="sugestao" value="0">
         <input type="hidden" name="idusuario" value="<?= $id ?>">

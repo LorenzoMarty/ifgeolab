@@ -135,7 +135,6 @@ if (isset($_POST['cadastrarMineral'])) {
     $nome = $_POST['nome'];
     $email = $_POST['email'];
     $senha = $_POST['senha'];
-    $telefone = $_POST['tel'];
     $matricula = $_POST['matricula'];
     $inst = $_POST['inst'];
 
@@ -158,7 +157,7 @@ if (isset($_POST['cadastrarMineral'])) {
     $hash = password_hash($senha, PASSWORD_DEFAULT);
 
     if ($hash) {
-        $sql = "INSERT INTO usuario(nome, email, senha, telefone, img, matricula, instituto) VALUES ('$nome','$email', '$hash', '$telefone', '$novo_nome', '$matricula', '$inst')";
+        $sql = "INSERT INTO usuario(nome, email, senha, img, matricula, instituto) VALUES ('$nome','$email', '$hash', '$novo_nome', '$matricula', '$inst')";
 
         if (mysqli_query($conexao, $sql)) {
             $_SESSION['confirm'] = [

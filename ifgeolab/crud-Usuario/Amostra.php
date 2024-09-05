@@ -1,11 +1,5 @@
-<?php session_start(); ?>
-<!DOCTYPE html>
-<html lang="pt-br">
-
-<head>
-    <?php include "../crud/include.php"; ?>
-    <title>IF GeoLab</title>
-</head>
+<?php session_start();
+include "../crud/include.php"; ?>
 
 <body>
     <?php
@@ -22,39 +16,37 @@
         }
     }
     ?>
+    <link rel="stylesheet" href="../css/index.css">
     <main>
         <div class="container center">
-            <h1>Cadastre Amostras</h1>
-            
-            <span>Cadastre sugestões de Rochas e Minerais</span>
-            <br><br>
-            <div class="row">
-                <div class="col s6">
-                    <a href="cadRochaU.php" class="white-text">
-                        <div class="card green">
-                            <div class="card hoverable">
-                                <div class="card-image">
-                                    <img src="../img/amosRochas.png">
-                                </div>
-                            </div>
-                        </div>
-                    </a>
+            <div class="vertical-line"></div>
+
+            <div class="section-content">
+                <div class="section">
+                    <h4 class="left-align">Amostras</h4>
+                    <h6 class="left-align">Cadastre sugestões de Rochas e Minerais</h6>
+                    <hr class="divider">
                 </div>
-                <div class="col s6">
-                    <a href="cadMineralU.php" class="white-text">
-                        <div class="card green">
-                            <div class="card hoverable">
-                                <div class="card-image">
-                                    <img src="../img/amosMinerais.png">
-                                </div>
-                            </div>
+                <div class="row">
+                    <div class="col center-align">
+                        <div class="image-container">
+                            <a href="cadRochaU.php">
+                                <img src="../img/rochas.png" alt="Rochas" class="image-with-caption grayscale">
+                                <div class="caption">Rochas</div>
+                            </a>
                         </div>
-                    </a>
+                    </div>
+                    <div class="col center-align">
+                        <div class="image-container">
+                            <a href="cadMineralU.php">
+                                <img src="../img/mineral.png" alt="Mineral" class="image-with-caption grayscale">
+                                <div class="caption">Minerais</div>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
     </main>
-    <br><br><br><br>
     <?php
     include "footer.php";
     ?>

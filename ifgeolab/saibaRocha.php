@@ -1,65 +1,66 @@
 <?php session_start();
 include "include.php"; ?>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <style>
-        .minha-imagem {
-            height: 400px;
-            width: 400px;
-            object-fit: cover;
-            align-items: center;
-        }
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<style>
+    .minha-imagem {
+        height: 400px;
+        width: 400px;
+        object-fit: cover;
+        align-items: center;
+    }
 
-        .meu-span {
-            background-color: rgba(0, 0, 0, 0.6);
-            width: 100%;
-        }
+    .meu-span {
+        background-color: rgba(0, 0, 0, 0.6);
+        width: 100%;
+    }
 
-        .icon {
-            height: 32px;
-            width: 32px;
-            align-items: center;
-            position: absolute;
-        }
+    .icon {
+        height: 32px;
+        width: 32px;
+        align-items: center;
+        position: absolute;
+    }
 
-        .swiper {
-            width: 250px;
-            height: auto;
-        }
+    .swiper {
+        width: 250px;
+        height: auto;
+    }
 
-        .swiper-slide {
-            text-align: center;
-            font-size: 18px;
-            background: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+    .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
-        .mySwiper {
-            height: 20%;
-            box-sizing: border-box;
-            padding: 10px 0;
-            margin-right: 5px;
-        }
+    .mySwiper {
+        height: 20%;
+        box-sizing: border-box;
+        padding: 10px 0;
+        margin-right: 5px;
+    }
 
-        .swiper-slide {
-            width: 100%;
-            height: auto;
-            padding: 5px 0;
-            margin-right: 0;
-        }
+    .swiper-slide {
+        width: 100%;
+        height: auto;
+        padding: 5px 0;
+        margin-right: 0;
+    }
 
-        .swiper-slide img {
-            display: block;
-            width: 50%;
-            height: 100%;
-            object-fit: cover;
-        }
+    .swiper-slide img {
+        display: block;
+        width: 50%;
+        height: 100%;
+        object-fit: cover;
+    }
 
-        .swiper-wrapper {
-            margin-right: 5px;
-        }
-    </style>
+    .swiper-wrapper {
+        margin-right: 5px;
+    }
+</style>
+<link rel="stylesheet" href="css/3d.css">
 
 <body>
     <?php
@@ -73,7 +74,7 @@ include "include.php"; ?>
 
     if (mysqli_num_rows($resultado) > 0) {
         $dados = mysqli_fetch_assoc($resultado);
-        $img = $dados['img'];
+        $imgR = $dados['img'];
         $catJ = $dados['idcat'];
         $idrock = $dados['idrocha'];
         $obj = $dados['3d'];
@@ -122,34 +123,58 @@ include "include.php"; ?>
     ?>
     <main>
         <br><br>
-
-        <div class="container">
-            <div class="row center">
-                <div class="wrapp">
-                    <div class="card">
-                        <div class="card__item">
-                            <model-viewer class="card__model" style="background-color: rgb(255,255,255);" shadow-intensity="1" src="obj/<?= $obj; ?>" camera-orbit="45deg 55deg" autoplay auto-rotate ar camera-controls touch-action="pan-y"></model-viewer>
-                            <span class="card__txt">
-                                <?= $nome; ?>
-                            </span>
+        <?php if ($obj != "") { ?>
+            <div class="container">
+                <div class="row center">
+                    <div class="wrapp">
+                        <div class="card">
+                            <div class="card__item">
+                                <model-viewer class="card__model" style="background-color: rgb(255,255,255);" shadow-intensity="1" src="obj/<?= $obj; ?>" camera-orbit="45deg 55deg" autoplay auto-rotate ar camera-controls touch-action="pan-y"></model-viewer>
+                                <span class="card__txt">
+                                    <?= $nome; ?>
+                                </span>
+                            </div>
                         </div>
+                        <a class="gerarpdf waves-effect waves-light accent-4" href="relatorioMineral.php?idmineral=<?= $idrocha; ?>">
+                            <img class="pdf" src="img/pdf-icon.png"> Gerar PDF</a>
                     </div>
-                    <a class="gerarpdf waves-effect waves-light accent-4" href="relatorioMineral.php?idmineral=<?= $idrocha; ?>">
+                    <h5><b>Categoria:</b>
+                        <?= $cat; ?>
+                    </h5>
+                    <?php while ($img = mysqli_fetch_assoc($galeria)) {
+                        if ($img != "") { ?>
+                            <div thumbsSlider="" class="mySwiper">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide"><img src="img/rochas/<?= $img['imgR']; ?>"></div>
+                            <?php }
+                    } ?>
+                                </div>
+                            </div>
+                </div>
+            </div>
+        <?php } else { ?>
+            <div class="container">
+                <div class="row center">
+                    <div class="wrapp">
+                        <img src="img/rochas/<?= $imgR ?>" widht="auto" height="300px">
+                    </div>
+                    <a class="gerarpdf waves-effect waves-light accent-4" href="relatorioRocha.php?idrocha=<?= $idrocha; ?>">
                         <img class="pdf" src="img/pdf-icon.png"> Gerar PDF</a>
                 </div>
                 <h5><b>Categoria:</b>
                     <?= $cat; ?>
                 </h5>
-                <div thumbsSlider="" class="mySwiper">
-                    <div class="swiper-wrapper">
-                        <?php while ($img = mysqli_fetch_assoc($galeria)) { ?>
-                            <div class="swiper-slide"><img src="img/rochas/<?= $img['imgR']; ?>"></div>
-                        <?php } ?>
-                    </div>
-                </div>
+                <?php while ($img = mysqli_fetch_assoc($galeria)) {
+                    if ($img != "") { ?>
+                        <div thumbsSlider="" class="mySwiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide"><img src="img/rochas/<?= $img['imgR']; ?>"></div>
+                        <?php }
+                } ?>
+                            </div>
+                        </div>
             </div>
-        </div>
-
+        <?php } ?>
         <hr>
         <div class="container">
             <div class="col s12 m6 l4">
@@ -160,7 +185,6 @@ include "include.php"; ?>
             <hr>
         </div>
     </main>
-    <br><br><br>
     <?php
     include "footer.php";
     ?>

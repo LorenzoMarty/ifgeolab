@@ -23,7 +23,7 @@ include "include.php"; ?>
         <form enctype="multipart/form-data" method="post" action="cadastrar.php" class="col s12 m6">
             <div class="row">
                 <div class="input-field col s6">
-                    <input id="nome" name="nome" type="text" class="validate white-text">
+                    <input id="nome" name="nome" type="text" class="validate">
                     <label for="nome">Nome</label>
                 </div>
             </div>

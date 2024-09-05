@@ -18,34 +18,37 @@ include "include.php"; ?>
         header('Location: ../index.php');
     }
     ?>
+    <link rel="stylesheet" href="../css/index.css">
     <main>
         <div class="container center">
-            <h1>Sugestões</h1>
 
-            <span>Sugestões de amostras cadastradas por usuários</span>
-            <br><br>
-            <div class="row">
-                <div class="col s6">
-                    <a href="listarRochaS.php" class="white-text">
-                        <div class="card green">
-                            <div class="card-image">
-                                <img src="../img/rochas.png">
-                            </div>
-                        </div>
-                    </a>
+            <div class="vertical-line"></div>
+
+            <div class="section-content">
+                <div class="section">
+                    <h4 class="left-align">Sugestões</h4>
+                    <h6 class="left-align">Sugestões de amostras cadastradas por usuários</h6>
+                    <hr class="divider">
                 </div>
-                <a href="listarMineralS.php" class="white-text">
-                    <div class="col s6">
-                        <div class="card green">
-                            <div class="card-image">
-                                <img src="../img/minerais.png">
-                            </div>
+                <div class="row">
+                    <div class="col center-align">
+                        <div class="image-container">
+                            <a href="listarRochaS.php">
+                                <img src="../img/rochas.png" alt="Rochas" class="image-with-caption grayscale">
+                                <div class="caption">Rochas</div>
+                            </a>
                         </div>
                     </div>
+                    <div class="col center-align">
+                        <div class="image-container">
+                            <a href="listarMineralS.php">
+                                <img src="../img/mineral.png" alt="Minerais" class="image-with-caption grayscale">
+                                <div class="caption">Minerais</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            </a>
-
-
         </div>
     </main>
     <br><br><br><br>

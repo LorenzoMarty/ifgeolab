@@ -99,7 +99,6 @@ include "include.php"; ?>
                 <div class="col s6">
                     <h5><b>Nome: </b><?php echo $dados['nome']; ?></h5><br>
                     <h5><b>Email: </b><?php echo $dados['email']; ?></h5><br>
-                    <h5><b>Telefone: </b><?php echo $dados['telefone']; ?></h5><br>
                     <h5><b>Matrícula: </b><?php echo $dados['matricula']; ?></h5><br>
                     <h5><b>Instituição: </b><?php echo $dados['instituto']; ?></h5><br>
                     <?php if($amostra['nomes_minerais'] == ""){}else{ 

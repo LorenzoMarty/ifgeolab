@@ -26,8 +26,6 @@ include "include.php"; ?>
             include "topo-user.php";
         } elseif ($_SESSION['permissao'] == 2) {
             include "topo-adm.php";
-        } elseif ($_SESSION['permissao'] != "1" and "2") {
-            include "topo.php";
         }
     } else {
         include "topo.php";

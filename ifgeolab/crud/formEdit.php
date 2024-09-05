@@ -67,27 +67,23 @@ include "include.php"; ?>
   <input type="hidden" name="idusuario" value="<?= $_SESSION['id'] ?>">
         <div class="input-field col s12">
           <label for="Nome"> Nome </label><br>
-          <input class="white-text" type="text" name="nome" required value="<?php echo $dados['nome']; ?>" />
+          <input type="text" name="nome" required value="<?php echo $dados['nome']; ?>" />
         </div>
         <div class="input-field col s12">
           <label for="Email"> Email </label><br>
-          <input class="white-text" type="text" name="email" required value="<?php echo $dados['email']; ?>" />
+          <input type="text" name="email" required value="<?php echo $dados['email']; ?>" />
         </div>
         <div class="input-field col s12">
           <label for="Senha"> Senha </label><br>
-          <input class="white-text" type="password" name="senha" required value="<?php echo $_SESSION['senha']; ?>" />
-        </div>
-        <div class="input-field col s12">
-          <label for="Telefone"> Telefone </label><br>
-          <input class="white-text" type="text" name="tel" required value="<?php echo $dados['telefone']; ?>" />
+          <input type="password" name="senha" required value="<?php echo $_SESSION['senha']; ?>" />
         </div>
         <div class="input-field col s12">
           <label for="Matrícula"> Matrícula: </label><br>
-          <input class="white-text" type="text" name="matricula" required value="<?php echo $dados['matricula']; ?>" />
+          <input type="text" name="matricula" required value="<?php echo $dados['matricula']; ?>" />
         </div>
         <div class="input-field col s12">
           <label for="Instituição"> Instituição: </label><br>
-          <input class="white-text" type="text" name="inst" required value="<?php echo $dados['instituto']; ?>" />
+          <input  type="text" name="inst" required value="<?php echo $dados['instituto']; ?>" />
         </div>
 
         <div class="input-field col s12">

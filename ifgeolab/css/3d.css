@@ -16,7 +16,7 @@
 	justify-content: center;
 }
 
-.pdf {
+/* .pdf {
 	float: left;
 }
 
@@ -47,7 +47,7 @@
 
 .gerarpdf:hover {
 	background-color: #178b3e;
-}
+} */
 
 .card__item {
 	box-sizing: border-box;

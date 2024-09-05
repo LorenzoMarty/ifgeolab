@@ -50,13 +50,13 @@ include "include.php";
                 <div class="form-group">
                     <div class="input-field">
                         <label for="email">Email</label> <i class="fas fa-envelope"></i>
-                        <input type="text" name="email" id="email" />
+                        <input type="text" name="email" id="email" required />
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="input-field">
                         <label for="senha">Senha</label> <i class="fas fa-lock"></i>
-                        <input type="password" name="senha" id="senha" />
+                        <input type="password" name="senha" id="senha" required />
                     </div>
                 </div>
                 <div class="form-group">
@@ -69,6 +69,10 @@ include "include.php";
         </div>
         <div class="image-section"></div>
     </div>
+
+</body>
+
+
     <script src="js/sweetalert.js"></script>
     <script>
         <?php if ($msg != "") { ?>
@@ -94,6 +98,5 @@ include "include.php";
             });
         });
     </script>
-</body>
 
 </html>
