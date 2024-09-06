@@ -1,7 +1,33 @@
 <?php session_start();
 include "include.php";
-include "quilljs.php" ?>
+include "quilljs.php";
 
+$breadcrumbs = [
+    'Amostra' => '> <a href="amostra.php">Amostras</a>',
+    'Rochas' => '<a href="listarRocha.php">Rochas</a>'
+];
+$breadcrumb = implode('>', $breadcrumbs);
+
+navbar($breadcrumb);
+
+require_once '../conecta.php';
+$conexao = conectar();
+
+if (isset($_GET['idrocha'])) {
+    $id = $_GET['idrocha'];
+    $sql = "SELECT * FROM rocha WHERE idrocha=$id";
+    $resultado = mysqli_query($conexao, $sql);
+    $dados = mysqli_fetch_assoc($resultado);
+    $descricao = $dados['descricao'];
+    $nome = $dados['nome'];
+    $idCat = $dados['idcat'];
+    if ($dados['sugestao'] == "0") {
+        $suges = $dados['sugestao'];
+    } else {
+        $suges = $_GET['sugestao'];
+    }
+}
+?>
 <style>
     .minha-imagem {
         height: 220px;
@@ -12,41 +38,6 @@ include "quilljs.php" ?>
 
 
 <body>
-    <?php
-    $breadcrumbs = [
-        'Amostra' => '> <a href="amostra.php">Amostras</a>',
-        'Rochas' => '<a href="listarRocha.php">Rochas</a>'
-    ];
-    $breadcrumb = implode('>', $breadcrumbs);
-
-    require_once '../conecta.php';
-    $conexao = conectar();
-
-    if (isset($_SESSION['permissao'])) {
-        if ($_SESSION['permissao'] == 1) {
-            header('Location: ../index.php');
-        } elseif ($_SESSION['permissao'] == 2) {
-            include "topo-adm.php";
-        }
-    } else {
-        header('Location: ../index.php');
-    }
-
-    if (isset($_GET['idrocha'])) {
-        $id = $_GET['idrocha'];
-        $sql = "SELECT * FROM rocha WHERE idrocha=$id";
-        $resultado = mysqli_query($conexao, $sql);
-        $dados = mysqli_fetch_assoc($resultado);
-        $descricao = $dados['descricao'];
-        $nome = $dados['nome'];
-        $idCat = $dados['idcat'];
-        if ($dados['sugestao'] == "0") {
-            $suges = $dados['sugestao'];
-        } else {
-            $suges = $_GET['sugestao'];
-        }
-    }
-    ?>
     <div class="container">
         <h4>Editar Rocha</h4>
         <hr>
@@ -67,7 +58,7 @@ include "quilljs.php" ?>
                         $y = "SELECT * FROM catrocha";
                         $res = mysqli_query($conexao, $y);
                         while ($dad = mysqli_fetch_assoc($res)) {
-                            ?>
+                        ?>
                             <option value="<?= $dad['idcat']; ?>">
                                 <?= $dad['nome']; ?>
                             </option>
@@ -104,7 +95,7 @@ include "quilljs.php" ?>
     include 'footer.php';
     ?>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             var elems = document.querySelectorAll('.select-dropdown');
             var instances = M.FormSelect.init(elems);
         });

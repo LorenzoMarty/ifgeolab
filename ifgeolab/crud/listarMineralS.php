@@ -4,7 +4,16 @@ if (isset($_SESSION['excluir'])) {
     $msg = $_SESSION['excluir'];
     unset($_SESSION['excluir']);
 }
-include "include.php"; ?>
+include "include.php";
+
+$breadcrumbs = [
+    'Sugestão' => '> <a href="sugestao.php">Sugestões</a>',
+    'Minerais' => '<a href="listarMineralS.php">Minerais</a>'
+];
+$breadcrumb = implode('>', $breadcrumbs);
+
+navbar($breadcrumb);
+?>
 
 <style>
     .minha-imagem {
@@ -20,23 +29,6 @@ include "include.php"; ?>
 </style>
 
 <body>
-    <?php
-    $breadcrumbs = [
-        'Sugestão' => '> <a href="sugestao.php">Sugestões</a>',
-        'Minerais' => '<a href="listarMineralS.php">Minerais</a>'
-    ];
-    $breadcrumb = implode('>', $breadcrumbs);
-
-    if (isset($_SESSION['permissao'])) {
-        if ($_SESSION['permissao'] == 1) {
-            header('Location: ../index.php');
-        } elseif ($_SESSION['permissao'] == 2) {
-            include "topo-adm.php";
-        }
-    } else {
-        header('Location: ../index.php');
-    }
-    ?>
     <main>
 
         </div>
@@ -110,7 +102,7 @@ include "include.php"; ?>
     </script>
     <script>
         document.querySelectorAll('[id^="btnExcluir-"]').forEach(button => {
-            button.addEventListener('click', function () {
+            button.addEventListener('click', function() {
                 const idmineral = this.getAttribute('data-idmineral');
                 Swal.fire({
                     title: "Tem certeza que deseja excluir o mineral?",

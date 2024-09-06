@@ -21,15 +21,7 @@ include "include.php"; ?>
     ];
     
     $breadcrumb = implode('>', $breadcrumbs);
-    if (isset($_SESSION['permissao'])) {
-        if ($_SESSION['permissao'] == 1) {
-            include "topo-user.php";
-        } elseif ($_SESSION['permissao'] == 2) {
-            include "topo-adm.php";
-        }
-    } else {
-        include "topo.php";
-    }
+    navbar($breadcrumb);
     ?>
     <main>
 

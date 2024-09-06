@@ -1,6 +1,31 @@
 <?php session_start();
 include "quilljs.php";
-include "include.php"; ?>
+include "include.php";
+$breadcrumbs = [
+    'Amostra' => '> <a href="amostra.php">Amostras</a>',
+    'Mineral' => '<a href="listarMineral.php">Minerais</a>'
+];
+$breadcrumb = implode('>', $breadcrumbs);
+
+require_once '../conecta.php';
+$conexao = conectar();
+
+navbar($breadcrumb);
+
+if (isset($_GET['idmineral'])) {
+    $id = $_GET['idmineral'];
+    $sql = "SELECT * FROM mineral WHERE idmineral=$id";
+    $resultado = mysqli_query($conexao, $sql);
+    $dados = mysqli_fetch_assoc($resultado);
+    $descricao = $dados['descricao'];
+    $nome = $dados['nome'];
+    $img = $dados['img'];
+    if ($dados['sugestao'] == "0") {
+        $suges = $dados['sugestao'];
+    } else {
+        $suges = $_GET['sugestao'];
+    }
+} ?>
 
 <style>
     .minha-imagem {
@@ -12,41 +37,6 @@ include "include.php"; ?>
 
 
 <body>
-    <?php
-    $breadcrumbs = [
-        'Amostra' => '> <a href="amostra.php">Amostras</a>',
-        'Mineral' => '<a href="listarMineral.php">Minerais</a>'
-    ];
-    $breadcrumb = implode('>', $breadcrumbs);
-
-    require_once '../conecta.php';
-    $conexao = conectar();
-
-    if (isset($_SESSION['permissao'])) {
-        if ($_SESSION['permissao'] == 1) {
-            header('Location: ../index.php');
-        } elseif ($_SESSION['permissao'] == 2) {
-            include "topo-adm.php";
-        }
-    } else {
-        header('Location: ../index.php');
-    }
-
-    if (isset($_GET['idmineral'])) {
-        $id = $_GET['idmineral'];
-        $sql = "SELECT * FROM mineral WHERE idmineral=$id";
-        $resultado = mysqli_query($conexao, $sql);
-        $dados = mysqli_fetch_assoc($resultado);
-        $descricao = $dados['descricao'];
-        $nome = $dados['nome'];
-        $img = $dados['img'];
-        if ($dados['sugestao'] == "0") {
-            $suges = $dados['sugestao'];
-        } else {
-            $suges = $_GET['sugestao'];
-        }
-    }
-    ?>
     <div class="container">
         <h4>Editar Mineral</h4>
         <form enctype="multipart/form-data" method="post" action="editar.php" class="col  s12 m6">
@@ -66,7 +56,7 @@ include "include.php"; ?>
                         $y = "SELECT * FROM catmineral";
                         $res = mysqli_query($conexao, $y);
                         while ($dad = mysqli_fetch_assoc($res)) {
-                            ?>
+                        ?>
                             <option value="<?= $dad['idcat']; ?>">
                                 <?= $dad['nome']; ?>
                             </option>
@@ -106,7 +96,7 @@ include "include.php"; ?>
     include 'footer.php';
     ?>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             var elems = document.querySelectorAll('.select-dropdown');
             var instances = M.FormSelect.init(elems);
         });

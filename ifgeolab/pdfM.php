@@ -67,7 +67,7 @@
         </style>
     </head>
     <?php
-    require_once ('conecta.php');
+    require_once('conecta.php');
     $conexao = conectar();
     $idmineral = $_GET['idmineral'];
 

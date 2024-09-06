@@ -1,3 +1,21 @@
+<?php
+function navbar($breadcrumb)
+{
+    if (isset($_SESSION['permissao'])) {
+        if ($_SESSION['permissao'] == 1) {
+            include "topo-user.php";
+        } elseif ($_SESSION['permissao'] == 2) {
+            include "topo-adm.php";
+        }
+    } else {
+        header('Location: login.php');
+    }
+}
+?>
+<!DOCTYPE html>
+<html lang="pt-br">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -7,8 +25,4 @@
 <link rel="stylesheet" href="css/navbar.css">
 <script src="js/materialize.js"></script>
 <script src="js/dark-light.js"></script>
-<!DOCTYPE html>
-    <html lang="pt-br">
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>IF GeoLab</title>
+<title>IF GeoLab</title>

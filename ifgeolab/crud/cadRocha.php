@@ -12,16 +12,8 @@ include "quilljs.php"; ?>
     'Rochas' => '<a href="listarRocha.php">Rochas</a>'
   ];
   $breadcrumb = implode('>', $breadcrumbs);
-
-  if (isset($_SESSION['permissao'])) {
-    if ($_SESSION['permissao'] == 1) {
-      header('Location: ../index.php');
-    } elseif ($_SESSION['permissao'] == 2) {
-      include "topo-adm.php";
-    }
-  } else {
-    header('Location: ../index.php');
-  }
+  navbar($breadcrumb);
+  
   ?>
   <div class="container">
     <h4>Cadastrar Rocha</h4>

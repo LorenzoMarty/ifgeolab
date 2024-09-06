@@ -4,7 +4,15 @@ if (isset($_SESSION['excluir'])) {
     $msg = $_SESSION['excluir'];
     unset($_SESSION['excluir']);
 }
-include "include.php"; ?>
+include "include.php";
+$breadcrumbs = [
+    'Amostra' => '> <a href="amostra.php">Amostras</a>',
+    'Rochas' => '<a href="listarRocha.php">Rochas</a>'
+];
+$breadcrumb = implode('>', $breadcrumbs);
+
+navbar($breadcrumb);
+?>
 <style>
     .minha-imagem {
         height: 220px;
@@ -24,24 +32,6 @@ include "include.php"; ?>
 
 
 <body>
-    <?php
-    $breadcrumbs = [
-        'Amostra' => '> <a href="amostra.php">Amostras</a>',
-        'Rochas' => '<a href="listarRocha.php">Rochas</a>'
-    ];
-    $breadcrumb = implode('>', $breadcrumbs);
-
-    if (isset($_SESSION['permissao'])) {
-        if ($_SESSION['permissao'] == 1) {
-            header('Location: ../index.php');
-        } elseif ($_SESSION['permissao'] == 2) {
-            include "topo-adm.php";
-        }
-    } else {
-        header('Location: ../index.php');
-    }
-    ?>
-
     <main>
         <div class="container center">
             <div class="row col s12">
@@ -66,7 +56,7 @@ include "include.php"; ?>
                     $cat = $dados['idcat'];
                     $descricao = $dados['descricao'];
                     $img = $dados['img'];
-                    ?>
+                ?>
                     <div class="col s12 l4 m8">
                         <div class="card hoverable">
                             <div class="card-image">
@@ -116,7 +106,7 @@ include "include.php"; ?>
     </script>
     <script>
         document.querySelectorAll('[id^="btnExcluir-"]').forEach(button => {
-            button.addEventListener('click', function () {
+            button.addEventListener('click', function() {
                 const idrocha = this.getAttribute('data-idrocha');
                 Swal.fire({
                     title: "Tem certeza que deseja excluir a conta?",

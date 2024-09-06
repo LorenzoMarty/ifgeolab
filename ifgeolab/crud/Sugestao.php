@@ -1,23 +1,15 @@
 <?php session_start();
-include "include.php"; ?>
+include "include.php";
+
+$breadcrumbs = [
+    'Sugestao' => '> <a href="sugestao.php">Sugestões</a>'
+];
+$breadcrumb = implode('>', $breadcrumbs);
+
+navbar($breadcrumb);
+?>
 
 <body>
-    <?php
-    $breadcrumbs = [
-        'Sugestao' => '> <a href="sugestao.php">Sugestões</a>'
-    ];
-    $breadcrumb = implode('>', $breadcrumbs);
-
-    if (isset($_SESSION['permissao'])) {
-        if ($_SESSION['permissao'] == 1) {
-            header('Location: ../index.php');
-        } elseif ($_SESSION['permissao'] == 2) {
-            include "topo-adm.php";
-        }
-    } else {
-        header('Location: ../index.php');
-    }
-    ?>
     <link rel="stylesheet" href="../css/index.css">
     <main>
         <div class="container center">

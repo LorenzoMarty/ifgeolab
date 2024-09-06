@@ -99,7 +99,6 @@ include "include.php"; ?>
     $breadcrumbs = [
         'Rochas' => '> <a href="rocha.php">Rochas</a>',
     ];
-
     if ($idcat == "1") {
         $breadcrumbs['Ígneas'] = '<a href="igneas.php">Ígneas</a>';
     } elseif ($idcat == "2") {
@@ -107,19 +106,8 @@ include "include.php"; ?>
     } elseif ($idcat == "3") {
         $breadcrumbs['Sedimentares'] = '<a href="sed.php">Sedimentares</a>';
     }
-
     $breadcrumb = implode(' > ', $breadcrumbs);
-    if (isset($_SESSION['permissao'])) {
-        if ($_SESSION['permissao'] == 1) {
-            include "topo-user.php";
-        } elseif ($_SESSION['permissao'] == 2) {
-            include "topo-adm.php";
-        } elseif ($_SESSION['permissao'] != "1" and "2") {
-            include "topo.php";
-        }
-    } else {
-        include "topo.php";
-    }
+    navbar($breadcrumb);
     ?>
     <main>
         <br><br>
@@ -138,7 +126,7 @@ include "include.php"; ?>
                         <a class="gerarpdf waves-effect waves-light accent-4" href="relatorioMineral.php?idmineral=<?= $idrocha; ?>">
                             <img class="pdf" src="img/pdf-icon.png"> Gerar PDF</a>
                     </div>
-                    <h5><b>Categoria:</b>
+                    <h5 class="center"><b>Categoria:</b>
                         <?= $cat; ?>
                     </h5>
                     <?php while ($img = mysqli_fetch_assoc($galeria)) {
@@ -147,9 +135,9 @@ include "include.php"; ?>
                                 <div class="swiper-wrapper">
                                     <div class="swiper-slide"><img src="img/rochas/<?= $img['imgR']; ?>"></div>
                             <?php }
-                    } ?>
-                                </div>
-                            </div>
+                            } ?>
+                        </div>
+                    </div>
                 </div>
             </div>
         <?php } else { ?>
@@ -161,13 +149,13 @@ include "include.php"; ?>
                     <a class="gerarpdf waves-effect waves-light accent-4" href="relatorioRocha.php?idrocha=<?= $idrocha; ?>">
                         <img class="pdf" src="img/pdf-icon.png"> Gerar PDF</a>
                 </div>
-                <h5><b>Categoria:</b>
+                <h5 class="center"><b>Categoria:</b>
                     <?= $cat; ?>
                 </h5>
-                <?php while ($img = mysqli_fetch_assoc($galeria)) {
-                    if ($img != "") { ?>
                         <div thumbsSlider="" class="mySwiper">
                             <div class="swiper-wrapper">
+                <?php while ($img = mysqli_fetch_assoc($galeria)) {
+                    if ($img != "") { ?>
                                 <div class="swiper-slide"><img src="img/rochas/<?= $img['imgR']; ?>"></div>
                         <?php }
                 } ?>

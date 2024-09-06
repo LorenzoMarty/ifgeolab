@@ -1,58 +1,22 @@
-<?php session_start(); 
-include "include.php"; ?>
-    <style>
-        .minha-imagem {
-            height: 300px;
-            width: 300px;
-            object-fit: cover;
-        }
+<?php session_start();
+include "include.php";
 
-        .meu-span {
-            background-color: rgba(0, 0, 0, 0.6);
-            width: 100%;
-        }
+$breadcrumb = "";
+navbar($breadcrumb);
 
-        .icon {
-            height: 32px;
-            width: 32px;
-            align-items: center;
-            position: absolute;
-        }
+require_once('../conecta.php');
+$conexao = conectar();
+$idusuario = $_SESSION['id'];
 
-        .btn2 {
-            border-radius: 50px;
-        }
-    </style>
+$sql = "SELECT * FROM usuario WHERE idusuario =" . $idusuario;
+$resultado = mysqli_query($conexao, $sql);
 
-<body>
-    <main>
-        <?php
-    $breadcrumb = "";
-        if (isset($_SESSION['permissao'])) {
-            if ($_SESSION['permissao'] == 1) {
-                include "topo-user.php";
-            } elseif ($_SESSION['permissao'] == 2) {
-                include "topo-adm.php";
-            }
-        } else {
-            header('Location: ../index.php');
-        }
-        ?>
-        <?php
-
-        require_once ('../conecta.php');
-        $conexao = conectar();
-        $idusuario = $_SESSION['id'];
-
-        $sql = "SELECT * FROM usuario WHERE idusuario =" . $idusuario;
-        $resultado = mysqli_query($conexao, $sql);
-
-        if (mysqli_num_rows($resultado) > 0) {
-            $dados = mysqli_fetch_assoc($resultado);
-            $img = $dados['img'];
-            $user = $dados['idusuario'];
-        }
-        $sqlAmostra = "SELECT 
+if (mysqli_num_rows($resultado) > 0) {
+    $dados = mysqli_fetch_assoc($resultado);
+    $img = $dados['img'];
+    $user = $dados['idusuario'];
+}
+$sqlAmostra = "SELECT 
         usuario.nome, 
         GROUP_CONCAT(DISTINCT mineral.nome ORDER BY mineral.nome SEPARATOR ', ') AS nomes_minerais,
         GROUP_CONCAT(DISTINCT rocha.nome ORDER BY rocha.nome SEPARATOR ', ') AS nomes_rochas
@@ -67,14 +31,41 @@ include "include.php"; ?>
     GROUP BY 
         usuario.nome;
     ";
-    $result = mysqli_query($conexao, $sqlAmostra);
-    if (mysqli_num_rows($result) > 0) {
-        $amostra = mysqli_fetch_assoc($result);
-        $mineraisCad = $amostra['nomes_minerais'];
-        $rochasCad = $amostra['nomes_rochas'];
+
+$result = mysqli_query($conexao, $sqlAmostra);
+if (mysqli_num_rows($result) > 0) {
+    $amostra = mysqli_fetch_assoc($result);
+    $mineraisCad = $amostra['nomes_minerais'];
+    $rochasCad = $amostra['nomes_rochas'];
+}
+
+?>
+<style>
+    .minha-imagem {
+        height: 300px;
+        width: 300px;
+        object-fit: cover;
     }
 
-            ?>
+    .meu-span {
+        background-color: rgba(0, 0, 0, 0.6);
+        width: 100%;
+    }
+
+    .icon {
+        height: 32px;
+        width: 32px;
+        align-items: center;
+        position: absolute;
+    }
+
+    .btn2 {
+        border-radius: 50px;
+    }
+</style>
+
+<body>
+    <main>
         <div class="container">
             <div class="row">
                 <div class="col s6">
@@ -101,10 +92,14 @@ include "include.php"; ?>
                     <h5><b>Email: </b><?php echo $dados['email']; ?></h5><br>
                     <h5><b>Matrícula: </b><?php echo $dados['matricula']; ?></h5><br>
                     <h5><b>Instituição: </b><?php echo $dados['instituto']; ?></h5><br>
-                    <?php if($amostra['nomes_minerais'] == ""){}else{ 
-                        echo "<h5><b>Minerais Cadastrados: </b>".$mineraisCad."</h5><br>"; }
-                    if($amostra['nomes_rochas'] == ""){}else{
-                        echo "<h5><b>Rochas Cadastrados: </b>".$rochasCad."</h5><br>"; }?>
+                    <?php if ($amostra['nomes_minerais'] == "") {
+                    } else {
+                        echo "<h5><b>Minerais Cadastrados: </b>" . $mineraisCad . "</h5><br>";
+                    }
+                    if ($amostra['nomes_rochas'] == "") {
+                    } else {
+                        echo "<h5><b>Rochas Cadastrados: </b>" . $rochasCad . "</h5><br>";
+                    } ?>
                 </div>
             </div>
             <div class="row">
@@ -118,7 +113,7 @@ include "include.php"; ?>
     <script src="../js/sweetalert.js"></script>
     <script>
         const btnSair = document.querySelector('#btnSair');
-        btnSair.addEventListener('click', function () {
+        btnSair.addEventListener('click', function() {
             Swal.fire({
                 title: "Tem certeza que deseja sair?",
                 icon: "question",
@@ -134,7 +129,7 @@ include "include.php"; ?>
         });
 
         const btnExcluir = document.querySelector('#btnExcluir');
-        btnExcluir.addEventListener('click', function () {
+        btnExcluir.addEventListener('click', function() {
             Swal.fire({
                 title: "Tem certeza que deseja excluir a conta?",
                 icon: "warning",

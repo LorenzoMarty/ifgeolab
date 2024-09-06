@@ -8,16 +8,7 @@ include "include.php"; ?>
         'Amostra' => '> <a href="amostra.php">Amostras</a>'
     ];
     $breadcrumb = implode('>', $breadcrumbs);
-
-    if (isset($_SESSION['permissao'])) {
-        if ($_SESSION['permissao'] == 1) {
-            header('Location: ../index.php');
-        } elseif ($_SESSION['permissao'] == 2) {
-            include "topo-adm.php";
-        }
-    } else {
-        header('Location: ../index.php');
-    }
+    navbar($breadcrumb);
     ?>
     <link rel="stylesheet" href="../css/index.css">
     <main>

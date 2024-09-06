@@ -1,5 +1,10 @@
 <?php session_start();
-include "include.php"; ?>
+include "include.php";
+
+$breadcrumb = "";
+navbar($breadcrumb);
+
+?>
 <style>
     .minha-imagem {
         height: 220px;
@@ -15,18 +20,6 @@ include "include.php"; ?>
 
 
 <body>
-    <?php
-
-    if (isset($_SESSION['permissao'])) {
-        if ($_SESSION['permissao'] == 1) {
-            header('Location: ../index.php');
-        } elseif ($_SESSION['permissao'] == 2) {
-            include "topo-adm.php";
-        }
-    } else {
-        header('Location: ../index.php');
-    }
-    ?>
     <main>
 
         </div>
@@ -54,7 +47,7 @@ include "include.php"; ?>
                     $idusuario = $dados["idusuario"];
                     $nome = $dados['nome'];
                     $img = $dados['img'];
-                    ?>
+                ?>
                     <div class="col s12 l4 m8">
                         <div class="card hoverable">
                             <div class="card-image">
@@ -86,7 +79,7 @@ include "include.php"; ?>
     <script src="../js/sweetalert.js"></script>
     <script>
         document.querySelectorAll('[id^="btnExcluir-"]').forEach(button => {
-            button.addEventListener('click', function () {
+            button.addEventListener('click', function() {
                 const idusuario = this.getAttribute('data-idusuario');
                 Swal.fire({
                     title: "Tem certeza que deseja excluir a conta?",

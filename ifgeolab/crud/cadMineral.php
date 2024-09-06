@@ -22,16 +22,8 @@
   $breadcrumb = implode('>', $breadcrumbs);
 
   $id = $_SESSION['id'];
-
-  if (isset($_SESSION['permissao'])) {
-    if ($_SESSION['permissao'] == 1) {
-      header('Location: ../index.php');
-    } elseif ($_SESSION['permissao'] == 2) {
-      include "topo-adm.php";
-    }
-  } else {
-    header('Location: ../index.php');
-  }
+  navbar($breadcrumb);
+  
   ?>
   <div class="container">
 

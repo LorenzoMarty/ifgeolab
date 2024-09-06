@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 
 include "include.php";
@@ -8,17 +8,7 @@ $breadcrumbs = [
 ];
 
 $breadcrumb = implode('>', $breadcrumbs);
-if (isset($_SESSION['permissao'])) {
-  if ($_SESSION['permissao'] == 1) {
-    include "topo-user.php";
-  } elseif ($_SESSION['permissao'] == 2) {
-    include "topo-adm.php";
-  } elseif ($_SESSION['permissao'] != "1" && $_SESSION['permissao'] != "2") {
-    include "topo.php";
-  }
-} else {
-  include "topo.php";
-}
+navbar($breadcrumb);
 
 require_once 'conecta.php';
 

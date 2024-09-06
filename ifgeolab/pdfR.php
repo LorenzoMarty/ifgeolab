@@ -118,17 +118,17 @@
     <hr>
 
 
-        <div class="text col s12">
+    <div class="text col s12">
 
-            <p>
-                <?php
+        <p>
+            <?php
 
-                echo $descricao;
+            echo $descricao;
 
-                ?>
-            </p>
+            ?>
+        </p>
 
-        </div>
+    </div>
     </div>
 </body>
 

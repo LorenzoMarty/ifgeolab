@@ -10,61 +10,52 @@ if (mysqli_num_rows($resultado) > 0) {
   $dados = mysqli_fetch_assoc($resultado);
   $img = $dados['img'];
 }
-include "include.php"; ?>
+include "include.php";
+$breadcrumb = "";
+navbar($breadcrumb);
+?>
 
-  <style>
-    .minha-imagem {
-      height: 220px;
-      width: 220px;
-      object-fit: cover;
-    }
+<style>
+  .minha-imagem {
+    height: 220px;
+    width: 220px;
+    object-fit: cover;
+  }
 
-    .tabs .tab a {
-      color: #fff;
-      border-right: solid 1px grey;
-    }
+  .tabs .tab a {
+    color: #fff;
+    border-right: solid 1px grey;
+  }
 
 
-    .tabs .tab a:hover {
-      background-color: #eee;
-      color: black;
-    }
+  .tabs .tab a:hover {
+    background-color: #eee;
+    color: black;
+  }
 
-    .tabs .tab a.active {
-      color: #000;
-    }
+  .tabs .tab a.active {
+    color: #000;
+  }
 
-    .tabs .indicator {
-      background-color: #000;
-    }
+  .tabs .indicator {
+    background-color: #000;
+  }
 
-    .icon {
-      height: 32px;
-      width: 32px;
-      align-items: center;
-      position: absolute;
-    }
-  </style>
+  .icon {
+    height: 32px;
+    width: 32px;
+    align-items: center;
+    position: absolute;
+  }
+</style>
 
 <body>
-  <?php
-  $breadcrumb = "";
-  if (isset($_SESSION['permissao'])) {
-    if ($_SESSION['permissao'] == 1) {
-      include "topo-user.php";
-    } elseif ($_SESSION['permissao'] == 2) {
-      include "topo-adm.php";
-    }
-  } else {
-    header('Location: ../index.php');
-  }
-  ?>
   <div class="container">
     <h1> Editar Perfil </h1>
     <hr>
     <div class="row">
       <form action="editar.php" method="POST" enctype="multipart/form-data">
-  <input type="hidden" name="idusuario" value="<?= $_SESSION['id'] ?>">
+        <input type="hidden" name="idusuario" value="<?= $_SESSION['id'] ?>">
         <div class="input-field col s12">
           <label for="Nome"> Nome </label><br>
           <input type="text" name="nome" required value="<?php echo $dados['nome']; ?>" />
@@ -83,14 +74,15 @@ include "include.php"; ?>
         </div>
         <div class="input-field col s12">
           <label for="Instituição"> Instituição: </label><br>
-          <input  type="text" name="inst" required value="<?php echo $dados['instituto']; ?>" />
+          <input type="text" name="inst" required value="<?php echo $dados['instituto']; ?>" />
         </div>
 
         <div class="input-field col s12">
           <div class="row">
             <div class="col s3">
               <label> Insira uma foto de perfil:</label><br><br>
-              <img src="../img/usuarios/<?= $img; ?>" class="minha-imagem materialboxed circle"><h6>Foto atual</h6></img><br><br>
+              <img src="../img/usuarios/<?= $img; ?>" class="minha-imagem materialboxed circle">
+              <h6>Foto atual</h6></img><br><br>
               <input type="hidden" name="img" value="<?php echo $dados['img'] ?>">
               <input class="form-control" type="file" name="arquivo" />
             </div>

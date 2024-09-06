@@ -107,16 +107,10 @@ include "include.php"; ?>
     }
 
     $breadcrumb = implode(' > ', $breadcrumbs);
-    if (isset($_SESSION['permissao'])) {
-        if ($_SESSION['permissao'] == 1) {
-            include "topo-user.php";
-        } elseif ($_SESSION['permissao'] == 2) {
-            include "topo-adm.php";
-        } elseif ($_SESSION['permissao'] != "1" and "2") {
-            include "topo.php";
-        }
-    } else {
-        include "topo.php";
+    navbar($breadcrumb);
+    
+    while ($img = mysqli_fetch_assoc($galeria)) {
+        $carrossel = $img['imgM'];
     }
     ?>
     <main>
@@ -136,49 +130,50 @@ include "include.php"; ?>
                         <a class="gerarpdf waves-effect waves-light accent-4" href="relatorioMineral.php?idmineral=<?= $idmineral; ?>">
                             <img class="pdf" src="img/pdf-icon.png"> Gerar PDF</a>
                     </div>
-                    <h5><b>Categoria:</b>
-                        <?= $cat; ?>
-                    </h5>
-                    <?php while ($img = mysqli_fetch_assoc($galeria)) {
-                        if ($img != "") { ?>
-                            <div thumbsSlider="" class="mySwiper">
-                                <div class="swiper-wrapper">
-                                    <div class="swiper-slide"><img src="img/mineral/<?= $img['imgM']; ?>"></div>
-                            <?php }
-                    } ?>
-                                </div>
-                            </div>
-                </div>
-            <?php } else { ?>
-                <div class="container">
-                    <div class="row center">
-                        <div class="wrapp">
-                            <img src="img/mineral/<?= $imgM ?>" widht="auto" height="300px">
-                        </div>
-                        <a class="gerarpdf waves-effect waves-light accent-4" href="relatorioMineral.php?idmineral=<?= $idmineral; ?>">
-                            <img class="pdf" src="img/pdf-icon.png"> Gerar PDF</a>
-                    </div>
-                    <h5><b>Categoria:</b>
+                    <h5 class="center"><b>Categoria:</b>
                         <?= $cat; ?>
                     </h5>
                     <div thumbsSlider="" class="mySwiper">
                         <div class="swiper-wrapper">
-                            <?php while ($img = mysqli_fetch_assoc($galeria)) { ?>
-                                <div class="swiper-slide"><img src="img/mineral/<?= $img['imgM']; ?>"></div>
-                            <?php } ?>
+                            <?php
+                            if ($carrossel != "") { ?>
+                                <div class="swiper-slide"><img src="img/mineral/<?= $carrossel; ?>"></div>
+                            <?php }
+                            ?>
                         </div>
                     </div>
                 </div>
-            <?php } ?>
-            <hr>
-            <div class="container">
-                <div class="col s12 m6 l4">
-                    <h5>
-                        <?= $descricao; ?>
-                    </h5>
-                </div>
-                <hr>
             </div>
+        <?php } else { ?>
+            <div class="container">
+                <div class="row center">
+                    <div class="wrapp">
+                        <img src="img/mineral/<?= $imgM ?>" widht="auto" height="300px">
+                    </div>
+                    <a class="gerarpdf waves-effect waves-light accent-4" href="relatorioMineral.php?idmineral=<?= $idmineral; ?>">
+                        <img class="pdf" src="img/pdf-icon.png"> Gerar PDF</a>
+                </div>
+                <h5 class="center"><b>Categoria:</b>
+                    <?= $cat; ?>
+                </h5>
+                <div thumbsSlider="" class="mySwiper">
+                    <div class="swiper-wrapper">
+                        <?php while ($img = mysqli_fetch_assoc($galeria)) { ?>
+                            <div class="swiper-slide"><img src="img/mineral/<?= $img['imgM']; ?>"></div>
+                        <?php } ?>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
+        <hr>
+        <div class="container">
+            <div class="col s12 m6 l4">
+                <h5>
+                    <?= $descricao; ?>
+                </h5>
+            </div>
+            <hr>
+        </div>
     </main>
     <?php
     include "footer.php";

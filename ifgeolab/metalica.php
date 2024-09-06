@@ -1,36 +1,26 @@
-<?php session_start(); 
+<?php session_start();
 include "include.php"; ?>
-    <style>
-        .minha-imagem {
-            height: 220px;
-            width: 600px;
-            object-fit: cover;
-        }
+<style>
+    .minha-imagem {
+        height: 220px;
+        width: 600px;
+        object-fit: cover;
+    }
 
-        .meu-span {
-            background-color: rgba(0, 0, 0, 0.3);
-            width: 100%;
-        }
-    </style>
+    .meu-span {
+        background-color: rgba(0, 0, 0, 0.3);
+        width: 100%;
+    }
+</style>
 
 <body>
     <?php
-$breadcrumbs = [
-    'Minerais' => '> <a href="mineral.php">Minerais</a>', 
-    'Metálicos' => '<a href="metalica.php">Metálicos</a>'
-];
-$breadcrumb = implode('>', $breadcrumbs);
-    if (isset($_SESSION['permissao'])) {
-        if ($_SESSION['permissao'] == 1) {
-            include "topo-user.php";
-        } elseif ($_SESSION['permissao'] == 2) {
-            include "topo-adm.php";
-        } elseif ($_SESSION['permissao'] != "1" and "2") {
-            include "topo.php";
-        }
-    } else {
-        include "topo.php";
-    }
+    $breadcrumbs = [
+        'Minerais' => '> <a href="mineral.php">Minerais</a>',
+        'Metálicos' => '<a href="metalica.php">Metálicos</a>'
+    ];
+    $breadcrumb = implode('>', $breadcrumbs);
+    navbar($breadcrumb);navbar($breadcrumb);
     ?>
     <main>
 

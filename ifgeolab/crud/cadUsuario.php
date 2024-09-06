@@ -5,13 +5,8 @@
 <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet' />
 <?php
 $breadcrumb = "";
-if (isset($_SESSION['permissao'])) {
-    if ($_SESSION['permissao'] == 1) {
-        header('Location: ../index.php');
-    } elseif ($_SESSION['permissao'] == 2) {
-        header('Location: ../index.php');
-    }
-}
+navbar($breadcrumb);
+
 ?>
 
 <body>

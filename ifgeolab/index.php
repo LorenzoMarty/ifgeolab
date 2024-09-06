@@ -15,15 +15,7 @@ unset($_SESSION['questoes'])
 
     include "include.php";
     $breadcrumb = "";
-    if (isset($_SESSION['permissao'])) {
-        if ($_SESSION['permissao'] == 1) {
-            include "topo-user.php";
-        } elseif ($_SESSION['permissao'] == 2) {
-            include "topo-adm.php";
-        }
-    } else {
-        header('Location: login.php');
-    }
+    navbar($breadcrumb);
     ?>
     <link rel="stylesheet" href="css/index.css">
 <body>
