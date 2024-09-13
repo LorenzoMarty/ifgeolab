@@ -1,30 +1,29 @@
 <?php session_start();
-include "include.php"; ?>
-    <style>
-        .minha-imagem {
-            height: 220px;
-            width: 600px;
-            object-fit: cover;
-        }
+include "include.php";
 
-        .meu-span {
-            background-color: rgba(0, 0, 0, 0.3);
-            width: 100%;
-        }
-    </style>
+$breadcrumbs = [
+    'Rochas' => '> <a href="rocha.php">Rochas</a>',
+    'Sedimentares' => '<a href="sed.php">Sedimentares</a>'
+];
 
+$breadcrumb = implode('>', $breadcrumbs);
+navbar($breadcrumb);
+
+?>
+<style>
+    .minha-imagem {
+        height: 220px;
+        width: 600px;
+        object-fit: cover;
+    }
+
+    .meu-span {
+        background-color: rgba(0, 0, 0, 0.3);
+        width: 100%;
+    }
+</style>
 
 <body>
-    <?php
-
-    $breadcrumbs = [
-        'Rochas' => '> <a href="rocha.php">Rochas</a>',
-        'Sedimentares' => '<a href="sed.php">Sedimentares</a>'
-    ];
-
-    $breadcrumb = implode('>', $breadcrumbs);
-    navbar($breadcrumb);
-    ?>
     <main>
 
         <div class="container center">

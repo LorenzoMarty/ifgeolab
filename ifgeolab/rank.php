@@ -3,11 +3,7 @@ session_start();
 
 include "include.php";
 
-$breadcrumbs = [
-  'Colaboradores' => '> <a href="rank.php">Colaboradores</a>'
-];
-
-$breadcrumb = implode('>', $breadcrumbs);
+$breadcrumb = "";
 navbar($breadcrumb);
 
 require_once 'conecta.php';

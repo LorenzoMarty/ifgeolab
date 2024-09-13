@@ -23,7 +23,7 @@
 
   $id = $_SESSION['id'];
   navbar($breadcrumb);
-  
+
   ?>
   <div class="container">
 
@@ -68,11 +68,15 @@
             <input name="arquivo" type="file" id="Capa" style="display: none;">
           </div>
         </div>
+
+
         <div class="input-field col s6 carrossel-container">
           <label>Imagem Carrossel:</label><br><br>
-          <input name="carrossel[]" type="file" id="carrossel" multiple>
-          <ul id="fileList" class="file-list"></ul>
+          <input type="file" multiple="multiple" class="multi with-preview" name="multifile-test[]" id="MultiFile23_F2" value="">
+          <!-- <ul id="fileList" class="file-list"></ul> -->
         </div>
+
+
       </div>
       <div class="input-field obj3d-container">
         <label>Objeto 3D:</label><br><br>
@@ -93,9 +97,20 @@
       var instances = M.FormSelect.init(elems);
     });
   </script>
+  <script>
+    $(function() { // wait for page to load
+
+      // this is your selector
+      $('#MultiFile23_F2').MultiFile({
+        // your options go here
+        accept: 'jpg|png|gif'
+      });
+
+    });
+  </script>
   <script src="../js/quill.js"></script>
   <script src="../js/galery.js"></script>
-  <script src="../js/image.js"></script>
+  <!-- <script src="../js/image.js"></script> -->
 </body>
 
 </html>

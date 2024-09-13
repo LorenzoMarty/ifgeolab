@@ -21,6 +21,7 @@ function navbar($breadcrumb)
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <link rel="shortcut icon" type="image/jpg" href="../img/icons8-rocha-48.png" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="..js/jquery.MultiFile.min"></script>
 <link rel="stylesheet" href="../css/materialize.css">
 <link rel="stylesheet" href="../css/navbar.css">
 <script src="../js/materialize.js"></script>

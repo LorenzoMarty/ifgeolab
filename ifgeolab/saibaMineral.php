@@ -108,10 +108,6 @@ include "include.php"; ?>
 
     $breadcrumb = implode(' > ', $breadcrumbs);
     navbar($breadcrumb);
-    
-    while ($img = mysqli_fetch_assoc($galeria)) {
-        $carrossel = $img['imgM'];
-    }
     ?>
     <main>
         <br><br>
@@ -136,9 +132,11 @@ include "include.php"; ?>
                     <div thumbsSlider="" class="mySwiper">
                         <div class="swiper-wrapper">
                             <?php
+                            while ($img = mysqli_fetch_assoc($galeria)) {
+                                $carrossel = $img['imgM'];
                             if ($carrossel != "") { ?>
                                 <div class="swiper-slide"><img src="img/mineral/<?= $carrossel; ?>"></div>
-                            <?php }
+                            <?php } }
                             ?>
                         </div>
                     </div>

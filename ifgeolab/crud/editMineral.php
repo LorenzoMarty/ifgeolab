@@ -57,7 +57,7 @@ if (isset($_GET['idmineral'])) {
                         $res = mysqli_query($conexao, $y);
                         while ($dad = mysqli_fetch_assoc($res)) {
                         ?>
-                            <option value="<?= $dad['idcat']; ?>">
+                            <option value="<?= $dad['idcat']; ?>" <?= ($idCat == $dad['idcat']) ? "selected" : "" ?>>
                                 <?= $dad['nome']; ?>
                             </option>
                         <?php } ?>

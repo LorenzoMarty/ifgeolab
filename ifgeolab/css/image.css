@@ -1,13 +1,13 @@
 .img-area {
     text-align: center;
-    position: relative;
-    margin-top: 20px;
-    width: 30%;
-    height: 200px;
-    background: var(--grey);
-    margin-bottom: 30px;
-    border-radius: 15px;
-    overflow: hidden;
+    /* position: relative; */
+    /* margin-top: 20px; */
+    /* width: 30%; */
+    /* height: 200px; */
+    /* background: var(--grey); */
+    /* margin-bottom: 30px; */
+    /* border-radius: 15px; */
+    /* overflow: hidden; */
     display: flex;
     justify-content: center;
     align-items: center;

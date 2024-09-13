@@ -20,7 +20,7 @@ include "include.php"; ?>
         'Metálicos' => '<a href="metalica.php">Metálicos</a>'
     ];
     $breadcrumb = implode('>', $breadcrumbs);
-    navbar($breadcrumb);navbar($breadcrumb);
+    navbar($breadcrumb);
     ?>
     <main>
 

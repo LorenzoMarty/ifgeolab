@@ -1,13 +1,8 @@
 <?php include "include.php"; ?>
 
-<!-- <link rel="stylesheet" href="../css/image.css"> -->
+<link rel="stylesheet" href="../css/image.css">
 <link rel="stylesheet" href="../css/login.css">
 <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet' />
-<?php
-$breadcrumb = "";
-navbar($breadcrumb);
-
-?>
 
 <body>
     <div class="container">
@@ -57,9 +52,12 @@ navbar($breadcrumb);
                     <button type="submit" name="cadastrarUsuario">Cadastrar</button>
                 </div>
             </form>
+            <!-- <div class="center">
+                <a href="../login.php">Login</a>
+            </div> -->
         </div>
+        <div class="image-section"></div>
     </div>
-    <div class="image-section"></div>
 </body>
 
 <script src="../js/image.js"></script>

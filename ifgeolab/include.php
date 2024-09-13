@@ -1,17 +1,3 @@
-<?php
-function navbar($breadcrumb)
-{
-    if (isset($_SESSION['permissao'])) {
-        if ($_SESSION['permissao'] == 1) {
-            include "topo-user.php";
-        } elseif ($_SESSION['permissao'] == 2) {
-            include "topo-adm.php";
-        }
-    } else {
-        header('Location: login.php');
-    }
-}
-?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <meta charset="UTF-8">
@@ -26,3 +12,17 @@ function navbar($breadcrumb)
 <script src="js/materialize.js"></script>
 <script src="js/dark-light.js"></script>
 <title>IF GeoLab</title>
+<?php
+function navbar($breadcrumb)
+{
+    if (isset($_SESSION['permissao'])) {
+        if ($_SESSION['permissao'] == 1) {
+            include "topo-user.php";
+        } elseif ($_SESSION['permissao'] == 2) {
+            include "topo-adm.php";
+        }
+    } else {
+        header('Location: login.php');
+    }
+}
+?>

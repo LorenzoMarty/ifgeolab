@@ -27,7 +27,7 @@ if (isset($_POST['login'])) {
                 'imageWidth' => 200,
                 'imageHeight' => 200,
                 'background' => '#3A5A40',
-                'color' => '#ffffff'
+                'color' => '#ffffff',
             ];
             header("Location: index.php");
         } else {
@@ -73,30 +73,30 @@ include "include.php";
 </body>
 
 
-    <script src="js/sweetalert.js"></script>
-    <script>
-        <?php if ($msg != "") { ?>
-            window.addEventListener("load", (event) => {
-                Swal.fire(
-                    <?= json_encode($msg) ?>
-                )
-            })
-        <?php } ?>
-    </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const inputs = document.querySelectorAll('.form-group input');
-            inputs.forEach(input => {
-                input.addEventListener('focus', function () {
-                    this.parentElement.querySelector('label').classList.add('active');
-                });
-                input.addEventListener('blur', function () {
-                    if (this.value === '') {
-                        this.parentElement.querySelector('label').classList.remove('active');
-                    }
-                });
+<script src="js/sweetalert.js"></script>
+<script>
+    <?php if ($msg != "") { ?>
+        window.addEventListener("load", (event) => {
+            Swal.fire(
+                <?= json_encode($msg) ?>
+            )
+        })
+    <?php } ?>
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const inputs = document.querySelectorAll('.form-group input');
+        inputs.forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.querySelector('label').classList.add('active');
+            });
+            input.addEventListener('blur', function() {
+                if (this.value === '') {
+                    this.parentElement.querySelector('label').classList.remove('active');
+                }
             });
         });
-    </script>
+    });
+</script>
 
 </html>
