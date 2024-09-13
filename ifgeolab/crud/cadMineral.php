@@ -1,14 +1,7 @@
-<?php session_start(); ?>
-<!DOCTYPE html>
-<html>
-
-<head>
-  <link rel="stylesheet" href="../css/image.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <?php include "include.php";
-  include "quilljs.php"; ?>
-  <title>IF GeoLab</title>
-</head>
+<?php session_start();
+include "include.php";
+include "quilljs.php"; ?>
+<link rel="stylesheet" href="../css/image.css">
 
 <body>
   <?php
@@ -30,7 +23,6 @@
     <h4>Cadastrar Mineral</h4>
     <hr>
     <form id="cadMineral" enctype="multipart/form-data" method="post" action="cadastrar.php" class="col s12 m6">
-
       <div class="row">
         <div class="input-field col s6">
           <label for="nome">Nome</label>
@@ -68,19 +60,17 @@
             <input name="arquivo" type="file" id="Capa" style="display: none;">
           </div>
         </div>
-
-
-        <div class="input-field col s6 carrossel-container">
-          <label>Imagem Carrossel:</label><br><br>
-          <input type="file" multiple="multiple" class="multi with-preview" name="multifile-test[]" id="MultiFile23_F2" value="">
-          <!-- <ul id="fileList" class="file-list"></ul> -->
+        <div class="input-field col s6">
+          <label>Objeto 3D:</label>
+          <input type="file" name="3d" />
         </div>
-
-
       </div>
-      <div class="input-field obj3d-container">
-        <label>Objeto 3D:</label><br><br>
-        <input type="file" name="3d" /> <br>
+      <div class="row">
+        <div class="MultiFile-wrap input-field col">
+          <label>Imagem Carrossel:</label><br><br>
+          <input type="file" multiple="multiple" class="multi with-preview" name="multifile-test[]" id="upload_files">
+          <ul id="F9-Log" class="row"></ul>
+        </div>
       </div>
       <div class="input-field col s12">
         <button class="waves-effect waves-light btn green" type="submit" name="cadastrarMineral">Cadastrar</button>
@@ -97,20 +87,9 @@
       var instances = M.FormSelect.init(elems);
     });
   </script>
-  <script>
-    $(function() { // wait for page to load
-
-      // this is your selector
-      $('#MultiFile23_F2').MultiFile({
-        // your options go here
-        accept: 'jpg|png|gif'
-      });
-
-    });
-  </script>
+  <script src="../js/uploadmulti.js"></script>
   <script src="../js/quill.js"></script>
-  <script src="../js/galery.js"></script>
-  <!-- <script src="../js/image.js"></script> -->
+  <script src="../js/image.js"></script>
 </body>
 
 </html>
