@@ -19,6 +19,7 @@ if (isset($_GET['idmineral'])) {
     $dados = mysqli_fetch_assoc($resultado);
     $descricao = $dados['descricao'];
     $nome = $dados['nome'];
+    $idCat = $dados['idcat'];
     $img = $dados['img'];
     if ($dados['sugestao'] == "0") {
         $suges = $dados['sugestao'];

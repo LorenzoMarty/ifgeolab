@@ -189,6 +189,14 @@ h2.dark {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
+p.light{
+  color: #111111de;
+}
+
+p.dark{
+  color: #e0e0e0;
+}
+
 .minha-imagem.light {
   background-color: #2e2e2e;
 }

@@ -1,84 +1,67 @@
-var swiper = new Swiper(".mySwiper", {
-    spaceBetween: 10,
-    slidesPerView: 4,
-    freeMode: true,
-    watchSlidesProgress: true,
-});
-
 $(document).on("change", "#upload_files", async function (evt) {
     var tgt = evt.target || window.event.srcElement,
         files = tgt.files;
-
-    // Verificar se o FileReader é suportado
+    // FileReader support
     if (FileReader && files && files.length) {
-        for (let x = 0; x < files.length; x++) {
+        for (let x = 0; x < this.files.length; x++) {
             var fr = new FileReader();
-            
             fr.onload = function (e) {
-                var swiperWrapper = document.querySelector('.swiper-wrapper'); // Seleciona o wrapper do carrossel
-
-                // Criar o slide para inserir a imagem
-                var slide = document.createElement('div');
-                slide.classList.add('swiper-slide');
-
-                // Criar a imagem carregada
+                var ulLog = document.getElementById('F9-Log'); // Seleciona a ul onde as imagens serão inseridas
+                // Criar li para as imagens originais e corrigidas com colunas de 4 itens (s3)
+                var imageColumn = document.createElement('li');
+                imageColumn.classList.add('col', 's3'); // Define que será exibido em 4 colunas (s3)
+                // Label para a imagem original
+                var originalLabel = document.createElement('label');
+                originalLabel.textContent = 'Original';
+                // Imagem original
                 var originalImg = document.createElement('img');
-                originalImg.src = e.target.result;
+                originalImg.src = e.currentTarget.result;
                 originalImg.style.width = "100%";
                 originalImg.style.height = "auto";
-                originalImg.style.objectFit = "cover"; // Mantém proporção da imagem
-
-                // Imagem recortada (inicialmente oculta)
+                // Label para a imagem corrigida
+                var croppedLabel = document.createElement('label');
+                croppedLabel.textContent = 'Corrigida';
+                // Imagem recortada
                 var croppedImg = document.createElement('img');
                 croppedImg.style.width = "100%";
                 croppedImg.style.height = "auto";
-                croppedImg.style.display = "none"; // Inicialmente oculta
-
-                // Adicionar a imagem original e recortada ao slide
-                slide.appendChild(originalImg);
-                slide.appendChild(croppedImg);
-
-                // Adicionar o slide ao wrapper do Swiper
-                swiperWrapper.appendChild(slide);
-
-                // Atualizar o Swiper após adicionar um novo slide
-                swiper.update();
-
-                // Ao clicar na imagem original, abrir o SweetAlert2 para o cropper
+                // Adiciona os elementos ao contêiner de coluna
+                imageColumn.append(originalLabel);
+                imageColumn.append(originalImg);
+                imageColumn.append(croppedLabel);
+                imageColumn.append(croppedImg);
+                // Adiciona o conjunto de imagens ao F9-Log (ul)
+                ulLog.append(imageColumn);
+                // Ao clicar na imagem original, abre o SweetAlert2 para cropper
                 originalImg.addEventListener("click", function () {
                     Swal.fire({
-                        title: 'Recorte a sua imagem',
+                        title: 'Crop your image',
                         html: '<div id="crop-container" style="max-width:100%;">' +
-                            '<img id="image-to-crop" src="' + e.target.result + '" style="max-width:100%;" />' +
+                            '<img id="image-to-crop" src="' + e.currentTarget.result + '" style="max-width:100%;" />' +
                             '</div>',
                         didOpen: () => {
                             // Inicializar o Cropper.js na imagem dentro do SweetAlert2
                             var imageElement = document.getElementById('image-to-crop');
                             var cropper = new Cropper(imageElement, {
-                                aspectRatio: 4 / 3,
+                                aspectRatio: 16 / 9,
                                 viewMode: 1,
                                 autoCropArea: 1,
                                 movable: false,
                                 cropBoxResizable: true,
                             });
-
                             // Quando o usuário clicar em "Crop", atualizar a imagem corrigida
                             Swal.getConfirmButton().addEventListener('click', function () {
                                 var croppedCanvas = cropper.getCroppedCanvas();
                                 var croppedImageURL = croppedCanvas.toDataURL('image/jpeg');
-
-                                // Substituir a imagem original pela recortada e remover a original
-                                originalImg.style.display = "none"; // Ocultar a imagem original
-                                croppedImg.src = croppedImageURL;   // Definir o src da imagem recortada
-                                croppedImg.style.display = "block"; // Exibir a imagem recortada
+                                // Atualizar a imagem corrigida no DOM
+                                croppedImg.src = croppedImageURL;
                             });
                         },
                         showCancelButton: true,
-                        confirmButtonText: 'Recortar',
+                        confirmButtonText: 'Corrigir',
                     });
                 });
             };
-            
             fr.readAsDataURL(files[x]);
         }
     }

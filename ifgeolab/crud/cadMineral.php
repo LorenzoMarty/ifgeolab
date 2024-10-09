@@ -3,7 +3,7 @@ include "include.php";
 include "quilljs.php"; ?>
 <link rel="stylesheet" href="../css/image.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-<style>
+<!-- <style>
   .swiper {
     width: 100%;
     height: auto;
@@ -28,7 +28,7 @@ include "quilljs.php"; ?>
     align-items: center;
     background-color: #fff;
   }
-</style>
+</style> -->
 
 <body>
   <?php
@@ -96,12 +96,7 @@ include "quilljs.php"; ?>
         <div class="MultiFile-wrap input-field col">
           <label>Imagem Carrossel:</label><br><br>
           <input type="file" multiple="multiple" class="multi with-preview" name="multifile-test[]" id="upload_files">
-          <!-- Carrossel do Swiper onde as imagens serão exibidas -->
-          <div thumbsSlider="" class="mySwiper">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide"></div>
-            </div>
-          </div>
+          <ul id="F9-Log" class="row"></ul>
         </div>
       </div>
       <div class="input-field col s12">
@@ -113,7 +108,6 @@ include "quilljs.php"; ?>
   <?php
   include 'footer.php';
   ?>
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       var elems = document.querySelectorAll('.select-dropdown');

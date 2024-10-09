@@ -7,18 +7,21 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const toggleButton = document.getElementById('toggleDarkMode');
     const materialboxedImages = document.querySelectorAll('.materialboxed');
     const inputElements = document.querySelectorAll('input');
+    const pElements = document.querySelectorAll('p');
 
     // Aplica a classe de acordo com a preferência armazenada
     if (darkMode === 'enabled') {
         body.classList.add('dark');
+        pElements.forEach(p => p.classList.add('dark'));
         h2Elements.forEach(h2 => h2.classList.add('dark'));
         materialboxedImages.forEach(img => img.classList.add('dark'));
-        inputElements.forEach(input => input.classList.add('white-text'));
+        inputElements.forEach(input => input.classList.add('dark'));
     } else {
         body.classList.add('light');
+        pElements.forEach(p => p.classList.add('light'));
         h2Elements.forEach(h2 => h2.classList.add('light'));
         materialboxedImages.forEach(img => img.classList.add('light'));
-        inputElements.forEach(input => input.classList.add('black-text'));
+        inputElements.forEach(input => input.classList.add('light'));
     }
 
     // Atualiza o texto do botão inicialmente
@@ -32,13 +35,17 @@ document.addEventListener('DOMContentLoaded', (event) => {
             h2.classList.toggle('dark');
             h2.classList.toggle('light');
         });
+        pElements.forEach(p => {
+            p.classList.toggle('dark');
+            p.classList.toggle('light');
+        });
         materialboxedImages.forEach(img => {
             img.classList.toggle('dark');
             img.classList.toggle('light');
         });
         inputElements.forEach(input => {
-            input.classList.toggle('white-text');
-            input.classList.toggle('black-text');
+            input.classList.toggle('dark');
+            input.classList.toggle('light');
         });
 
         // Atualiza o localStorage de acordo com a classe atual
