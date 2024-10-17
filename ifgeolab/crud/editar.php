@@ -11,33 +11,45 @@ if (isset($_POST['editarMineral'])) {
     $descricao = $_POST['descricao'];
     $suges = $_POST['sugestao'];
 
-    if (isset($_FILES['arquivo'])) {
+    if (isset($_FILES['arquivo']) and isset($_FILES['3d'])) {
 
         //pega a extensao do arquivo
         $extensao = strtolower(substr($_FILES['arquivo']['name'], -4));
+        $extensao3D = strtolower(pathinfo($_FILES['3d']['name'], PATHINFO_EXTENSION));
 
         //define o nome do arquivo
-        $novo_nome = $nome . $extensao;
+        $novo_nome = "$nome.$extensao";
+        $obj = "$nome-3d.$extensao3D";
 
         //define a pasta para onde enviaremos o arquivo
         $diretorio = "../img/mineral/";
+        $pastaObj = "../obj/";
 
         //faz o upload, movendo o arquivo para a pasta especificada
         move_uploaded_file($_FILES['arquivo']['tmp_name'], $diretorio . $novo_nome);
+        move_uploaded_file($_FILES['3d']['tmp_name'], $pastaObj . $obj);
 
         $sql = "UPDATE mineral SET nome='$nome', idcat = '$cat', descricao = '$descricao', img='$novo_nome', sugestao='$suges', 3d='$obj' WHERE idmineral=$id";
-        if (mysqli_query($conexao, $sql)) {
-            $_SESSION['confirm'] = [
-                "title" => 'Parabéns!',
-                'text' => 'Amostra atualizada com sucesso!',
-                'icon' => 'success'
-            ];
-            header("Location: ../index.php");
-        } else {
-            echo "<script>alert('Não foi possível atualizar a amostra!');
-            location.href='listarMineral.php'</script>";
-        }
+    } elseif (isset($_FILES['arquivo'])) {
+        $extensao = strtolower(pathinfo($_FILES['arquivo']['name'], PATHINFO_EXTENSION));
+        $novo_nome = "$nome.$extensao";
+        $diretorio = "../img/rochas/";
+        move_uploaded_file($_FILES['arquivo']['tmp_name'], $diretorio . $novo_nome);
+
+        $sql = "UPDATE mineral SET nome='$nome', idcat = '$cat', descricao = '$descricao', img='$novo_nome', sugestao='$suges' WHERE idmineral=$id";
     }
+    if (mysqli_query($conexao, $sql)) {
+        $_SESSION['confirm'] = [
+            "title" => 'Parabéns!',
+            'text' => 'Amostra atualizada com sucesso!',
+            'icon' => 'success'
+        ];
+        header("Location: ../index.php");
+    } else {
+        echo "<script>alert('Não foi possível atualizar a amostra!');
+            location.href='listarMineral.php'</script>";
+    }
+    
 } elseif (isset($_POST['editarRocha'])) {
     $obj = $_POST['3d'];
     $id = $_POST['idrocha'];
@@ -46,33 +58,45 @@ if (isset($_POST['editarMineral'])) {
     $descricao = $_POST['descricao'];
     $suges = $_POST['sugestao'];
 
-    if (isset($_FILES['arquivo'])) {
+    if (isset($_FILES['arquivo']) and isset($_FILES['3d'])) {
 
         //pega a extensao do arquivo
         $extensao = strtolower(substr($_FILES['arquivo']['name'], -4));
+        $extensao3D = strtolower(pathinfo($_FILES['3d']['name'], PATHINFO_EXTENSION));
 
         //define o nome do arquivo
-        $novo_nome = "$nome" . $extensao;
+        $novo_nome = "$nome.$extensao";
+        $obj = "$nome-3d.$extensao3D";
 
         //define a pasta para onde enviaremos o arquivo
         $diretorio = "../img/rochas/";
+        $pastaObj = "../obj/";
 
         //faz o upload, movendo o arquivo para a pasta especificada
         move_uploaded_file($_FILES['arquivo']['tmp_name'], $diretorio . $novo_nome);
+        move_uploaded_file($_FILES['3d']['tmp_name'], $pastaObj . $obj);
 
         $sql = "UPDATE rocha SET nome='$nome', idcat = '$cat', descricao = '$descricao', img='$novo_nome', sugestao='$suges', 3d='$obj' WHERE idrocha=$id";
-        if (mysqli_query($conexao, $sql)) {
-            $_SESSION['confirm'] = [
-                "title" => 'Parabéns!',
-                'text' => 'Amostra atualizada com sucesso!',
-                'icon' => 'success'
-            ];
-            header("Location: ../index.php");
-        } else {
-            echo "<script>alert('Não foi possível atualizar a amostra!');
-            location.href='listarRocha.php'</script>";
-        }
+    } elseif (isset($_FILES['arquivo'])) {
+        $extensao = strtolower(pathinfo($_FILES['arquivo']['name'], PATHINFO_EXTENSION));
+        $novo_nome = "$nome.$extensao";
+        $diretorio = "../img/rochas/";
+        move_uploaded_file($_FILES['arquivo']['tmp_name'], $diretorio . $novo_nome);
+
+        $sql = "UPDATE rocha SET nome='$nome', idcat = '$cat', descricao = '$descricao', img='$novo_nome', sugestao='$suges' WHERE idrocha=$id";
     }
+    if (mysqli_query($conexao, $sql)) {
+        $_SESSION['confirm'] = [
+            "title" => 'Parabéns!',
+            'text' => 'Amostra atualizada com sucesso!',
+            'icon' => 'success'
+        ];
+        header("Location: ../index.php");
+    } else {
+        echo "<script>alert('Não foi possível atualizar a amostra!');
+            location.href='listarRocha.php'</script>";
+    }
+
 } elseif (isset($_POST['editarUsuario'])) {
 
     $id = $_POST['idusuario'];

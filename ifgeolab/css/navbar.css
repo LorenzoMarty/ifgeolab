@@ -8,6 +8,9 @@ nav ul a:hover {
   background-color: rgba(0, 0, 0, 0);
 }
 
+nav ul a.active {
+  text-decoration: underline;
+}
 .li a.active {
   color: #000;
 }

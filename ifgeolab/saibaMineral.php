@@ -101,9 +101,9 @@ include "include.php"; ?>
     ];
 
     if ($idcat == "1") {
-        $breadcrumbs['Metálicos'] = '<a href="metalica.php">Metálicos</a>';
+        $breadcrumbs['Metálicos'] = '<a class="active" href="metalica.php">Metálicos</a>';
     } else {
-        $breadcrumbs['Não-Metálicos'] = '<a href="n-metalica.php">Não-Metálicos</a>';
+        $breadcrumbs['Não-Metálicos'] = '<a class="active" href="n-metalica.php">Não-Metálicos</a>';
     }
 
     $breadcrumb = implode(' > ', $breadcrumbs);

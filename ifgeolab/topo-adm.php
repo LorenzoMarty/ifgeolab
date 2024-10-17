@@ -23,7 +23,8 @@
   .nav_color2 {
     top: 64px;
   }
-  .logolink{
+
+  .logolink {
     padding: 0 !important;
   }
 </style>
@@ -63,16 +64,15 @@ if (mysqli_num_rows($resultado) > 0) {
           <img src="img/usuarios/<?= $img; ?>"></a></li>
     </ul>
   </div>
-</nav>
+  <nav class="nav_color2 sticky-nav">
+    <ul class="left hide-on-med-and-down">
+      <li><a href="rank.php">Colaboradores</a></li>
+    </ul>
 
-<nav class="nav_color2 sticky-nav">
-  <ul class="left hide-on-med-and-down">
-    <li><a href="rank.php">Colaboradores</a></li>
-  </ul>
-
-  <ul class="right hide-on-med-and-down">
-    <li><button id="toggleDarkMode" class="toggle-button">Alternar Modo</button></li>
-  </ul>
+    <ul class="right hide-on-med-and-down">
+      <li><button id="toggleDarkMode" class="toggle-button">Alternar Modo</button></li>
+    </ul>
+  </nav>
 </nav>
 
 <ul id="dropdown1" class="dropdown-content">
@@ -82,7 +82,7 @@ if (mysqli_num_rows($resultado) > 0) {
 </ul>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
+  document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.dropdown-trigger');
     var instances = M.Dropdown.init(elems, {
       click: true
@@ -91,8 +91,8 @@ if (mysqli_num_rows($resultado) > 0) {
 </script>
 
 <script>
-  $(document).ready(function () {
-    $(window).scroll(function () {
+  $(document).ready(function() {
+    $(window).scroll(function() {
       if ($(window).scrollTop() > 0) {
         $('nav').addClass('sticky-nav');
       } else {

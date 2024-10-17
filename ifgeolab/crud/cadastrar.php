@@ -12,7 +12,7 @@ if (isset($_POST['cadastrarMineral'])) {
 
     if (isset($_FILES['arquivo']) and isset($_FILES['3d'])) {
         // Pega a extensão do arquivo
-        $extensao = strtolower(pathinfo($_FILES['arquivo']['name'], PATHINFO_EXTENSION));
+        $extensao = strtolower(substr($_FILES['arquivo']['name'], -4));
         $extensao3D = strtolower(pathinfo($_FILES['3d']['name'], PATHINFO_EXTENSION));
 
         // Define o nome do arquivo
@@ -91,9 +91,10 @@ if (isset($_POST['cadastrarMineral'])) {
 
         //pega a extensao do arquivo
         $extensao = strtolower(substr($_FILES['arquivo']['name'], -4));
+        $extensao3D = strtolower(pathinfo($_FILES['3d']['name'], PATHINFO_EXTENSION));
 
         //define o nome do arquivo
-        $novo_nome = "$nome" . $extensao;
+        $novo_nome = "$nome.$extensao";
         $obj = $_FILES['3d']['name'];
 
         //define a pasta para onde enviaremos o arquivo

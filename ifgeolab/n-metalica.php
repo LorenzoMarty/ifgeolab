@@ -17,7 +17,7 @@ include "include.php"; ?>
     <?php
     $breadcrumbs = [
         'Minerais' => '> <a href="mineral.php">Minerais</a>',
-        'Não-Metálicos' => '<a href="n-metalica.php">Não-Metálicos</a>'
+        'Não-Metálicos' => '<a class="active" href="n-metalica.php">Não-Metálicos</a>'
     ];
     $breadcrumb = implode('>', $breadcrumbs);
     navbar($breadcrumb);

@@ -17,7 +17,7 @@ include "include.php"; ?>
     <?php
     $breadcrumbs = [
         'Rochas' => '> <a href="rocha.php">Rochas</a>',
-        'Metamórficas' => '<a href="met.php">Metamórficas</a>'
+        'Metamórficas' => '<a class="active" href="met.php">Metamórficas</a>'
     ];
     
     $breadcrumb = implode('>', $breadcrumbs);

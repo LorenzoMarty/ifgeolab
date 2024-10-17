@@ -7,7 +7,7 @@ if (isset($_SESSION['excluir'])) {
 include "include.php";
 $breadcrumbs = [
     'Amostra' => '> <a href="amostra.php">Amostras</a>',
-    'Rochas' => '<a href="listarRocha.php">Rochas</a>'
+    'Rochas' => '<a class="active" href="listarRocha.php">Rochas</a>'
 ];
 $breadcrumb = implode('>', $breadcrumbs);
 
@@ -31,20 +31,21 @@ navbar($breadcrumb);
 </style>
 
 
+<link rel="stylesheet" href="../css/rocha-mineral.css">
+
 <body>
     <main>
-        <div class="container center">
-            <div class="row col s12">
-                <h3>Rochas</h3>
-            </div>
-            <hr>
-            <p>Rocha é um agregado sólido que ocorre naturalmente e é constituído por um ou mais minerais ou
-                mineraloides. A camada externa sólida da Terra, conhecida por litosfera, é constituída por rochas. </p>
-            <hr>
-        </div>
+    <div class="container center">
+            <div class="vertical-line"></div>
 
-        <div class="container">
-            <div class="row">
+            <div class="section-content">
+                <div class="section">
+                    <h4 class="left-align">Rochas</h4>
+                    <h6 class="left-align">Rocha é um agregado sólido que ocorre naturalmente e é constituído por um ou mais minerais ou
+                        mineraloides. <br>A camada externa sólida da Terra, conhecida por litosfera, é constituída por rochas.</h6>
+                    <hr class="divider">
+                </div>
+
                 <?php
                 require_once '../conecta.php';
                 $sql = "SELECT * FROM rocha WHERE sugestao=0";
@@ -57,39 +58,41 @@ navbar($breadcrumb);
                     $descricao = $dados['descricao'];
                     $img = $dados['img'];
                 ?>
+                    <div class="row">
+                        <div class="col s4">
+                            <div class="card hoverable">
+                                <div class="card-image">
+                                    <img src="../img/rochas/<?= $img; ?>" class="minha-imagem materialboxed">
+                                    <span class="card-title center meu-span white-text">
+                                        <?= $nome ?>
+                                    </span>
+                                </div>
+                                <div class="card-action green darken-4">
+                                    <a class="center waves-effect waves-light btn-small green accent-4"
+                                        href="../relatorio.php?idrocha=<?= $idrocha; ?>">
+                                        <img src="../img/pdf-icon.png">
+                                    </a>
+                                    <a id="btnExcluir-<?= $idrocha ?>" class="center waves-effect waves-light btn-small red"
+                                        data-idrocha="<?= $idrocha ?>">Excluir</a>
+                                    <a class="center waves-effect waves-light btn-small green"
+                                        href="editRocha.php?idrocha=<?= $idrocha; ?>&sugestao=0">Editar</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    <?php } ?>
                     <div class="col s12 l4 m8">
                         <div class="card hoverable">
-                            <div class="card-image">
-                                <img src="../img/rochas/<?= $img; ?>" class="minha-imagem materialboxed">
-                                <span class="card-title center meu-span white-text">
-                                    <?php echo $nome ?>
-                                </span>
-                            </div>
-                            <div class="card-action green darken-4">
+                            <div class="card-action center green darken-4">
                                 <a class="center waves-effect waves-light btn-small green accent-4"
-                                    href="../relatorio.php?idrocha=<?php echo $idrocha; ?>">
-                                    <img src="../img/pdf-icon.png">
-                                </a>
-                                <a id="btnExcluir-<?= $idrocha ?>" class="center waves-effect waves-light btn-small red"
-                                    data-idrocha="<?= $idrocha ?>">Excluir</a>
-                                <a class="center waves-effect waves-light btn-small green"
-                                    href="editRocha.php?idrocha=<?= $idrocha; ?>&sugestao=0">Editar</a>
+                                    href="cadRocha.php">Cadastrar</a>
                             </div>
                         </div>
                     </div>
-                <?php } ?>
-                <div class="col s12 l4 m8">
-                    <div class="card hoverable">
-                        <div class="card-action center green darken-4">
-                            <a class="center waves-effect waves-light btn-small green accent-4"
-                                href="cadRocha.php">Cadastrar</a>
-                        </div>
+                    <br>
+                    <br>
+                    <br>
                     </div>
-                </div>
-                <br>
-                <br>
-                <br>
-            </div>
     </main>
     <?php
     include "footer.php";

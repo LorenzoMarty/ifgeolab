@@ -2,7 +2,7 @@
 include "include.php";
 
 $breadcrumbs = [
-    'Sugestao' => '> <a href="sugestao.php">Sugestões</a>'
+    'Sugestao' => '> <a class="active" href="sugestao.php">Sugestões</a>'
 ];
 $breadcrumb = implode('>', $breadcrumbs);
 

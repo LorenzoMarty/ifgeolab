@@ -5,7 +5,7 @@ include "include.php"; ?>
 <body>
     <?php
     $breadcrumbs = [
-        'Rochas' => '> <a href="rocha.php">Rochas</a>'
+        'Rochas' => '> <a class="active" href="rocha.php">Rochas</a>'
     ];
     $breadcrumb = implode('>', $breadcrumbs);
     navbar($breadcrumb);

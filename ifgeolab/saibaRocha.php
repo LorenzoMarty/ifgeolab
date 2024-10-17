@@ -100,11 +100,11 @@ include "include.php"; ?>
         'Rochas' => '> <a href="rocha.php">Rochas</a>',
     ];
     if ($idcat == "1") {
-        $breadcrumbs['Ígneas'] = '<a href="igneas.php">Ígneas</a>';
+        $breadcrumbs['Ígneas'] = '<a class="active" href="igneas.php">Ígneas</a>';
     } elseif ($idcat == "2") {
-        $breadcrumbs['Metamórficas'] = '<a href="met.php">Metamórficas</a>';
+        $breadcrumbs['Metamórficas'] = '<a class="active" href="met.php">Metamórficas</a>';
     } elseif ($idcat == "3") {
-        $breadcrumbs['Sedimentares'] = '<a href="sed.php">Sedimentares</a>';
+        $breadcrumbs['Sedimentares'] = '<a class="active" href="sed.php">Sedimentares</a>';
     }
     $breadcrumb = implode(' > ', $breadcrumbs);
     navbar($breadcrumb);

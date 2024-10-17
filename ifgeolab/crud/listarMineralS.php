@@ -8,7 +8,7 @@ include "include.php";
 
 $breadcrumbs = [
     'Sugestão' => '> <a href="sugestao.php">Sugestões</a>',
-    'Minerais' => '<a href="listarMineralS.php">Minerais</a>'
+    'Minerais' => '<a class="active" href="listarMineralS.php">Minerais</a>'
 ];
 $breadcrumb = implode('>', $breadcrumbs);
 
@@ -28,64 +28,58 @@ navbar($breadcrumb);
     }
 </style>
 
+<link rel="stylesheet" href="../css/rocha-mineral.css">
+
 <body>
     <main>
-
-        </div>
         <div class="container center">
-            <div class="row">
-                <div class="col s12">
-                    <h3>Minerais</h3><br>
-                </div>
+            <div class="vertical-line"></div>
 
-                <div class="col s12">
-                    <hr>
-                    <p>Mineral é um corpo natural sólido e cristalino formado em resultado da interação de processos
-                        físico-químicos em ambientes geológicos. Cada mineral é classificado e denominado não apenas com
-                        base na sua composição química, mas também na estrutura cristalina dos materiais que o compõem.
-                    </p>
-                    <hr>
+            <div class="section-content">
+                <div class="section">
+                    <h4 class="left-align">Minerais</h4>
+                    <h6 class="left-align">Mineral é um corpo natural sólido e cristalino formado em resultado da interação de processos
+                        físico-químicos em ambientes geológicos. <br>Cada mineral é classificado e denominado não apenas com
+                        base na sua composição química, mas também na estrutura cristalina dos materiais que o compõem.</h6>
+                    <hr class="divider">
+                </div>
+                <div class="row">
+                    <?php
+                    require_once '../conecta.php';
+                    $sql = "SELECT * FROM mineral WHERE sugestao=1";
+                    $conexao = conectar();
+                    $resultado = mysqli_query($conexao, $sql); ?>
+                    <table class="highlight">
+                        <thead>
+                            <tr>
+                                <th scope="col">Id Mineral</th>
+                                <th scope="col">Nome</th>
+                                <th scope="col">Id Categoria</th>
+                                <th scope="col">Imagem</th>
+                                <th scope="col">Opções</th>
+                            </tr>
+                        </thead>
+                        <?php while ($dados = mysqli_fetch_array($resultado)) {
+                            $idmineral = $dados["idmineral"];
+                            $nome = $dados['nome'];
+                            $cat = $dados['idcat'];
+                            $descricao = $dados['descricao'];
+                            $img = $dados['img'];
+                            $obj = $dados['3d'];
+
+                            echo "<td> " . $dados['idmineral'] . " </td>";
+                            echo "<td>" . $dados['nome'] . " </td>";
+                            echo "<td>" . $dados['idcat'] . " </td>";
+                            echo "<td> <img src=../img/mineral/" . $dados['img'] . " width='50px' height='auto'></td>";
+                            echo "<td><a class='center waves-effect waves-light btn-small blue' href='editMineral.php?idmineral=" . $dados['idmineral'] . "&sugestao=0'>Editar</a>";
+                            echo " <a class='center waves-effect waves-light btn-small green' href='editar.php?idmineral=" . $dados['idmineral'] . "&sugestao=0'>Aceitar</a>";
+                            echo " <a id='btnExcluir-" . $dados['idmineral'] . "' class='center waves-effect waves-light btn-small red' data-idmineral='" . $dados['idmineral'] . "'>Excluir</a></td>";
+                            echo '</tr>';
+                        } ?>
+                    </table>
                 </div>
             </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <?php
-                require_once '../conecta.php';
-                $sql = "SELECT * FROM mineral WHERE sugestao=1";
-                $conexao = conectar();
-                $resultado = mysqli_query($conexao, $sql); ?>
-                <table class="highlight">
-                    <thead>
-                        <tr>
-                            <th scope="col">Id Mineral</th>
-                            <th scope="col">Nome</th>
-                            <th scope="col">Id Categoria</th>
-                            <th scope="col">Imagem</th>
-                            <th scope="col">Opções</th>
-                        </tr>
-                    </thead>
-                    <?php while ($dados = mysqli_fetch_array($resultado)) {
-                        $idmineral = $dados["idmineral"];
-                        $nome = $dados['nome'];
-                        $cat = $dados['idcat'];
-                        $descricao = $dados['descricao'];
-                        $img = $dados['img'];
-                        $obj = $dados['3d'];
-
-                        echo "<td> " . $dados['idmineral'] . " </td>";
-                        echo "<td>" . $dados['nome'] . " </td>";
-                        echo "<td>" . $dados['idcat'] . " </td>";
-                        echo "<td> <img src=../img/mineral/" . $dados['img'] . " width='50px' height='auto'></td>";
-                        echo "<td><a class='center waves-effect waves-light btn-small blue' href='editMineral.php?idmineral=" . $dados['idmineral'] . "&sugestao=0'>Editar</a>";
-                        echo " <a class='center waves-effect waves-light btn-small green' href='editar.php?idmineral=" . $dados['idmineral'] . "&sugestao=0'>Aceitar</a>";
-                        echo " <a id='btnExcluir-" . $dados['idmineral'] . "' class='center waves-effect waves-light btn-small red' data-idmineral='" . $dados['idmineral'] . "'>Excluir</a></td>";
-                        echo '</tr>';
-                    } ?>
-                </table>
-            </div>
-        </div>
-        <br><br><br>
+            <br><br><br>
     </main>
 
     <?php include "footer.php"; ?>

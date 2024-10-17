@@ -43,7 +43,7 @@ if (isset($_POST['refazer'])) {
 include "include.php";
 
 $breadcrumbs = [
-    'questionários' => '> <a href="questionario.php">Questionários</a>'
+    'questionários' => '> <a class="active" href="questionario.php">Questionários</a>'
 ];
 
 $breadcrumb = implode('>', $breadcrumbs);

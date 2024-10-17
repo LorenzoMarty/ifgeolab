@@ -3,7 +3,7 @@ include "quilljs.php";
 include "include.php";
 $breadcrumbs = [
     'Amostra' => '> <a href="amostra.php">Amostras</a>',
-    'Mineral' => '<a href="listarMineral.php">Minerais</a>'
+    'Mineral' => '<a class="active" href="listarMineral.php">Minerais</a>'
 ];
 $breadcrumb = implode('>', $breadcrumbs);
 

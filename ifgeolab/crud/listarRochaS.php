@@ -8,7 +8,7 @@ include "include.php";
 
 $breadcrumbs = [
     'Sugestão' => '> <a href="sugestao.php">Sugestões</a>',
-    'Rochas' => '<a href="listarRochaS.php">Rochas</a>'
+    'Rochas' => '<a class="active" href="listarRochaS.php">Rochas</a>'
 ];
 $breadcrumb = implode('>', $breadcrumbs);
 
@@ -27,27 +27,20 @@ navbar($breadcrumb);
     }
 </style>
 
+<link rel="stylesheet" href="../css/rocha-mineral.css">
+
 <body>
     <main>
+    <div class="container center">
+            <div class="vertical-line"></div>
 
-        </div>
-        <div class="container center">
-            <div class="row">
-                <div class="col s12">
-                    <h3>Rochas</h3><br>
+            <div class="section-content">
+                <div class="section">
+                    <h4 class="left-align">Rochas</h4>
+                    <h6 class="left-align">Rocha é um agregado sólido que ocorre naturalmente e é constituído por um ou mais minerais ou
+                        mineraloides. <br>A camada externa sólida da Terra, conhecida por litosfera, é constituída por rochas.</h6>
+                    <hr class="divider">
                 </div>
-
-                <div class="col s12">
-                    <hr>
-                    <p>Rocha é um corpo natural sólido e cristalino formado em resultado da interação de processos
-                        físico-químicos em ambientes geológicos. Cada rocha é classificado e denominado não apenas com
-                        base na sua composição química, mas também na estrutura cristalina dos materiais que o compõem.
-                    </p>
-                    <hr>
-                </div>
-            </div>
-        </div>
-        <div class="container">
             <div class="row">
                 <?php
                 require_once '../conecta.php';
@@ -75,7 +68,7 @@ navbar($breadcrumb);
                         echo "<td> " . $dados['idrocha'] . " </td>";
                         echo "<td>" . $dados['nome'] . " </td>";
                         echo "<td>" . $dados['idcat'] . " </td>";
-                        echo "<td> <img src=../img/rocha/" . $dados['img'] . " width='50px' height='auto'></td>";
+                        echo "<td> <img src=../img/rochas/" . $dados['img'] . " width='50px' height='auto'></td>";
                         echo "<td><a class='center waves-effect waves-light btn-small blue' href='editrocha.php?idrocha=" . $dados['idrocha'] . "&sugestao=0'>Editar</a>";
                         echo " <a class='center waves-effect waves-light btn-small green' href='editar.php?idrocha=" . $dados['idrocha'] . "&sugestao=0'>Aceitar</a>";
                         echo " <a id='btnExcluir-" . $dados['idrocha'] . "' class='center waves-effect waves-light btn-small red' data-idrocha='" . $dados['idrocha'] . "'>Excluir</a></td>";
