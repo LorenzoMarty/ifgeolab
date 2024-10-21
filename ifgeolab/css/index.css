@@ -4,7 +4,7 @@ main {
 
 .container {
     width: 90%;
-    margin: 0 auto;
+    margin: 20px auto;
     display: flex;
     align-items: flex-start;
 }
@@ -92,16 +92,4 @@ hr.divider {
 
 .image-container:hover .caption {
     font-size: 1.75rem;
-}
-
-/* Responsividade */
-@media (max-width: 768px) {
-    .container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .vertical-line {
-        display: none;
-    }
 }

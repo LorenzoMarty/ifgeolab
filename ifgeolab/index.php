@@ -12,7 +12,6 @@ if (isset($_SESSION['login'])) {
 unset($_SESSION['questoes'])
 ?>
 <?php
-
 include "include.php";
 $breadcrumb = "";
 navbar($breadcrumb);
@@ -35,27 +34,27 @@ navbar($breadcrumb);
 
                 <!-- Linha com Rochas, Minerais, Questionários e Sugestões -->
                 <div class="row">
-                    <div class="col center-align">
+                    <div class="col s12 m6 l3 center-align">
                         <div class="image-container">
                             <a href="rocha.php">
-                                <img src="img/rochas.png" alt="Rochas" class="image-with-caption grayscale hoverable">
+                                <img src="img/rochas.png" alt="Rochas" class="image-with-caption grayscale hoverable responsive-img">
                                 <div class="caption">Rochas</div>
                             </a>
                         </div>
                     </div>
-                    <div class="col center-align">
+                    <div class="col s12 m6 l3 center-align">
                         <div class="image-container">
                             <a href="mineral.php">
-                                <img src="img/mineral.png" alt="Minerais" class="image-with-caption grayscale hoverable">
+                                <img src="img/mineral.png" alt="Minerais" class="image-with-caption grayscale hoverable responsive-img">
                                 <div class="caption">Minerais</div>
                             </a>
                         </div>
                     </div>
-                    <div class="col center-align">
+                    <div class="col s12 m6 l3 center-align">
                         <!-- Questionários e Sugestões na mesma coluna -->
                         <div class="image-container" style="margin-bottom: 0.75rem;">
                             <a href="questionario.php">
-                                <img src="img/questionarios.png" alt="Questionários" class="image-with-caption">
+                                <img src="img/questionarios.png" alt="Questionários" class="image-with-caption responsive-img">
                                 <div class="caption">Questionários</div>
                             </a>
                         </div>
@@ -68,7 +67,7 @@ navbar($breadcrumb);
                                 }
                             }
                             ?>
-                            <img src="img/sugestoes.png" alt="Sugestões" class="image-with-caption">
+                            <img src="img/sugestoes.png" alt="Sugestões" class="image-with-caption responsive-img">
                             <div class="caption">Sugestões</div>
                             </a>
                         </div>

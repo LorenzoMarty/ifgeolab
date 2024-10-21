@@ -1,17 +1,17 @@
 <?php session_start();
 include "include.php"; ?>
-    <style>
-        .minha-imagem {
-            height: 220px;
-            width: 600px;
-            object-fit: cover;
-        }
+<style>
+    .minha-imagem {
+        height: 220px;
+        width: 600px;
+        object-fit: cover;
+    }
 
-        .meu-span {
-            background-color: rgba(0, 0, 0, 0.3);
-            width: 100%;
-        }
-    </style>
+    .meu-span {
+        background-color: rgba(0, 0, 0, 0.3);
+        width: 100%;
+    }
+</style>
 
 <body>
     <?php
@@ -19,7 +19,7 @@ include "include.php"; ?>
         'Rochas' => '> <a href="rocha.php">Rochas</a>',
         'Metamórficas' => '<a class="active" href="met.php">Metamórficas</a>'
     ];
-    
+
     $breadcrumb = implode('>', $breadcrumbs);
     navbar($breadcrumb);
     ?>
@@ -69,19 +69,12 @@ include "include.php"; ?>
     ?>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            var elems = document.querySelectorAll('.materialboxed');
-            var instances = M.Materialbox.init(elems, options);
-        });
-
-        // Or with jQuery
-
-        $(document).ready(function() {
-            $('.materialboxed').materialbox();
+            const materialboxElems = document.querySelectorAll('.materialboxed');
+            M.Materialbox.init(materialboxElems);
         });
     </script>
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="js/materialize.js"></script>
-    <script src="js/init.js"></script>
 </body>
 
 </html>

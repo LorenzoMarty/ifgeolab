@@ -21,13 +21,15 @@ if (isset($_POST['login'])) {
             $_SESSION['id'] = $dados['idusuario'];
             $img = $dados['img'];
             $_SESSION['login'] = [
-                "title" => 'Bem-vindo!',
+                'title' => 'Bem-vindo!',
                 'text' => '' . $_SESSION['usuario'],
                 'imageUrl' => 'img/usuarios/' . $img,
                 'imageWidth' => 200,
                 'imageHeight' => 200,
                 'background' => '#3A5A40',
                 'color' => '#ffffff',
+                'timer' => 1500,
+                'confirmbutton' => false
             ];
             header("Location: index.php");
         } else {

@@ -10,39 +10,18 @@
     flex: 1;
   }
 
-  #fot {
+  footer {
     background: #3A5A40;
     text-align: center;
-    color: #ffff;
-  }
-
-  footer {
+    color: #fff;
     padding: 10px;
     width: 100%;
     position: relative;
-  }
-
-  .footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 0;
-  }
-
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+    bottom: 0;
+    left: 0;
   }
 </style>
 
-<br><br><br><br><br><br>
-<footer id="fot">
-  Instituto Federal Farroupilha - Campus Uruguaiana
-</footer>
-
-<script>
-  $(document).ready(function() {
-    $('.sidenav').sidenav();
-  });
-</script>
+<footer>
+    Instituto Federal Farroupilha - Campus Uruguaiana
+  </footer>

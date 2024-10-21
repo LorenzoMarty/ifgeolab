@@ -70,19 +70,12 @@ navbar($breadcrumb);
     ?>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            var elems = document.querySelectorAll('.materialboxed');
-            var instances = M.Materialbox.init(elems, options);
-        });
-
-        // Or with jQuery
-
-        $(document).ready(function() {
-            $('.materialboxed').materialbox();
+            const materialboxElems = document.querySelectorAll('.materialboxed');
+            M.Materialbox.init(materialboxElems);
         });
     </script>
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="js/materialize.js"></script>
-    <script src="js/init.js"></script>
 </body>
 
 </html>
