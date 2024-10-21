@@ -113,34 +113,39 @@ include "include.php"; ?>
         <br><br>
         <?php if ($obj != "") { ?>
             <div class="container">
-                <div class="row center">
-                    <div class="wrapp">
-                        <div class="card">
-                            <div class="card__item">
-                                <model-viewer class="card__model" style="background-color: rgb(255,255,255);" shadow-intensity="1" src="obj/<?php echo $obj; ?>" camera-orbit="45deg 55deg" autoplay auto-rotate ar camera-controls touch-action="pan-y"></model-viewer>
-                                <span class="card__txt">
-                                    <?= $nome; ?>
-                                </span>
-                            </div>
+                <div class="row">
+                    <div class="col s12 m6 offset-m3 card">
+                        <div class="card-content">
+                            <model-viewer id="model-viewer" class="card__model" shadow-intensity="2" src="obj/<?= $obj; ?>"
+                                max-camera-orbit="auto 90deg" autoplay auto-rotate ar ar-scale="fixed" camera-controls
+                                touch-action="pan-y" skybox-image="img/fundo.hdr"
+                                poster="img/geolab-branco.png">
+                            </model-viewer>
+                            <span class="card-title">
+                                <?= $nome; ?>
+                            </span>
                         </div>
-                        <a class="gerarpdf waves-effect waves-light accent-4" href="relatorioMineral.php?idmineral=<?= $idmineral; ?>">
+                        <a class="right gerarpdf waves-effect waves-light accent-4"
+                            href="relatorioMineral.php?idmineral=<?= $idmineral; ?>">
                             <img class="pdf" src="img/pdf-icon.png"> Gerar PDF</a>
                     </div>
-                    <h5 class="center"><b>Categoria:</b>
-                        <?= $cat; ?>
-                    </h5>
-                    <div thumbsSlider="" class="mySwiper">
-                        <div class="swiper-wrapper">
-                            <?php
-                            while ($img = mysqli_fetch_assoc($galeria)) {
-                                $carrossel = $img['imgM'];
+                </div>
+                <h5 class="center"><b>Categoria:</b>
+                    <?= $cat; ?>
+                </h5>
+                <div thumbsSlider="" class="mySwiper">
+                    <div class="swiper-wrapper">
+                        <?php
+                        while ($img = mysqli_fetch_assoc($galeria)) {
+                            $carrossel = $img['imgM'];
                             if ($carrossel != "") { ?>
-                                <div class="swiper-slide"><img src="img/mineral/<?= $carrossel; ?>"></div>
-                            <?php } }
-                            ?>
-                        </div>
+                                <div class="swiper-slide"><img src="img/mineral/<?= $carrossel; ?>" class="materialboxed"></div>
+                            <?php }
+                        }
+                        ?>
                     </div>
                 </div>
+            </div>
             </div>
         <?php } else { ?>
             <div class="container">
@@ -148,7 +153,8 @@ include "include.php"; ?>
                     <div class="wrapp">
                         <img src="img/mineral/<?= $imgM ?>" widht="auto" height="300px">
                     </div>
-                    <a class="gerarpdf waves-effect waves-light accent-4" href="relatorioMineral.php?idmineral=<?= $idmineral; ?>">
+                    <a class="gerarpdf waves-effect waves-light accent-4"
+                        href="relatorioMineral.php?idmineral=<?= $idmineral; ?>">
                         <img class="pdf" src="img/pdf-icon.png"> Gerar PDF</a>
                 </div>
                 <h5 class="center"><b>Categoria:</b>
@@ -176,15 +182,19 @@ include "include.php"; ?>
     <?php
     include "footer.php";
     ?>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var elems = document.querySelectorAll('.modal');
-            var instances = M.Modal.init(elems);
-        });
-    </script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
     <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('.modal');
+            var instances = M.Modal.init(elems);
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const materialboxElems = document.querySelectorAll('.materialboxed');
+            M.Materialbox.init(materialboxElems);
+        });
+
         var swiper = new Swiper(".mySwiper", {
             spaceBetween: 10,
             slidesPerView: 4,

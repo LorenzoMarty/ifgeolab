@@ -68,7 +68,7 @@ navbar($breadcrumb);
                         echo "<td> " . $dados['idrocha'] . " </td>";
                         echo "<td>" . $dados['nome'] . " </td>";
                         echo "<td>" . $dados['idcat'] . " </td>";
-                        echo "<td> <img class="materialboxed" src=../img/rochas/" . $dados['img'] . " width='50px' height='auto'></td>";
+                        echo "<td> <img src=../img/rochas/" . $dados['img'] . " width='50px' height='auto' class='materialboxed'></td>";
                         echo "<td><a class='center waves-effect waves-light btn-small blue' href='editrocha.php?idrocha=" . $dados['idrocha'] . "&sugestao=0'>Editar</a>";
                         echo " <a class='center waves-effect waves-light btn-small green' href='editar.php?idrocha=" . $dados['idrocha'] . "&sugestao=0'>Aceitar</a>";
                         echo " <a id='btnExcluir-" . $dados['idrocha'] . "' class='center waves-effect waves-light btn-small red' data-idrocha='" . $dados['idrocha'] . "'>Excluir</a></td>";
@@ -91,8 +91,7 @@ navbar($breadcrumb);
                 )
             })
         <?php } ?>
-    </script>
-    <script>
+        
         document.querySelectorAll('[id^="btnExcluir-"]').forEach(button => {
             button.addEventListener('click', function() {
                 const idrocha = this.getAttribute('data-idrocha');
@@ -110,8 +109,12 @@ navbar($breadcrumb);
                 });
             });
         });
-    </script>
 
+        document.addEventListener('DOMContentLoaded', function() {
+            const materialboxElems = document.querySelectorAll('.materialboxed');
+            M.Materialbox.init(materialboxElems);
+        });
+    </script>
 </body>
 
 </html>

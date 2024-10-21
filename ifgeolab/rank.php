@@ -77,6 +77,9 @@ $grafico = implode(", ", $graficoOrdenado);
           });
           google.charts.setOnLoadCallback(drawChart);
 
+          // Redesenha o gráfico quando a janela é redimensionada
+          window.addEventListener('resize', drawChart);
+
           function drawChart() {
             var dataArray = [
               ['Nome', 'Minerais', 'Rochas'],
@@ -91,11 +94,11 @@ $grafico = implode(", ", $graficoOrdenado);
                 subtitle: 'Amostras Cadastradas',
                 titleTextStyle: {
                   fontName: 'Merriweather',
-                  fontSize: 18 // Adjust the font size if needed
+                  fontSize: 18
                 },
                 subtitleTextStyle: {
                   fontName: 'Merriweather',
-                  fontSize: 14 // Adjust the font size if needed
+                  fontSize: 14
                 }
               },
               colors: ['#6eaa5e', '#3b5534', '#03300b'],
@@ -103,13 +106,13 @@ $grafico = implode(", ", $graficoOrdenado);
               hAxis: {
                 textStyle: {
                   color: '#808080',
-                  fontName: 'Merriweather', // Define the font family for horizontal axis text
-                  fontSize: 12 // Adjust the font size if needed
+                  fontName: 'Merriweather',
+                  fontSize: 12
                 },
                 titleTextStyle: {
                   color: '#588157',
-                  fontName: 'Merriweather', // Define the font family for horizontal axis title
-                  fontSize: 14 // Adjust the font size if needed
+                  fontName: 'Merriweather',
+                  fontSize: 14
                 },
                 gridlines: {
                   color: '#707070'
@@ -118,23 +121,24 @@ $grafico = implode(", ", $graficoOrdenado);
               vAxis: {
                 textStyle: {
                   color: '#707070',
-                  fontName: 'Merriweather', // Define the font family for vertical axis text
-                  fontSize: 12 // Adjust the font size if needed
+                  fontName: 'Merriweather',
+                  fontSize: 12
                 },
                 titleTextStyle: {
                   color: '#808080',
-                  fontName: 'Merriweather', // Define the font family for vertical axis title
-                  fontSize: 14 // Adjust the font size if needed
+                  fontName: 'Merriweather',
+                  fontSize: 14
                 },
                 gridlines: {
                   color: '#909090'
                 }
               },
               height: 400,
-              width: 1000,
               backgroundColor: 'transparent',
               chartArea: {
-                backgroundColor: 'transparent'
+                backgroundColor: 'transparent',
+                width: '90%', // Ajusta a largura da área do gráfico
+                height: '70%' // Ajusta a altura da área do gráfico
               },
               bar: {
                 groupWidth: '70%'
@@ -142,22 +146,24 @@ $grafico = implode(", ", $graficoOrdenado);
               legend: {
                 position: 'top',
                 textStyle: {
-                  fontName: 'Merriweather', // Define the font family for the legend
-                  fontSize: 12 // Adjust the font size if needed
+                  fontName: 'Merriweather',
+                  fontSize: 12
                 }
               }
             };
 
             var chart = new google.charts.Bar(document.getElementById('barchart_material'));
-
             chart.draw(data, google.charts.Bar.convertOptions(options));
           }
         </script>
+
         <style>
           #barchart_material {
-            margin: 0 auto;
+            margin: 0;
             text-align: center;
             padding: 15px 10px 0;
+            width: 100%; /* Ocupa toda a largura do contêiner */
+            max-width: 1000px; /* Limite máximo de largura */
           }
         </style>
 
@@ -165,6 +171,3 @@ $grafico = implode(", ", $graficoOrdenado);
       </div>
   </main>
   <?php include_once "footer.php"; ?>
-</body>
-
-</html>

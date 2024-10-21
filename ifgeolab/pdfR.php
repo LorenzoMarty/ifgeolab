@@ -103,7 +103,7 @@
         <div class="col s2"><img class="img1" src="img/if_logo.png"></div><br>
         <div class="title col s7">
             <h6><b>Instituto Federal de Educação, Ciência e Tecnologia Farroupilha Campus Uruguaiana</b></h6>
-            <h5><b>MOSTRUÁRIO DIGITAL DE GEOGRAFIA IFGEOLAB</b></h5>
+            <h5><b>Laboratório Digital de rochas e minerais IF GeoLab</b></h5>
         </div>
         <div class="col s3"><img class="img2" src="img/geolab-verde.png"></div>
     </div>
