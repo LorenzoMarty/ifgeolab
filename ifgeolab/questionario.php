@@ -62,99 +62,100 @@ navbar($breadcrumb);
         color: black;
     }
 </style>
+<link rel="stylesheet" href="css/rocha-mineral.css">
 
 <body>
-    <main class="container">
-        <form action="" method="post">
-            <div class="row">
-                <div class="col s12">
-                    <div class="center-align">
-                        <h2>Questionário de Rochas e Minerais</h2>
-                        <hr>
-                    </div>
+    <main>
+        <div class="container">
+            <div class="vertical-line"></div>
+            <div class="section-content">
+                <div class="section">
+                    <h4 class="left-align">Questionário de Rochas e Minerais</h4>
+                    <hr class="divider">
                 </div>
-            </div>
-            <?php if (isset($_POST['enviar'])) : ?>
                 <div class="row">
-                    <div class="col s12">
-                        <div class="card-panel">
-                            <span>Você acertou <?= $contagem ?>/<?= count($questoes) ?> questões.</span>
+                    <form action="" method="post">
+                        <?php if (isset($_POST['enviar'])) : ?>
+                            <div class="row">
+                                <div class="col s12">
+                                    <div class="card-panel">
+                                        <span>Você acertou <?= $contagem ?>/<?= count($questoes) ?> questões.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+                        <div class="row">
+                            <?php
+                            $i = 1;
+                            $total_questoes = count($questoes);
+                            $midpoint = ceil($total_questoes / 2); // Ponto médio para dividir as perguntas em duas colunas
+
+                            foreach ($questoes as $index => $pergunta) :
+                                $alternativas = [
+                                    'A' => $pergunta['alternativa_1'],
+                                    'B' => $pergunta['alternativa_2'],
+                                    'C' => $pergunta['alternativa_3'],
+                                    'D' => $pergunta['alternativa_4'],
+                                    'E' => $pergunta['alternativa_5'],
+                                ];
+
+                                if ($index % $midpoint == 0 && $index != 0) :
+                                    echo '</div><div class="col s12 m6">';
+                                elseif ($index == 0) :
+                                    echo '<div class="col s12 m6">';
+                                endif;
+                            ?>
+                                <div class="card">
+                                    <div class="card-content">
+                                        <span class="card-title color"><?php echo $pergunta['nome']; ?></span>
+                                        <span class="card-title color"><?php echo $pergunta['descricao']; ?></span>
+                                        <div>
+                                            <?php foreach ($alternativas as $key => $alternativa) :
+                                                $classe = '';
+                                                $checked = '';
+                                                if (isset($_POST['enviar'])) {
+                                                    if ($respostas[$i - 1] == $key) {
+                                                        $checked = 'checked';
+                                                        if ($respostas[$i - 1] == $pergunta['alternativa_certa']) {
+                                                            $classe = 'correct';
+                                                        } else {
+                                                            $classe = 'incorrect';
+                                                        }
+                                                    }
+                                                    if ($key == $pergunta['alternativa_certa']) {
+                                                        $classe .= ' correct';
+                                                    }
+                                                }
+                                            ?>
+                                                <p class="<?= $classe ?>">
+                                                    <label class="color">
+                                                        <input type="radio" name="questao<?= $i ?>" value="<?= $key ?>" <?= $checked ?> <?= isset($_POST['enviar']) ? 'disabled' : 'required' ?>>
+                                                        <span><?= $key ?>) <?= $alternativa ?></span>
+                                                    </label>
+                                                </p>
+                                            <?php endforeach ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php $i++;
+                            endforeach ?>
                         </div>
-                    </div>
-                </div>
-            <?php endif; ?>
-            <div class="row">
-                <?php
-                $i = 1;
-                $total_questoes = count($questoes);
-                $midpoint = ceil($total_questoes / 2); // Ponto médio para dividir as perguntas em duas colunas
-
-                foreach ($questoes as $index => $pergunta) :
-                    $alternativas = [
-                        'A' => $pergunta['alternativa_1'],
-                        'B' => $pergunta['alternativa_2'],
-                        'C' => $pergunta['alternativa_3'],
-                        'D' => $pergunta['alternativa_4'],
-                        'E' => $pergunta['alternativa_5'],
-                    ];
-
-                    if ($index % $midpoint == 0 && $index != 0) :
-                        echo '</div><div class="col s12 m6">';
-                    elseif ($index == 0) :
-                        echo '<div class="col s12 m6">';
-                    endif;
-                ?>
-                    <div class="card">
-                        <div class="card-content">
-                            <span class="card-title color"><?php echo $pergunta['nome']; ?></span>
-                            <span class="card-title color"><?php echo $pergunta['descricao']; ?></span>
-                            <div>
-                                <?php foreach ($alternativas as $key => $alternativa) :
-                                    $classe = '';
-                                    $checked = '';
-                                    if (isset($_POST['enviar'])) {
-                                        if ($respostas[$i - 1] == $key) {
-                                            $checked = 'checked';
-                                            if ($respostas[$i - 1] == $pergunta['alternativa_certa']) {
-                                                $classe = 'correct';
-                                            } else {
-                                                $classe = 'incorrect';
-                                            }
-                                        }
-                                        if ($key == $pergunta['alternativa_certa']) {
-                                            $classe .= ' correct';
-                                        }
-                                    }
-                                ?>
-                                    <p class="<?= $classe ?>">
-                                        <label class="color">
-                                            <input type="radio" name="questao<?= $i ?>" value="<?= $key ?>" <?= $checked ?> <?= isset($_POST['enviar']) ? 'disabled' : 'required' ?>>
-                                            <span><?= $key ?>) <?= $alternativa ?></span>
-                                        </label>
-                                    </p>
-                                <?php endforeach ?>
+                        <div class="row">
+                            <div class="col s12">
+                                <div class="right-align">
+                                    <?php if (isset($_POST['enviar'])) : ?>
+                                        <button class="btn waves-effect waves-light" type="submit" name="refazer">Refazer
+                                            <i class="material-icons right">refresh</i>
+                                        </button>
+                                    <?php else : ?>
+                                        <button class="btn waves-effect waves-light" type="submit" name="enviar">Enviar
+                                            <i class="material-icons right">send</i>
+                                        </button>
+                                    <?php endif; ?>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                <?php $i++;
-                endforeach ?>
-            </div>
-            <div class="row">
-                <div class="col s12">
-                    <div class="right-align">
-                        <?php if (isset($_POST['enviar'])) : ?>
-                            <button class="btn waves-effect waves-light" type="submit" name="refazer">Refazer
-                                <i class="material-icons right">refresh</i>
-                            </button>
-                        <?php else : ?>
-                            <button class="btn waves-effect waves-light" type="submit" name="enviar">Enviar
-                                <i class="material-icons right">send</i>
-                            </button>
-                        <?php endif; ?>
-                    </div>
-                </div>
-            </div>
-        </form>
+                    </form>
     </main>
     <?php include "footer.php"; ?>
 </body>

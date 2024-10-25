@@ -67,83 +67,82 @@ if (mysqli_num_rows($result) > 0) {
 <body>
     <main>
         <div class="container">
-            <div class="row">
-                <div class="col s6">
-                    <h3 class="left">Meu Perfil</h3>
-                </div>
-                <div class="col s6">
-                    <div class="right hide-on-med-and-down" style="margin-top: 50px;">
+            <div class="vertical-line"></div>
+            <div class="section-content">
+                <div class="section">
+                    <h4 class="left-align">Meu Perfil</h4>
+                    <hr class="divider">
+                    <div class="left hide-on-med-and-down" style="margin-top: 20px;">
                         <a class="waves-effect waves-light btn green accent-4" href="formEdit.php"> Editar</a>
                         <a id="btnSair" class="waves-effect waves-light btn red lighten-5 red-text">Sair</a>
                         <a id="btnExcluir" class="waves-effect waves-light btn red">Excluir</a>
                     </div>
                 </div>
-            </div>
-            <hr>
-            <br><br>
-            <div class="row">
-                <div class="col s6">
-                    <div class="card-image">
-                        <img src="../img/usuarios/<?= $img; ?>" class="minha-imagem circle">
+                <div class="row">
+                    <div class="col s6">
+
                     </div>
                 </div>
-                <div class="col s6">
-                    <h5><b>Nome: </b><?php echo $dados['nome']; ?></h5><br>
-                    <h5><b>Email: </b><?php echo $dados['email']; ?></h5><br>
-                    <h5><b>Matrícula: </b><?php echo $dados['matricula']; ?></h5><br>
-                    <h5><b>Instituição: </b><?php echo $dados['instituto']; ?></h5><br>
-                    <?php if ($amostra['nomes_minerais'] == "") {
-                    } else {
-                        echo "<h5><b>Minerais Cadastrados: </b>" . $mineraisCad . "</h5><br>";
-                    }
-                    if ($amostra['nomes_rochas'] == "") {
-                    } else {
-                        echo "<h5><b>Rochas Cadastrados: </b>" . $rochasCad . "</h5><br>";
-                    } ?>
+                <br><br>
+                <div class="row">
+                    <div class="col s6">
+                        <div class="card-image">
+                            <img src="../img/usuarios/<?= $img; ?>" class="minha-imagem circle">
+                        </div>
+                    </div>
+                    <div class="col s6">
+                        <h5><b>Nome: </b><?php echo $dados['nome']; ?></h5><br>
+                        <h5><b>Email: </b><?php echo $dados['email']; ?></h5><br>
+                        <h5><b>Matrícula: </b><?php echo $dados['matricula']; ?></h5><br>
+                        <h5><b>Instituição: </b><?php echo $dados['instituto']; ?></h5><br>
+                        <?php if ($amostra['nomes_minerais'] == "") {
+                        } else {
+                            echo "<h5><b>Minerais Cadastrados: </b>" . $mineraisCad . "</h5><br>";
+                        }
+                        if ($amostra['nomes_rochas'] == "") {
+                        } else {
+                            echo "<h5><b>Rochas Cadastrados: </b>" . $rochasCad . "</h5><br>";
+                        } ?>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-
             </div>
         </div>
     </main>
-    <?php
-    include "footer.php";
-    ?>
-    <script src="../js/sweetalert.js"></script>
-    <script>
-        const btnSair = document.querySelector('#btnSair');
-        btnSair.addEventListener('click', function() {
-            Swal.fire({
-                title: "Tem certeza que deseja sair?",
-                icon: "question",
-                showCancelButton: true,
-                confirmButtonColor: "#3085d6",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "Sim"
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    location.href = "../sair.php";
-                }
-            });
-        });
-
-        const btnExcluir = document.querySelector('#btnExcluir');
-        btnExcluir.addEventListener('click', function() {
-            Swal.fire({
-                title: "Tem certeza que deseja excluir a conta?",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#3085d6",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "Sim"
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    location.href = "excluir.php?deletarUsuario=<?= $user; ?>"
-                }
-            });
-        });
-    </script>
 </body>
+<?php
+include "footer.php";
+?>
+<script src="../js/sweetalert.js"></script>
+<script>
+    const btnSair = document.querySelector('#btnSair');
+    btnSair.addEventListener('click', function() {
+        Swal.fire({
+            title: "Tem certeza que deseja sair?",
+            icon: "question",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Sim"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                location.href = "../sair.php";
+            }
+        });
+    });
 
-</html>
+    const btnExcluir = document.querySelector('#btnExcluir');
+    btnExcluir.addEventListener('click', function() {
+        Swal.fire({
+            title: "Tem certeza que deseja excluir a conta?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Sim"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                location.href = "excluir.php?deletarUsuario=<?= $user; ?>"
+            }
+        });
+    });
+</script>

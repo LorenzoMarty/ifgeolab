@@ -4,7 +4,7 @@ function navbar($breadcrumb)
     if (isset($_SESSION['permissao'])) {
         if ($_SESSION['permissao'] == 1) {
             include "topo-user.php";
-        } elseif ($_SESSION['permissao'] == 2) {
+        } elseif ($_SESSION['permissao'] == 2 or 3) {
             include "topo-adm.php";
         }
     } else {
@@ -23,6 +23,7 @@ function navbar($breadcrumb)
 <link rel="stylesheet" href="../css/materialize.css">
 <link rel="stylesheet" href="../css/navbar.css">
 <link href="https://cdn.jsdelivr.net/npm/cropperjs@1.5.12/dist/cropper.min.css" rel="stylesheet">
+<link rel="stylesheet" href="../css/rocha-mineral.css">
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/cropperjs@1.5.12/dist/cropper.min.js"></script>

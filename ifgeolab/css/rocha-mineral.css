@@ -1,3 +1,30 @@
+/* Estilos globais */
+main {
+    padding: 20px;
+    position: relative;
+}
+
+.container {
+    width: 90%;
+    margin: 20px auto;
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+    flex-wrap: wrap;
+    /* Permite que os itens se reorganizem em telas menores */
+}
+
+.vertical-line {
+    border-left: 2px solid #25412B;
+    height: 550px;
+    margin-right: 20px;
+    position: relative;
+}
+
+.section-content {
+    flex: 1;
+}
+
 .image-container {
     position: relative;
     display: inline-block;
@@ -7,8 +34,8 @@
 }
 
 .image-with-caption {
-    width: 100%;
-    height: 30%;
+    width: 70%;
+    height: auto;
     border-radius: 10px;
 }
 
@@ -27,31 +54,6 @@
 
 .image-container:hover .caption {
     font-size: 1.75rem;
-}
-
-main {
-    padding: 20px;
-    position: relative;
-}
-
-.container {
-    width: 90%;
-    margin: 20px auto;
-    display: flex;
-    align-items: flex-start;
-    position: relative;
-}
-
-.vertical-line {
-    border-left: 2px solid #25412B;
-    height: 550px;
-    margin-right: 20px;
-    position: relative;
-}
-
-.section-content {
-    flex: 1;
-    position: relative;
 }
 
 h4 {
@@ -81,4 +83,115 @@ hr.divider.second {
     background-color: #25412B;
     height: 2px;
     border: none;
+}
+
+/* Media queries para responsividade */
+
+/* Dispositivos móveis (largura máxima de 600px) */
+@media only screen and (max-width: 600px) {
+    .container {
+        flex-direction: column;
+        /* Coloca os itens um abaixo do outro */
+        align-items: center;
+    }
+
+    .vertical-line {
+        display: none;
+        /* Esconde a linha vertical em telas pequenas */
+    }
+
+    .image-with-caption {
+        width: 90%;
+        /* Aumenta a largura da imagem em dispositivos móveis */
+    }
+
+    .caption {
+        font-size: 1.2rem;
+        /* Diminui o tamanho da legenda */
+    }
+
+    h4 {
+        font-size: 1.5rem;
+        /* Reduz o tamanho da fonte para títulos */
+    }
+
+    h6 {
+        font-size: 0.8rem;
+    }
+
+    hr.divider {
+        width: 90%;
+    }
+
+    hr.divider.second {
+        width: 90%;
+    }
+}
+
+/* Tablets (largura entre 600px e 1024px) */
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .vertical-line {
+        display: none;
+    }
+
+    .image-with-caption {
+        width: 80%;
+    }
+
+    .caption {
+        font-size: 1.4rem;
+    }
+
+    h4 {
+        font-size: 1.6rem;
+    }
+
+    h6 {
+        font-size: 0.85rem;
+    }
+
+    hr.divider {
+        width: 80%;
+    }
+
+    hr.divider.second {
+        width: 80%;
+    }
+}
+
+/* Desktops grandes (largura maior que 1024px) */
+@media only screen and (min-width: 1025px) {
+    .container {
+        flex-direction: row;
+        /* Mantém o layout em linha para telas grandes */
+    }
+
+    .image-with-caption {
+        width: 70%;
+    }
+
+    .caption {
+        font-size: 1.5rem;
+    }
+
+    h4 {
+        font-size: 1.8rem;
+    }
+
+    h6 {
+        font-size: 0.9rem;
+    }
+
+    hr.divider {
+        width: 60%;
+    }
+
+    hr.divider.second {
+        width: 60%;
+    }
 }

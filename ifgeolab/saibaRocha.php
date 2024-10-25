@@ -119,7 +119,7 @@ include "include.php"; ?>
                         <div class="card-content">
                             <model-viewer id="model-viewer" class="card__model" shadow-intensity="2" src="obj/<?= $obj; ?>"
                                 max-camera-orbit="auto 90deg" autoplay auto-rotate ar ar-scale="fixed" camera-controls
-                                touch-action="pan-y" skybox-image="img/fundo.hdr"
+                                touch-action="pan-y" skybox-image="img/fundo.hdr" skybox-height="10cm"
                                 poster="img/geolab-branco.png">
                             </model-viewer>
 

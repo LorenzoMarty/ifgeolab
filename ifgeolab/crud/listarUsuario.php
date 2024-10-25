@@ -4,6 +4,10 @@ include "include.php";
 $breadcrumb = "";
 navbar($breadcrumb);
 
+require_once '../conecta.php';
+$sql = "SELECT * FROM usuario";
+$conexao = conectar();
+$resultado = mysqli_query($conexao, $sql);
 ?>
 <style>
     .minha-imagem {
@@ -21,56 +25,44 @@ navbar($breadcrumb);
 
 <body>
     <main>
-
-        </div>
         <div class="container">
-            <div class="row">
-                <div class="col s12">
-                    <h3 class="left">Usuários</h3><br>
+            <div class="vertical-line"></div>
+            <div class="section-content">
+                <div class="section">
+                    <h4 class="left-align">Editar Usuários</h4>
+                    <hr class="divider">
                 </div>
+                <div class="row">
+                    <?php
 
-                <div class="col s12">
-                    <hr>
-                    <p>Usuários cadastrados no IF GeoLab</p>
-                    <hr>
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <?php
-                require_once '../conecta.php';
-                $sql = "SELECT * FROM usuario";
-                $conexao = conectar();
-                $resultado = mysqli_query($conexao, $sql);
-                while ($dados = mysqli_fetch_array($resultado)) {
-                    $idusuario = $dados["idusuario"];
-                    $nome = $dados['nome'];
-                    $img = $dados['img'];
-                ?>
-                    <div class="col s12 l4 m8">
-                        <div class="card hoverable">
-                            <div class="card-image">
-                                <img src="../img/usuarios/<?= $img; ?>" class="minha-imagem materialboxed">
-                                <span class="card-title center meu-span white-text text-lighten-3">
-                                    <?php echo $nome ?>
-                                </span>
-                            </div>
-                            <div class="card-action green darken-4">
-                                <a id="btnExcluir-<?= $idusuario ?>" class="center waves-effect waves-light btn-small red"
-                                    data-idusuario="<?= $idusuario ?>">Excluir</a>
+                    while ($dados = mysqli_fetch_array($resultado)) {
+                        $idusuario = $dados["idusuario"];
+                        $nome = $dados['nome'];
+                        $img = $dados['img'];
+                    ?>
+                        <div class="col s12 l4 m8">
+                            <div class="card hoverable">
+                                <div class="card-image">
+                                    <img src="../img/usuarios/<?= $img; ?>" class="minha-imagem materialboxed">
+                                    <span class="card-title center meu-span white-text text-lighten-3">
+                                        <?php echo $nome ?>
+                                    </span>
+                                </div>
+                                <div class="card-action green darken-4">
+                                    <a id="btnExcluir-<?= $idusuario ?>" class="center waves-effect waves-light btn-small red"
+                                        data-idusuario="<?= $idusuario ?>">Excluir</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                <?php } ?>
-                <br>
-                <br>
-                <br>
+                    <?php } ?>
+                    <br>
+                    <br>
+                    <br>
+
+                </div>
 
             </div>
-
-        </div>
-        <br><br><br>
+            <br><br><br>
     </main>
 
     <?php

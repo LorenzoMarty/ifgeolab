@@ -41,23 +41,20 @@
     const modelViewer = document.getElementById('model-viewer');
 
     modelViewer.addEventListener('scene-graph-ready', () => {
-        const scene = modelViewer.model?.scene; // Acessa a cena do modelo carregado
+        const scene = modelViewer.model?.scene; 
 
         if (scene) {
-            const box = new modelViewer.constructor.THREE.Box3().setFromObject(scene); // Cria a bounding box
+            const box = new modelViewer.constructor.THREE.Box3().setFromObject(scene); 
             const center = new modelViewer.constructor.THREE.Vector3();
-            box.getCenter(center); // Obtém o centro da bounding box
+            box.getCenter(center);
 
-            // Calcula a altura do modelo
             const height = box.max.y - box.min.y;
 
-            // Ajusta a posição do modelo para "tocar" o chão (ajusta a posição Y)
             const offsetY = box.min.y;
-            scene.position.y -= offsetY; // Subtrai o offset Y para mover o modelo para o chão
+            scene.position.y -= offsetY; 
 
-            // Atualiza o ambiente (skybox) conforme necessário
             const skyboxHeight = height * 2;
-            modelViewer.environmentImage = 'img/fundo.hdr'; // Reaplica o HDR no ambiente
+            modelViewer.environmentImage = 'img/fundo.hdr';
 
             console.log("Altura do modelo:", height, "metros");
             console.log("Modelo reposicionado para tocar o chão.");

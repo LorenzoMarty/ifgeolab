@@ -8,7 +8,6 @@
     <div class="container">
         <div class="login-section">
             <h1>Cadastrar</h1>
-            <!-- <hr class="divider"> -->
             <form action="cadastrar.php" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                     <div class="input-field">

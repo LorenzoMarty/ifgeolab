@@ -11,6 +11,7 @@
 <script src="js/materialize.js"></script>
 <script src="js/dark-light.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<link rel="stylesheet" href="css/rocha-mineral.css">
 <title>IF GeoLab</title>
 <?php
 function navbar($breadcrumb)
@@ -18,7 +19,7 @@ function navbar($breadcrumb)
     if (isset($_SESSION['permissao'])) {
         if ($_SESSION['permissao'] == 1) {
             include "topo-user.php";
-        } elseif ($_SESSION['permissao'] == 2) {
+        } elseif ($_SESSION['permissao'] == 2 or 3) {
             include "topo-adm.php";
         }
     } else {

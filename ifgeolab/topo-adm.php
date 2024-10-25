@@ -78,9 +78,6 @@ if (mysqli_num_rows($resultado) > 0) {
     <!-- Lado esquerdo - Aparece apenas em telas grandes -->
     <ul class="right hide-on-med-and-down">
       <li><a href="index.php">Início</a></li>
-      <?php if ($_SESSION['permissao'] == 3): ?>
-        <li><a href="listarUsuario.php">Usuários</a></li>
-      <?php endif; ?>
       <li>
         <a class="dropdown-trigger" href="#!" data-target="dropdown1">Cadastrar<i
             class="material-icons right">arrow_drop_down</i></a>
@@ -111,6 +108,9 @@ if (mysqli_num_rows($resultado) > 0) {
 
 <!-- Dropdown Content (Desktop) -->
 <ul id="dropdown1" class="dropdown-content">
+  <?php if ($_SESSION['permissao'] == 3): ?>
+    <li><a href="crud/listarUsuario.php">Usuários</a></li>
+  <?php endif; ?>
   <li><a href="crud/cadquestao.php">Questões</a></li>
   <li><a href="crud/Sugestao.php">Sugestões</a></li>
   <li><a href="crud/Amostra.php">Amostras</a></li>
@@ -126,9 +126,8 @@ if (mysqli_num_rows($resultado) > 0) {
     </li>
     <li><a class="white-text" href="index.php">Início</a></li>
     <?php if ($_SESSION['permissao'] == 3): ?>
-      <li><a class="white-text" href="listarUsuario.php">Usuários</a></li>
+      <li><a class="white-text" href="crud/listarUsuario.php">Usuários</a></li>
     <?php endif; ?>
-    <li><a class="white-text" href="rank.php">Colaboradores</a></li>
     <li><a class="white-text" href="crud/cadquestao.php">Cadastrar Questões</a></li>
     <li><a class="white-text" href="crud/Sugestao.php">Cadastrar Sugestões</a></li>
     <li><a class="white-text" href="crud/Amostra.php">Cadastrar Amostras</a></li>
@@ -142,7 +141,7 @@ if (mysqli_num_rows($resultado) > 0) {
 </ul>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
+  document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.dropdown-trigger');
     var instances = M.Dropdown.init(elems, {
       click: true

@@ -7,8 +7,6 @@ $breadcrumb = "";
 navbar($breadcrumb);
 
 ?>
-<link rel="stylesheet" href="../css/rocha-mineral.css">
-
 <body>
     <main>
         <div class="container">
@@ -86,7 +84,8 @@ navbar($breadcrumb);
             </div>
         </div>
     </main>
-    <?php
-    include 'footer.php';
-    ?>
-    <script src="../js/quill.js"></script>
+</body>
+<?php
+include 'footer.php';
+?>
+<script src="../js/quill.js"></script>

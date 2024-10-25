@@ -38,69 +38,75 @@ if (isset($_GET['idrocha'])) {
 
 
 <body>
-    <div class="container">
-        <h4>Editar Rocha</h4>
-        <hr>
-        <form enctype="multipart/form-data" method="post" action="editar.php" class="col  s12 m6">
+    <main>
+        <div class="container">
+            <div class="vertical-line"></div>
+            <div class="section-content">
+                <div class="section">
+                    <h4 class="left-align">Editar Rochas</h4>
+                    <hr class="divider">
+                </div>
+                <div class="row">
+                    <form enctype="multipart/form-data" method="post" action="editar.php" class="col  s12 m6">
 
-            <div class="row">
-                <div class="input-field col s6">
-                    <input id="nome" name="nome" type="text" value="<?= $nome; ?>" class="validate">
-                    <input type="hidden" name="idrocha" value="<?= $id; ?>">
-                    <input type="hidden" name="sugestao" value="<?= $suges; ?>">
-                    <label for="nome">Nome</label>
-                </div>
-                <div class="input-field col s6">
-                    <select name="idcat" class="select-dropdown">
-                        <?php
-                        require_once "../conecta.php";
-                        $conexao = conectar();
-                        $y = "SELECT * FROM catrocha";
-                        $res = mysqli_query($conexao, $y);
-                        while ($dad = mysqli_fetch_assoc($res)) {
-                        ?>
-                            <option value="<?= $dad['idcat']; ?>" <?= ($idCat == $dad['idcat']) ? "selected" : "" ?>>
-                                <?= $dad['nome']; ?>
-                            </option>
-                        <?php } ?>
-                    </select>
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input id="nome" name="nome" type="text" value="<?= $nome; ?>" class="validate">
+                                <input type="hidden" name="idrocha" value="<?= $id; ?>">
+                                <input type="hidden" name="sugestao" value="<?= $suges; ?>">
+                                <label for="nome">Nome</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <select name="idcat" class="select-dropdown">
+                                    <?php
+                                    require_once "../conecta.php";
+                                    $conexao = conectar();
+                                    $y = "SELECT * FROM catrocha";
+                                    $res = mysqli_query($conexao, $y);
+                                    while ($dad = mysqli_fetch_assoc($res)) {
+                                    ?>
+                                        <option value="<?= $dad['idcat']; ?>" <?= ($idCat == $dad['idcat']) ? "selected" : "" ?>>
+                                            <?= $dad['nome']; ?>
+                                        </option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <label for="descricao"> Descrição</label>
+                                <div id="editor-container">
+                                    <?= $dados['descricao'] ?>
+                                </div>
+                                <input type="hidden" id="descricao" name="descricao">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field">
+                                <label>Imagem:</label><br><br>
+                                <div class="col s3">
+                                    <img src="../img/rochas/<?= $dados['img']; ?>" class="minha-imagem materialboxed ">Foto
+                                    atual</img>
+                                    <input type="file" name="arquivo" value="<?= $dados['img']; ?>" /> <br>
+                                </div>
+                            </div>
+                            <div class="input-field col s12">
+                                <button class="waves-effect waves-light btn green" type="submit" name="editarRocha">Editar</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <label for="descricao"> Descrição</label>
-                    <div id="editor-container">
-                        <?= $dados['descricao'] ?>
-                    </div>
-                    <input type="hidden" id="descricao" name="descricao">
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field">
-                    <label>Imagem:</label><br><br>
-                    <div class="col s3">
-                        <img src="../img/rochas/<?= $dados['img']; ?>" class="minha-imagem materialboxed ">Foto
-                        atual</img>
-                        <input type="file" name="arquivo" value="<?= $dados['img']; ?>" /> <br>
-                    </div>
-                </div>
-                <div class="input-field col s12">
-                    <button class="waves-effect waves-light btn green" type="submit" name="editarRocha">Editar</button>
-                </div>
-            </div>
-        </form>
-    </div>
-
-    <?php
-    include 'footer.php';
-    ?>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var elems = document.querySelectorAll('.select-dropdown');
-            var instances = M.FormSelect.init(elems);
-        });
-    </script>
-    <script src="../js/quill.js"></script>
+        </div>
+    </main>
 </body>
-
-</html>
+<?php
+include 'footer.php';
+?>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.select-dropdown');
+        var instances = M.FormSelect.init(elems);
+    });
+</script>
+<script src="../js/quill.js"></script>
