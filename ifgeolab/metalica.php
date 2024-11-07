@@ -23,42 +23,43 @@ include "include.php"; ?>
     navbar($breadcrumb);
     ?>
     <main>
+        <div class="corpo">
+            <div class="vertical-line"></div>
+            <div class="section-content">
+                <div class="section">
+                    <h4 class="left-align">Minerais Metálicos</h4>
+                    <hr class="divider">
+                </div>
+                <div class="row">
+                    <?php
+                    require_once 'conecta.php';
+                    $sql = "SELECT * FROM mineral WHERE idcat=1 and sugestao=0";
+                    $conexao = conectar();
+                    $resultado = mysqli_query($conexao, $sql);
+                    while ($dados = mysqli_fetch_array($resultado)) {
+                        $nome = $dados['nome'];
+                        $cat = $dados['idcat'];
+                        $descricao = $dados['descricao'];
+                        $img = $dados['img'];
 
-        <div class="container center">
-            <div class="row col s12">
-                <h3>Minerais Metálicos</h3>
-            </div>
-            <hr>
-        </div>
+                        ?>
+                        <div class="col s12 l4 m8">
+                            <div class="card hoverable">
 
-        <div class="container">
-            <div class="row">
-                <?php
-                require_once 'conecta.php';
-                $sql = "SELECT * FROM mineral WHERE idcat=1 and sugestao=0";
-                $conexao = conectar();
-                $resultado = mysqli_query($conexao, $sql);
-                while ($dados = mysqli_fetch_array($resultado)) {
-                    $nome = $dados['nome'];
-                    $cat = $dados['idcat'];
-                    $descricao = $dados['descricao'];
-                    $img = $dados['img'];
-
-                ?>
-                    <div class="col s12 l4 m8">
-                        <div class="card hoverable">
-
-                            <div class="card-image">
-                                <img src="img/mineral/<?= $img; ?>" class="minha-imagem materialboxed ">
-                                <span class="card-title center meu-span green-text text-lighten-3"><?php echo $nome     ?></span>
-                            </div>
-                            <div class="card-action green darken-4">
-                                <a class="green-text text-lighten-3" href="saibamineral.php?idmineral=<?php echo $dados['idmineral']  ?>">Saiba mais</a>
+                                <div class="card-image">
+                                    <img src="img/mineral/<?= $img; ?>" class="minha-imagem materialboxed ">
+                                    <span
+                                        class="card-title center meu-span green-text text-lighten-3"><?php echo $nome ?></span>
+                                </div>
+                                <div class="card-action green darken-4">
+                                    <a class="green-text text-lighten-3"
+                                        href="saibamineral.php?idmineral=<?php echo $dados['idmineral'] ?>">Saiba mais</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                <?php } ?>
+                    <?php } ?>
+                </div>
             </div>
         </div>
         <br><br><br>
@@ -67,20 +68,8 @@ include "include.php"; ?>
     include "footer.php";
     ?>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var elems = document.querySelectorAll('.materialboxed');
-            var instances = M.Materialbox.init(elems, options);
-        });
-
-        // Or with jQuery
-
-        $(document).ready(function() {
-            $('.materialboxed').materialbox();
+        document.addEventListener('DOMContentLoaded', function () {
+            const materialboxElems = document.querySelectorAll('.materialboxed');
+            M.Materialbox.init(materialboxElems);
         });
     </script>
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src="js/materialize.js"></script>
-    <script src="js/init.js"></script>
-</body>
-
-</html>

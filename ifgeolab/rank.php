@@ -63,7 +63,7 @@ $grafico = implode(", ", $graficoOrdenado);
 
 <body>
   <main>
-    <div class="container center">
+    <div class="corpo center">
       <div class="vertical-line"></div>
       <div class="section-content">
         <div class="section">

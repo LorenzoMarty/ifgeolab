@@ -25,7 +25,7 @@ include "include.php"; ?>
     navbar($breadcrumb);
     ?>
     <main>
-        <div class="container">
+        <div class="corpo">
             <div class="vertical-line"></div>
             <div class="section-content">
                 <div class="section">
@@ -44,16 +44,18 @@ include "include.php"; ?>
                         $descricao = $dados['descricao'];
                         $img = $dados['img'];
 
-                    ?>
+                        ?>
                         <div class="col s12 l4 m8">
                             <div class="card hoverable">
 
                                 <div class="card-image">
                                     <img src="img/rochas/<?= $img; ?>" class="minha-imagem materialboxed ">
-                                    <span class="card-title center meu-span green-text text-lighten-3"><?php echo $nome     ?></span>
+                                    <span
+                                        class="card-title center meu-span green-text text-lighten-3"><?php echo $nome ?></span>
                                 </div>
                                 <div class="card-action green darken-4">
-                                    <a class="green-text text-lighten-3" href="saibaRocha.php?idrocha=<?php echo $dados['idrocha']  ?>">Saiba mais</a>
+                                    <a class="green-text text-lighten-3"
+                                        href="saibaRocha.php?idrocha=<?php echo $dados['idrocha'] ?>">Saiba mais</a>
                                 </div>
                             </div>
                         </div>
@@ -61,19 +63,15 @@ include "include.php"; ?>
                     <?php } ?>
                 </div>
             </div>
-            <br><br><br>
+        </div>
+        <br><br><br>
     </main>
     <?php
     include "footer.php";
     ?>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const materialboxElems = document.querySelectorAll('.materialboxed');
             M.Materialbox.init(materialboxElems);
         });
     </script>
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src="js/materialize.js"></script>
-</body>
-
-</html>

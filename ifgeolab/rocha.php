@@ -11,7 +11,7 @@ include "include.php"; ?>
     navbar($breadcrumb);
     ?>
     <main>
-        <div class="container">
+        <div class="corpo">
             <div class="vertical-line"></div>
 
             <div class="section-content">
