@@ -28,11 +28,9 @@ navbar($breadcrumb);
     }
 </style>
 
-<link rel="stylesheet" href="../css/rocha-mineral.css">
-
 <body>
     <main>
-        <div class="container center">
+        <div class="container">
             <div class="vertical-line"></div>
 
             <div class="section-content">

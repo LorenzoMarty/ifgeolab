@@ -59,11 +59,9 @@ $grafico = implode(", ", $graficoOrdenado);
 ?>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
-<link rel="stylesheet" href="css/rocha-mineral.css">
-
 <body>
   <main>
-    <div class="corpo center">
+    <div class="container">
       <div class="vertical-line"></div>
       <div class="section-content">
         <div class="section">
@@ -162,8 +160,10 @@ $grafico = implode(", ", $graficoOrdenado);
             margin: 0;
             text-align: center;
             padding: 15px 10px 0;
-            width: 100%; /* Ocupa toda a largura do contêiner */
-            max-width: 1000px; /* Limite máximo de largura */
+            width: 100%;
+            /* Ocupa toda a largura do contêiner */
+            max-width: 1000px;
+            /* Limite máximo de largura */
           }
         </style>
 

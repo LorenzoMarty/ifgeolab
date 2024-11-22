@@ -30,12 +30,9 @@ navbar($breadcrumb);
     }
 </style>
 
-
-<link rel="stylesheet" href="../css/rocha-mineral.css">
-
 <body>
     <main>
-    <div class="container center">
+    <div class="container">
             <div class="vertical-line"></div>
 
             <div class="section-content">
@@ -112,7 +109,7 @@ navbar($breadcrumb);
             button.addEventListener('click', function() {
                 const idrocha = this.getAttribute('data-idrocha');
                 Swal.fire({
-                    title: "Tem certeza que deseja excluir a conta?",
+                    title: "Tem certeza que deseja excluir a rocha?",
                     icon: "warning",
                     showCancelButton: true,
                     confirmButtonColor: "#3085d6",

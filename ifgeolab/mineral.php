@@ -11,7 +11,7 @@ include "include.php"; ?>
     navbar($breadcrumb);
     ?>
     <main>
-        <div class="corpo">
+        <div class="container">
             <div class="vertical-line"></div>
 
             <div class="section-content">
@@ -22,7 +22,7 @@ include "include.php"; ?>
                     <hr class="divider">
                 </div>
                 <div class="row">
-                    <div class="col s5 offset-s2">
+                    <div class="col s4">
                         <div class="image-container">
                             <a href="metalica.php" class="white-text">
                                 <img src="img/metalicas.png" alt="Minerais Metálicos" class="image-with-caption">
@@ -30,7 +30,7 @@ include "include.php"; ?>
                             </a>
                         </div>
                     </div>
-                    <div class="col s5">
+                    <div class="col s4">
                         <div class="image-container">
                             <a href="n-metalica.php" class="white-text">
                                 <img src="img/nao-metalicas.png" alt="Minerais Metálicos" class="image-with-caption">
@@ -39,9 +39,6 @@ include "include.php"; ?>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="section">
-                <hr class="divider second">
             </div>
         </div>
     </main>

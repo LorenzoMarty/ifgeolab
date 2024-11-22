@@ -41,13 +41,15 @@ if (isset($_POST['login'])) {
 }
 include "include.php";
 ?>
+<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet' />
 <link rel="stylesheet" href="css/login.css">
-
+<link rel="stylesheet" href="css/image.css">
 <body>
-    <div class="container">
-        <div class="login-section">
+    <div class="login">
+        <!-- Formulário de login -->
+        <div class="login-section login">
             <h1>Login</h1>
-            <hr class="divider">
+            <hr class="login">
             <form method="post">
                 <div class="form-group">
                     <div class="input-field">
@@ -66,39 +68,94 @@ include "include.php";
                 </div>
             </form>
             <div class="center">
-                <a href="crud/cadUsuario.php">Cadastre-se já</a>
+                <a href="javascript:void(0);" onclick="toggleForm()">Cadastre-se já</a>
             </div>
         </div>
+
+        <!-- Formulário de cadastro -->
+        <div class="login-section register">
+            <h1>Cadastrar</h1>
+            <hr class="login">
+            <form action="cadastrar.php" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <div class="input-field">
+                        <label for="nome">Nome</label> <i class="fas fa-user"></i>
+                        <input type="text" name="nome" id="nome" required />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-field">
+                        <label for="email">Email</label> <i class="fas fa-envelope"></i>
+                        <input type="email" name="email" id="email" required />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-field">
+                        <label for="senha">Senha</label> <i class="fas fa-lock"></i>
+                        <input type="password" name="senha" id="senha" required />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-field">
+                        <label for="matricula">Matrícula</label> <i class="fas fa-id-card"></i>
+                        <input type="text" name="matricula" id="matricula" required />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-field">
+                        <label for="inst">Instituição</label> <i class="fas fa-school"></i>
+                        <input type="text" name="inst" id="inst" required />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="img-area" data-img="">
+                        <i class='bx bxs-cloud-upload icon'></i>
+                        <h3>Envie uma Foto de Perfil</h3>
+                        <p>A Imagem não pode ser maior que <span>20MB</span></p>
+                        <input name="arquivo" type="file" id="Capa" style="display: none;">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" name="cadastrarUsuario">Cadastrar</button>
+                </div>
+            </form>
+            <div class="center">
+                <a href="javascript:void(0);" onclick="toggleForm()">Já tenho uma conta</a>
+            </div>
+        </div>
+
         <div class="image-section"></div>
     </div>
 
-</body>
+    <script>
+        function toggleForm() {
+            const loginSection = document.querySelector('.login-section.login');
+            const registerSection = document.querySelector('.login-section.register');
 
+            // Alterna entre login e cadastro
+            if (loginSection.style.display === 'none') {
+                loginSection.style.display = 'flex';
+                registerSection.style.display = 'none';
+                localStorage.setItem('form', 'login'); // Salva a preferência no localStorage
+            } else {
+                loginSection.style.display = 'none';
+                registerSection.style.display = 'flex';
+                localStorage.setItem('form', 'register'); // Salva a preferência no localStorage
+            }
+        }
 
-<script src="js/sweetalert.js"></script>
-<script>
-    <?php if ($msg != "") { ?>
-        window.addEventListener("load", (event) => {
-            Swal.fire(
-                <?= json_encode($msg) ?>
-            )
-        })
-    <?php } ?>
-</script>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const inputs = document.querySelectorAll('.form-group input');
-        inputs.forEach(input => {
-            input.addEventListener('focus', function() {
-                this.parentElement.querySelector('label').classList.add('active');
-            });
-            input.addEventListener('blur', function() {
-                if (this.value === '') {
-                    this.parentElement.querySelector('label').classList.remove('active');
-                }
-            });
-        });
-    });
-</script>
+        window.onload = function () {
+            const loginSection = document.querySelector('.login-section.login');
+            const registerSection = document.querySelector('.login-section.register');
 
-</html>
+            // Carrega a preferência salva
+            if (localStorage.getItem('form') === 'register') {
+                loginSection.style.display = 'none';
+                registerSection.style.display = 'flex';
+            } else {
+                loginSection.style.display = 'flex';
+                registerSection.style.display = 'none';
+            }
+        };
+    </script>
+    <script src="js/image.js"></script>

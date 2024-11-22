@@ -33,7 +33,7 @@ navbar($breadcrumb);
                 </div>
 
                 <!-- Linha com Rochas, Minerais, Questionários e Sugestões -->
-                <div class="row">
+                <div class="menu">
                     <div class="col s12 m6 l3 center-align">
                         <div class="image-container">
                             <a href="rocha.php">

@@ -1,11 +1,10 @@
 <?php session_start();
-include "quilljs.php";
 include "include.php";
 require_once '../conecta.php';
 $conexao = conectar();
 $breadcrumb = "";
 navbar($breadcrumb);
-
+include "quilljs.php";
 ?>
 <body>
     <main>

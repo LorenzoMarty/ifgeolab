@@ -51,11 +51,11 @@
                     <button type="submit" name="cadastrarUsuario">Cadastrar</button>
                 </div>
             </form>
-            <!-- <div class="center">
+            <div class="center">
                 <a href="../login.php">Login</a>
-            </div> -->
+            </div>
+            <div class="image-section"></div>
         </div>
-        <div class="image-section"></div>
     </div>
 </body>
 

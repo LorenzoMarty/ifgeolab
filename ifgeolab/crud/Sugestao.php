@@ -10,9 +10,8 @@ navbar($breadcrumb);
 ?>
 
 <body>
-    <link rel="stylesheet" href="../css/index.css">
     <main>
-        <div class="container center">
+        <div class="container">
 
             <div class="vertical-line"></div>
 

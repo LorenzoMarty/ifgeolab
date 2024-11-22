@@ -77,7 +77,7 @@ if (mysqli_num_rows($resultado) > 0) {
 
     <!-- Lado esquerdo - Aparece apenas em telas grandes -->
     <ul class="right hide-on-med-and-down">
-      <li><a href="index.php">Início</a></li>
+      <li><a href="../index.php">Início</a></li>
       <li>
         <a class="dropdown-trigger" href="#!" data-target="dropdown1">Cadastrar<i
             class="material-icons right">arrow_drop_down</i></a>
