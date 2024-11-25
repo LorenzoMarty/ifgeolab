@@ -17,16 +17,8 @@
     'Mineral' => '<a href="cadMineralU.php">Minerais</a>'
   ];
   $breadcrumb = implode('>', $breadcrumbs);
-
-  if (isset($_SESSION['permissao'])) {
-    if ($_SESSION['permissao'] == 1) {
-      include "topo-user.php";
-    } elseif ($_SESSION['permissao'] == 2) {
-      header('Location: ../index.php');
-    }
-  } else {
-    header('Location: ../index.php');
-  }
+  
+  navbar($breadcrumb);
   ?>
   <div class="container">
     <h4>Cadastrar Mineral</h4>
@@ -43,12 +35,13 @@
           <select name="idcat" class="validate">
             <?php
             require_once "../conecta.php";
-            $conexao = conectar();
-            $sql = "SELECT * FROM catmineral";
-            $resultado = mysqli_query($conexao, $sql);
-            while ($dados = mysqli_fetch_assoc($resultado)) {
-            ?>
-              <option value="<?= $dados['idcat']; ?>"><?= $dados['nome']; ?></option>
+
+            $crud = new CRUD();
+
+            $categorias = $crud->listar("catmineral");
+            foreach ($categorias as $categoria) {
+              ?>
+              <option value="<?= $categoria['idcat']; ?>"><?= $categoria['nome']; ?></option>
             <?php } ?>
           </select>
         </div>
@@ -77,7 +70,7 @@
   include 'footer.php';
   ?>
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       var elems = document.querySelector('select');
       M.FormSelect.init(elems);
     });

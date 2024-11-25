@@ -6,6 +6,7 @@ $breadcrumb = "";
 navbar($breadcrumb);
 include "quilljs.php";
 ?>
+
 <body>
     <main>
         <div class="container">
@@ -76,7 +77,8 @@ include "quilljs.php";
                     </div>
                     <br><br>
                     <div class="input-field col s12">
-                        <button class="waves-effect waves-light btn green" type="submit" name="cadastrarQuestao">Cadastrar</button>
+                        <button class="waves-effect waves-light btn green" type="submit"
+                            name="cadastrarQuestao">Cadastrar</button>
                     </div>
                 </div>
                 </form>

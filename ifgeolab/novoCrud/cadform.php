@@ -1,49 +1,25 @@
-<?php session_start();
+<?php
+session_start();
 include "include.php";
 include "quilljs.php";
+include "CRUD.php";
 
-require_once '../conecta.php';
-$conexao = conectar();
+$formtipo = isset($_GET['tipo']) ? $_GET['tipo'] : 'mineral';
 
 $breadcrumbs = [
   'Amostra' => '> <a href="Amostra.php">Amostras</a>',
-  'Mineral' => '<a class="active" href="listarMineral.php">Minerais</a>'
+  'Atual' => '<a class="active" href="#">' . ucfirst($formtipo) . '</a>'
 ];
+
 $breadcrumb = implode('>', $breadcrumbs);
 
 $id = $_SESSION['id'];
 navbar($breadcrumb);
 
 ?>
+
 <link rel="stylesheet" href="../css/image.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-<!-- <style>
-  .swiper {
-    width: 100%;
-    height: auto;
-  }
-
-  .swiper-slide img {
-    display: block;
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-  }
-
-  .swiper-wrapper {
-    display: flex;
-    align-items: center;
-  }
-
-  .swiper-slide {
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #fff;
-  }
-</style> -->
-<link rel="stylesheet" href="../css/rocha-mineral.css">
 
 <body>
   <main>
@@ -51,11 +27,12 @@ navbar($breadcrumb);
       <div class="vertical-line"></div>
       <div class="section-content">
         <div class="section">
-          <h4 class="left-align">Cadastrar Mineral</h4>
+          <h4 class="left-align">Cadastrar <?= ucfirst($formtipo) ?></h4>
           <hr class="divider">
         </div>
         <div class="row">
-          <form id="cadMineral" enctype="multipart/form-data" method="post" action="cadastrar.php" class="col s12 m6">
+          <form id="cad<?= ucfirst($formtipo) ?>" enctype="multipart/form-data" method="post" action="cadastrar.php"
+            class="col s12 m6">
             <div class="input-field col s6">
               <label for="nome">Nome</label>
               <input id="nome" name="nome" type="text" class="validate">
@@ -66,13 +43,16 @@ navbar($breadcrumb);
               <select class="select-dropdown" name="cat">
                 <?php
                 require_once "../conecta.php";
-                $sql = "SELECT * FROM catmineral";
-                $resultado = mysqli_query($conexao, $sql);
-                while ($dados = mysqli_fetch_assoc($resultado)) {
-                  ?>
-                  <option value="<?= $dados['idcat']; ?>"><?= $dados['nome']; ?></option>
 
-                <?php } ?>
+                $crud = new CRUD();
+
+                $categoriaTable = ($formtipo == 'rocha') ? 'catrocha' : 'catmineral';
+
+                $categorias = $crud->listar($categoriaTable);
+                foreach ($categorias as $dados) {
+                  echo '<option value="' . htmlspecialchars($dados['idcat']) . '">' . htmlspecialchars($dados['nome']) . '</option>';
+                }
+                ?>
               </select>
             </div>
         </div>
@@ -104,14 +84,16 @@ navbar($breadcrumb);
           </div>
         </div>
         <div class="input-field col s12">
-          <button class="waves-effect waves-light btn green" type="submit" name="cadastrarMineral">Cadastrar</button>
+          <button class="waves-effect waves-light btn green" type="submit"
+            name="cadastrar<?= ucfirst($formtipo) ?>">Cadastrar</button>
         </div>
         </form>
       </div>
     </div>
   </main>
+
   <?php
-  include 'footer.php';
+  include '../footer.php';
   ?>
 
   <script src="../js/uploadmulti.js"></script>

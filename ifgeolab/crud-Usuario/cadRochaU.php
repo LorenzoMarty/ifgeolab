@@ -18,15 +18,7 @@
   ];
   $breadcrumb = implode('>', $breadcrumbs);
 
-  if (isset($_SESSION['permissao'])) {
-    if ($_SESSION['permissao'] == 1) {
-      include "topo-user.php";
-    } elseif ($_SESSION['permissao'] == 2) {
-      header('Location: ../index.php');
-    }
-  } else {
-    header('Location: ../index.php');
-  }
+  navbar($breadcrumb);
   ?>
   <div class="container">
     <h4>Cadastrar Rocha</h4>
@@ -40,15 +32,16 @@
         </div>
         <input type="hidden" name="sugestao" value="1">
         <div class="input-field col s6">
-          <select name="cat" class="validate">
+          <select name="idcat" class="validate">
             <?php
             require_once "../conecta.php";
-            $conexao = conectar();
-            $sql = "SELECT * FROM catrocha";
-            $resultado = mysqli_query($conexao, $sql);
-            while ($dados = mysqli_fetch_assoc($resultado)) {
-            ?>
-              <option value="<?php echo $dados['idcat']; ?>"><?php echo $dados['nome']; ?></option>
+
+            $crud = new CRUD();
+
+            $categorias = $crud->listar("catrocha");
+            foreach ($categorias as $categoria) {
+              ?>
+              <option value="<?= $categoria['idcat']; ?>"><?= $categoria['nome']; ?></option>
             <?php } ?>
           </select>
         </div>
