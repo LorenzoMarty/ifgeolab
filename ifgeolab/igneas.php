@@ -12,7 +12,6 @@ include "include.php"; ?>
         width: 100%;
     }
 </style>
-<link rel="stylesheet" href="css/rocha-mineral.css">
 
 <body>
     <?php
@@ -24,7 +23,7 @@ include "include.php"; ?>
     navbar($breadcrumb);
     ?>
     <main>
-        <div class="corpo">
+        <div class="container">
             <div class="vertical-line"></div>
             <div class="section-content">
                 <div class="section">

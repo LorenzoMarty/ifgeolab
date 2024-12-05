@@ -1,6 +1,5 @@
 <?php session_start();
 include "include.php"; ?>
-<link rel="stylesheet" href="css/rocha-mineral.css">
 
 <body>
     <?php
@@ -30,6 +29,7 @@ include "include.php"; ?>
                             </a>
                         </div>
                     </div>
+                    
                     <div class="col s4">
                         <div class="image-container">
                             <a href="n-metalica.php" class="white-text">
