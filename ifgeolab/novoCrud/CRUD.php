@@ -2,23 +2,61 @@
 
 class CRUD
 {
+
+    private $conexao ;
+
+
+     // Função para conexão
+    /*
+        Obj Connection
+        array "localhost", "root", "", "ifgeolab"
+
+    */
+
+    private function __contruct($conexao){
+        $this->conectar($conexao);
+
+    }
+
     // Função para conexão
-    private function conectar()
+    /*
+        Obj Connection
+        array "localhost", "root", "", "ifgeolab"
+
+    */
+    private function conectar($conexao = null)
     {
-        $conexao = mysqli_connect("localhost", "root", "", "ifgeolab");
-        if ($conexao === false) {
-            echo "Erro ao conectar à base de dados. Nº do erro: " . mysqli_connect_errno() . ". " . mysqli_connect_error();
-            die();
+
+        if (is_array ($conexao)) {
+            $this->conexao = mysqli_connect($conexao['host'], $conexao['host_name'], $conexao['pass'] );
+            if ($conexao === false) {
+                echo "Erro ao conectar à base de dados. Nº do erro: " . mysqli_connect_errno() . ". " . mysqli_connect_error();
+                die();
+            }
         }
-        return $conexao;
+        else {
+            $this->conexao = $conexao;
+
+        }
+    
     }
 
     // Função para executar comandos SQL
-    private function executarSQL($conexao, $sql)
+    public function executarSQL($sql, $conexao = null)
     {
-        $resultado = mysqli_query($conexao, $sql);
+
+        $cAux = null;
+
+        if ($conexao == null){
+            $cAux = $this->conexao;
+        }else 
+        {
+          $cAux = $conexao;  
+        }
+
+        $resultado = mysqli_query($cAux, $sql);
         if ($resultado === false) {
-            echo "Erro ao executar o comando SQL. " . mysqli_errno($conexao) . ": " . mysqli_error($conexao);
+            echo "Erro ao executar o comando SQL. " . mysqli_errno($cAux) . ": " . mysqli_error($cAux);
             die();
         }
         return $resultado;
@@ -27,10 +65,11 @@ class CRUD
     // cadastrar: Insere um novo registro na tabela
     public function cadastrar($tabela, $comando)
     {
+        
         $conexao = $this->conectar();
 
         $coluna = implode(", ", array_keys($comando));
-        $valores = implode(", ", array_map(fn($valores) => "'" . mysqli_real_escape_string($conexao, $valores) . "'", array_values($comando)));
+        $valores = implode(", ", array_map(fn($valores) => "'" . mysqli_real_escape_string($this->conexao, $valores) . "'", array_values($comando)));
 
         $sql = "INSERT INTO $tabela ($coluna) VALUES ($valores)";
         return $this->executarSQL($conexao, $sql);
@@ -45,14 +84,14 @@ class CRUD
         if (!empty($condicao)) {
             $clausulas = [];
             foreach ($condicao as $key => $value) {
-                $clausulas[] = "$key = '" . mysqli_real_escape_string($conexao, $value) . "'";
+                $clausulas[] = "$key = '" . mysqli_real_escape_string($$this->conexao, $value) . "'";
             }
             $sql .= " WHERE " . implode(" AND ", $clausulas);
         }
         $result = $this->executarSQL($conexao, $sql);
 
         if (!$result) {
-            die("Erro ao executar consulta: " . mysqli_error($conexao));
+            die("Erro ao executar consulta: " . mysqli_error($this->conexao));
         }
 
         return mysqli_fetch_all($result, MYSQLI_ASSOC);
@@ -64,8 +103,8 @@ class CRUD
     {
         $conexao = $this->conectar();
 
-        $set = implode(", ", array_map(fn($key, $value) => "$key = '" . mysqli_real_escape_string($conexao, $value) . "'", array_keys($comando), $comando));
-        $where = implode(" AND ", array_map(fn($key, $value) => "$key = '" . mysqli_real_escape_string($conexao, $value) . "'", array_keys($condicao), $condicao));
+        $set = implode(", ", array_map(fn($key, $value) => "$key = '" . mysqli_real_escape_string($this->conexao, $value) . "'", array_keys($comando), $comando));
+        $where = implode(" AND ", array_map(fn($key, $value) => "$key = '" . mysqli_real_escape_string($this->conexao, $value) . "'", array_keys($condicao), $condicao));
 
         $sql = "UPDATE $tabela SET $set WHERE $where";
         return $this->executarSQL($conexao, $sql);
@@ -75,7 +114,7 @@ class CRUD
     {
         $conexao = $this->conectar();
 
-        $where = implode(" AND ", array_map(fn($key, $value) => "$key = '" . mysqli_real_escape_string($conexao, $value) . "'", array_keys($condicao), $condicao));
+        $where = implode(" AND ", array_map(fn($key, $value) => "$key = '" . mysqli_real_escape_string($this->conexao, $value) . "'", array_keys($condicao), $condicao));
         $sql = "DELETE FROM $tabela WHERE $where";
 
         return $this->executarSQL($conexao, $sql);

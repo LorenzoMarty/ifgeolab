@@ -1,6 +1,5 @@
 <?php session_start();
 include "include.php"; ?>
-<link rel="stylesheet" href="css/rocha-mineral.css">
 
 <body>
     <?php
@@ -11,7 +10,7 @@ include "include.php"; ?>
     navbar($breadcrumb);
     ?>
     <main>
-        <div class="corpo">
+        <div class="container">
             <div class="vertical-line"></div>
 
             <div class="section-content">
@@ -49,16 +48,8 @@ include "include.php"; ?>
                     </div>
                 </div>
             </div>
-                <div class="section">
-                    <hr class="divider second">
-                </div>
-            </div>
         </div>
     </main>
-
     <?php
     include "footer.php";
     ?>
-</body>
-
-</html>
