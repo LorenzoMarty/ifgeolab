@@ -10,11 +10,74 @@ $breadcrumbs = [
   'Amostra' => '> <a href="Amostra.php">Amostras</a>',
   'Atual' => '<a class="active" href="#">' . ucfirst($formtipo) . '</a>'
 ];
-
 $breadcrumb = implode('>', $breadcrumbs);
 
 $id = $_SESSION['id'];
 navbar($breadcrumb);
+
+$form = new Form("cadastrar.php", "POST", "multipart/form-data", "cad{$formtipo}", "col s12 m6");
+
+$crud = new CRUD();
+$categoriaTable = ($formtipo == 'rocha') ? 'catrocha' : 'catmineral';
+$categorias = $crud->listar($categoriaTable);
+
+$selectOptions = [];
+foreach ($categorias as $dados) {
+  $selectOptions[$dados['idcat']] = htmlspecialchars($dados['nome']);
+}
+
+// Linha 1: Nome e Categoria
+$form->addRow([
+  $form->addInput("text", "nome", "Nome", "", ["class" => "validate", "id" => "nome"], "s6"),
+  $form->addInput("select", "cat", "Categoria", "", [
+    "options" => $selectOptions,
+    "class" => "select-dropdown",
+    "id" => "cat"
+  ], "s6")
+]);
+
+// Linha 2: Campo hidden para sugestão, id do usuário e Descrição (editor)
+$form->addRow([
+  $form->addInput("hidden", "sugestao", "", "0"),
+  $form->addInput("hidden", "idusuario", "", $id),
+  $form->addInput("hidden", "descricao", "", "", ["id" => "descricao"]),
+  $form->addInput("custom", "", "", "", [
+    "html" => '<div id="editor-container"></div>'
+  ], "s12")
+]);
+
+// Linha 3: Foto de Perfil e Objeto 3D
+$form->addRow([
+  $form->addInput("custom", "", "", "", [
+    "html" => '
+        <div class="img-area" data-img="">
+            <i class="bx bxs-cloud-upload icon"></i>
+            <h3>Envie uma Foto de Perfil</h3>
+            <p>A Imagem não pode ser maior que <span>20MB</span></p>
+            <input name="arquivo" type="file" id="Capa" style="display: none;">
+        </div>'
+  ], "s6"),
+  $form->addInput("file", "3d", "Objeto 3D:", "", ["id" => "3d"], "s6")
+]);
+
+// Linha 4: Imagem Carrossel (upload múltiplo)
+$form->addRow([
+  $form->addInput("custom", "", "Imagem Carrossel:", "", [
+    "html" => '
+        <div class="MultiFile-wrap input-field col s12">
+            <label>Imagem Carrossel:</label><br><br>
+            <input type="file" multiple="multiple" class="multi with-preview" name="multifile-test[]" id="upload_files">
+            <ul id="F9-Log" class="row"></ul>
+        </div>'
+  ], "s12")
+]);
+
+// Linha 5: Botão de envio
+$form->addRow([
+  $form->addInput("submit", "cadastrar" . ucfirst($formtipo), "", "Cadastrar", [
+    "class" => "waves-effect waves-light btn green"
+  ], "s12")
+]);
 
 ?>
 
@@ -30,64 +93,7 @@ navbar($breadcrumb);
           <h4 class="left-align">Cadastrar <?= ucfirst($formtipo) ?></h4>
           <hr class="divider">
         </div>
-        <div class="row">
-          <form id="cad<?= ucfirst($formtipo) ?>" enctype="multipart/form-data" method="post" action="cadastrar.php"
-            class="col s12 m6">
-            <div class="input-field col s6">
-              <label for="nome">Nome</label>
-              <input id="nome" name="nome" type="text" class="validate">
-            </div>
-            <input type="hidden" name="sugestao" value="0">
-            <input type="hidden" name="idusuario" value="<?= $id ?>">
-            <div class="input-field col s6">
-              <select class="select-dropdown" name="cat">
-                <?php
-                require_once "../conecta.php";
-
-                $crud = new CRUD();
-
-                $categoriaTable = ($formtipo == 'rocha') ? 'catrocha' : 'catmineral';
-
-                $categorias = $crud->listar($categoriaTable);
-                foreach ($categorias as $dados) {
-                  echo '<option value="' . htmlspecialchars($dados['idcat']) . '">' . htmlspecialchars($dados['nome']) . '</option>';
-                }
-                ?>
-              </select>
-            </div>
-        </div>
-        <div class="row">
-          <div class="input-field col s12">
-            <input type="hidden" id="descricao" name="descricao">
-            <div id="editor-container"></div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="input-field col s6">
-            <div class="img-area" data-img="">
-              <i class='bx bxs-cloud-upload icon'></i>
-              <h3>Envie uma Foto de Perfil</h3>
-              <p>A Imagem não pode ser maior que <span>20MB</span></p>
-              <input name="arquivo" type="file" id="Capa" style="display: none;">
-            </div>
-          </div>
-          <div class="input-field col s6">
-            <label>Objeto 3D:</label>
-            <input type="file" name="3d" />
-          </div>
-        </div>
-        <div class="row">
-          <div class="MultiFile-wrap input-field col">
-            <label>Imagem Carrossel:</label><br><br>
-            <input type="file" multiple="multiple" class="multi with-preview" name="multifile-test[]" id="upload_files">
-            <ul id="F9-Log" class="row"></ul>
-          </div>
-        </div>
-        <div class="input-field col s12">
-          <button class="waves-effect waves-light btn green" type="submit"
-            name="cadastrar<?= ucfirst($formtipo) ?>">Cadastrar</button>
-        </div>
-        </form>
+        <?= $form->render(); ?>
       </div>
     </div>
   </main>

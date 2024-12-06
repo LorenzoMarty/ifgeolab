@@ -28,6 +28,7 @@
   .logolink {
     padding: 0 !important;
   }
+  
 </style>
 <?php
 
