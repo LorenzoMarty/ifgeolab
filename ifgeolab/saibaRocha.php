@@ -24,7 +24,6 @@ include "include.php"; ?>
 
 <body>
     <?php
-
     require_once('conecta.php');
     $conexao = conectar();
     $idrocha = $_GET['idrocha'];
@@ -71,32 +70,28 @@ include "include.php"; ?>
     ?>
     <main>
         <div class="container">
-            <div class="row">
-                <div class="col s12">
-                    <div class="card">
-                        <model-viewer id="model-viewer" class="card__model"
-                            shadow-intensity="2"
-                            src="obj/<?= $obj; ?>"
-                            max-camera-orbit="auto 90deg"
-                            autoplay auto-rotate
-                            ar ar-scale="fixed"
-                            camera-controls
-                            touch-action="pan-y"
-                            skybox-image="img/fundo.hdr"
-                            poster="img/geolab-branco.png">
-                        </model-viewer>
-                        <span class="card-title"><?= $nome; ?></span>
-                        <a class="gerarpdf waves-effect waves-light accent-4"
-                            href="relatorioMineral.php?idmineral=<?= $idrocha; ?>">
-                            Gerar PDF <img class="pdf" src="img/pdf-icon.png">
-                        </a>
+            <div class="row center">
+                <div class="wrapp">
+                    <div class="col s12">
+                        <div class="card">
+                            <model-viewer id="model-viewer" class="card__model" shadow-intensity="2"
+                                src="obj/<?= $obj; ?>" max-camera-orbit="auto 90deg" autoplay auto-rotate ar
+                                ar-scale="fixed" camera-controls touch-action="pan-y" skybox-image="img/fundo.hdr"
+                                poster="img/geolab-branco.png">
+                            </model-viewer>
+                            <span class="card-title"><?= $nome; ?></span>
+                            <a class="gerarpdf waves-effect waves-light accent-4"
+                                href="relatorioMineral.php?idmineral=<?= $idrocha; ?>">
+                                Gerar PDF <img class="pdf" src="img/pdf-icon.png">
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-            <h5 class="center"><b>Categoria:</b>
-                <?= $cat; ?>
-            </h5>
+        <h5 class="center"><b>Categoria:</b>
+            <?= $cat; ?>
+        </h5>
         </div>
         <hr>
         <div class="container">
@@ -111,3 +106,4 @@ include "include.php"; ?>
     <?php
     include "footer.php";
     ?>
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>

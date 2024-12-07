@@ -16,9 +16,8 @@
 
 /* Model-viewer responsivo */
 .card__model {
-    width: 100%;
     height: 300px; /* Altura padrão */
-    object-fit: cover;
+    object-fit: contain;
     border-bottom: 2px solid var(--second-color);
     transition: height 0.3s ease-in-out;
 }

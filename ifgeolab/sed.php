@@ -26,7 +26,7 @@ navbar($breadcrumb);
 
 <body>
     <main>
-        <div class="corpo">
+        <div class="container">
             <div class="vertical-line"></div>
             <div class="section-content">
                 <div class="section">

@@ -1,7 +1,6 @@
 <?php session_start();
 include "include.php"; ?>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 <style>
     .minha-imagem {
         height: 400px;
@@ -114,38 +113,35 @@ include "include.php"; ?>
         <br><br>
         <?php if ($obj != "") { ?>
             <div class="container">
-                <div class="row">
-                    <div class="col s12 m8 l6 offset-m2">
+                <div class="row center">
+                    <div class="wrapp">
                         <div class="card">
-                            <model-viewer id="model-viewer" class="card__model"
-                                shadow-intensity="2" src="obj/<?= $obj; ?>"
-                                max-camera-orbit="auto 90deg" autoplay auto-rotate
-                                ar ar-scale="fixed" camera-controls
-                                touch-action="pan-y" skybox-image="img/fundo.hdr"
-                                poster="img/geolab-branco.png">
-                            </model-viewer>
-                            <span class="card-title">
-                                <?= $nome; ?>
-                            </span>
-                            <a class="gerarpdf waves-effect waves-light accent-4"
-                                href="relatorioMineral.php?idmineral=<?= $idrocha; ?>">
-                                Gerar PDF <img class="pdf" src="img/pdf-icon.png">
-                            </a>
+                            <div class="card__item">
+                                <model-viewer class="card__model" style="background-color: rgb(255,255,255);"
+                                    shadow-intensity="1" src="obj/<?= $obj; ?>" camera-orbit="45deg 55deg" autoplay
+                                    auto-rotate ar camera-controls touch-action="pan-y"></model-viewer>
+                                <span class="card__txt">
+                                    <?= $nome; ?>
+                                </span>
+                            </div>
+                        </div>
+                        <a class="gerarpdf waves-effect waves-light accent-4"
+                            href="relatorioMineral.php?idmineral=<?= $idrocha; ?>">
+                            <img class="pdf" src="img/pdf-icon.png"> Gerar PDF</a>
+                    </div>
+                    <h5 class="center"><b>Categoria:</b>
+                        <?= $cat; ?>
+                    </h5>
+                    <?php while ($img = mysqli_fetch_assoc($galeria)) {
+                        if ($img != "") { ?>
+                            <div thumbsSlider="" class="mySwiper">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide"><img src="img/rochas/<?= $img['imgR']; ?>"></div>
+                                <?php }
+                    } ?>
                         </div>
                     </div>
                 </div>
-                <h5 class="center"><b>Categoria:</b>
-                    <?= $cat; ?>
-                </h5>
-                <?php while ($img = mysqli_fetch_assoc($galeria)) {
-                    if ($img != "") { ?>
-                        <div thumbsSlider="" class="mySwiper">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide"><img src="img/rochas/<?= $img['imgR']; ?>"></div>
-                        <?php }
-                } ?>
-                            </div>
-                        </div>
             </div>
         <?php } else { ?>
             <div class="container">
@@ -165,7 +161,7 @@ include "include.php"; ?>
                         <?php while ($img = mysqli_fetch_assoc($galeria)) {
                             if ($img != "") { ?>
                                 <div class="swiper-slide"><img src="img/rochas/<?= $img['imgR']; ?>"></div>
-                        <?php }
+                            <?php }
                         } ?>
                     </div>
                 </div>
@@ -184,13 +180,15 @@ include "include.php"; ?>
     <?php
     include "footer.php";
     ?>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             var elems = document.querySelectorAll('.modal');
             var instances = M.Modal.init(elems);
         });
-
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <script>
         var swiper = new Swiper(".mySwiper", {
             spaceBetween: 10,
             slidesPerView: 4,

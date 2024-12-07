@@ -113,8 +113,8 @@ include "include.php"; ?>
         <br><br>
         <?php if ($obj != "") { ?>
             <div class="container">
-                <div class="row">
-                    <div class="col s12 m6 offset-m3 card">
+                <div class="row center">
+                    <div class="col s12">
                         <div class="card-content">
                             <model-viewer id="model-viewer" class="card__model" shadow-intensity="2" src="obj/<?= $obj; ?>"
                                 max-camera-orbit="auto 90deg" autoplay auto-rotate ar ar-scale="fixed" camera-controls
