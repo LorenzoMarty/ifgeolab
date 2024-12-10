@@ -11,6 +11,18 @@ function navbar($breadcrumb)
         header('Location: ../login.php');
     }
 }
+$bdServidor = "localhost";
+$bdUsuario = "root";
+$bdSenha = "";
+$bdBanco = "ifgeolab";
+
+// Criar uma conexão com o banco de dados
+$conexao = [
+    'host' => $bdServidor,
+    'username' => $bdUsuario,
+    'pass' => $bdSenha,
+    'database' => $bdBanco
+];
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

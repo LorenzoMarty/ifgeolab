@@ -2,7 +2,8 @@
 
 class CRUD
 {
-    private $conexao;
+    
+    public $conexao;
 
     public function __construct($conexao = null)
     {
@@ -94,29 +95,39 @@ class Form
     private $id;
     private $class;
     private $rows = [];
+    private $formtipo;
 
-    public function __construct($action = "", $method = "POST", $enctype = "", $id = "", $class = "")
+    public function __construct($action = "", $method = "POST", $enctype = "multipart/form-data", $formtipo = "", $class = "col s12 m6")
     {
         $this->action = $action;
         $this->method = $method;
         $this->enctype = $enctype;
-        $this->id = $id;
+        $this->formtipo = $formtipo;
+        $this->id = "cad{$formtipo}";
         $this->class = $class;
     }
 
-    public function addRow($inputs = [])
+    public function addRow(array $inputs = [])
     {
         $this->rows[] = $inputs;
     }
 
     public function addInput($type, $name, $label = "", $value = "", $attributes = [], $colSize = "s12", $customClass = "input-field col")
     {
-        return compact('type', 'name', 'label', 'value', 'attributes', 'customClass', 'colSize');
+        return [
+            'type' => $type,
+            'name' => $name,
+            'label' => $label,
+            'value' => htmlspecialchars($value, ENT_QUOTES, 'UTF-8'),
+            'attributes' => $attributes,
+            'customClass' => $customClass,
+            'colSize' => $colSize
+        ];
     }
 
     public function render()
     {
-        $formHTML = "<form action='{$this->action}' method='{$this->method}' enctype='{$this->enctype}' id='{$this->id}' class='{$this->class}'>\n";
+        $formHTML = "<form action='" . htmlspecialchars($this->action, ENT_QUOTES, 'UTF-8') . "' method='" . htmlspecialchars($this->method, ENT_QUOTES, 'UTF-8') . "' enctype='" . htmlspecialchars($this->enctype, ENT_QUOTES, 'UTF-8') . "' id='" . htmlspecialchars($this->id, ENT_QUOTES, 'UTF-8') . "' class='" . htmlspecialchars($this->class, ENT_QUOTES, 'UTF-8') . "'>\n";
 
         foreach ($this->rows as $row) {
             $formHTML .= "\t<div class='row'>\n";
@@ -125,10 +136,10 @@ class Form
                 $formHTML .= "\t\t<div class='{$input['customClass']} {$input['colSize']}'>\n";
 
                 if ($input['type'] !== 'hidden' && !empty($input['label'])) {
-                    $formHTML .= "\t\t\t<label for='{$input['name']}'>{$input['label']}</label>\n";
+                    $formHTML .= "\t\t\t<label for='" . htmlspecialchars($input['name'], ENT_QUOTES, 'UTF-8') . "'>" . htmlspecialchars($input['label'], ENT_QUOTES, 'UTF-8') . "</label>\n";
                 }
 
-                $formHTML .= "\t\t\t<input type='{$input['type']}' name='{$input['name']}' value='{$input['value']}' id='{$input['name']}' {$attributesString}>\n";
+                $formHTML .= "\t\t\t<input type='" . htmlspecialchars($input['type'], ENT_QUOTES, 'UTF-8') . "' name='" . htmlspecialchars($input['name'], ENT_QUOTES, 'UTF-8') . "' value='" . htmlspecialchars($input['value'], ENT_QUOTES, 'UTF-8') . "' id='" . htmlspecialchars($input['name'], ENT_QUOTES, 'UTF-8') . "' {$attributesString}>\n";
                 $formHTML .= "\t\t</div>\n";
             }
             $formHTML .= "\t</div>\n";
@@ -138,17 +149,98 @@ class Form
         return $formHTML;
     }
 
-    private function parseAttributes($attributes)
+    private function parseAttributes(array $attributes)
     {
         $attributesString = "";
         foreach ($attributes as $key => $value) {
-            $attributesString .= "{$key}='" . htmlspecialchars($value) . "' ";
+            $attributesString .= htmlspecialchars($key, ENT_QUOTES, 'UTF-8') . "='" . htmlspecialchars($value, ENT_QUOTES, 'UTF-8') . "' ";
         }
-        return $attributesString;
+        return trim($attributesString);
     }
 }
 
+class MineralRochaForm extends Form
+{
+    private $crud;
+    private $formtipo;
 
+    public function __construct($formtipo, $idusuario, $action = "cadastrar.php")
+    {
+        $this->crud = new CRUD();
+        $this->formtipo = $formtipo;
+        // Configuração inicial do formulário
+        parent::__construct($action, "POST", "multipart/form-data", "cad{$formtipo}", "col s12 m6");
 
+        // Construir o formulário
+        $this->buildForm($idusuario);
+    }
 
+    private function getCategoriaOptions()
+    {
+        $categoriaTable = ($this->formtipo == 'rocha') ? 'catrocha' : 'catmineral';
+        $categorias = $this->crud->listar($categoriaTable);
 
+        $options = [];
+        foreach ($categorias as $dados) {
+            $options[$dados['idcat']] = htmlspecialchars($dados['nome']);
+        }
+
+        return $options;
+    }
+
+    private function buildForm($idusuario)
+    {
+        // Linha 1: Nome e Categoria
+        $this->addRow([
+            $this->addInput("text", "nome", "Nome", "", ["class" => "validate", "id" => "nome"], "s6"),
+            $this->addInput("select", "cat", "Categoria", "", [
+                "options" => $this->getCategoriaOptions(),
+                "class" => "select-dropdown",
+                "id" => "cat"
+            ], "s6")
+        ]);
+
+        // Linha 2: Campos ocultos e Descrição
+        $this->addRow([
+            $this->addInput("hidden", "sugestao", "", "0"),
+            $this->addInput("hidden", "idusuario", "", $idusuario),
+            $this->addInput("hidden", "descricao", "", "", ["id" => "descricao"]),
+            $this->addInput("custom", "", "", "", [
+                "html" => '<div id="editor-container"></div>'
+            ], "s12")
+        ]);
+
+        // Linha 3: Foto de Perfil e Objeto 3D
+        $this->addRow([
+            $this->addInput("custom", "", "", "", [
+                "html" => '
+                    <div class="img-area" data-img="">
+                        <i class="bx bxs-cloud-upload icon"></i>
+                        <h3>Envie uma Foto de Perfil</h3>
+                        <p>A Imagem não pode ser maior que <span>20MB</span></p>
+                        <input name="arquivo" type="file" id="Capa" style="display: none;">
+                    </div>'
+            ], "s6"),
+            $this->addInput("file", "3d", "Objeto 3D:", "", ["id" => "3d"], "s6")
+        ]);
+
+        // Linha 4: Imagem Carrossel (upload múltiplo)
+        $this->addRow([
+            $this->addInput("custom", "", "Imagem Carrossel:", "", [
+                "html" => '
+                    <div class="MultiFile-wrap input-field col s12">
+                        <label>Imagem Carrossel:</label><br><br>
+                        <input type="file" multiple="multiple" class="multi with-preview" name="multifile-test[]" id="upload_files">
+                        <ul id="F9-Log" class="row"></ul>
+                    </div>'
+            ], "s12")
+        ]);
+
+        // Linha 5: Botão de envio
+        $this->addRow([
+            $this->addInput("submit", "cadastrar" . ucfirst($this->formtipo), "", "Cadastrar", [
+                "class" => "waves-effect waves-light btn green"
+            ], "s12")
+        ]);
+    }
+}
