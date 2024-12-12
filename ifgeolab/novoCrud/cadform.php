@@ -35,11 +35,11 @@ $MineralRocha = new MineralRochaForm($formtipo, $idusuario);
         </div>
         <?php switch ($_GET['tipo']) {
           case 'mineral':
-            $MineralRocha->render();
+            $MineralRocha->buildForm($idusuario);
           case 'rocha':
-            $MineralRocha->render();
-          case 'questionario':
-            $questionario->render();
+            $MineralRocha->buildForm($idusuario);
+          /* case 'questionario':
+            $questionario->buildForm($idusuario); */
         } ?>
       </div>
     </div>

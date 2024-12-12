@@ -27,7 +27,8 @@ body {
     justify-content: center;
     align-items: center;
     background-color: #f4f4f4;
-    transition: all 0.3s ease-in-out;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease;
+    opacity: 1;
 }
 
 .login-section:nth-child(2) {
@@ -56,8 +57,7 @@ body {
 hr.login {
     width: 60%;
     background-color: #25412B;
-    height: 2px;
-    border: none;
+    height: 0;
     margin: 20px;
 }
 
@@ -69,7 +69,8 @@ hr.login {
 }
 
 .form-group input[type="text"],
-.form-group input[type="password"] {
+.form-group input[type="password"],
+.form-group input[type="email"] {
     width: 100%;
     border-radius: 5px;
     border: none;
@@ -81,6 +82,34 @@ hr.login {
     box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.2);
     appearance: none;
 }
+
+.form-group input[type="text"],
+.form-group input[type="password"],
+.form-group input[type="email"],
+.form-group button {
+    animation: fadeIn 1s ease-out forwards;
+    /*     opacity: 0; */
+}
+
+.form-group input[type="text"]:nth-child(1),
+.form-group input[type="password"]:nth-child(2),
+.form-group input[type="email"]:nth-child(3),
+.form-group button:nth-child(4) {
+    animation-delay: 0.2s;
+}
+
+/* Animação de fade in dos campos */
+/* @keyframes fadeIn {
+    0% {
+        opacity: 1;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+} */
 
 .form-group i {
     position: absolute;
@@ -114,6 +143,8 @@ hr.login {
 
 .form-group button:hover {
     background-color: #25412B;
+    transform: scale(1.05);
+    transition: transform 0.2s ease-in-out, background-color 0.3s ease;
 }
 
 .center {
@@ -124,10 +155,13 @@ hr.login {
 .center a {
     color: #000000;
     text-decoration: none;
+    transition: color 0.3s ease, transform 0.2s ease;
 }
 
 .center a:hover {
+    color: #3A5A40;
     text-decoration: underline;
+    transform: scale(1.1);
 }
 
 .image-section {
@@ -136,11 +170,22 @@ hr.login {
     background-size: cover;
     background-position: center;
     display: block;
+    height: 100%;
+    animation: fadeInImage 1s ease-out;
 }
 
 input:-webkit-autofill {
     box-shadow: 0 0 0 34px #3A5A40 inset !important;
     -webkit-text-fill-color: #DAEAFF !important;
+}
+
+@keyframes fadeInImage {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 @media (max-width: 767px) {
@@ -151,5 +196,16 @@ input:-webkit-autofill {
     .login-section {
         width: 100%;
         padding: 20px;
+        background-color: #ffffff;
+        animation: fadeIn 1s ease-out;
+    }
+
+    .login-section h1 {
+        font-size: 28px;
+    }
+
+    .form-group input,
+    .form-group button {
+        width: 90%;
     }
 }

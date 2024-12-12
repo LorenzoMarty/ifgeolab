@@ -188,7 +188,7 @@ class MineralRochaForm extends Form
         return $options;
     }
 
-    private function buildForm($idusuario)
+    public function buildForm($idusuario)
     {
         // Linha 1: Nome e Categoria
         $this->addRow([
