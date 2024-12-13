@@ -2,88 +2,83 @@
 
 class CRUD
 {
-    
-    public $conexao;
 
-    public function __construct($conexao = null)
+    private function conectar()
     {
-        $this->conectar($conexao);
-    }
-
-    private function conectar($conexao = null)
-    {
-        if (is_array($conexao)) {
-            $this->conexao = mysqli_connect(
-                $conexao['host'],
-                $conexao['username'],
-                $conexao['pass'],
-                $conexao['database']
-            );
-
-            if ($this->conexao === false) {
-                die("Erro ao conectar à base de dados. Nº do erro: " . mysqli_connect_errno() . ". " . mysqli_connect_error());
-            }
-        } elseif ($conexao instanceof mysqli) {
-            $this->conexao = $conexao;
+        $conexao = mysqli_connect("localhost", "root", "", "ifgeolab");
+        if ($conexao === false) {
+            echo "Erro ao conectar à base de dados. Nº do erro: " . mysqli_connect_errno() . ". " . mysqli_connect_error();
+            die();
         }
+        return $conexao;
     }
 
-    // Executar comandos SQL
-    public function executarSQL($sql)
+    // Função para executar comandos SQL
+    private function executarSQL($conexao, $sql)
     {
-        $resultado = mysqli_query($this->conexao, $sql);
-
+        $resultado = mysqli_query($conexao, $sql);
         if ($resultado === false) {
-            die("Erro ao executar o comando SQL. " . mysqli_errno($this->conexao) . ": " . mysqli_error($this->conexao));
+            echo "Erro ao executar o comando SQL. " . mysqli_errno($conexao) . ": " . mysqli_error($conexao);
+            die();
         }
-
         return $resultado;
     }
 
-    // Cadastrar
-    public function cadastrar($tabela, $dados)
+    // cadastrar: Insere um novo registro na tabela
+    public function cadastrar($tabela, $comando)
     {
-        $coluna = implode(", ", array_keys($dados));
-        $valores = implode(", ", array_map(fn($valor) => "'" . mysqli_real_escape_string($this->conexao, $valor) . "'", array_values($dados)));
+        $conexao = $this->conectar();
+
+        $coluna = implode(", ", array_keys($comando));
+        $valores = implode(", ", array_map(fn($valores) => "'" . mysqli_real_escape_string($conexao, $valores) . "'", array_values($comando)));
 
         $sql = "INSERT INTO $tabela ($coluna) VALUES ($valores)";
-        return $this->executarSQL($sql);
+        return $this->executarSQL($conexao, $sql);
     }
 
-    // Listar
+    // listar: Busca registros na tabela com base em condições
     public function listar($tabela, $condicao = [], $coluna = "*")
     {
+        $conexao = $this->conectar();
         $sql = "SELECT $coluna FROM $tabela";
 
         if (!empty($condicao)) {
             $clausulas = [];
             foreach ($condicao as $key => $value) {
-                $clausulas[] = "$key = '" . mysqli_real_escape_string($this->conexao, $value) . "'";
+                $clausulas[] = "$key = '" . mysqli_real_escape_string($conexao, $value) . "'";
             }
             $sql .= " WHERE " . implode(" AND ", $clausulas);
         }
+        $result = $this->executarSQL($conexao, $sql);
 
-        $result = $this->executarSQL($sql);
+        if (!$result) {
+            die("Erro ao executar consulta: " . mysqli_error($conexao));
+        }
+
         return mysqli_fetch_all($result, MYSQLI_ASSOC);
     }
 
-    // Editar
-    public function editar($tabela, $dados, $condicao)
+
+    // editar: Atualiza registros na tabela
+    public function editar($tabela, $comando, $condicao)
     {
-        $set = implode(", ", array_map(fn($key, $value) => "$key = '" . mysqli_real_escape_string($this->conexao, $value) . "'", array_keys($dados), $dados));
-        $where = implode(" AND ", array_map(fn($key, $value) => "$key = '" . mysqli_real_escape_string($this->conexao, $value) . "'", array_keys($condicao), $condicao));
+        $conexao = $this->conectar();
+
+        $set = implode(", ", array_map(fn($key, $value) => "$key = '" . mysqli_real_escape_string($conexao, $value) . "'", array_keys($comando), $comando));
+        $where = implode(" AND ", array_map(fn($key, $value) => "$key = '" . mysqli_real_escape_string($conexao, $value) . "'", array_keys($condicao), $condicao));
 
         $sql = "UPDATE $tabela SET $set WHERE $where";
-        return $this->executarSQL($sql);
+        return $this->executarSQL($conexao, $sql);
     }
 
-    // Deletar
     public function deletar($tabela, $condicao)
     {
-        $where = implode(" AND ", array_map(fn($key, $value) => "$key = '" . mysqli_real_escape_string($this->conexao, $value) . "'", array_keys($condicao), $condicao));
+        $conexao = $this->conectar();
+
+        $where = implode(" AND ", array_map(fn($key, $value) => "$key = '" . mysqli_real_escape_string($conexao, $value) . "'", array_keys($condicao), $condicao));
         $sql = "DELETE FROM $tabela WHERE $where";
 
-        return $this->executarSQL($sql);
+        return $this->executarSQL($conexao, $sql);
     }
 }
 
@@ -149,13 +144,15 @@ class Form
         return $formHTML;
     }
 
-    private function parseAttributes(array $attributes)
+    private function parseAttributes($attributes)
     {
         $attributesString = "";
         foreach ($attributes as $key => $value) {
-            $attributesString .= htmlspecialchars($key, ENT_QUOTES, 'UTF-8') . "='" . htmlspecialchars($value, ENT_QUOTES, 'UTF-8') . "' ";
+            if ($key !== 'options') { // Ignorar opções do select ao gerar atributos
+                $attributesString .= "{$key}='" . htmlspecialchars($value) . "' ";
+            }
         }
-        return trim($attributesString);
+        return $attributesString;
     }
 }
 
@@ -190,57 +187,56 @@ class MineralRochaForm extends Form
 
     public function buildForm($idusuario)
     {
-        // Linha 1: Nome e Categoria
         $this->addRow([
             $this->addInput("text", "nome", "Nome", "", ["class" => "validate", "id" => "nome"], "s6"),
             $this->addInput("select", "cat", "Categoria", "", [
-                "options" => $this->getCategoriaOptions(),
-                "class" => "select-dropdown",
-                "id" => "cat"
+              "options" => $this->getCategoriaOptions(),
+              "class" => "select-dropdown",
+              "id" => "cat"
             ], "s6")
-        ]);
-
-        // Linha 2: Campos ocultos e Descrição
-        $this->addRow([
+          ]);
+          
+          // Linha 2: Campo hidden para sugestão, id do usuário e Descrição (editor)
+          $this->addRow([
             $this->addInput("hidden", "sugestao", "", "0"),
             $this->addInput("hidden", "idusuario", "", $idusuario),
             $this->addInput("hidden", "descricao", "", "", ["id" => "descricao"]),
             $this->addInput("custom", "", "", "", [
-                "html" => '<div id="editor-container"></div>'
+              "html" => '<div id="editor-container"></div>'
             ], "s12")
-        ]);
-
-        // Linha 3: Foto de Perfil e Objeto 3D
-        $this->addRow([
+          ]);
+          
+          // Linha 3: Foto de Perfil e Objeto 3D
+          $this->addRow([
             $this->addInput("custom", "", "", "", [
-                "html" => '
-                    <div class="img-area" data-img="">
-                        <i class="bx bxs-cloud-upload icon"></i>
-                        <h3>Envie uma Foto de Perfil</h3>
-                        <p>A Imagem não pode ser maior que <span>20MB</span></p>
-                        <input name="arquivo" type="file" id="Capa" style="display: none;">
-                    </div>'
+              "html" => '
+                  <div class="img-area" data-img="">
+                      <i class="bx bxs-cloud-upload icon"></i>
+                      <h3>Envie uma Foto de Perfil</h3>
+                      <p>A Imagem não pode ser maior que <span>20MB</span></p>
+                      <input name="arquivo" type="file" id="Capa" style="display: none;">
+                  </div>'
             ], "s6"),
             $this->addInput("file", "3d", "Objeto 3D:", "", ["id" => "3d"], "s6")
-        ]);
-
-        // Linha 4: Imagem Carrossel (upload múltiplo)
-        $this->addRow([
+          ]);
+          
+          // Linha 4: Imagem Carrossel (upload múltiplo)
+          $this->addRow([
             $this->addInput("custom", "", "Imagem Carrossel:", "", [
-                "html" => '
-                    <div class="MultiFile-wrap input-field col s12">
-                        <label>Imagem Carrossel:</label><br><br>
-                        <input type="file" multiple="multiple" class="multi with-preview" name="multifile-test[]" id="upload_files">
-                        <ul id="F9-Log" class="row"></ul>
-                    </div>'
+              "html" => '
+                  <div class="MultiFile-wrap input-field col s12">
+                      <label>Imagem Carrossel:</label><br><br>
+                      <input type="file" multiple="multiple" class="multi with-preview" name="multifile-test[]" id="upload_files">
+                      <ul id="F9-Log" class="row"></ul>
+                  </div>'
             ], "s12")
-        ]);
-
-        // Linha 5: Botão de envio
-        $this->addRow([
+          ]);
+          
+          // Linha 5: Botão de envio
+          $this->addRow([
             $this->addInput("submit", "cadastrar" . ucfirst($this->formtipo), "", "Cadastrar", [
-                "class" => "waves-effect waves-light btn green"
+              "class" => "waves-effect waves-light btn green"
             ], "s12")
-        ]);
+          ]);
     }
 }

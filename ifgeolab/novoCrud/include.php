@@ -11,7 +11,7 @@ function navbar($breadcrumb)
         header('Location: ../login.php');
     }
 }
-$bdServidor = "localhost";
+/* $bdServidor = "localhost";
 $bdUsuario = "root";
 $bdSenha = "";
 $bdBanco = "ifgeolab";
@@ -22,7 +22,7 @@ $conexao = [
     'username' => $bdUsuario,
     'pass' => $bdSenha,
     'database' => $bdBanco
-];
+]; */
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

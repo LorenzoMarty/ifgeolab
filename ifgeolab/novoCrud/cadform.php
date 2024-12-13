@@ -17,12 +17,9 @@ navbar($breadcrumb);
 
 $MineralRocha = new MineralRochaForm($formtipo, $idusuario);
 
-/* $questionario = new questionario(); */
-
 ?>
 
 <link rel="stylesheet" href="../css/image.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
 <body>
   <main>
@@ -33,14 +30,7 @@ $MineralRocha = new MineralRochaForm($formtipo, $idusuario);
           <h4 class="left-align">Cadastrar <?= ucfirst($formtipo) ?></h4>
           <hr class="divider">
         </div>
-        <?php switch ($_GET['tipo']) {
-          case 'mineral':
-            $MineralRocha->buildForm($idusuario);
-          case 'rocha':
-            $MineralRocha->buildForm($idusuario);
-          /* case 'questionario':
-            $questionario->buildForm($idusuario); */
-        } ?>
+        <?= $MineralRocha->render(); ?>
       </div>
     </div>
   </main>
@@ -53,7 +43,7 @@ $MineralRocha = new MineralRochaForm($formtipo, $idusuario);
   <script src="../js/quill.js"></script>
   <script src="../js/image.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       var elems = document.querySelectorAll('.select-dropdown');
       var instances = M.FormSelect.init(elems);
     });
