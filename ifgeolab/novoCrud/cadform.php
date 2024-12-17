@@ -15,8 +15,20 @@ $breadcrumb = implode('>', $breadcrumbs);
 $idusuario = $_SESSION['id'];
 navbar($breadcrumb);
 
-$MineralRocha = new MineralRochaForm($formtipo, $idusuario);
-
+switch ($formtipo) {
+  case "mineral":
+  case "rocha":
+    $form = new MineralRochaForm($formtipo, $idusuario);
+    break;
+  case "usuario":
+    $form = new UsuarioForm($formtipo);
+    break;
+  case "questionario":
+    $form = new QuestionarioForm($formtipo);
+    break;
+  default:
+    echo "<p>Tipo de formulário inválido.</p>";
+}
 ?>
 
 <link rel="stylesheet" href="../css/image.css">
@@ -30,7 +42,7 @@ $MineralRocha = new MineralRochaForm($formtipo, $idusuario);
           <h4 class="left-align">Cadastrar <?= ucfirst($formtipo) ?></h4>
           <hr class="divider">
         </div>
-        <?= $MineralRocha->render(); ?>
+        <?= $form->render();  ?>
       </div>
     </div>
   </main>

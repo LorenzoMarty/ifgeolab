@@ -86,11 +86,6 @@ if (mysqli_num_rows($result) > 0) {
                 <br><br>
                 <div class="row">
                     <div class="col s6">
-                        <div class="card-image">
-                            <img src="../img/usuarios/<?= $img; ?>" class="minha-imagem circle">
-                        </div>
-                    </div>
-                    <div class="col s6">
                         <h5><b>Nome: </b><?php echo $dados['nome']; ?></h5><br>
                         <h5><b>Email: </b><?php echo $dados['email']; ?></h5><br>
                         <h5><b>Matrícula: </b><?php echo $dados['matricula']; ?></h5><br>
@@ -103,6 +98,11 @@ if (mysqli_num_rows($result) > 0) {
                         } else {
                             echo "<h5><b>Rochas Cadastrados: </b>" . $rochasCad . "</h5><br>";
                         } ?>
+                    </div>
+                    <div class="col s6">
+                        <div class="card-image">
+                            <img src="../img/usuarios/<?= $img; ?>" class="minha-imagem circle">
+                        </div>
                     </div>
                 </div>
             </div>
