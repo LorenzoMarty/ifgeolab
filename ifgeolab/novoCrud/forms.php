@@ -5,6 +5,7 @@ include "quilljs.php";
 include "CRUD.php";
 
 $formtipo = isset($_GET['tipo']) ? $_GET['tipo'] : 'mineral';
+$id = isset($_GET['id']) ? $_GET['id'] : null;
 
 $breadcrumbs = [
   'Amostra' => '> <a href="Amostra.php">Amostras</a>',
@@ -12,22 +13,23 @@ $breadcrumbs = [
 ];
 $breadcrumb = implode('>', $breadcrumbs);
 
-$idusuario = $_SESSION['id'];
+$idusuario = $_SESSION['id'] ?? null;
 navbar($breadcrumb);
 
 switch ($formtipo) {
   case "mineral":
   case "rocha":
-    $form = new MineralRochaForm($formtipo, $idusuario);
+    $form = new MineralRochaForm($formtipo, $id);
     break;
   case "usuario":
-    $form = new UsuarioForm($formtipo);
+    $form = new UsuarioForm($formtipo, $id);
     break;
   case "questionario":
-    $form = new QuestionarioForm($formtipo);
+    $form = new QuestionarioForm($formtipo, $id);
     break;
   default:
     echo "<p>Tipo de formulário inválido.</p>";
+    exit;
 }
 ?>
 
@@ -42,7 +44,7 @@ switch ($formtipo) {
           <h4 class="left-align">Cadastrar <?= ucfirst($formtipo) ?></h4>
           <hr class="divider">
         </div>
-        <?= $form->render();  ?>
+        <?= $form->render(); ?>
       </div>
     </div>
   </main>
@@ -55,7 +57,8 @@ switch ($formtipo) {
   <script src="../js/quill.js"></script>
   <script src="../js/image.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', function() {
+      // Inicializa os dropdowns do Materialize
       var elems = document.querySelectorAll('.select-dropdown');
       var instances = M.FormSelect.init(elems);
     });

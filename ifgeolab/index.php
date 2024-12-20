@@ -9,7 +9,7 @@ if (isset($_SESSION['login'])) {
     $login = $_SESSION['login'];
     unset($_SESSION['login']);
 }
-unset($_SESSION['questoes'])
+unset($_SESSION['questoes']);
 ?>
 <?php
 include "include.php";
@@ -24,7 +24,6 @@ navbar($breadcrumb);
             <!-- Linha vertical à esquerda -->
             <div class="vertical-line"></div>
 
-            <!-- Conteúdo da seção -->
             <div class="section-content">
                 <div class="section">
                     <h4 class="left-align">Laboratório</h4>
@@ -32,49 +31,55 @@ navbar($breadcrumb);
                     <hr class="divider">
                 </div>
 
-                <!-- Linha com Rochas, Minerais, Questionários e Sugestões -->
                 <div class="menu">
-                    <div class="col s12 m6 l3 center-align">
-                        <div class="image-container">
-                            <a href="rocha.php">
-                                <img src="img/rochas.png" alt="Rochas" class="image-with-caption grayscale hoverable responsive-img">
+                    <div class="row">
+                        <div class="col s12 m4 l4 center-align">
+                            <div class="card">
+                                <div class="wrapper">
+                                    <img src="img/rochas.png" alt="Rochas" class="cover-image">
+                                    <img src="img/teste.png" alt="Teste" class="teste-image">
+                                </div>
                                 <div class="caption">Rochas</div>
-                            </a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col s12 m6 l3 center-align">
-                        <div class="image-container">
-                            <a href="mineral.php">
-                                <img src="img/mineral.png" alt="Minerais" class="image-with-caption grayscale hoverable responsive-img">
+                        <div class="col s12 m4 l4 center-align">
+                            <div class="card">
+                                <div class="wrapper">
+                                    <img src="img/mineral.png" alt="Minerais" class="cover-image">
+                                    <img src="img/teste.png" alt="Teste" class="teste-image">
+                                </div>
                                 <div class="caption">Minerais</div>
-                            </a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col s12 m6 l3 center-align">
-                        <!-- Questionários e Sugestões na mesma coluna -->
-                        <div class="image-container" style="margin-bottom: 0.75rem;">
-                            <a href="questionario.php">
-                                <img src="img/questionarios.png" alt="Questionários" class="image-with-caption responsive-img">
+                        <div class="col s12 m l4 center-align">
+                            <div class="card">
+                                <div class="wrapper">
+                                    <img src="img/questionarios.png" alt="Questionários" class="cover-image">
+                                    <img src="img/teste.png" alt="Teste" class="teste-image">
+                                </div>
                                 <div class="caption">Questionários</div>
-                            </a>
-                        </div>
-                        <div class="image-container">
-                            <?php if (isset($_SESSION['permissao'])) {
-                                if ($_SESSION['permissao'] == 1) {
-                                    echo '<a href="crud-usuario/amostra.php">';
-                                } elseif ($_SESSION['permissao'] == 2) {
-                                    echo '<a href="crud/sugestao.php">';
+                            </div>
+                            <div class="card">
+                                <?php if (isset($_SESSION['permissao'])) {
+                                    if ($_SESSION['permissao'] == 1) {
+                                        echo '<a href="crud-usuario/amostra.php">';
+                                    } elseif ($_SESSION['permissao'] == 2) {
+                                        echo '<a href="crud/sugestao.php">';
+                                    }
                                 }
-                            }
-                            ?>
-                            <img src="img/sugestoes.png" alt="Sugestões" class="image-with-caption responsive-img">
-                            <div class="caption">Sugestões</div>
-                            </a>
+                                ?>
+                                <div class="wrapper">
+                                    <img src="img/sugestoes.png" alt="Sugestões" class="cover-image">
+                                    <img src="img/teste.png" alt="Teste" class="teste-image">
+                                </div>
+                                <div class="caption">Sugestões</div>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
+
             </div>
-        </div>
         </div>
     </main>
 
