@@ -31,7 +31,6 @@ navbar($breadcrumb);
                     <hr class="divider">
                 </div>
 
-                <!-- Linha com Rochas, Minerais, Questionários e Sugestões -->
                 <div class="menu">
                     <div class="col s12 m4 l4 center-align">
                         <div class="image-container">
@@ -51,7 +50,6 @@ navbar($breadcrumb);
                     </div>
                     <div class="row">
                         <div class="col s12 m6 l6 center-align">
-                            <!-- Questionários e Sugestões na mesma coluna -->
                             <div class="image-container" style="margin-bottom: 0.75rem;">
                                 <a href="questionario.php">
                                     <img src="img/questionarios.png" alt="Questionários" class="image-with-caption responsive-img">
