@@ -8,7 +8,7 @@ class MineralRochaForm extends Form
     private $formtipo;
     private $action;
 
-    public function __construct($formtipo, $id = null, $action = "")
+    public function __construct($formtipo, $id = null, $action = "", $idusuario)
     {
         $this->crud = new CRUD();
         $this->formtipo = $formtipo;
@@ -17,7 +17,7 @@ class MineralRochaForm extends Form
         parent::__construct($action, "POST", "multipart/form-data", "{$formtipo}", "col s12 m6");
 
         // Construir o formulário
-        $this->buildForm($id);
+        $this->buildForm($id, $idusuario);
     }
 
     private function getCategoriaOptions()
@@ -33,7 +33,7 @@ class MineralRochaForm extends Form
         return $options;
     }
 
-    public function buildForm($id)
+    public function buildForm($id, $idusuario)
     {
         $dados = [];
         if ($id) {
@@ -45,7 +45,7 @@ class MineralRochaForm extends Form
         // Linha 1: Nome e Categoria
         $this->addRow([
             $this->addInput("text", "nome", "Nome", !empty($dados['nome']) ? $dados['nome'] : "", ["class" => "validate", "id" => "nome"], "s6"),
-            $this->addInput("select", "cat", "Categoria", !empty($dados['idcat']) ? $dados['idcat'] : "", [
+            $this->addInput("select", "cat", "", !empty($dados['idcat']) ? $dados['idcat'] : "", [
                 "options" => $this->getCategoriaOptions(),
                 "class" => "select-dropdown",
                 "id" => "cat"
@@ -57,8 +57,8 @@ class MineralRochaForm extends Form
         // Linha 2: Campo hidden para sugestão, id do usuário e Descrição (editor)
         $this->addRow([
             $this->addInput("hidden", "sugestao", "", !empty($dados['sugestao']) ? $dados['sugestao'] : ""),
-            $this->addInput("hidden", "idusuario", "", !empty($dados['idusuario']) ? $dados['idusuario'] : ""),
-            //$this->addInput("hidden", "descricao", "", !empty($dados['descricao']) ?   $dados['descricao']  : ""  , ["id" => "descricao"]),
+            $this->addInput("hidden", "idusuario", "", $idusuario),
+            $this->addInput("hidden", "descricao", "", !empty($dados['descricao']) ?   $dados['descricao']  : ""  , ["id" => "descricao"]),
             $this->addInput("custom", 'descricao', "", !empty($dados['descricao']) ? $dados['descricao'] : "", [
                 "html" => '<div id="editor-container"> {{content_value}} </span></div>'
             ], "s12")
@@ -76,18 +76,6 @@ class MineralRochaForm extends Form
                 </div>'
             ], "s6"),
             $this->addInput("file", "3d", "Objeto 3D:", "", ["id" => "3d"], "s6")
-        ]);
-
-        // Linha 4: Imagem Carrossel (upload múltiplo)
-        $this->addRow([
-            $this->addInput("custom", "", "Imagem Carrossel:", "", [
-                "html" => '
-                <div class="MultiFile-wrap input-field col s12">
-                    <label>Imagem Carrossel:</label><br><br>
-                    <input type="file" multiple="multiple" class="multi with-preview" name="multifile-test[]" id="upload_files">
-                    <ul id="F9-Log" class="row"></ul>
-                </div>'
-            ], "s12")
         ]);
 
         // Linha 5: Botão de envio

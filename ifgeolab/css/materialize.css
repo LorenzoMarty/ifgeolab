@@ -7344,7 +7344,7 @@ select {
   -ms-user-select: none;
   user-select: none;
   z-index: 1;
-  color: white;
+  color: #9e9e9e;
 }
 
 .select-wrapper input.select-dropdown:focus {
@@ -7358,7 +7358,7 @@ select {
   bottom: 0;
   margin: auto 0;
   z-index: 0;
-  fill: rgba(0, 0, 0, 0.87);
+  fill: #9e9e9e;
 }
 
 .select-wrapper+label {

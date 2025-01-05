@@ -12,7 +12,7 @@ if($id != null){
   $action = "editar.php";
   $nomeform = 'Editar ';
 }else{
-  $action = "cadastrar.php";
+  $action = "../crud/cadastrar.php";
   $nomeform = 'Cadastrar ';
 }
 
@@ -28,7 +28,7 @@ navbar($breadcrumb);
 switch ($formtipo) {
   case "mineral":
   case "rocha":
-    $form = new MineralRochaForm($formtipo, $id, $action);
+    $form = new MineralRochaForm($formtipo, $id, $action, $idusuario);
     break;
   case "usuario":
     $form = new UsuarioForm($formtipo, $id,$action);
