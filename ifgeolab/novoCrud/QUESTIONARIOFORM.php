@@ -3,25 +3,33 @@ class QuestionarioForm extends Form
 {
     private $crud;
     private $formtipo;
+    private $action;
 
-    public function __construct($formtipo, $action = "cadastrar.php")
+    public function __construct($formtipo, $id = null, $action = "")
     {
         $this->crud = new CRUD();
         $this->formtipo = $formtipo;
+        $this->action = $action;
         // Configuração inicial do formulário
         parent::__construct($action, "POST", "multipart/form-data", "{$formtipo}", "col s12 m6");
 
         // Construir o formulário
-        $this->buildForm();
+        $this->buildForm($id);
     }
 
-    public function buildForm()
+    public function buildForm($id)
     {
+        $dados = [];
+        if ($id) {
+            $tabela = 'questionario';
+            $colunaId = 'idquestionario';
+            $dados = ($this->crud->listar($tabela, [$colunaId => $id]))[0];
+        }
+
         $this->addRow([
-            $this->addInput("text", "nome", "Nome", "", ["class" => "validate"], "s6"),
-            $this->addInput("hidden", "descricao", "", "", ["id" => "descricao"]),
-            $this->addInput("custom", "", "", "", [
-                "html" => '<div id="editor-container"></div>'
+            $this->addInput("text", "nome", "Nome", !empty($dados['nome']) ? $dados['nome'] : "", ["class" => "validate"], "s6"),
+            $this->addInput("custom", 'descricao', "", !empty($dados['descricao']) ? $dados['descricao'] : "", [
+                "html" => '<div id="editor-container"> {{content_value}} </span></div>'
             ], "s12")
         ]);
 
@@ -34,19 +42,19 @@ class QuestionarioForm extends Form
         ]);
 
         $this->addRow([
-            $this->addInput("text", "alternativa1", "Alternativa A:", "", "", "s2")
+            $this->addInput("text", "alternativa1", "Alternativa A:", !empty($dados['alternativaA']) ? $dados['alternativaA'] : "", "", "s2")
         ]);
         $this->addRow([
-            $this->addInput("text", "alternativa2", "Alternativa B:", "", "", "s2")
+            $this->addInput("text", "alternativa2", "Alternativa B:", !empty($dados['alternativaB']) ? $dados['alternativaB'] : "", "", "s2")
         ]);
         $this->addRow([
-            $this->addInput("text", "alternativa3", "Alternativa C:", "", "", "s2")
+            $this->addInput("text", "alternativa3", "Alternativa C:", !empty($dados['alternativaC']) ? $dados['alternativaC'] : "", "", "s2")
         ]);
         $this->addRow([
-            $this->addInput("text", "alternativa4", "Alternativa D:", "", "", "s2")
+            $this->addInput("text", "alternativa4", "Alternativa D:", !empty($dados['alternativaD']) ? $dados['alternativaD'] : "", "", "s2")
         ]);
         $this->addRow([
-            $this->addInput("text", "alternativa5", "Alternativa E:", "", "", "s2")
+            $this->addInput("text", "alternativa5", "Alternativa E:", !empty($dados['alternativaE']) ? $dados['alternativaE'] : "", "", "s2")
         ]);
 
         $this->addRow([

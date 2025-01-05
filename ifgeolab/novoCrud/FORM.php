@@ -36,7 +36,6 @@ class Form
             'colSize' => $colSize
         ];
     }
-
     public function render()
     {
         $formHTML = "<form action='{$this->action}' method='{$this->method}' enctype='{$this->enctype}' id='{$this->id}' class='{$this->class}'>\n";
@@ -54,8 +53,12 @@ class Form
                 }
 
                 if ($input['type'] === 'custom') {
+
+                    $customHtml = str_replace("{{content_value}}", $input['value'], $input['attributes']['html']);
+
                     // Adiciona o HTML diretamente
-                    $formHTML .= "\t\t\t" . ($input['attributes']['html'] ?? '') . "\n";
+                    // $formHTML .= "\t\t\t" . ($input['attributes']['html'] ?? '') . "\n";
+                    $formHTML .= "\t\t\t" . $customHtml . "\n";
                 } else {
                     if (!empty($input['label'])) {
                         $formHTML .= "\t\t\t<label for='{$input['name']}'>{$input['label']}</label>\n";
@@ -71,7 +74,6 @@ class Form
                             $formHTML .= "\t\t\t<textarea name='{$input['name']}' id='{$input['name']}' {$attributesString}>{$input['value']}</textarea>\n";
                             break;
                         case "hidden":
-                            // Renderiza o campo hidden sem a div.input-field
                             $formHTML .= "\t\t\t<input type='{$input['type']}' name='{$input['name']}' value='{$input['value']}' id='{$input['name']}' {$attributesString}>\n";
                             break;
                         default:
@@ -79,19 +81,17 @@ class Form
                     }
                 }
 
-                // Fecha a div.input-field apenas para inputs que não sejam do tipo hidden
                 if ($input['type'] !== 'hidden') {
-                    $formHTML .= "\t\t</div>\n"; // Fecha a div.input-field
+                    $formHTML .= "\t\t</div>\n";
                 }
             }
-            $formHTML .= "\t</div>\n"; // Fecha a div.row
+            $formHTML .= "\t</div>\n";
         }
 
         $formHTML .= "</form>\n";
         return $formHTML;
     }
 
-    // Gera o HTML para um campo select
     private function renderSelect($name, $selectedValue, $attributesString, $attributes)
     {
         $html = "<select name='{$name}' id='{$name}' {$attributesString}>\n";
@@ -110,7 +110,7 @@ class Form
     private function parseAttributes($attributes)
     {
         $attributesString = "";
-        if (is_array($attributes)) { // Verifica se $attributes é um array
+        if (is_array($attributes)) {
             foreach ($attributes as $key => $value) {
                 if ($key !== 'options') {
                     $attributesString .= "{$key}='" . htmlspecialchars($value) . "' ";

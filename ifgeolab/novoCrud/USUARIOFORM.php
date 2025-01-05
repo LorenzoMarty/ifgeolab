@@ -1,28 +1,38 @@
 <?php
+
 class UsuarioForm extends Form
 {
     private $crud;
     private $formtipo;
+    private $action;
 
-    public function __construct($formtipo, $action = "cadastrar.php")
+    public function __construct($formtipo, $id = null, $action = "")
     {
         $this->crud = new CRUD();
         $this->formtipo = $formtipo;
+        $this->action = $action;
         // Configuração inicial do formulário
         parent::__construct($action, "POST", "multipart/form-data", "{$formtipo}", "col s12 m6");
 
         // Construir o formulário
-        $this->buildForm();
+        $this->buildForm($id);
     }
 
-    public function buildForm()
+    public function buildForm($id)
     {
+        $dados = [];
+        if ($id) {
+            $tabela = 'usuario';
+            $colunaId = 'idusuario';
+            $dados = ($this->crud->listar($tabela, [$colunaId => $id]))[0];
+        }
+
         $this->addRow([
             $this->addInput(
                 "text",
                 "nome",
                 "Nome",
-                $dados['nome'] ?? '',
+                !empty($dados['nome']) ? $dados['nome'] : "",
                 ["class" => "validate", "required" => true],
                 "s12"
             ),
@@ -30,7 +40,7 @@ class UsuarioForm extends Form
                 "text",
                 "email",
                 "Email",
-                $dados['email'] ?? '',
+                !empty($dados['email']) ? $dados['email'] : "",
                 ["class" => "validate", "required" => true],
                 "s12"
             ),
@@ -38,7 +48,7 @@ class UsuarioForm extends Form
                 "password",
                 "senha",
                 "Senha",
-                $_SESSION['senha'] ?? '',
+                !empty($_SESSION['senha']) ? $_SESSION['senha'] : "",
                 ["class" => "validate", "required" => true],
                 "s12"
             ),
@@ -46,7 +56,7 @@ class UsuarioForm extends Form
                 "text",
                 "matricula",
                 "Matrícula",
-                $dados['matricula'] ?? '',
+                !empty($dados['matricula']) ? $dados['matricula'] : "",
                 ["class" => "validate", "required" => true],
                 "s12"
             ),
@@ -54,7 +64,7 @@ class UsuarioForm extends Form
                 "text",
                 "inst",
                 "Instituição",
-                $dados['instituto'] ?? '',
+                !empty($dados['instituto']) ? $dados['instituto'] : "",
                 ["class" => "validate", "required" => true],
                 "s12"
             )

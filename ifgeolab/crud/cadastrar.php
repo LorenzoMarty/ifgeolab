@@ -44,40 +44,6 @@ if (isset($_POST['cadastrarMineral'])) {
             'icon' => 'success'
         ];
     }
-
-    // Verifique se os arquivos foram enviados
-    if (isset($_FILES['carrossel'])) {
-        // Obtenha o ID do mineral recém-inserido
-        $idmineral = mysqli_insert_id($conexao);
-
-        // Defina o diretório onde as imagens serão armazenadas
-        $diretorioC = "../img/mineral/";
-
-        // Itere sobre cada arquivo enviado
-        for ($i = 0; $i < count($_FILES['carrossel']['name']); $i++) {
-            // Obtenha a extensão do arquivo
-            $extensaoC = strtolower(pathinfo($_FILES['carrossel']['name'][$i], PATHINFO_EXTENSION));
-            // Defina o nome do arquivo
-            $carrossel = "Carrossel-$idmineral-" . $i . ".$extensaoC";
-            // Mova o arquivo para o diretório de upload
-            if (move_uploaded_file($_FILES['carrossel']['tmp_name'][$i], $diretorioC . $carrossel)) {
-                // Escape os valores para evitar injeção de SQL
-                $carrossel = mysqli_real_escape_string($conexao, $carrossel);
-
-                // Crie a consulta SQL
-                $sqlC = "INSERT INTO img_mineral (imgM, idmineral) VALUES ('$carrossel', $idmineral)";
-
-                // Execute a consulta
-                if (!mysqli_query($conexao, $sqlC)) {
-                    echo "Erro ao inserir dados: " . mysqli_error($conexao);
-                }
-            } else {
-                echo "Erro ao mover o arquivo $carrossel.<br>";
-            }
-        }
-    }
-
-    // Redirecione para a página listarMineral.php
     header("Location: listarMineral.php");
     
 } elseif (isset($_POST['cadastrarRocha'])) {
@@ -132,6 +98,7 @@ if (isset($_POST['cadastrarMineral'])) {
         echo "<script>alert('Não foi possível realizar o cadastro!');
         location.href='../index.php'</script>";
     }
+    
 } elseif (isset($_POST['cadastrarUsuario'])) {
     $nome = $_POST['nome'];
     $email = $_POST['email'];

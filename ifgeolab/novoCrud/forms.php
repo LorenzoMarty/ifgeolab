@@ -2,10 +2,19 @@
 session_start();
 include "include.php";
 include "quilljs.php";
-include "CRUD.php";
+include "MineralRochaForm.php";
+include "QuestionarioForm.php";
+include "UsuarioForm.php";
 
-$formtipo = isset($_GET['tipo']) ? $_GET['tipo'] : 'mineral';
+$formtipo = isset($_GET['tipo']) ? $_GET['tipo'] : "";
 $id = isset($_GET['id']) ? $_GET['id'] : null;
+if($id != null){
+  $action = "editar.php";
+  $nomeform = 'Editar ';
+}else{
+  $action = "cadastrar.php";
+  $nomeform = 'Cadastrar ';
+}
 
 $breadcrumbs = [
   'Amostra' => '> <a href="Amostra.php">Amostras</a>',
@@ -19,13 +28,13 @@ navbar($breadcrumb);
 switch ($formtipo) {
   case "mineral":
   case "rocha":
-    $form = new MineralRochaForm($formtipo, $id);
+    $form = new MineralRochaForm($formtipo, $id, $action);
     break;
   case "usuario":
-    $form = new UsuarioForm($formtipo, $id);
+    $form = new UsuarioForm($formtipo, $id,$action);
     break;
   case "questionario":
-    $form = new QuestionarioForm($formtipo, $id);
+    $form = new QuestionarioForm($formtipo, $id,$action);
     break;
   default:
     echo "<p>Tipo de formulário inválido.</p>";
@@ -41,7 +50,7 @@ switch ($formtipo) {
       <div class="vertical-line"></div>
       <div class="section-content">
         <div class="section">
-          <h4 class="left-align">Cadastrar <?= ucfirst($formtipo) ?></h4>
+          <h4 class="left-align"><?= $nomeform, ucfirst($formtipo) ?></h4>
           <hr class="divider">
         </div>
         <?= $form->render(); ?>
