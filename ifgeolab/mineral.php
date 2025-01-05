@@ -21,8 +21,8 @@ include "include.php"; ?>
                     <hr class="divider">
                 </div>
                 <div class="row">
-                    <div class="col s4">
-                        <div class="image-container">
+                    <div class="col s12 m6">
+                        <div class="image-container center-align">
                             <a href="metalica.php" class="white-text">
                                 <img src="img/metalicas.png" alt="Minerais Metálicos" class="image-with-caption">
                                 <div class="caption">METÁLICOS</div>
@@ -30,8 +30,8 @@ include "include.php"; ?>
                         </div>
                     </div>
                     
-                    <div class="col s4">
-                        <div class="image-container">
+                    <div class="col s12 m6">
+                        <div class="image-container center-align">
                             <a href="n-metalica.php" class="white-text">
                                 <img src="img/nao-metalicas.png" alt="Minerais Metálicos" class="image-with-caption">
                                 <div class="caption">NÃO METÁLICOS</div>

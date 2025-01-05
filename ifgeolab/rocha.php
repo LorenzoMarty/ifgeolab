@@ -21,8 +21,8 @@ include "include.php"; ?>
                     <hr class="divider">
                 </div>
                 <div class="row">
-                    <div class="col s4">
-                        <div class="image-container">
+                    <div class="col s12 m4">
+                        <div class="image-container center-align">
                             <a href="igneas.php">
                                 <img src="img/igneas.png" alt="Rochas ígneas" class="image-with-caption">
                                 <div class="caption">ÍGNEAS</div>
@@ -30,16 +30,16 @@ include "include.php"; ?>
                         </div>
                     </div>
 
-                    <div class="col s4">
-                        <div class="image-container">
+                    <div class="col s12 m4">
+                        <div class="image-container center-align">
                             <a href="sed.php">
                                 <img src="img/sedimentares.png" alt="Rochas Sedimentares" class="image-with-caption">
                                 <div class="caption">SEDIMENTARES</div>
                             </a>
                         </div>
                     </div>
-                    <div class="col s4">
-                        <div class="image-container">
+                    <div class="col s12 m4">
+                        <div class="image-container center-align">
                             <a href="met.php">
                                 <img src="img/metamórficas.png" alt="Rochas Metamórficas" class="image-with-caption">
                                 <div class="caption">METAMÓRFICAS</div>
