@@ -17,11 +17,7 @@
 function navbar($breadcrumb)
 {
     if (isset($_SESSION['permissao'])) {
-        if ($_SESSION['permissao'] == 1) {
-            include "topo-user.php";
-        } elseif ($_SESSION['permissao'] == 2 or 3) {
-            include "topo-adm.php";
-        }
+        include "topo.php";
     } else {
         header('Location: login.php');
     }

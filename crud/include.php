@@ -2,15 +2,23 @@
 function navbar($breadcrumb)
 {
     if (isset($_SESSION['permissao'])) {
-        if ($_SESSION['permissao'] == 1) {
-            include "topo-user.php";
-        } elseif ($_SESSION['permissao'] == 2 or 3) {
-            include "topo-adm.php";
-        }
+            include "topo.php";
     } else {
         header('Location: ../login.php');
     }
 }
+/* $bdServidor = "localhost";
+$bdUsuario = "root";
+$bdSenha = "";
+$bdBanco = "ifgeolab";
+
+// Criar uma conexão com o banco de dados
+$conexao = [
+    'host' => $bdServidor,
+    'username' => $bdUsuario,
+    'pass' => $bdSenha,
+    'database' => $bdBanco
+]; */
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

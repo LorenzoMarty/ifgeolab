@@ -8,7 +8,7 @@ class MineralRochaForm extends Form
     private $formtipo;
     private $action;
 
-    public function __construct($formtipo, $id = null, $action = "", $idusuario)
+    public function __construct($formtipo, $id = null, $action = "", $idusuario = "", $sugestao = "", $nomeForm = "")
     {
         $this->crud = new CRUD();
         $this->formtipo = $formtipo;
@@ -17,7 +17,7 @@ class MineralRochaForm extends Form
         parent::__construct($action, "POST", "multipart/form-data", "{$formtipo}", "col s12 m6");
 
         // Construir o formulário
-        $this->buildForm($id, $idusuario);
+        $this->buildForm($id, $idusuario, $sugestao, $nomeForm);
     }
 
     private function getCategoriaOptions()
@@ -33,7 +33,7 @@ class MineralRochaForm extends Form
         return $options;
     }
 
-    public function buildForm($id, $idusuario)
+    public function buildForm($id, $idusuario, $sugestao, $nomeForm)
     {
         $dados = [];
         if ($id) {
@@ -56,7 +56,7 @@ class MineralRochaForm extends Form
 
         // Linha 2: Campo hidden para sugestão, id do usuário e Descrição (editor)
         $this->addRow([
-            $this->addInput("hidden", "sugestao", "", !empty($dados['sugestao']) ? $dados['sugestao'] : ""),
+            $this->addInput("hidden", "sugestao", "", $sugestao),
             $this->addInput("hidden", "idusuario", "", $idusuario),
             $this->addInput("hidden", "descricao", "", !empty($dados['descricao']) ?   $dados['descricao']  : ""  , ["id" => "descricao"]),
             $this->addInput("custom", 'descricao', "", !empty($dados['descricao']) ? $dados['descricao'] : "", [
@@ -80,7 +80,7 @@ class MineralRochaForm extends Form
 
         // Linha 5: Botão de envio
         $this->addRow([
-            $this->addInput("submit", "cadastrar" . ucfirst($this->formtipo), "", "Cadastrar", [
+            $this->addInput("submit", "$nomeForm" . ucfirst($this->formtipo), "", "$nomeForm", [
                 "class" => "waves-effect waves-light btn green white-text"
             ], "s12")
         ]);

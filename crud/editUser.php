@@ -110,7 +110,7 @@ if (mysqli_num_rows($result) > 0) {
     </main>
 </body>
 <?php
-include "footer.php";
+include "../footer.php";
 ?>
 <script src="../js/sweetalert.js"></script>
 <script>

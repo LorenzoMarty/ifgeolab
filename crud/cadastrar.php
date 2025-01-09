@@ -3,7 +3,7 @@ session_start();
 require_once('../conecta.php');
 $conexao = conectar();
 
-if (isset($_POST['cadastrarMineral'])) {
+if (isset($_POST['CadastrarMineral'])) {
     $nome = $_POST['nome'];
     $cat = $_POST['cat'];
     $desc = $_POST['descricao'];
@@ -46,7 +46,7 @@ if (isset($_POST['cadastrarMineral'])) {
     }
     header("Location: listarMineral.php");
     
-} elseif (isset($_POST['cadastrarRocha'])) {
+} elseif (isset($_POST['CadastrarRocha'])) {
     $nome = $_POST['nome'];
     $cat = $_POST['cat'];
     $descricao = $_POST['descricao'];
@@ -99,7 +99,7 @@ if (isset($_POST['cadastrarMineral'])) {
         location.href='../index.php'</script>";
     }
     
-} elseif (isset($_POST['cadastrarUsuario'])) {
+} elseif (isset($_POST['CadastrarUsuario'])) {
     $nome = $_POST['nome'];
     $email = $_POST['email'];
     $senha = $_POST['senha'];
@@ -141,7 +141,7 @@ if (isset($_POST['cadastrarMineral'])) {
     } else {
         echo "Erro na encriptografia da senha!!!!";
     }
-} elseif (isset($_POST['cadastrarQuestao'])) {
+} elseif (isset($_POST['CadastrarQuestao'])) {
     $descricao = $_POST['descricao'];
     $nome = $_POST['nome'];
     $alternativas = $_POST['alternativas'];

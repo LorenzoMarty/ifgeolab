@@ -74,14 +74,14 @@ include "include.php"; ?>
                 <div class="wrapp">
                     <div class="col s12">
                         <div class="card">
-                            <model-viewer id="model-viewer" class="card__model" shadow-intensity="2"
+                            <model-viewer id="model-viewer" class="card__model" shadow-intensity="1"
                                 src="obj/<?= $obj; ?>" max-camera-orbit="auto 90deg" autoplay auto-rotate ar
-                                ar-scale="fixed" camera-controls touch-action="pan-y" skybox-image="img/fundo.hdr"
+                                ar-modes="scene-viewer quick-look" camera-controls touch-action="pan-y"
                                 poster="img/geolab-branco.png">
                             </model-viewer>
                             <span class="card-title"><?= $nome; ?></span>
                             <a class="gerarpdf waves-effect waves-light accent-4"
-                                href="relatorioMineral.php?idmineral=<?= $idrocha; ?>">
+                                href="relatorioRocha.php?idrocha=<?= $idrocha; ?>">
                                 Gerar PDF <img class="pdf" src="img/pdf-icon.png">
                             </a>
                         </div>
@@ -106,4 +106,4 @@ include "include.php"; ?>
     <?php
     include "footer.php";
     ?>
-    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>

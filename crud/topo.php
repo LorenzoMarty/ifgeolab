@@ -78,10 +78,12 @@ if (mysqli_num_rows($resultado) > 0) {
     <!-- Lado esquerdo - Aparece apenas em telas grandes -->
     <ul class="right hide-on-med-and-down">
       <li><a href="../index.php">Início</a></li>
+      <?php if ($_SESSION['permissao'] == 3 or $_SESSION['permissao'] == 2): ?>
       <li>
         <a class="dropdown-trigger" href="#!" data-target="dropdown1">Cadastrar<i
             class="material-icons right">arrow_drop_down</i></a>
       </li>
+      <?php endif; ?>
       <li><a href="editUser.php?idusuario=<?= $_SESSION['id']; ?>" class="perfil-container"><?= $dados['nome']; ?>
           <img src="../img/usuarios/<?= $img; ?>" alt="Imagem de perfil"></a></li>
     </ul>
@@ -106,6 +108,7 @@ if (mysqli_num_rows($resultado) > 0) {
   </nav>
 </nav>
 
+<?php if ($_SESSION['permissao'] == 2 or $_SESSION['permissao'] == 3): ?>
 <!-- Dropdown Content (Desktop) -->
 <ul id="dropdown1" class="dropdown-content">
   <?php if ($_SESSION['permissao'] == 3): ?>
@@ -115,6 +118,7 @@ if (mysqli_num_rows($resultado) > 0) {
   <li><a href="Sugestao.php">Sugestões</a></li>
   <li><a href="Amostra.php">Amostras</a></li>
 </ul>
+<?php endif; ?>
 
 <!-- Mobile Sidenav (menu lateral) -->
 <ul class="sidenav white-text #212121 grey darken-4" id="mobile-demo">

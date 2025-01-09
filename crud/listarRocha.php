@@ -7,13 +7,12 @@ if (isset($_SESSION['excluir'])) {
 include "include.php";
 $breadcrumbs = [
     'Amostra' => '> <a href="amostra.php">Amostras</a>',
-    'Mineral' => '<a class="active" href="listarMineral.php">Minerais</a>'
+    'Rochas' => '<a class="active" href="listarRocha.php">Rochas</a>'
 ];
 $breadcrumb = implode('>', $breadcrumbs);
 
 navbar($breadcrumb);
 ?>
-
 <style>
     .minha-imagem {
         height: 220px;
@@ -25,67 +24,75 @@ navbar($breadcrumb);
         background-color: rgba(0, 0, 0, 0.3);
         width: 100%;
     }
+
+    .btn {
+        font-size: 10px;
+    }
 </style>
-</head>
 
 <body>
     <main>
-        <div class="container">
+    <div class="container">
             <div class="vertical-line"></div>
 
             <div class="section-content">
                 <div class="section">
-                    <h4 class="left-align">Minerais</h4>
-                    <h6 class="left-align">Mineral é um corpo natural sólido e cristalino formado em resultado da interação de processos
-                        físico-químicos em ambientes geológicos. <br>Cada mineral é classificado e denominado não apenas com
-                        base na sua composição química, mas também na estrutura cristalina dos materiais que o compõem.</h6>
+                    <h4 class="left-align">Rochas</h4>
+                    <h6 class="left-align">Rocha é um agregado sólido que ocorre naturalmente e é constituído por um ou mais minerais ou
+                        mineraloides. <br>A camada externa sólida da Terra, conhecida por litosfera, é constituída por rochas.</h6>
                     <hr class="divider">
                 </div>
-                <div class="row">
-                    <?php
-                    require_once '../conecta.php';
-                    $sql = "SELECT * FROM mineral WHERE sugestao=0";
-                    $conexao = conectar();
-                    $resultado = mysqli_query($conexao, $sql);
-                    while ($dados = mysqli_fetch_array($resultado)) {
-                        $idmineral = $dados["idmineral"];
-                        $nome = $dados['nome'];
-                        $cat = $dados['idcat'];
-                        $descricao = $dados['descricao'];
-                        $img = $dados['img'];
-                    ?>
-                        <div class="col s12 l4 m8">
+
+                <?php
+                require_once '../conecta.php';
+                $sql = "SELECT * FROM rocha WHERE sugestao=0";
+                $conexao = conectar();
+                $resultado = mysqli_query($conexao, $sql);
+                while ($dados = mysqli_fetch_array($resultado)) {
+                    $idrocha = $dados["idrocha"];
+                    $nome = $dados['nome'];
+                    $cat = $dados['idcat'];
+                    $descricao = $dados['descricao'];
+                    $img = $dados['img'];
+                ?>
+                    <div class="row">
+                        <div class="col s4">
                             <div class="card hoverable">
                                 <div class="card-image">
-                                    <img src="../img/mineral/<?= $img; ?>" class="minha-imagem materialboxed">
+                                    <img src="../img/rochas/<?= $img; ?>" class="minha-imagem materialboxed">
                                     <span class="card-title center meu-span white-text">
-                                        <?php echo $nome ?>
+                                        <?= $nome ?>
                                     </span>
                                 </div>
                                 <div class="card-action green darken-4">
-                                    <a class="center waves-effect waves-light btn-small green accent-4" href="../relatorio.php?idmineral=<?php echo $idmineral; ?>">
+                                    <a class="center waves-effect waves-light btn-small green accent-4"
+                                        href="../relatorio.php?idrocha=<?= $idrocha; ?>">
                                         <img src="../img/pdf-icon.png">
                                     </a>
-                                    <a id="btnExcluir-<?= $idmineral ?>" class="center waves-effect waves-light btn-small red" data-idmineral="<?= $idmineral ?>">Excluir</a>
-                                    <a class="center waves-effect waves-light btn-small green" href="editmineral.php?idmineral=<?= $idmineral; ?>&sugestao=0">Editar</a>
+                                    <a id="btnExcluir-<?= $idrocha ?>" class="center waves-effect waves-light btn-small red"
+                                        data-idrocha="<?= $idrocha ?>">Excluir</a>
+                                    <a class="center waves-effect waves-light btn-small green"
+                                        href="forms.php?tipo=rocha&id=<?= $idrocha; ?>">Editar</a>
                                 </div>
                             </div>
                         </div>
+
                     <?php } ?>
                     <div class="col s12 l4 m8">
                         <div class="card hoverable">
                             <div class="card-action center green darken-4">
-                                <a class="center waves-effect waves-light btn-small green accent-4" href="cadmineral.php">Cadastrar</a>
+                                <a class="center waves-effect waves-light btn-small green accent-4"
+                                    href="forms.php?tipo=rocha">Cadastrar</a>
                             </div>
                         </div>
                     </div>
                     <br>
                     <br>
                     <br>
-                </div>
+                    </div>
     </main>
     <?php
-    include "footer.php";
+    include "../footer.php";
     ?>
     <script src="../js/sweetalert.js"></script>
     <script>
@@ -100,9 +107,9 @@ navbar($breadcrumb);
     <script>
         document.querySelectorAll('[id^="btnExcluir-"]').forEach(button => {
             button.addEventListener('click', function() {
-                const idmineral = this.getAttribute('data-idmineral');
+                const idrocha = this.getAttribute('data-idrocha');
                 Swal.fire({
-                    title: "Tem certeza que deseja excluir o mineral?",
+                    title: "Tem certeza que deseja excluir a rocha?",
                     icon: "warning",
                     showCancelButton: true,
                     confirmButtonColor: "#3085d6",
@@ -110,7 +117,7 @@ navbar($breadcrumb);
                     confirmButtonText: "Sim"
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        location.href = "excluir.php?deletarMineral=" + idmineral;
+                        location.href = "excluir.php?deletarRocha=" + idrocha;
                     }
                 });
             });

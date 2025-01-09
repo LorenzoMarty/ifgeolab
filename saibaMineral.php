@@ -1,6 +1,5 @@
 <?php session_start();
 include "include.php"; ?>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 <style>
     .minha-imagem {
         height: 400px;
@@ -20,51 +19,11 @@ include "include.php"; ?>
         align-items: center;
         position: absolute;
     }
-
-    .swiper {
-        width: 250px;
-        height: auto;
-    }
-
-    .swiper-slide {
-        text-align: center;
-        font-size: 18px;
-        background: #fff;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .mySwiper {
-        height: 20%;
-        box-sizing: border-box;
-        padding: 10px 0;
-        margin-right: 5px;
-    }
-
-    .swiper-slide {
-        width: 100%;
-        height: auto;
-        padding: 5px 0;
-        margin-right: 0;
-    }
-
-    .swiper-slide img {
-        display: block;
-        width: 50%;
-        height: 100%;
-        object-fit: cover;
-    }
-
-    .swiper-wrapper {
-        margin-right: 5px;
-    }
 </style>
 <link rel="stylesheet" href="css/3d.css">
 
 <body>
     <?php
-
     require_once('conecta.php');
     $conexao = conectar();
     $idmineral = $_GET['idmineral'];
@@ -110,43 +69,31 @@ include "include.php"; ?>
     navbar($breadcrumb);
     ?>
     <main>
-        <br><br>
         <?php if ($obj != "") { ?>
             <div class="container">
                 <div class="row center">
-                    <div class="col s12">
-                        <div class="card-content">
-                            <model-viewer id="model-viewer" class="card__model" shadow-intensity="2" src="obj/<?= $obj; ?>"
-                                max-camera-orbit="auto 90deg" autoplay auto-rotate ar ar-scale="fixed" camera-controls
-                                touch-action="pan-y" skybox-image="img/fundo.hdr"
-                                poster="img/geolab-branco.png">
-                            </model-viewer>
-                            <span class="card-title">
-                                <?= $nome; ?>
-                            </span>
+                    <div class="wrapp">
+                        <div class="col s12">
+                            <div class="card">
+                                <model-viewer id="model-viewer" class="card__model" shadow-intensity="1" src="obj/<?= $obj; ?>"
+                                    max-camera-orbit="auto 90deg" autoplay auto-rotate ar ar-modes="scene-viewer quick-look" camera-controls
+                                    touch-action="pan-y"
+                                    poster="img/geolab-branco.png">
+                                </model-viewer>
+                                <span class="card-title">
+                                    <?= $nome; ?>
+                                </span>
+                            </div>
+                            <a class="right gerarpdf waves-effect waves-light accent-4"
+                                href="relatorioMineral.php?idmineral=<?= $idmineral; ?>">
+                                <img class="pdf" src="img/pdf-icon.png"> Gerar PDF</a>
                         </div>
-                        <a class="right gerarpdf waves-effect waves-light accent-4"
-                            href="relatorioMineral.php?idmineral=<?= $idmineral; ?>">
-                            <img class="pdf" src="img/pdf-icon.png"> Gerar PDF</a>
-                    </div>
-                </div>
-                <h5 class="center"><b>Categoria:</b>
-                    <?= $cat; ?>
-                </h5>
-                <div thumbsSlider="" class="mySwiper">
-                    <div class="swiper-wrapper">
-                        <?php
-                        while ($img = mysqli_fetch_assoc($galeria)) {
-                            $carrossel = $img['imgM'];
-                            if ($carrossel != "") { ?>
-                                <div class="swiper-slide"><img src="img/mineral/<?= $carrossel; ?>" class="materialboxed"></div>
-                            <?php }
-                        }
-                        ?>
                     </div>
                 </div>
             </div>
-            </div>
+            <h5 class="center"><b>Categoria:</b>
+                <?= $cat; ?>
+            </h5>
         <?php } else { ?>
             <div class="container">
                 <div class="row center">
@@ -185,12 +132,12 @@ include "include.php"; ?>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             var elems = document.querySelectorAll('.modal');
             var instances = M.Modal.init(elems);
         });
 
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             const materialboxElems = document.querySelectorAll('.materialboxed');
             M.Materialbox.init(materialboxElems);
         });

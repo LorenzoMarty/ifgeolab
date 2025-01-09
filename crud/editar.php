@@ -3,7 +3,7 @@ session_start();
 require_once('../conecta.php');
 $conexao = conectar();
 
-if (isset($_POST['editarMineral'])) {
+if (isset($_POST['EditarMineral'])) {
     $obj = $_POST['3d'];
     $id = $_POST['idmineral'];
     $nome = $_POST['nome'];
@@ -50,7 +50,7 @@ if (isset($_POST['editarMineral'])) {
             location.href='listarMineral.php'</script>";
     }
     
-} elseif (isset($_POST['editarRocha'])) {
+} elseif (isset($_POST['EditarRocha'])) {
     $obj = $_POST['3d'];
     $id = $_POST['idrocha'];
     $nome = $_POST['nome'];
@@ -97,7 +97,7 @@ if (isset($_POST['editarMineral'])) {
             location.href='listarRocha.php'</script>";
     }
 
-} elseif (isset($_POST['editarUsuario'])) {
+} elseif (isset($_POST['EditarUsuario'])) {
 
     $id = $_POST['idusuario'];
     $nome = $_POST['nome'];

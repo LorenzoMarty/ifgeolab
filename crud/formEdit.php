@@ -105,7 +105,7 @@ navbar($breadcrumb);
   </main>
 </body>
 <?php
-include "footer.php";
+include "../footer.php";
 ?>
 <script>
   document.addEventListener('DOMContentLoaded', function () {

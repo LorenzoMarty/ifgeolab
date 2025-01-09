@@ -80,7 +80,7 @@ navbar($breadcrumb);
             <br><br><br>
     </main>
 
-    <?php include "footer.php"; ?>
+    <?php include "../footer.php"; ?>
 
     <script src="../js/sweetalert.js"></script>
     <script>

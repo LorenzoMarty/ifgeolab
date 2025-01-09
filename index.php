@@ -59,7 +59,7 @@ navbar($breadcrumb);
                             <div class="image-container">
                                 <?php if (isset($_SESSION['permissao'])) {
                                     if ($_SESSION['permissao'] == 1) {
-                                        echo '<a href="crud-usuario/amostra.php">';
+                                        echo '<a href="crud/amostra.php">';
                                     } elseif ($_SESSION['permissao'] == 2) {
                                         echo '<a href="crud/sugestao.php">';
                                     }

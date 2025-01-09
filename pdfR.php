@@ -100,7 +100,7 @@
 <body>
 
     <div class="row">
-        <div class="col s2"><img class="img1" src="img/if_logo.png"></div><br>
+        <div class="col s2"><img class="img1" src="img/iff.png"></div><br>
         <div class="title col s7">
             <h6><b>Instituto Federal de Educação, Ciência e Tecnologia Farroupilha Campus Uruguaiana</b></h6>
             <h5><b>Laboratório Digital de rochas e minerais IF GeoLab</b></h5>
@@ -110,9 +110,9 @@
     <div class="container">
         <hr>
         <div class="row">
-            <h3><?php echo $nome; ?></h3>
-            <h5 class="right"><b>Categoria: </b><?php echo $cat; ?></h5><br>
-            <img src="img/mineral/<?= $img; ?>" class="img3">
+            <h3><?= $nome; ?></h3>
+            <h5 class="right"><b>Categoria: </b><?= $cat; ?></h5><br>
+            <img src="img/rochas/<?= $img; ?>" class="img3">
         </div>
     </div>
     <hr>

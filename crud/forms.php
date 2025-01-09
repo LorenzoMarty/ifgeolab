@@ -8,12 +8,13 @@ include "UsuarioForm.php";
 
 $formtipo = isset($_GET['tipo']) ? $_GET['tipo'] : "";
 $id = isset($_GET['id']) ? $_GET['id'] : null;
+$sugestao = isset($_GET['sugestao']) ? $_GET['sugestao'] : 0;
 if($id != null){
   $action = "editar.php";
-  $nomeform = 'Editar ';
+  $nomeform = 'Editar';
 }else{
-  $action = "../crud/cadastrar.php";
-  $nomeform = 'Cadastrar ';
+  $action = "cadastrar.php";
+  $nomeform = 'Cadastrar';
 }
 
 $breadcrumbs = [
@@ -28,13 +29,13 @@ navbar($breadcrumb);
 switch ($formtipo) {
   case "mineral":
   case "rocha":
-    $form = new MineralRochaForm($formtipo, $id, $action, $idusuario);
+    $form = new MineralRochaForm($formtipo, $id, $action, $idusuario, $sugestao, $nomeform);
     break;
   case "usuario":
-    $form = new UsuarioForm($formtipo, $id,$action);
+    $form = new UsuarioForm($formtipo, $id, $action);
     break;
   case "questionario":
-    $form = new QuestionarioForm($formtipo, $id,$action);
+    $form = new QuestionarioForm($formtipo, $id, $action);
     break;
   default:
     echo "<p>Tipo de formulário inválido.</p>";
@@ -50,7 +51,7 @@ switch ($formtipo) {
       <div class="vertical-line"></div>
       <div class="section-content">
         <div class="section">
-          <h4 class="left-align"><?= $nomeform, ucfirst($formtipo) ?></h4>
+          <h4 class="left-align"><?= $nomeform ." ", ucfirst($formtipo) ?></h4>
           <hr class="divider">
         </div>
         <?= $form->render(); ?>
