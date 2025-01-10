@@ -34,7 +34,7 @@ navbar($breadcrumb);
                 <div class="menu">
                     <div class="col s12 m4 l4 center-align">
                         <div class="image-container">
-                            <a href="rocha.php">
+                            <a href="acervo.php?tipo=Rochas">
                                 <img src="img/rochas.png" alt="Rochas" class="image-with-caption grayscale hoverable responsive-img cover-image">
                                 <div class="caption">Rochas</div>
                             </a>
@@ -42,7 +42,7 @@ navbar($breadcrumb);
                     </div>
                     <div class="col s12 m4 l4 center-align">
                         <div class="image-container">
-                            <a href="mineral.php">
+                            <a href="acervo.php?tipo=Minerais">
                                 <img src="img/mineral.png" alt="Minerais" class="image-with-caption grayscale hoverable responsive-img">
                                 <div class="caption">Minerais</div>
                             </a>
