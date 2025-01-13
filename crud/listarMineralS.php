@@ -69,7 +69,7 @@ navbar($breadcrumb);
                             echo "<td>" . $dados['nome'] . " </td>";
                             echo "<td>" . $dados['idcat'] . " </td>";
                             echo "<td> <img src=../img/mineral/" . $dados['img'] . " width='50px' height='auto' class='materialboxed'></td>";
-                            echo "<td><a class='center waves-effect waves-light btn-small blue' href='editMineral.php?idmineral=" . $dados['idmineral'] . "&sugestao=0'>Editar</a>";
+                            echo "<td><a class='center waves-effect waves-light btn-small blue' href='forms.php?tipo=mineral&id=" . $dados['idmineral'] . "'>Editar</a>";
                             echo " <a class='center waves-effect waves-light btn-small green' href='editar.php?idmineral=" . $dados['idmineral'] . "&sugestao=0'>Aceitar</a>";
                             echo " <a id='btnExcluir-" . $dados['idmineral'] . "' class='center waves-effect waves-light btn-small red' data-idmineral='" . $dados['idmineral'] . "'>Excluir</a></td>";
                             echo '</tr>';

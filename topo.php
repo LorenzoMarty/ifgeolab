@@ -132,7 +132,7 @@ if (mysqli_num_rows($resultado) > 0) {
     <?php if ($_SESSION['permissao'] == 3): ?>
       <li><a class="white-text" href="crud/listarUsuario.php">Usuários</a></li>
     <?php endif; ?>
-    <li><a class="white-text" href="crud/cadquestao.php">Cadastrar Questões</a></li>
+    <li><a class="white-text" href="crud/forms.php?tipo=questionario">Cadastrar Questões</a></li>
     <li><a class="white-text" href="crud/Sugestao.php">Cadastrar Sugestões</a></li>
     <li><a class="white-text" href="crud/Amostra.php">Cadastrar Amostras</a></li>
     <li><a href="crud/editUser.php?idusuario=<?= $_SESSION['id']; ?>" class="white-text perfil-container">

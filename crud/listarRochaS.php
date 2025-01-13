@@ -69,7 +69,7 @@ navbar($breadcrumb);
                         echo "<td>" . $dados['nome'] . " </td>";
                         echo "<td>" . $dados['idcat'] . " </td>";
                         echo "<td> <img src=../img/rochas/" . $dados['img'] . " width='50px' height='auto' class='materialboxed'></td>";
-                        echo "<td><a class='center waves-effect waves-light btn-small blue' href='editrocha.php?idrocha=" . $dados['idrocha'] . "&sugestao=0'>Editar</a>";
+                        echo "<td><a class='center waves-effect waves-light btn-small blue' href='forms.php?tipo=rocha&id=" . $dados['idrocha'] . "'>Editar</a>";
                         echo " <a class='center waves-effect waves-light btn-small green' href='editar.php?idrocha=" . $dados['idrocha'] . "&sugestao=0'>Aceitar</a>";
                         echo " <a id='btnExcluir-" . $dados['idrocha'] . "' class='center waves-effect waves-light btn-small red' data-idrocha='" . $dados['idrocha'] . "'>Excluir</a></td>";
                         echo '</tr>';

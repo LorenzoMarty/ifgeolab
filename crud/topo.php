@@ -68,14 +68,12 @@ if (mysqli_num_rows($resultado) > 0) {
 <nav class="nav_color sticky-nav">
   <div class="nav-wrapper">
 
-    <!-- Lado direito - Aparece apenas em telas grandes -->
     <ul class="left hide-on-med-and-down">
       <li><a href="../index.php" class="logolink"><img src="../img/geolab-branco.png" alt="Logo do site" height="60"
             width="auto"></a></li>
       <li class="breadcrumb-container"><?= $breadcrumb ?></li>
     </ul>
 
-    <!-- Lado esquerdo - Aparece apenas em telas grandes -->
     <ul class="right hide-on-med-and-down">
       <li><a href="../index.php">Início</a></li>
       <?php if ($_SESSION['permissao'] == 3 or $_SESSION['permissao'] == 2): ?>
@@ -114,7 +112,7 @@ if (mysqli_num_rows($resultado) > 0) {
   <?php if ($_SESSION['permissao'] == 3): ?>
     <li><a href="listarUsuario.php">Usuários</a></li>
   <?php endif; ?>
-  <li><a href="cadquestao.php">Questões</a></li>
+  <li><a href="forms.php?tipo=questionario">Questões</a></li>
   <li><a href="Sugestao.php">Sugestões</a></li>
   <li><a href="Amostra.php">Amostras</a></li>
 </ul>

@@ -20,25 +20,25 @@ main {
 }
 
 h4 {
-    font-size: 1.8rem;
+    font-size: 2rem;
     margin: 0;
+    color: #25412B;
+    font-weight: bold;
 }
 
 h6 {
-    font-size: 0.9rem;
-    margin-top: 0.50rem;
+    font-size: 1rem;
+    margin-top: 0.5rem;
     margin-bottom: 1rem;
+    color: #607D3B;
 }
 
 hr.divider {
     width: 60%;
     margin-left: 0;
     background-color: #25412B;
-    /* Define a cor da linha */
     height: 2px;
-    /* Define a altura da linha */
     border: none;
-    /* Remove a borda padrão */
 }
 
 
@@ -51,16 +51,26 @@ hr.divider {
 
 .image-container {
     position: relative;
-    display: inline-block;
     width: 100%;
-    max-width: 300px;
+    max-width: 280px;
     margin: 0 auto;
+    transition: transform 0.3s ease;
+}
+
+.image-container:hover {
+    transform: scale(1.05);
 }
 
 .image-with-caption {
-    width: 70%;
+    width: 100%;
     height: auto;
-    border-radius: 10px;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease;
+}
+
+.image-with-caption:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
 .grayscale {
@@ -87,4 +97,52 @@ hr.divider {
 
 .image-container:hover .caption {
     font-size: 1.75rem;
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .vertical-line {
+        display: none;
+    }
+
+    h4 {
+        font-size: 1.5rem;
+    }
+
+    h6 {
+        font-size: 0.8rem;
+    }
+
+    .menu {
+        flex-wrap: wrap;
+    }
+
+    .image-container {
+        width: 100%;
+    }
+
+    .caption {
+        font-size: 0.9rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    h4 {
+        font-size: 1.2rem;
+    }
+
+    h6 {
+        font-size: 0.7rem;
+    }
+
+    .image-container {
+        width: 100%;
+    }
+
+    .caption {
+        font-size: 0.8rem;
+    }
 }

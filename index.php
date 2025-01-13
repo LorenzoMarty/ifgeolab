@@ -31,8 +31,8 @@ navbar($breadcrumb);
                     <hr class="divider">
                 </div>
 
-                <div class="menu">
-                    <div class="col s12 m4 l4 center-align">
+                <div class="menu row">
+                    <div class="col pull-s1 s6 m4 l4 center-align">
                         <div class="image-container">
                             <a href="acervo.php?tipo=Rochas">
                                 <img src="img/rochas.png" alt="Rochas" class="image-with-caption grayscale hoverable responsive-img cover-image">
@@ -40,7 +40,7 @@ navbar($breadcrumb);
                             </a>
                         </div>
                     </div>
-                    <div class="col s12 m4 l4 center-align">
+                    <div class="col pull-s1 s6 m4 l4 center-align">
                         <div class="image-container">
                             <a href="acervo.php?tipo=Minerais">
                                 <img src="img/mineral.png" alt="Minerais" class="image-with-caption grayscale hoverable responsive-img">
@@ -48,33 +48,32 @@ navbar($breadcrumb);
                             </a>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col s12 m6 l6 center-align">
-                            <div class="image-container" style="margin-bottom: 0.75rem;">
-                                <a href="questionario.php">
-                                    <img src="img/questionarios.png" alt="Questionários" class="image-with-caption responsive-img">
-                                    <div class="caption">Questionários</div>
-                                </a>
-                            </div>
-                            <div class="image-container">
-                                <?php if (isset($_SESSION['permissao'])) {
-                                    if ($_SESSION['permissao'] == 1) {
-                                        echo '<a href="crud/amostra.php">';
-                                    } elseif ($_SESSION['permissao'] == 2) {
-                                        echo '<a href="crud/sugestao.php">';
-                                    }
+                    <div class="col pull-s4 s8 m4 l4 center-align">
+                        <div class="image-container">
+                            <a href="questionario.php">
+                                <img src="img/questionarios.png" alt="Questionários" class="image-with-caption responsive-img">
+                                <div class="caption">Questionários</div>
+                            </a>
+                        </div>
+                        <div class="image-container">
+                            <?php if (isset($_SESSION['permissao'])) {
+                                if ($_SESSION['permissao'] == 1) {
+                                    echo '<a href="crud/amostra.php">';
+                                } elseif ($_SESSION['permissao'] == 2) {
+                                    echo '<a href="crud/sugestao.php">';
                                 }
-                                ?>
-                                <img src="img/sugestoes.png" alt="Sugestões" class="image-with-caption responsive-img">
-                                <div class="caption">Sugestões</div>
-                                </a>
-                            </div>
+                            }
+                            ?>
+                            <img src="img/sugestoes.png" alt="Sugestões" class="image-with-caption responsive-img">
+                            <div class="caption">Sugestões</div>
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </main>
+
 
     <?php include "footer.php"; ?>
 
