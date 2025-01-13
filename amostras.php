@@ -20,7 +20,7 @@ $categoria = $_GET['categoria'];
     <?php
     $breadcrumbs = [
         'Acervo' => '> <a href="acervo.php?tipo=' . urlencode(ucfirst($tipo)) . '">' . ucfirst($tipo) . '</a>',
-        'Atual' => '> <a class="active" href="amostras.php?tipo=' . urlencode(ucfirst($tipo)) . '&categoria=' . urlencode(ucfirst($categoria)) . '">' . ucfirst($categoria) . '</a>'
+        'Atual' => '<a class="active" href="amostras.php?tipo=' . urlencode(ucfirst($tipo)) . '&categoria=' . $categoria . '">' . ucfirst($categoria) . '</a>'
     ];
     $breadcrumb = implode('>', $breadcrumbs);
     navbar($breadcrumb);

@@ -62,20 +62,20 @@ if ($dados['idcat'] == $idcat) {
     echo "Erro ao buscar a categoria no banco de dados!";
 }
 $breadcrumbs[] = "";
-if ($_GET['tipo'] == 'rocha') {
+if ($_GET['tipo'] == 'rochas') {
     $breadcrumbs = [
-        'Atual' => '> <a href="rocha.php">Rochas</a>',
+        'Atual' => '> <a href="acervo.php?tipo=Rochas">Rochas</a>',
     ];
     if ($idcat == "1") {
-        $breadcrumbs['Ígneas'] = '<a class="active" href="igneas.php">Ígneas</a>';
+        $breadcrumbs['Ígneas'] = '<a class="active" href="amostras.php?tipo=Rochas&categoria=ígneas">Ígneas</a>';
     } elseif ($idcat == "2") {
-        $breadcrumbs['Metamórficas'] = '<a class="active" href="met.php">Metamórficas</a>';
+        $breadcrumbs['Metamórficas'] = '<a class="active" href="amostras.php?tipo=Rochas&categoria=metamórficas">Metamórficas</a>';
     } elseif ($idcat == "3") {
-        $breadcrumbs['Sedimentares'] = '<a class="active" href="sed.php">Sedimentares</a>';
+        $breadcrumbs['Sedimentares'] = '<a class="active" href="amostras.php?tipo=Rochas&categoria=sedimentares">Sedimentares</a>';
     }
 } else if ($_GET['tipo'] == 'mineral') {
     $breadcrumbs = [
-        'Atual' => '> <a href="mineral.php">Minerais</a>',
+        'Atual' => '> <a href="acervo.php?tipo=Minerais">Minerais</a>',
     ];
 
     if ($idcat == "1") {
