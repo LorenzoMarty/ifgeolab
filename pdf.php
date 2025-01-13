@@ -69,19 +69,23 @@
     <?php
     require_once('conecta.php');
     $conexao = conectar();
-    $idmineral = $_GET['idmineral'];
+    $idmineral = $_GET['mineral'];
+    $idrocha = $_GET['rocha'];
 
-    $sql = "SELECT * FROM mineral WHERE idmineral =" . $idmineral;
+    if (isset($_GET['idmineral'])) {
+        $sql = "SELECT * FROM mineral WHERE idmineral =" . $idmineral;
+        $j = "SELECT * FROM catmineral WHERE idcat='$catJ'";
+    } else if (isset($_GET['idrocha'])) {
+        $sql = "SELECT * FROM rocha WHERE idrocha =" . $idrocha;
+        $j = "SELECT * FROM catrocha WHERE idcat='$catJ'";
+    }
     $resultado = mysqli_query($conexao, $sql);
-
     $dados = mysqli_fetch_assoc($resultado);
     $nome = $dados['nome'];
     $descricao = $dados['descricao'];
     $img = $dados['img'];
     $catJ = $dados['idcat'];
-    $idrock = $dados['idmineral'];
-
-    $j = "SELECT * FROM catmineral WHERE idcat='$catJ'";
+    
     $res = mysqli_query($conexao, $j);
     while ($d = mysqli_fetch_array($res)) {
         $idcat = $d['idcat'];
@@ -107,25 +111,14 @@
     <div class="container">
         <hr>
         <div class="row">
-            <h3><?php echo $nome; ?></h3>
-            <h5 class="right"><b>Categoria: </b><?php echo $cat; ?></h5><br>
+            <h3><?= $nome; ?></h3>
+            <h5 class="right"><b>Categoria: </b><?= $cat; ?></h5><br>
             <img src="img/mineral/<?= $img; ?>" class="img3">
         </div>
     </div>
     <hr>
-
-
     <div class="text col s12">
-
-        <p>
-            <?php
-
-            echo $descricao;
-
-            ?>
-        </p>
-
-    </div>
+        <p><?= $descricao; ?></p>
     </div>
 </body>
 

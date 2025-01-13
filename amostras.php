@@ -54,11 +54,11 @@ $categoria = $_GET['categoria'];
                                     <div class="card-image transparent">
                                         <img src="img/rochas/<?= $img; ?>" class="minha-imagem materialboxed ">
                                         <span
-                                            class="card-title center meu-span green-text text-lighten-3"><?php echo $nome ?></span>
+                                            class="card-title center meu-span green-text text-lighten-3"><?= $nome ?></span>
                                     </div>
                                     <div class="card-action green darken-4">
                                         <a class="green-text text-lighten-3"
-                                            href="saibaRocha.php?idrocha=<?php echo $dados['idrocha'] ?>">Saiba mais</a>
+                                            href="infoAcervo.php?tipo=rochas&id=<?= $dados['idrocha'] ?>">Saiba mais</a>
                                     </div>
                                 </div>
                             </div>
@@ -91,11 +91,11 @@ $categoria = $_GET['categoria'];
                                     <div class="card-image">
                                         <img src="img/rochas/<?= $img; ?>" class="minha-imagem materialboxed ">
                                         <span
-                                            class="card-title center meu-span green-text text-lighten-3"><?php echo $nome ?></span>
+                                            class="card-title center meu-span green-text text-lighten-3"><?= $nome ?></span>
                                     </div>
                                     <div class="card-action green darken-4">
                                         <a class="green-text text-lighten-3"
-                                            href="saibaRocha.php?idrocha=<?php echo $dados['idrocha'] ?>">Saiba mais</a>
+                                            href="infoAcervo.php?tipo=rochas&id=<?= $dados['idrocha'] ?>">Saiba mais</a>
                                     </div>
                                 </div>
                             </div>
@@ -128,11 +128,11 @@ $categoria = $_GET['categoria'];
                                     <div class="card-image">
                                         <img src="img/rochas/<?= $img; ?>" class="minha-imagem materialboxed ">
                                         <span
-                                            class="card-title center meu-span green-text text-lighten-3"><?php echo $nome ?></span>
+                                            class="card-title center meu-span green-text text-lighten-3"><?= $nome ?></span>
                                     </div>
                                     <div class="card-action green darken-4">
                                         <a class="green-text text-lighten-3"
-                                            href="saibaRocha.php?idrocha=<?php echo $dados['idrocha'] ?>">Saiba mais</a>
+                                            href="infoAcervo.php?tipo=rochas&id=<?= $dados['idrocha'] ?>">Saiba mais</a>
                                     </div>
                                 </div>
                             </div>
@@ -165,11 +165,11 @@ $categoria = $_GET['categoria'];
                                     <div class="card-image">
                                         <img src="img/mineral/<?= $img; ?>" class="minha-imagem materialboxed ">
                                         <span
-                                            class="card-title center meu-span green-text text-lighten-3"><?php echo $nome ?></span>
+                                            class="card-title center meu-span green-text text-lighten-3"><?= $nome ?></span>
                                     </div>
                                     <div class="card-action green darken-4">
                                         <a class="green-text text-lighten-3"
-                                            href="saibamineral.php?idmineral=<?php echo $dados['idmineral'] ?>">Saiba mais</a>
+                                            href="infoAcervo.php?tipo=mineral&id=<?= $dados['idmineral'] ?>">Saiba mais</a>
                                     </div>
                                 </div>
                             </div>
@@ -202,11 +202,11 @@ $categoria = $_GET['categoria'];
                                     <div class="card-image">
                                         <img src="img/mineral/<?= $img; ?>" class="minha-imagem materialboxed ">
                                         <span
-                                            class="card-title center meu-span green-text text-lighten-3"><?php echo $nome ?></span>
+                                            class="card-title center meu-span green-text text-lighten-3"><?= $nome ?></span>
                                     </div>
                                     <div class="card-action green darken-4">
                                         <a class="green-text text-lighten-3"
-                                            href="saibamineral.php?idmineral=<?php echo $dados['idmineral'] ?>">Saiba mais</a>
+                                            href="infoAcervo.php?tipo=mineral&id=<?= $dados['idmineral'] ?>">Saiba mais</a>
                                     </div>
                                 </div>
                             </div>

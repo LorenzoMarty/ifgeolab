@@ -3,10 +3,13 @@ require_once('conecta.php');
 $conexao = conectar();
 require './dompdf/vendor/autoload.php';
 
-$idrocha = $_GET['idrocha'] ?? null;
+$id = $_GET['id'] ?? null;
 
-if (!$idrocha) {
-    die("ID da rocha não fornecido.");
+$tipo = $_GET['tipo'];
+
+
+if (!$id) {
+    die("ID da amostra não fornecido.");
 }
 
 
@@ -21,7 +24,7 @@ $opts = array(
   $context = stream_context_create($opts);
   
   // Open the file using the HTTP headers set above
-  $html = file_get_contents('http://localhost/ifgeolab/ifgeolab/pdfR.php?idrocha='.$idrocha, false, $context);
+  $html = file_get_contents('http://localhost/ifgeolab/ifgeolab/pdf.php?'. $tipo .'='.$id, false, $context);
 
 use Dompdf\Dompdf;
 use Dompdf\Options;
