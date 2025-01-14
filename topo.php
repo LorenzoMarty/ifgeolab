@@ -114,7 +114,7 @@ if (mysqli_num_rows($resultado) > 0) {
   <?php if ($_SESSION['permissao'] == 3): ?>
     <li><a href="crud/listarUsuario.php">Usuários</a></li>
   <?php endif; ?>
-  <li><a href="crud/forms.php?tipo=questionario">Questões</a></li>
+  <li><a href="crud/forms.php?tipo=questionário">Questões</a></li>
   <li><a href="crud/Sugestao.php">Sugestões</a></li>
   <li><a href="crud/Amostra.php">Amostras</a></li>
 </ul>

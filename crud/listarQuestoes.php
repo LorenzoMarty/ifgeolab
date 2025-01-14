@@ -51,9 +51,6 @@ navbar($breadcrumb);
                 while ($dados = mysqli_fetch_array($resultado)) {
                     $idquestao = $dados["id_questao"];
                     $nome = $dados['nome'];
-                    /* $cat = $dados['idcat'];
-                    $descricao = $dados['descricao'];
-                    $img = $dados['img']; */
                     ?>
                     <div class="row">
                         <div class="col s4">

@@ -9,18 +9,26 @@ include "UsuarioForm.php";
 $formtipo = isset($_GET['tipo']) ? $_GET['tipo'] : "";
 $id = isset($_GET['id']) ? $_GET['id'] : null;
 $sugestao = isset($_GET['sugestao']) ? $_GET['sugestao'] : 0;
-if($id != null){
+if ($id != null) {
   $action = "editar.php";
   $nomeform = 'Editar';
-}else{
+} else {
   $action = "cadastrar.php";
   $nomeform = 'Cadastrar';
 }
+$breadcrumbs[] = "";
 
-$breadcrumbs = [
-  'Amostra' => '> <a href="Amostra.php">Amostras</a>',
-  'Atual' => '<a class="active" href="#">' . ucfirst($formtipo) . '</a>'
-];
+if ($formtipo == 'mineral' or $formtipo == 'rocha') {
+  $breadcrumbs = [
+    'Amostra' => '> <a href="Amostra.php">Amostras</a>',
+    'Atual' => '<a class="active" href="#">' . ucfirst($formtipo) . '</a>'
+  ];
+} else {
+  $breadcrumbs = [
+    'Atual' => '> <a class="active" href="#">' . ucfirst($formtipo) . '</a>'
+  ];
+} 
+
 $breadcrumb = implode('>', $breadcrumbs);
 
 $idusuario = $_SESSION['id'] ?? null;
@@ -34,7 +42,7 @@ switch ($formtipo) {
   case "usuario":
     $form = new UsuarioForm($formtipo, $id, $action);
     break;
-  case "questionario":
+  case "questionário":
     $form = new QuestionarioForm($formtipo, $id, $action);
     break;
   default:
@@ -51,7 +59,7 @@ switch ($formtipo) {
       <div class="vertical-line"></div>
       <div class="section-content">
         <div class="section">
-          <h4 class="left-align"><?= $nomeform ." ", ucfirst($formtipo) ?></h4>
+          <h4 class="left-align"><?= $nomeform . " ", ucfirst($formtipo) ?></h4>
           <hr class="divider">
         </div>
         <?= $form->render(); ?>
@@ -67,7 +75,7 @@ switch ($formtipo) {
   <script src="../js/quill.js"></script>
   <script src="../js/image.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       // Inicializa os dropdowns do Materialize
       var elems = document.querySelectorAll('.select-dropdown');
       var instances = M.FormSelect.init(elems);

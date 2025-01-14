@@ -41,67 +41,145 @@ if (mysqli_num_rows($result) > 0) {
 
 ?>
 <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f9f9f9;
+        color: #333;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+        background: #fff;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+    }
+
+    .section-content {
+        padding: 20px;
+    }
+
+    .vertical-line {
+        border-left: 2px solid #ddd;
+        height: 100%;
+    }
+
+    .divider {
+        border: none;
+        height: 2px;
+        background: #ddd;
+        margin: 10px 0;
+    }
+
+    h4 {
+        font-weight: bold;
+        color: #555;
+    }
+
+    h5 {
+        font-size: 18px;
+        margin: 8px 0;
+    }
+
+    a {
+        margin-right: 10px;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    a:hover {
+        filter: brightness(90%);
+    }
+
+    .btn.green {
+        background-color: #4caf50;
+        color: white;
+        border: 1px solid #388e3c;
+    }
+
+    .btn.red {
+        background-color: #e53935;
+        color: white;
+        border: 1px solid #b71c1c;
+    }
+
+    .btn.red-text {
+        color: #e53935;
+        background-color: transparent;
+    }
+
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .col {
+        padding: 10px;
+    }
+
+    .card-image {
+        text-align: center;
+    }
+
     .minha-imagem {
         height: 300px;
         width: 300px;
         object-fit: cover;
+        border: 5px solid #ddd;
+        border-radius: 50%;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
-    .meu-span {
-        background-color: rgba(0, 0, 0, 0.6);
-        width: 100%;
-    }
+    @media (max-width: 768px) {
+        .row {
+            flex-direction: column;
+        }
 
-    .icon {
-        height: 32px;
-        width: 32px;
-        align-items: center;
-        position: absolute;
-    }
+        .col {
+            width: 100%;
+            text-align: center;
+        }
 
-    .btn2 {
-        border-radius: 50px;
+        .minha-imagem {
+            height: 200px;
+            width: 200px;
+        }
     }
 </style>
 
 <body>
     <main>
         <div class="container">
-            <div class="vertical-line"></div>
             <div class="section-content">
                 <div class="section">
-                    <h4 class="left-align">Meu Perfil</h4>
+                    <h4>Meu Perfil</h4>
                     <hr class="divider">
                     <div class="left hide-on-med-and-down" style="margin-top: 20px;">
-                        <a class="waves-effect waves-light btn green accent-4" href="formEdit.php"> Editar</a>
-                        <a id="btnSair" class="waves-effect waves-light btn red lighten-5 red-text">Sair</a>
+                        <a class="waves-effect waves-light btn green" href="formEdit.php">Editar</a>
+                        <a id="btnSair" class="waves-effect waves-light btn red-text">Sair</a>
                         <a id="btnExcluir" class="waves-effect waves-light btn red">Excluir</a>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col s6">
-
-                    </div>
-                </div>
-                <br><br>
-                <div class="row">
-                    <div class="col s6">
-                        <h5><b>Nome: </b><?php echo $dados['nome']; ?></h5><br>
-                        <h5><b>Email: </b><?php echo $dados['email']; ?></h5><br>
-                        <h5><b>Matrícula: </b><?php echo $dados['matricula']; ?></h5><br>
-                        <h5><b>Instituição: </b><?php echo $dados['instituto']; ?></h5><br>
-                        <?php if ($amostra['nomes_minerais'] == "") {
-                        } else {
-                            echo "<h5><b>Minerais Cadastrados: </b>" . $mineraisCad . "</h5><br>";
-                        }
-                        if ($amostra['nomes_rochas'] == "") {
-                        } else {
-                            echo "<h5><b>Rochas Cadastrados: </b>" . $rochasCad . "</h5><br>";
-                        } ?>
+                        <h5><b>Nome: </b><?php echo $dados['nome']; ?></h5>
+                        <h5><b>Email: </b><?php echo $dados['email']; ?></h5>
+                        <h5><b>Matrícula: </b><?php echo $dados['matricula']; ?></h5>
+                        <h5><b>Instituição: </b><?php echo $dados['instituto']; ?></h5>
+                        <?php if ($amostra['nomes_minerais'] != "") { ?>
+                            <h5><b>Minerais Cadastrados: </b><?= $mineraisCad; ?></h5>
+                        <?php }
+                        if ($amostra['nomes_rochas'] != "") { ?>
+                            <h5><b>Rochas Cadastrados: </b><?= $rochasCad; ?></h5>
+                        <?php } ?>
                     </div>
                     <div class="col s6">
                         <div class="card-image">
-                            <img src="../img/usuarios/<?= $img; ?>" class="minha-imagem circle">
+                            <img src="../img/usuarios/<?= $img; ?>" class="minha-imagem">
                         </div>
                     </div>
                 </div>
@@ -115,7 +193,7 @@ include "../footer.php";
 <script src="../js/sweetalert.js"></script>
 <script>
     const btnSair = document.querySelector('#btnSair');
-    btnSair.addEventListener('click', function() {
+    btnSair.addEventListener('click', function () {
         Swal.fire({
             title: "Tem certeza que deseja sair?",
             icon: "question",
@@ -131,7 +209,7 @@ include "../footer.php";
     });
 
     const btnExcluir = document.querySelector('#btnExcluir');
-    btnExcluir.addEventListener('click', function() {
+    btnExcluir.addEventListener('click', function () {
         Swal.fire({
             title: "Tem certeza que deseja excluir a conta?",
             icon: "warning",

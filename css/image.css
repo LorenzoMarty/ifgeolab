@@ -1,23 +1,19 @@
 .img-area {
-    text-align: center;
-    /* position: relative; */
-    /* margin-top: 20px; */
-    /* width: 30%; */
-    /* height: 200px; */
-    /* background: var(--grey); */
-    /* margin-bottom: 30px; */
-    /* border-radius: 15px; */
-    /* overflow: hidden; */
+    width: 200px; /* Defina a largura desejada */
+    height: 200px; /* Altura igual à largura para formar um quadrado */
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     border: 2px dashed #ccc;
     cursor: pointer;
+    position: relative; /* Necessário se usar ::before ou img com position: absolute */
+    background-color: var(--grey); /* Opcional, para visualização */
+    transition: background-color .3s ease; /* Suaviza a alteração de cor ao passar o mouse */
 }
 
 .img-area .icon {
-    font-size: 100px;
+    font-size: 50px; /* Ajuste o tamanho do ícone conforme necessário */
 }
 
 .img-area h3 {
@@ -133,5 +129,5 @@
 }
 
 .img-area:hover {
-    background-color: #f0f0f0; /* Altere a cor de fundo ao passar o mouse */
+    background-color: #f0f0f0; /* Alterar a cor de fundo ao passar o mouse */
 }
