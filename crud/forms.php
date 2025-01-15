@@ -40,7 +40,7 @@ switch ($formtipo) {
     $form = new MineralRochaForm($formtipo, $id, $action, $idusuario, $sugestao, $nomeform);
     break;
   case "usuario":
-    $form = new UsuarioForm($formtipo, $id, $action);
+    $form = new UsuarioForm($formtipo, $id, $action, $nomeForm);
     break;
   case "questionário":
     $form = new QuestionarioForm($formtipo, $id, $action);

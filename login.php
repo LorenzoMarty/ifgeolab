@@ -76,7 +76,7 @@ include "include.php";
         <div class="login-section register">
             <h1>Cadastrar</h1>
             <hr class="login">
-            <form action="cadastrar.php" method="POST" enctype="multipart/form-data">
+            <form action="crud/cadastrar.php" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                     <div class="input-field">
                         <label for="nome">Nome</label> <i class="fas fa-user"></i>

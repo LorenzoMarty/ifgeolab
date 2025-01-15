@@ -5,7 +5,7 @@ $conexao = conectar();
 
 if (isset($_POST['EditarMineral'])) {
     $obj = $_POST['3d'];
-    $id = $_POST['idmineral'];
+    $id = $_POST['id'];
     $nome = $_POST['nome'];
     $cat = $_POST['idcat'];
     $descricao = $_POST['descricao'];
@@ -52,7 +52,7 @@ if (isset($_POST['EditarMineral'])) {
     
 } elseif (isset($_POST['EditarRocha'])) {
     $obj = $_POST['3d'];
-    $id = $_POST['idrocha'];
+    $id = $_POST['id'];
     $nome = $_POST['nome'];
     $cat = $_POST['idcat'];
     $descricao = $_POST['descricao'];
@@ -119,8 +119,11 @@ if (isset($_POST['EditarMineral'])) {
     }
     $hash = password_hash($senhaE, PASSWORD_DEFAULT);
     if ($hash) {
+        if(isset($_FILES['arquivo'])){
         $sql = "UPDATE usuario SET nome='$nome', email = '$email', senha = '$hash', img = '$novo_nome', matricula = '$matricula', instituto = '$inst' WHERE idusuario=$id";
-
+        }else{
+            $sql = "UPDATE usuario SET nome='$nome', email = '$email', senha = '$hash', matricula = '$matricula', instituto = '$inst' WHERE idusuario=$id";
+        }
         if (mysqli_query($conexao, $sql)) {
             $_SESSION['confirm'] = [
                 "title" => 'Parabéns!',

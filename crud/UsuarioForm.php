@@ -6,7 +6,7 @@ class UsuarioForm extends Form
     private $formtipo;
     private $action;
 
-    public function __construct($formtipo, $id = null, $action = "")
+    public function __construct($formtipo, $id = null, $action = "", $nomeForm = "")
     {
         $this->crud = new CRUD();
         $this->formtipo = $formtipo;
@@ -15,10 +15,10 @@ class UsuarioForm extends Form
         parent::__construct($action, "POST", "multipart/form-data", "{$formtipo}", "col s12 m6");
 
         // Construir o formulário
-        $this->buildForm($id);
+        $this->buildForm($id, $nomeForm);
     }
 
-    public function buildForm($id)
+    public function buildForm($id, $nomeForm)
     {
         $dados = [];
         if ($id) {
@@ -93,7 +93,7 @@ class UsuarioForm extends Form
         $this->addRow([
             $this->addInput(
                 "submit",
-                "cadastrarUsuario",
+                "$nomeForm" . ucfirst($this->formtipo),
                 "",
                 "Cadastrar",
                 ["class" => "waves-effect waves-light btn green"],

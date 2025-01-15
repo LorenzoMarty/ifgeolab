@@ -95,7 +95,7 @@ navbar($breadcrumb);
             </div>
 
             <div class="input-field col s12">
-              <button class="btn btn-primary green" type="submit" name="editarUsuario"> Editar </button>
+              <button class="btn btn-primary green" type="submit" name="EditarUsuario"> Editar </button>
             </div>
 
           </form>

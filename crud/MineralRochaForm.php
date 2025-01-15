@@ -45,7 +45,7 @@ class MineralRochaForm extends Form
         // Linha 1: Nome e Categoria
         $this->addRow([
             $this->addInput("text", "nome", "Nome", !empty($dados['nome']) ? $dados['nome'] : "", ["class" => "validate", "id" => "nome"], "s6"),
-            $this->addInput("select", "cat", "", !empty($dados['idcat']) ? $dados['idcat'] : "", [
+            $this->addInput("select", "idcat", "", !empty($dados['idcat']) ? $dados['idcat'] : "", [
                 "options" => $this->getCategoriaOptions(),
                 "class" => "select-dropdown",
                 "id" => "cat"
@@ -58,7 +58,8 @@ class MineralRochaForm extends Form
         $this->addRow([
             $this->addInput("hidden", "sugestao", "", $sugestao),
             $this->addInput("hidden", "idusuario", "", $idusuario),
-            $this->addInput("hidden", "descricao", "", !empty($dados['descricao']) ?   $dados['descricao']  : ""  , ["id" => "descricao"]),
+            $this->addInput("hidden", "id", "", !empty($id) ? $id  : ""),
+            $this->addInput("hidden", "descricao", "", !empty($dados['descricao']) ? $dados['descricao']  : ""  , ["id" => "descricao"]),
             $this->addInput("custom", 'descricao', "", !empty($dados['descricao']) ? $dados['descricao'] : "", [
                 "html" => '<div id="editor-container"> {{content_value}} </span></div>'
             ], "s12")
@@ -66,7 +67,7 @@ class MineralRochaForm extends Form
 
         // Linha 3: Foto de Perfil e Objeto 3D
         $this->addRow([
-            $this->addInput("custom", "", "", "", [
+            $this->addInput("custom", "", "", !empty($dados['img']) ? $dados['img']  : "", [
                 "html" => '
                 <div class="img-area" data-img="">
                     <i class="bx bxs-cloud-upload icon"></i>
@@ -75,7 +76,7 @@ class MineralRochaForm extends Form
                     <input name="arquivo" type="file" id="Capa" style="display: none;">
                 </div>'
             ], "s6"),
-            $this->addInput("file", "3d", "Objeto 3D:", "", ["id" => "3d"], "s6")
+            $this->addInput("file", "3d", "Objeto 3D:", !empty($dados['3d']) ? $dados['3d']  : "", ["id" => "3d"], "s6")
         ]);
 
         // Linha 5: Botão de envio
