@@ -56,8 +56,6 @@ class Form
 
                     $customHtml = str_replace("{{content_value}}", $input['value'], $input['attributes']['html']);
 
-                    // Adiciona o HTML diretamente
-                    // $formHTML .= "\t\t\t" . ($input['attributes']['html'] ?? '') . "\n";
                     $formHTML .= "\t\t\t" . $customHtml . "\n";
                 } else {
                     if (!empty($input['label'])) {

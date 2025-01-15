@@ -66,7 +66,7 @@ $resultado = mysqli_query($conexao, $sql);
     </main>
 
     <?php
-    include "footer.php";
+    include "../footer.php";
     ?>
     <script src="../js/sweetalert.js"></script>
     <script>

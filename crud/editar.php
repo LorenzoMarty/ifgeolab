@@ -18,8 +18,8 @@ if (isset($_POST['EditarMineral'])) {
         $extensao3D = strtolower(pathinfo($_FILES['3d']['name'], PATHINFO_EXTENSION));
 
         //define o nome do arquivo
-        $novo_nome = "$nome.$extensao";
-        $obj = "$nome-3d.$extensao3D";
+        $novo_nome = "$nome". "$extensao";
+        $obj = "$nome-3d" . "$extensao3D";
 
         //define a pasta para onde enviaremos o arquivo
         $diretorio = "../img/mineral/";

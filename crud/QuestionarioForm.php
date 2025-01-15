@@ -29,7 +29,7 @@ class QuestionarioForm extends Form
         $this->addRow([
             $this->addInput("text", "nome", "Nome", !empty($dados['nome']) ? $dados['nome'] : "", ["class" => "validate"], "s6"),
             $this->addInput("custom", 'descricao', "", !empty($dados['descricao']) ? $dados['descricao'] : "", [
-                "html" => '<div id="editor-container"> {{content_value}} </span></div>'
+                "html" => '<div id="editor-container"> {{content_value}} </div>'
             ], "s12")
         ]);
 

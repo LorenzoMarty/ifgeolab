@@ -61,7 +61,7 @@ class MineralRochaForm extends Form
             $this->addInput("hidden", "id", "", !empty($id) ? $id  : ""),
             $this->addInput("hidden", "descricao", "", !empty($dados['descricao']) ? $dados['descricao']  : ""  , ["id" => "descricao"]),
             $this->addInput("custom", 'descricao', "", !empty($dados['descricao']) ? $dados['descricao'] : "", [
-                "html" => '<div id="editor-container"> {{content_value}} </span></div>'
+                "html" => '<div id="editor-container"> {{content_value}} </div>'
             ], "s12")
         ]);
 
