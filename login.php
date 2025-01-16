@@ -44,6 +44,7 @@ include "include.php";
 <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet' />
 <link rel="stylesheet" href="css/login.css">
 <link rel="stylesheet" href="css/image.css">
+
 <body>
     <div class="login">
         <!-- Formulário de login -->
@@ -116,7 +117,7 @@ include "include.php";
                     </div>
                 </div>
                 <div class="form-group">
-                    <button type="submit" name="cadastrarUsuario">Cadastrar</button>
+                    <button type="submit" name="CadastrarUsuario">Cadastrar</button>
                 </div>
             </form>
             <div class="center">
@@ -144,9 +145,18 @@ include "include.php";
             }
         }
 
-        window.onload = function () {
+        window.onload = function() {
             const loginSection = document.querySelector('.login-section.login');
             const registerSection = document.querySelector('.login-section.register');
+
+            // Obtém o parâmetro 'form' da URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const formParam = urlParams.get('form');
+
+            if (formParam === 'login') {
+                // Força o estado de login
+                localStorage.setItem('form', 'login');
+            }
 
             // Carrega a preferência salva
             if (localStorage.getItem('form') === 'register') {

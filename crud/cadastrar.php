@@ -133,7 +133,7 @@ if (isset($_POST['CadastrarMineral'])) {
                 'text' => 'Cadastrado realizado com sucesso!',
                 'icon' => 'success'
             ];
-            header("Location: ../login.php");
+            header("Location: ../login.php?form=login");
         } else {
             echo "<script>alert('Não foi possível realizar o cadastro!');
         location.href='cadUsuario.php'</script>";
