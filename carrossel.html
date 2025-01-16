@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Three.js Interactive Orbiting Cubes</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #3a5a40;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.154.0/build/three.min.js"></script>
+    <script>
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setClearColor(0x3a5a40, 1);
+        document.body.appendChild(renderer.domElement);
+
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+        scene.add(ambientLight);
+
+        const pointLight = new THREE.PointLight(0xffffff, 1);
+        pointLight.position.set(10, 10, 10);
+        scene.add(pointLight);
+
+        const centralGeometry = new THREE.SphereGeometry(1, 32, 32);
+        const centralMaterial = new THREE.MeshPhongMaterial({
+            color: 0x3a5a40,
+            transparent: true,
+            opacity: 0,
+        });
+        const centralObject = new THREE.Mesh(centralGeometry, centralMaterial);
+        scene.add(centralObject);
+
+        const orbitingObjects = [];
+        const orbitRadius = 5;
+        const numObjects = 8;
+        const colors = [0xff0000, 0x00ff00, 0x0000ff, 0xffff00, 0xff00ff, 0x00ffff, 0xff8800, 0x8888ff];
+
+        for (let i = 0; i < numObjects; i++) {
+            const geometry = new THREE.BoxGeometry(0.5, 0.5, 0.5);
+            const material = new THREE.MeshPhongMaterial({ color: colors[i % colors.length] });
+            const cube = new THREE.Mesh(geometry, material);
+
+            const angle = (i / numObjects) * Math.PI * 2;
+            cube.position.set(
+                orbitRadius * Math.cos(angle),
+                0,
+                orbitRadius * Math.sin(angle)
+            );
+
+            scene.add(cube);
+            orbitingObjects.push({ object: cube, angle, initialAngle: angle });
+        }
+
+        camera.position.z = 10;
+
+        const raycaster = new THREE.Raycaster();
+        const mouse = new THREE.Vector2();
+        let isRotating = false;
+        let targetAngleOffset = 3 * Math.PI / 2;
+        let rotationSpeed = 0.1;
+
+        const targetAngle = 1 * Math.PI / 2;  // Ponto de destino fixo para todos
+
+        window.addEventListener('click', (event) => {
+            mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+            mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+            raycaster.setFromCamera(mouse, camera);
+            const intersects = raycaster.intersectObjects(orbitingObjects.map(obj => obj.object));
+
+            if (intersects.length > 0) {
+                const clickedObject = orbitingObjects.find(obj => obj.object === intersects[0].object);
+                if (clickedObject) {
+                    const clickedAngle = clickedObject.angle;
+                    const rotationNeeded = (targetAngle - clickedAngle + Math.PI * 2) % (Math.PI * 2);
+                    orbitingObjects.forEach(obj => {
+                        obj.targetAngle = (obj.angle + rotationNeeded) % (2 * Math.PI);
+                    });
+                    isRotating = true;
+                }
+            }
+        });
+
+        const centralRotationSpeed = 0.02;
+
+        const animate = function () {
+            requestAnimationFrame(animate);
+
+            if (isRotating) {
+                let allAligned = true;
+                orbitingObjects.forEach(obj => {
+                    const angleDifference = (obj.targetAngle - obj.angle + Math.PI * 2) % (Math.PI * 2);
+                    if (angleDifference > rotationSpeed) {
+                        obj.angle += rotationSpeed;
+                        obj.angle = obj.angle % (2 * Math.PI);
+                        obj.object.position.x = orbitRadius * Math.cos(obj.angle);
+                        obj.object.position.z = orbitRadius * Math.sin(obj.angle);
+                        allAligned = false;
+                    } else {
+                        obj.angle = obj.targetAngle;
+                        obj.object.position.x = orbitRadius * Math.cos(obj.targetAngle);
+                        obj.object.position.z = orbitRadius * Math.sin(obj.targetAngle);
+                    }
+                });
+
+                if (!allAligned) {
+                    centralObject.rotation.y += centralRotationSpeed;  // Faz o objeto central girar
+                } else {
+                    isRotating = false;
+                }
+            }
+
+            renderer.render(scene, camera);
+        };
+
+        animate();
+    </script>
+</body>
+
+</html>
