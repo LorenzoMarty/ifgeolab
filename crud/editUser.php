@@ -53,7 +53,6 @@ if (mysqli_num_rows($result) > 0) {
         max-width: 1000px;
         margin: 0 auto;
         padding: 20px;
-        background: #fff;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         border-radius: 8px;
     }

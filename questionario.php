@@ -58,8 +58,11 @@ navbar($breadcrumb);
         background-color: #ffcdd2;
     }
 
-    .color {
+    span.light {
         color: black;
+    }
+    span.dark{
+        color: #fff;
     }
 </style>
 <link rel="stylesheet" href="css/rocha-mineral.css">
@@ -105,7 +108,7 @@ navbar($breadcrumb);
                                     echo '<div class="col s12 m6">';
                                 endif;
                             ?>
-                                <div class="card">
+                                <div class="card questao">
                                     <div class="card-content">
                                         <span class="card-title color"><?php echo $pergunta['nome']; ?></span>
                                         <span class="card-title color"><?php echo $pergunta['descricao']; ?></span>
