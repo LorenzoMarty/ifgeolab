@@ -73,9 +73,9 @@ navbar($breadcrumb);
             </div>
         </div>
     </main>
-
-
     <?php include "footer.php"; ?>
+
+
 
     <script src="js/sweetalert.js"></script>
     <script>

@@ -4,36 +4,42 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     const body = document.body;
     const h2Elements = document.querySelectorAll('h2');
-    const h4Elements = document.querySelectorAll('h4'); // Adiciona h4
-    const h6Elements = document.querySelectorAll('h6'); // Adiciona h6
-    const spanElements = document.querySelectorAll('span'); // Adiciona span
-    const questaoElements = document.querySelectorAll('.questao'); // Adiciona .questao
+    const h4Elements = document.querySelectorAll('h4');
+    const h6Elements = document.querySelectorAll('h6');
+    const spanElements = document.querySelectorAll('span');
+    const questaoElements = document.querySelectorAll('.questao');
     const toggleButton = document.getElementById('toggleDarkMode');
     const materialboxedImages = document.querySelectorAll('.materialboxed');
     const inputElements = document.querySelectorAll('input');
     const pElements = document.querySelectorAll('p');
+    const hrElements = document.querySelectorAll('hr'); // Adiciona hr
+    const verticalLineElements = document.querySelectorAll('.vertical-line'); // Adiciona .vertical-line
 
     // Aplica a classe de acordo com a preferência armazenada
     if (darkMode === 'enabled') {
         body.classList.add('dark');
         pElements.forEach(p => p.classList.add('dark'));
         h2Elements.forEach(h2 => h2.classList.add('dark'));
-        h4Elements.forEach(h4 => h4.classList.add('dark')); // Aplica dark em h4
-        h6Elements.forEach(h6 => h6.classList.add('dark')); // Aplica dark em h6
-        spanElements.forEach(span => span.classList.add('dark')); // Aplica dark em span
-        questaoElements.forEach(questao => questao.classList.add('dark')); // Aplica dark em .questao
+        h4Elements.forEach(h4 => h4.classList.add('dark'));
+        h6Elements.forEach(h6 => h6.classList.add('dark'));
+        spanElements.forEach(span => span.classList.add('dark'));
+        questaoElements.forEach(questao => questao.classList.add('dark'));
         materialboxedImages.forEach(img => img.classList.add('dark'));
         inputElements.forEach(input => input.classList.add('dark'));
+        hrElements.forEach(hr => hr.classList.add('dark')); // Aplica dark em hr
+        verticalLineElements.forEach(line => line.classList.add('dark')); // Aplica dark em .vertical-line
     } else {
         body.classList.add('light');
         pElements.forEach(p => p.classList.add('light'));
         h2Elements.forEach(h2 => h2.classList.add('light'));
-        h4Elements.forEach(h4 => h4.classList.add('light')); // Aplica light em h4
-        h6Elements.forEach(h6 => h6.classList.add('light')); // Aplica light em h6
-        spanElements.forEach(span => span.classList.add('light')); // Aplica light em span
-        questaoElements.forEach(questao => questao.classList.add('light')); // Aplica light em .questao
+        h4Elements.forEach(h4 => h4.classList.add('light'));
+        h6Elements.forEach(h6 => h6.classList.add('light'));
+        spanElements.forEach(span => span.classList.add('light'));
+        questaoElements.forEach(questao => questao.classList.add('light'));
         materialboxedImages.forEach(img => img.classList.add('light'));
         inputElements.forEach(input => input.classList.add('light'));
+        hrElements.forEach(hr => hr.classList.add('light')); // Aplica light em hr
+        verticalLineElements.forEach(line => line.classList.add('light')); // Aplica light em .vertical-line
     }
 
     // Atualiza o texto do botão inicialmente
@@ -74,6 +80,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
         inputElements.forEach(input => {
             input.classList.toggle('dark');
             input.classList.toggle('light');
+        });
+        hrElements.forEach(hr => {
+            hr.classList.toggle('dark');
+            hr.classList.toggle('light');
+        });
+        verticalLineElements.forEach(line => {
+            line.classList.toggle('dark');
+            line.classList.toggle('light');
         });
 
         // Atualiza o localStorage de acordo com a classe atual

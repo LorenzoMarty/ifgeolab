@@ -10,11 +10,17 @@ main {
 }
 
 .vertical-line {
-    border-left: 2px solid #25412B;
     height: 550px;
     margin-right: 20px;
 }
 
+.vertical-line.light{
+    border-left: 2px solid #25412B;
+}
+
+.vertical-line.dark{
+    border-left: 2px solid #a5d16b;
+}
 .section-content {
     flex: 1;
 }
@@ -50,12 +56,17 @@ h6.dark {
 hr.divider {
     width: 60%;
     margin-left: 0;
-    background-color: #25412B;
     height: 2px;
     border: none;
 }
 
+hr.divider.light{
+    background-color: #25412B;
+}
 
+hr.divider.dark{
+    background-color: #a5d16b;
+}
 .menu {
     display: flex;
     justify-content: center;
