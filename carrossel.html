@@ -65,7 +65,7 @@
         }
 
         const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
         const renderer = new THREE.WebGLRenderer();
         renderer.setSize(window.innerWidth, window.innerHeight);
         renderer.setClearColor(0x3a5a40, 1);
@@ -82,8 +82,8 @@
         scene.add(grid);
 
         const orbitingObjects = [];
-        const orbitRadius = 7;
-        const numObjects = 4;
+        const orbitRadius = 30;
+        const numObjects = 5;
 
         for (let i = 0; i < numObjects; i++) {
             const angle = (i / numObjects) * Math.PI * 2;
@@ -107,8 +107,9 @@
                 targetAngle: angle
             });
         }
-        camera.position.set(0, 2, 15);
-        camera.lookAt(new THREE.Vector3(0, 0, 0));
+        camera.position.set(0, 10, 50); // Afastando a câmera para visão mais ampla
+        camera.lookAt(new THREE.Vector3(0, 0, 0)); // Mantém o foco no centro
+
 
         const targetAngle = Math.PI / 2;
         let isRotating = false;
