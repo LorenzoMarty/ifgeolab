@@ -62,8 +62,8 @@ navbar($breadcrumb);
                                         <?php echo $nome ?>
                                     </span>
                                 </div>
-                                <div class="card-action green darken-4">
-                                    <a class="center waves-effect waves-light btn-small green accent-4" href="../relatorio.php?idmineral=<?php echo $idmineral; ?>">
+                                <div class="card-action">
+                                    <a class="center waves-effect waves-light btn-small green accent-4" href="../relatorio.php?id=<?= $idmineral; ?>&tipo=mineral">
                                         <img src="../img/pdf-icon.png">
                                     </a>
                                     <a id="btnExcluir-<?= $idmineral ?>" class="center waves-effect waves-light btn-small red" data-idmineral="<?= $idmineral ?>">Excluir</a>
@@ -74,8 +74,8 @@ navbar($breadcrumb);
                     <?php } ?>
                     <div class="col s12 l4 m8">
                         <div class="card hoverable">
-                            <div class="card-action center green darken-4">
-                                <a class="center waves-effect waves-light btn-small green accent-4" href="forms.php?tipo=mineral">Cadastrar</a>
+                            <div class="card-action center">
+                                <a class="center waves-effect waves-light btn-small green" href="forms.php?tipo=mineral">Cadastrar</a>
                             </div>
                         </div>
                     </div>

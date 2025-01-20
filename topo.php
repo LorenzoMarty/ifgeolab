@@ -108,7 +108,7 @@ if (mysqli_num_rows($resultado) > 0) {
   </nav>
 </nav>
 
-<?php if ($_SESSION['permissao'] == 2 or $_SESSION['permissao'] == 3): ?>
+<?php if ($_SESSION['permissao'] == 2 or $_SESSION['permissao'] == 3){?>
 <!-- Dropdown Content (Desktop) -->
 <ul id="dropdown1" class="dropdown-content">
   <?php if ($_SESSION['permissao'] == 3): ?>
@@ -118,7 +118,7 @@ if (mysqli_num_rows($resultado) > 0) {
   <li><a href="crud/Sugestao.php">Sugestões</a></li>
   <li><a href="crud/Amostra.php">Amostras</a></li>
 </ul>
-<?php endif; ?>
+<?php } ?>
 
 <!-- Mobile Sidenav (menu lateral) -->
 <ul class="sidenav white-text #212121 grey darken-4" id="mobile-demo">

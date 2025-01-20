@@ -64,9 +64,9 @@ navbar($breadcrumb);
                                         <?= $nome ?>
                                     </span>
                                 </div>
-                                <div class="card-action green darken-4">
+                                <div class="card-action">
                                     <a class="center waves-effect waves-light btn-small green accent-4"
-                                        href="../relatorio.php?idrocha=<?= $idrocha; ?>">
+                                        href="../relatorio.php?id=<?= $idrocha; ?>&tipo=rochas">
                                         <img src="../img/pdf-icon.png">
                                     </a>
                                     <a id="btnExcluir-<?= $idrocha ?>" class="center waves-effect waves-light btn-small red"
@@ -80,8 +80,8 @@ navbar($breadcrumb);
                     <?php } ?>
                     <div class="col s12 l4 m8">
                         <div class="card hoverable">
-                            <div class="card-action center green darken-4">
-                                <a class="center waves-effect waves-light btn-small green accent-4"
+                            <div class="card-action center">
+                                <a class="center waves-effect waves-light btn-small green"
                                     href="forms.php?tipo=rocha">Cadastrar</a>
                             </div>
                         </div>
