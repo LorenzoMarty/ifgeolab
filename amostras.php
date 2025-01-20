@@ -56,7 +56,7 @@ $categoria = $_GET['categoria'];
                                         <span
                                             class="card-title center meu-span green-text text-lighten-3"><?= $nome ?></span>
                                     </div>
-                                    <div class="card-action green darken-4">
+                                    <div class="card-action">
                                         <a class="green-text text-lighten-3"
                                             href="infoAcervo.php?tipo=rochas&id=<?= $dados['idrocha'] ?>">Saiba mais</a>
                                     </div>
@@ -93,7 +93,7 @@ $categoria = $_GET['categoria'];
                                         <span
                                             class="card-title center meu-span green-text text-lighten-3"><?= $nome ?></span>
                                     </div>
-                                    <div class="card-action green darken-4">
+                                    <div class="card-action">
                                         <a class="green-text text-lighten-3"
                                             href="infoAcervo.php?tipo=rochas&id=<?= $dados['idrocha'] ?>">Saiba mais</a>
                                     </div>
@@ -130,7 +130,7 @@ $categoria = $_GET['categoria'];
                                         <span
                                             class="card-title center meu-span green-text text-lighten-3"><?= $nome ?></span>
                                     </div>
-                                    <div class="card-action green darken-4">
+                                    <div class="card-action">
                                         <a class="green-text text-lighten-3"
                                             href="infoAcervo.php?tipo=rochas&id=<?= $dados['idrocha'] ?>">Saiba mais</a>
                                     </div>
@@ -167,7 +167,7 @@ $categoria = $_GET['categoria'];
                                         <span
                                             class="card-title center meu-span green-text text-lighten-3"><?= $nome ?></span>
                                     </div>
-                                    <div class="card-action green darken-4">
+                                    <div class="card-action">
                                         <a class="green-text text-lighten-3"
                                             href="infoAcervo.php?tipo=mineral&id=<?= $dados['idmineral'] ?>">Saiba mais</a>
                                     </div>
@@ -204,7 +204,7 @@ $categoria = $_GET['categoria'];
                                         <span
                                             class="card-title center meu-span green-text text-lighten-3"><?= $nome ?></span>
                                     </div>
-                                    <div class="card-action green darken-4">
+                                    <div class="card-action">
                                         <a class="green-text text-lighten-3"
                                             href="infoAcervo.php?tipo=mineral&id=<?= $dados['idmineral'] ?>">Saiba mais</a>
                                     </div>

@@ -48,7 +48,7 @@ $resultado = mysqli_query($conexao, $sql);
                                         <?php echo $nome ?>
                                     </span>
                                 </div>
-                                <div class="card-action green darken-4">
+                                <div class="card-action">
                                     <a id="btnExcluir-<?= $idusuario ?>" class="center waves-effect waves-light btn-small red"
                                         data-idusuario="<?= $idusuario ?>">Excluir</a>
                                 </div>

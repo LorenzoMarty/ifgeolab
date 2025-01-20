@@ -10,7 +10,7 @@ if (isset($_SESSION['login'])) {
     unset($_SESSION['login']);
 }
 unset($_SESSION['questoes'])
-?>
+    ?>
 <?php
 include "include.php";
 $breadcrumb = "";
@@ -35,7 +35,8 @@ navbar($breadcrumb);
                     <div class="col pull-s1 s6 m4 l4 center-align">
                         <div class="image-container">
                             <a href="acervo.php?tipo=Rochas">
-                                <img src="img/rochas.png" alt="Rochas" class="image-with-caption grayscale hoverable responsive-img cover-image">
+                                <img src="img/rochas.png" alt="Rochas"
+                                    class="image-with-caption grayscale hoverable responsive-img cover-image">
                                 <div class="caption">Rochas</div>
                             </a>
                         </div>
@@ -43,7 +44,8 @@ navbar($breadcrumb);
                     <div class="col pull-s1 s6 m4 l4 center-align">
                         <div class="image-container">
                             <a href="acervo.php?tipo=Minerais">
-                                <img src="img/mineral.png" alt="Minerais" class="image-with-caption grayscale hoverable responsive-img">
+                                <img src="img/mineral.png" alt="Minerais"
+                                    class="image-with-caption grayscale hoverable responsive-img">
                                 <div class="caption">Minerais</div>
                             </a>
                         </div>
@@ -51,17 +53,17 @@ navbar($breadcrumb);
                     <div class="col pull-s4 s8 m4 l4 center-align">
                         <div class="image-container">
                             <a href="questionario.php">
-                                <img src="img/questionarios.png" alt="Questionários" class="image-with-caption responsive-img">
+                                <img src="img/questionarios.png" alt="Questionários"
+                                    class="image-with-caption responsive-img">
                                 <div class="caption">Questionários</div>
                             </a>
                         </div>
                         <div class="image-container">
-                            <?php if (isset($_SESSION['permissao'])) {
-                                if ($_SESSION['permissao'] == 1) {
-                                    echo '<a href="crud/amostra.php">';
-                                } elseif ($_SESSION['permissao'] == 2) {
-                                    echo '<a href="crud/sugestao.php">';
-                                }
+                            <?php
+                            if ($_SESSION['permissao'] == 1) {
+                                echo '<a href="crud/amostra.php">';
+                            } elseif ($_SESSION['permissao'] == 2) {
+                                echo '<a href="crud/sugestao.php">';
                             }
                             ?>
                             <img src="img/sugestoes.png" alt="Sugestões" class="image-with-caption responsive-img">

@@ -4963,13 +4963,12 @@ small {
   padding: 24px;
   margin: 0.5rem 0 1rem 0;
   border-radius: 5px;
-  background-color: #fff;
 }
 
 .card {
   position: relative;
   margin: 0.5rem 0 1rem 0;
-  background-color: #fff;
+  background-color: #588157;
   -webkit-transition: -webkit-box-shadow .25s;
   transition: -webkit-box-shadow .25s;
   transition: box-shadow .25s;
