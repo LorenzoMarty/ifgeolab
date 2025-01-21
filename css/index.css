@@ -148,10 +148,6 @@ hr.divider.dark{
     .image-container {
         width: 100%;
     }
-
-    .caption {
-        font-size: 0.9rem;
-    }
 }
 
 @media screen and (max-width: 480px) {
@@ -167,7 +163,4 @@ hr.divider.dark{
         width: 100%;
     }
 
-    .caption {
-        font-size: 0.8rem;
-    }
 }

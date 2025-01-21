@@ -109,6 +109,11 @@ if (mysqli_num_rows($result) > 0) {
         background-color: transparent;
     }
 
+    /* Ajuste para o layout dos botões e conteúdo */
+    .btn-container {
+        margin-bottom: 20px;
+    }
+
     .row {
         display: flex;
         flex-wrap: wrap;
@@ -118,6 +123,7 @@ if (mysqli_num_rows($result) > 0) {
 
     .col {
         padding: 10px;
+        flex: 1 1 calc(50% - 20px); /* Duas colunas em telas grandes */
     }
 
     .card-image {
@@ -133,19 +139,39 @@ if (mysqli_num_rows($result) > 0) {
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
+    /* Ajuste para telas menores */
     @media (max-width: 768px) {
-        .row {
-            flex-direction: column;
-        }
-
-        .col {
-            width: 100%;
-            text-align: center;
-        }
-
         .minha-imagem {
             height: 200px;
             width: 200px;
+        }
+
+        /* Ajuste os botões para caberem melhor em dispositivos menores */
+        .btn-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            font-size: 14px;
+            width: 100%;
+            margin: 5px 0;
+        }
+    }
+
+    /* Ajuste para telas muito pequenas (por exemplo, celulares em modo retrato) */
+    @media (max-width: 480px) {
+        .container {
+            padding: 15px;
+        }
+
+        .minha-imagem {
+            height: 150px;
+            width: 150px;
+        }
+
+        .btn.green, .btn.red, .btn.red-text {
+            font-size: 14px;
         }
     }
 </style>
@@ -157,14 +183,17 @@ if (mysqli_num_rows($result) > 0) {
                 <div class="section">
                     <h4>Meu Perfil</h4>
                     <hr class="divider">
-                    <div class="left hide-on-med-and-down" style="margin-top: 20px;">
+                    
+                    <!-- Botões acima das informações -->
+                    <div class="btn-container">
                         <a class="waves-effect waves-light btn green" href="formEdit.php">Editar</a>
                         <a id="btnSair" class="waves-effect waves-light btn red-text">Sair</a>
                         <a id="btnExcluir" class="waves-effect waves-light btn red">Excluir</a>
                     </div>
                 </div>
+
                 <div class="row">
-                    <div class="col s6">
+                    <div class="col s12 m6">
                         <h5><b>Nome: </b><?php echo $dados['nome']; ?></h5>
                         <h5><b>Email: </b><?php echo $dados['email']; ?></h5>
                         <h5><b>Matrícula: </b><?php echo $dados['matricula']; ?></h5>
@@ -176,7 +205,7 @@ if (mysqli_num_rows($result) > 0) {
                             <h5><b>Rochas Cadastrados: </b><?= $rochasCad; ?></h5>
                         <?php } ?>
                     </div>
-                    <div class="col s6">
+                    <div class="col s12 m6">
                         <div class="card-image">
                             <img src="../img/usuarios/<?= $img; ?>" class="minha-imagem">
                         </div>
@@ -186,9 +215,7 @@ if (mysqli_num_rows($result) > 0) {
         </div>
     </main>
 </body>
-<?php
-include "../footer.php";
-?>
+
 <script src="../js/sweetalert.js"></script>
 <script>
     const btnSair = document.querySelector('#btnSair');
@@ -223,3 +250,6 @@ include "../footer.php";
         });
     });
 </script>
+<?php
+include "../footer.php";
+?>

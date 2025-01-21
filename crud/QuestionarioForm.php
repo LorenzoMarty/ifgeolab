@@ -34,27 +34,27 @@ class QuestionarioForm extends Form
         ]);
 
         $this->addRow([
-            $this->addInput("radio", "alternativas", "Alternativa A", "A", ["id" => "1"], ""),
-            $this->addInput("radio", "alternativas", "Alternativa B", "B", ["id" => "2"], ""),
-            $this->addInput("radio", "alternativas", "Alternativa C", "C", ["id" => "3"], ""),
-            $this->addInput("radio", "alternativas", "Alternativa D", "D", ["id" => "4"], ""),
-            $this->addInput("radio", "alternativas", "Alternativa E", "E", ["id" => "5"], "")
+            $this->addInput("radio", "alternativas", "Alternativa A", "A", ["id" => "1"], "s2"),
+            $this->addInput("radio", "alternativas", "Alternativa B", "B", ["id" => "2"], "s2"),
+            $this->addInput("radio", "alternativas", "Alternativa C", "C", ["id" => "3"], "s2"),
+            $this->addInput("radio", "alternativas", "Alternativa D", "D", ["id" => "4"], "s2"),
+            $this->addInput("radio", "alternativas", "Alternativa E", "E", ["id" => "5"], "s2")
         ]);
 
         $this->addRow([
-            $this->addInput("text", "alternativa1", "Alternativa A:", !empty($dados['alternativaA']) ? $dados['alternativaA'] : "", "", "s2")
+            $this->addInput("text", "alternativa1", "Alternativa A:", !empty($dados['alternativaA']) ? $dados['alternativaA'] : "", "", "s4")
         ]);
         $this->addRow([
-            $this->addInput("text", "alternativa2", "Alternativa B:", !empty($dados['alternativaB']) ? $dados['alternativaB'] : "", "", "s2")
+            $this->addInput("text", "alternativa2", "Alternativa B:", !empty($dados['alternativaB']) ? $dados['alternativaB'] : "", "", "s4")
         ]);
         $this->addRow([
-            $this->addInput("text", "alternativa3", "Alternativa C:", !empty($dados['alternativaC']) ? $dados['alternativaC'] : "", "", "s2")
+            $this->addInput("text", "alternativa3", "Alternativa C:", !empty($dados['alternativaC']) ? $dados['alternativaC'] : "", "", "s4")
         ]);
         $this->addRow([
-            $this->addInput("text", "alternativa4", "Alternativa D:", !empty($dados['alternativaD']) ? $dados['alternativaD'] : "", "", "s2")
+            $this->addInput("text", "alternativa4", "Alternativa D:", !empty($dados['alternativaD']) ? $dados['alternativaD'] : "", "", "s4")
         ]);
         $this->addRow([
-            $this->addInput("text", "alternativa5", "Alternativa E:", !empty($dados['alternativaE']) ? $dados['alternativaE'] : "", "", "s2")
+            $this->addInput("text", "alternativa5", "Alternativa E:", !empty($dados['alternativaE']) ? $dados['alternativaE'] : "", "", "s4")
         ]);
 
         $this->addRow([

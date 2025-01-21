@@ -17,7 +17,7 @@ if (isset($_POST['CadastrarMineral'])) {
 
         // Define o nome do arquivo
         $novo_nome = "$nome.$extensao";
-        $obj = "$nome-3d.$extensao3D";
+        $obj = "$nome-3d." . "$extensao3D";
 
         // Define a pasta para onde enviaremos o arquivo
         $diretorio = "../img/mineral/";

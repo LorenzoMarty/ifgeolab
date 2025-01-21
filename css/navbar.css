@@ -234,6 +234,17 @@ p.dark{
 .questao.dark{
   background-color:#444
 }
+.questao.light{
+  background-color: white;
+}
+
+input.dark{
+  color: white;
+}
+
+input.white{
+  color: black;
+}
 .image,
 .image1 {
   width: 250px;
