@@ -18,7 +18,7 @@ if (isset($_POST['EditarMineral'])) {
         $extensao3D = strtolower(pathinfo($_FILES['3d']['name'], PATHINFO_EXTENSION));
 
         //define o nome do arquivo
-        $novo_nome = "$nome". "$extensao";
+        $novo_nome = "$nome" . "$extensao";
         $obj = "$nome-3d." . "$extensao3D";
 
         //define a pasta para onde enviaremos o arquivo
@@ -44,12 +44,11 @@ if (isset($_POST['EditarMineral'])) {
             'text' => 'Amostra atualizada com sucesso!',
             'icon' => 'success'
         ];
-        header("Location: ../index.php");
+        header("Location: listarMineral.php");
     } else {
-        echo "<script>alert('Não foi possível atualizar a amostra!');
-            location.href='listarMineral.php'</script>";
+        echo "<script>alert('Não foi possível realizar o cadastro! Erro SQL: " . mysqli_error($conexao) . "'); location.href='../index.php';</script>";
+        exit;
     }
-    
 } elseif (isset($_POST['EditarRocha'])) {
     $obj = $_POST['3d'];
     $id = $_POST['id'];
@@ -96,7 +95,6 @@ if (isset($_POST['EditarMineral'])) {
         echo "<script>alert('Não foi possível atualizar a amostra!');
             location.href='listarRocha.php'</script>";
     }
-
 } elseif (isset($_POST['EditarUsuario'])) {
 
     $id = $_POST['idusuario'];
@@ -119,9 +117,9 @@ if (isset($_POST['EditarMineral'])) {
     }
     $hash = password_hash($senhaE, PASSWORD_DEFAULT);
     if ($hash) {
-        if(isset($_FILES['arquivo'])){
-        $sql = "UPDATE usuario SET nome='$nome', email = '$email', senha = '$hash', img = '$novo_nome', matricula = '$matricula', instituto = '$inst' WHERE idusuario=$id";
-        }else{
+        if (isset($_FILES['arquivo'])) {
+            $sql = "UPDATE usuario SET nome='$nome', email = '$email', senha = '$hash', img = '$novo_nome', matricula = '$matricula', instituto = '$inst' WHERE idusuario=$id";
+        } else {
             $sql = "UPDATE usuario SET nome='$nome', email = '$email', senha = '$hash', matricula = '$matricula', instituto = '$inst' WHERE idusuario=$id";
         }
         if (mysqli_query($conexao, $sql)) {

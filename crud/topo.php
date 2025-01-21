@@ -127,12 +127,14 @@ if (mysqli_num_rows($resultado) > 0) {
       <div class="divider"></div>
     </li>
     <li><a class="white-text" href="../index.php">Início</a></li>
+    <?php if ($_SESSION['permissao'] == 2 or $_SESSION['permissao'] == 3) { ?>
     <?php if ($_SESSION['permissao'] == 3): ?>
       <li><a class="white-text" href="listarUsuario.php">Usuários</a></li>
     <?php endif; ?>
     <li><a class="white-text" href="cadquestao.php">Cadastrar Questões</a></li>
     <li><a class="white-text" href="Sugestao.php">Cadastrar Sugestões</a></li>
     <li><a class="white-text" href="Amostra.php">Cadastrar Amostras</a></li>
+    <?php } ?>
     <li><a href="editUser.php?idusuario=<?= $_SESSION['id']; ?>" class="white-text perfil-container">
         <img src="../img/usuarios/<?= $img; ?>" alt="Imagem de perfil"> <?= $dados['nome']; ?></a></li>
     <hr>

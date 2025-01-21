@@ -4,6 +4,11 @@ if (isset($_SESSION['excluir'])) {
     $msg = $_SESSION['excluir'];
     unset($_SESSION['excluir']);
 }
+$confirm = "";
+if (isset($_SESSION['confirm'])) {
+    $confirm = $_SESSION['confirm'];
+    unset($_SESSION['confirm']);
+}
 include "include.php";
 $breadcrumbs = [
     'Amostra' => '> <a href="amostra.php">Amostras</a>',
@@ -100,6 +105,13 @@ navbar($breadcrumb);
             window.addEventListener("load", (event) => {
                 Swal.fire(
                     <?= json_encode($msg) ?>
+                )
+            })
+        <?php } ?>
+        <?php if ($confirm != "") { ?>
+            window.addEventListener("load", (event) => {
+                Swal.fire(
+                    <?= json_encode($confirm) ?>
                 )
             })
         <?php } ?>

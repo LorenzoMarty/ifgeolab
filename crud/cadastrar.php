@@ -5,7 +5,7 @@ $conexao = conectar();
 
 if (isset($_POST['CadastrarMineral'])) {
     $nome = $_POST['nome'];
-    $cat = $_POST['cat'];
+    $cat = $_POST['idcat'];
     $desc = $_POST['descricao'];
     $suges = $_POST['sugestao'];
     $idusuario = $_POST['idusuario'];
@@ -29,26 +29,32 @@ if (isset($_POST['CadastrarMineral'])) {
 
         // Cadastra no banco
         $sql = "INSERT INTO mineral(nome, idcat, descricao, img, sugestao, 3d, idusuario) VALUES ('$nome', '$cat', '$desc', '$novo_nome', '$suges', '$obj', '$idusuario')";
-        mysqli_query($conexao, $sql);
     } elseif (isset($_FILES['arquivo'])) {
         $extensao = strtolower(pathinfo($_FILES['arquivo']['name'], PATHINFO_EXTENSION));
         $novo_nome = "$nome.$extensao";
-        $diretorio = "../img/rochas/";
+        $diretorio = "../img/mineral/";
         move_uploaded_file($_FILES['arquivo']['tmp_name'], $diretorio . $novo_nome);
 
         $sql = "INSERT INTO mineral(nome, idcat, descricao, img, sugestao, idusuario) VALUES ('$nome', '$cat', '$desc', '$novo_nome', '$suges', '$idusuario')";
-        mysqli_query($conexao, $sql);
+    }
+    if (mysqli_query($conexao, $sql)) {
         $_SESSION['confirm'] = [
             "title" => 'Parabéns!',
             'text' => 'Mineral cadastrado com sucesso!',
             'icon' => 'success'
         ];
+        if ($_SESSION['permissao'] == 1) {
+            header("Location: ../index.php");
+        } else {
+            header("Location: listarRocha.php");
+        }
+    } else {
+        echo "<script>alert('Não foi possível realizar o cadastro! Erro SQL: " . mysqli_error($conexao) . "'); location.href='../index.php';</script>";
+        exit;
     }
-    header("Location: listarMineral.php");
-    
 } elseif (isset($_POST['CadastrarRocha'])) {
     $nome = $_POST['nome'];
-    $cat = $_POST['cat'];
+    $cat = $_POST['idcat'];
     $descricao = $_POST['descricao'];
     $suges = $_POST['sugestao'];
     $idusuario = $_POST['idusuario'];
@@ -60,7 +66,7 @@ if (isset($_POST['CadastrarMineral'])) {
         $extensao3D = strtolower(pathinfo($_FILES['3d']['name'], PATHINFO_EXTENSION));
 
         //define o nome do arquivo
-        $novo_nome = "$nome".$extensao;
+        $novo_nome = "$nome" . $extensao;
         $obj = $_FILES['3d']['name'];
 
         //define a pasta para onde enviaremos o arquivo
@@ -93,12 +99,15 @@ if (isset($_POST['CadastrarMineral'])) {
             'text' => 'Rocha cadastrada com sucesso!',
             'icon' => 'success'
         ];
-        header("Location: listarRocha.php");
+        if ($_SESSION['permissao'] == 1) {
+            header("Location: ../index.php");
+        } else {
+            header("Location: listarRocha.php");
+        }
     } else {
-        echo "<script>alert('Não foi possível realizar o cadastro!');
-        location.href='../index.php'</script>";
+        echo "<script>alert('Não foi possível realizar o cadastro! Erro SQL: " . mysqli_error($conexao) . "'); location.href='../index.php';</script>";
+        exit;
     }
-    
 } elseif (isset($_POST['CadastrarUsuario'])) {
     $nome = $_POST['nome'];
     $email = $_POST['email'];
@@ -135,8 +144,8 @@ if (isset($_POST['CadastrarMineral'])) {
             ];
             header("Location: ../login.php?form=login");
         } else {
-            echo "<script>alert('Não foi possível realizar o cadastro!');
-        location.href='cadUsuario.php'</script>";
+            echo "<script>alert('Não foi possível realizar o cadastro! Erro SQL: " . mysqli_error($conexao) . "'); location.href='../login.php?form=register';</script>";
+            exit;
         }
     } else {
         echo "Erro na encriptografia da senha!!!!";
@@ -162,9 +171,10 @@ if (isset($_POST['CadastrarMineral'])) {
         ];
         header("Location: ../index.php");
     } else {
-        echo "<script>alert('Não foi possível realizar o cadastro!');
-    location.href='cadUsuario.php'</script>";
+        echo "<script>alert('Não foi possível realizar o cadastro! Erro SQL: " . mysqli_error($conexao) . "'); location.href='../index.php';</script>";
+        exit;
     }
 } else {
-    echo "Erro na encriptografia da senha!!!!";
+    echo "Tipo de cadastro indefinido.";
+    exit;
 }
