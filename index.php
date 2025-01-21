@@ -10,12 +10,25 @@ if (isset($_SESSION['login'])) {
     unset($_SESSION['login']);
 }
 unset($_SESSION['questoes'])
-    ?>
+?>
 <?php
 include "include.php";
 $breadcrumb = "";
 navbar($breadcrumb);
 ?>
+<style>
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
 
 <body>
     <main>

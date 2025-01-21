@@ -21,15 +21,22 @@ if (isset($_POST['login'])) {
             $_SESSION['id'] = $dados['idusuario'];
             $img = $dados['img'];
             $_SESSION['login'] = [
-                'title' => 'Bem-vindo!',
-                'text' => '' . $_SESSION['usuario'],
+                'title' => 'Seja bem-vindo ' . $_SESSION['usuario'] . '!',
                 'imageUrl' => 'img/usuarios/' . $img,
-                'imageWidth' => 200,
-                'imageHeight' => 200,
+                'imageWidth' => 150,
+                'imageHeight' => 150,
                 'background' => '#3A5A40',
                 'color' => '#ffffff',
                 'timer' => 1500,
-                'confirmbutton' => false
+                'showConfirmButton' => false,
+                'customClass' => [
+                    'popup' => 'custom-popup',
+                    'image' => 'custom-image',
+                    'title' => 'custom-title',
+                    'content' => 'custom-content',
+                    'confirmButton' => 'custom-button',
+                ],
+                'html' => '<div class="custom-footer-image"><img src="img/geolab-verde.png" alt="Logo Geolab" /></div>'
             ];
             header("Location: index.php");
         } else {

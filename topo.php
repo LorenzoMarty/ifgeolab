@@ -4,6 +4,8 @@
     position: sticky;
     top: 0;
     z-index: 6;
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out forwards;
   }
 
   .nav-wrapper {
@@ -14,14 +16,58 @@
   .breadcrumb-container {
     display: flex;
     align-items: center;
+    opacity: 0;
+    animation: breadcrumbIn 0.6s ease-in-out forwards;
+  }
+
+  @keyframes breadcrumbIn {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
   }
 
   .breadcrumb-container li {
     display: inline;
+    padding-right: 10px;
+    opacity: 0;
+    animation: breadcrumbItemIn 0.5s ease-in-out forwards;
+    animation-delay: 0.2s;
+  }
+
+  @keyframes breadcrumbItemIn {
+    from {
+      opacity: 0;
+      transform: translateX(-10px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
   }
 
   .nav_color2 {
     top: 64px;
+    opacity: 0;
+    animation: fadeInNav 1s ease-in-out forwards;
+  }
+
+  @keyframes fadeInNav {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   .logolink {
@@ -33,6 +79,12 @@
     width: 30px;
     border-radius: 50%;
     margin-left: 10px;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  }
+
+  .perfil-container img:hover {
+    transform: scale(1.2);
+    opacity: 0.8;
   }
 
   .sidenav {
@@ -42,10 +94,7 @@
     height: 100vh;
   }
 
-  .sidenav-content {
-    flex-grow: 1;
-  }
-
+  /* Logo in footer animation */
   .logo-footer {
     text-align: center;
     padding: 20px 0;

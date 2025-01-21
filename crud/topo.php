@@ -4,6 +4,8 @@
     position: sticky;
     top: 0;
     z-index: 6;
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out forwards;
   }
 
   .nav-wrapper {
@@ -14,14 +16,58 @@
   .breadcrumb-container {
     display: flex;
     align-items: center;
+    opacity: 0;
+    animation: breadcrumbIn 0.6s ease-in-out forwards;
+  }
+
+  @keyframes breadcrumbIn {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
   }
 
   .breadcrumb-container li {
     display: inline;
+    padding-right: 10px;
+    opacity: 0;
+    animation: breadcrumbItemIn 0.5s ease-in-out forwards;
+    animation-delay: 0.2s;
+  }
+
+  @keyframes breadcrumbItemIn {
+    from {
+      opacity: 0;
+      transform: translateX(-10px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
   }
 
   .nav_color2 {
     top: 64px;
+    opacity: 0;
+    animation: fadeInNav 1s ease-in-out forwards;
+  }
+
+  @keyframes fadeInNav {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   .logolink {
@@ -33,6 +79,12 @@
     width: 30px;
     border-radius: 50%;
     margin-left: 10px;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  }
+
+  .perfil-container img:hover {
+    transform: scale(1.2);
+    opacity: 0.8;
   }
 
   .sidenav {
@@ -42,10 +94,7 @@
     height: 100vh;
   }
 
-  .sidenav-content {
-    flex-grow: 1;
-  }
-
+  /* Logo in footer animation */
   .logo-footer {
     text-align: center;
     padding: 20px 0;
@@ -77,10 +126,10 @@ if (mysqli_num_rows($resultado) > 0) {
     <ul class="right hide-on-med-and-down">
       <li><a href="../index.php">Início</a></li>
       <?php if ($_SESSION['permissao'] == 3 or $_SESSION['permissao'] == 2): ?>
-      <li>
-        <a class="dropdown-trigger" href="#!" data-target="dropdown1">Cadastrar<i
-            class="material-icons right">arrow_drop_down</i></a>
-      </li>
+        <li>
+          <a class="dropdown-trigger" href="#!" data-target="dropdown1">Cadastrar<i
+              class="material-icons right">arrow_drop_down</i></a>
+        </li>
       <?php endif; ?>
       <li><a href="editUser.php?idusuario=<?= $_SESSION['id']; ?>" class="perfil-container"><?= $dados['nome']; ?>
           <img src="../img/usuarios/<?= $img; ?>" alt="Imagem de perfil"></a></li>
@@ -107,15 +156,15 @@ if (mysqli_num_rows($resultado) > 0) {
 </nav>
 
 <?php if ($_SESSION['permissao'] == 2 or $_SESSION['permissao'] == 3): ?>
-<!-- Dropdown Content (Desktop) -->
-<ul id="dropdown1" class="dropdown-content">
-  <?php if ($_SESSION['permissao'] == 3): ?>
-    <li><a href="listarUsuario.php">Usuários</a></li>
-  <?php endif; ?>
-  <li><a href="forms.php?tipo=questionário">Questões</a></li>
-  <li><a href="Sugestao.php">Sugestões</a></li>
-  <li><a href="Amostra.php">Amostras</a></li>
-</ul>
+  <!-- Dropdown Content (Desktop) -->
+  <ul id="dropdown1" class="dropdown-content">
+    <?php if ($_SESSION['permissao'] == 3): ?>
+      <li><a href="listarUsuario.php">Usuários</a></li>
+    <?php endif; ?>
+    <li><a href="forms.php?tipo=questionário">Questões</a></li>
+    <li><a href="Sugestao.php">Sugestões</a></li>
+    <li><a href="Amostra.php">Amostras</a></li>
+  </ul>
 <?php endif; ?>
 
 <!-- Mobile Sidenav (menu lateral) -->
@@ -128,12 +177,12 @@ if (mysqli_num_rows($resultado) > 0) {
     </li>
     <li><a class="white-text" href="../index.php">Início</a></li>
     <?php if ($_SESSION['permissao'] == 2 or $_SESSION['permissao'] == 3) { ?>
-    <?php if ($_SESSION['permissao'] == 3): ?>
-      <li><a class="white-text" href="listarUsuario.php">Usuários</a></li>
-    <?php endif; ?>
-    <li><a class="white-text" href="cadquestao.php">Cadastrar Questões</a></li>
-    <li><a class="white-text" href="Sugestao.php">Cadastrar Sugestões</a></li>
-    <li><a class="white-text" href="Amostra.php">Cadastrar Amostras</a></li>
+      <?php if ($_SESSION['permissao'] == 3): ?>
+        <li><a class="white-text" href="listarUsuario.php">Usuários</a></li>
+      <?php endif; ?>
+      <li><a class="white-text" href="cadquestao.php">Cadastrar Questões</a></li>
+      <li><a class="white-text" href="Sugestao.php">Cadastrar Sugestões</a></li>
+      <li><a class="white-text" href="Amostra.php">Cadastrar Amostras</a></li>
     <?php } ?>
     <li><a href="editUser.php?idusuario=<?= $_SESSION['id']; ?>" class="white-text perfil-container">
         <img src="../img/usuarios/<?= $img; ?>" alt="Imagem de perfil"> <?= $dados['nome']; ?></a></li>
