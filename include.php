@@ -8,6 +8,7 @@
 <link rel="shortcut icon" type="image/jpg" href="img/icons8-rocha-48.png" />
 <link rel="stylesheet" href="css/materialize.css">
 <link rel="stylesheet" href="css/navbar.css">
+<link rel="stylesheet" href="css/theme.css">
 <script src="js/materialize.js"></script>
 <script src="js/dark-light.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>

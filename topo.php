@@ -8,6 +8,18 @@
     animation: fadeIn 1s ease-in-out forwards;
   }
 
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
   .nav-wrapper {
     display: flex;
     justify-content: space-between;
@@ -158,7 +170,7 @@ if (mysqli_num_rows($resultado) > 0) {
 </nav>
 
 <!-- Dropdown Content (Desktop) -->
-<?php if ($_SESSION['permissao'] === 2 or $_SESSION['permissao'] === 3) { ?>
+<?php if ($_SESSION['permissao'] == 2 or $_SESSION['permissao'] == 3) { ?>
   <ul id="dropdown1" class="dropdown-content">
     <?php if ($_SESSION['permissao'] == 3): ?>
       <li><a href="crud/listarUsuario.php">Usuários</a></li>
@@ -196,7 +208,7 @@ if (mysqli_num_rows($resultado) > 0) {
 </ul>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('DOMContentLoaded', function () {
     var elems = document.querySelectorAll('.dropdown-trigger');
     var instances = M.Dropdown.init(elems, {
       click: true

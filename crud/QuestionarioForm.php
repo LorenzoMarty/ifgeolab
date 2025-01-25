@@ -5,7 +5,7 @@ class QuestionarioForm extends Form
     private $formtipo;
     private $action;
 
-    public function __construct($formtipo, $id = null, $action = "")
+    public function __construct($formtipo, $id = null, $action = "", $nomeform = "")
     {
         $this->crud = new CRUD();
         $this->formtipo = $formtipo;
@@ -14,15 +14,15 @@ class QuestionarioForm extends Form
         parent::__construct($action, "POST", "multipart/form-data", "{$formtipo}", "col s12 m6");
 
         // Construir o formulário
-        $this->buildForm($id);
+        $this->buildForm($id, $nomeform);
     }
 
-    public function buildForm($id)
+    public function buildForm($id, $nomeform)
     {
         $dados = [];
         if ($id) {
-            $tabela = 'questionario';
-            $colunaId = 'idquestionario';
+            $tabela = 'questoes';
+            $colunaId = 'id_questao';
             $dados = ($this->crud->listar($tabela, [$colunaId => $id]))[0];
         }
 
@@ -58,14 +58,9 @@ class QuestionarioForm extends Form
         ]);
 
         $this->addRow([
-            $this->addInput(
-                "submit",
-                "cadastrarQuestao",
-                "",
-                "Cadastrar",
-                ["class" => "waves-effect waves-light btn green"],
-                "s12"
-            )
+            $this->addInput("submit", "$nomeform" . ucfirst($this->formtipo), "", "$nomeform", [
+                "class" => "waves-effect waves-light btn green white-text"
+            ], "s12")
         ]);
     }
 }

@@ -40,10 +40,10 @@ switch ($formtipo) {
     $form = new MineralRochaForm($formtipo, $id, $action, $idusuario, $sugestao, $nomeform);
     break;
   case "usuario":
-    $form = new UsuarioForm($formtipo, $id, $action, $nomeForm);
+    $form = new UsuarioForm($formtipo, $id, $action, $nomeform);
     break;
   case "questionário":
-    $form = new QuestionarioForm($formtipo, $id, $action);
+    $form = new QuestionarioForm($formtipo, $id, $action, $nomeform);
     break;
   default:
     echo "<p>Tipo de formulário inválido.</p>";
