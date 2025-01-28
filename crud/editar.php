@@ -31,9 +31,11 @@ if (isset($_POST['EditarMineral'])) {
 
         $sql = "UPDATE mineral SET nome='$nome', idcat = '$cat', descricao = '$descricao', img='$novo_nome', sugestao='$suges', 3d='$obj' WHERE idmineral=$id";
     } elseif (isset($_FILES['arquivo'])) {
+
         $extensao = strtolower(pathinfo($_FILES['arquivo']['name'], PATHINFO_EXTENSION));
         $novo_nome = "$nome.$extensao";
-        $diretorio = "../img/rochas/";
+        $diretorio = "../img/mineral/";
+
         move_uploaded_file($_FILES['arquivo']['tmp_name'], $diretorio . $novo_nome);
 
         $sql = "UPDATE mineral SET nome='$nome', idcat = '$cat', descricao = '$descricao', img='$novo_nome', sugestao='$suges' WHERE idmineral=$id";
@@ -64,8 +66,8 @@ if (isset($_POST['EditarMineral'])) {
         $extensao3D = strtolower(pathinfo($_FILES['3d']['name'], PATHINFO_EXTENSION));
 
         //define o nome do arquivo
-        $novo_nome = "$nome.$extensao";
-        $obj = "$nome-3d.$extensao3D";
+        $novo_nome = "$nome" . "$extensao";
+        $obj = "$nome-3d." . "$extensao3D";
 
         //define a pasta para onde enviaremos o arquivo
         $diretorio = "../img/rochas/";
@@ -78,8 +80,9 @@ if (isset($_POST['EditarMineral'])) {
         $sql = "UPDATE rocha SET nome='$nome', idcat = '$cat', descricao = '$descricao', img='$novo_nome', sugestao='$suges', 3d='$obj' WHERE idrocha=$id";
     } elseif (isset($_FILES['arquivo'])) {
         $extensao = strtolower(pathinfo($_FILES['arquivo']['name'], PATHINFO_EXTENSION));
-        $novo_nome = "$nome.$extensao";
+        $novo_nome = "$nome". "$extensao";
         $diretorio = "../img/rochas/";
+
         move_uploaded_file($_FILES['arquivo']['tmp_name'], $diretorio . $novo_nome);
 
         $sql = "UPDATE rocha SET nome='$nome', idcat = '$cat', descricao = '$descricao', img='$novo_nome', sugestao='$suges' WHERE idrocha=$id";
