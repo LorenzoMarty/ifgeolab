@@ -172,7 +172,7 @@ if (mysqli_num_rows($resultado) > 0) {
     <?php if ($_SESSION['permissao'] == 3): ?>
       <li><a href="listarUsuario.php">Usuários</a></li>
     <?php endif; ?>
-    <li><a href="forms.php?tipo=questionário">Questões</a></li>
+    <li><a href="listarQuestao.php">Questões</a></li>
     <li><a href="Sugestao.php">Sugestões</a></li>
     <li><a href="Amostra.php">Amostras</a></li>
   </ul>
