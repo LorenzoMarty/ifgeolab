@@ -95,11 +95,11 @@ navbar($breadcrumb);
 
                             foreach ($questoes as $index => $pergunta) :
                                 $alternativas = [
-                                    'A' => $pergunta['alternativa_1'],
-                                    'B' => $pergunta['alternativa_2'],
-                                    'C' => $pergunta['alternativa_3'],
-                                    'D' => $pergunta['alternativa_4'],
-                                    'E' => $pergunta['alternativa_5'],
+                                    'A' => $pergunta['alternativaA'],
+                                    'B' => $pergunta['alternativaB'],
+                                    'C' => $pergunta['alternativaC'],
+                                    'D' => $pergunta['alternativaD'],
+                                    'E' => $pergunta['alternativaE'],
                                 ];
 
                                 if ($index % $midpoint == 0 && $index != 0) :
